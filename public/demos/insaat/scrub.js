@@ -78,9 +78,12 @@ function paint() {
   const ch = canvas.height;
   const iw = video.videoWidth || 1280;
   const ih = video.videoHeight || 720;
-  const s = Math.max(cw / iw, ch / ih);
+  // Mobile: contain — full frame visible, no “zoomed crop” on tall phones.
+  const s = IS_MOBILE ? Math.min(cw / iw, ch / ih) : Math.max(cw / iw, ch / ih);
   const w = iw * s;
   const h = ih * s;
+  ctx.fillStyle = "#0c0b0a";
+  ctx.fillRect(0, 0, cw, ch);
   ctx.drawImage(video, (cw - w) / 2, (ch - h) / 2, w, h);
   dirty = false;
 }

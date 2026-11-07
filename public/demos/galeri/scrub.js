@@ -134,7 +134,10 @@ function resize() {
 function coverDraw(srcW, srcH, draw) {
   const cw = canvas.width;
   const ch = canvas.height;
-  const s = Math.max(cw / srcW, ch / srcH);
+  const mobile =
+    typeof matchMedia === "function" &&
+    matchMedia("(max-width: 820px), (hover: none) and (pointer: coarse)").matches;
+  const s = mobile ? Math.min(cw / srcW, ch / srcH) : Math.max(cw / srcW, ch / srcH);
   ctx.fillStyle = "#070809";
   ctx.fillRect(0, 0, cw, ch);
   draw((cw - srcW * s) / 2, (ch - srcH * s) / 2, srcW * s, srcH * s);

@@ -24,7 +24,7 @@ function useIsMobilePreview() {
 export function PreviewShell({ site }: Props) {
   const baseSrc = useMemo(() => siteEmbedSrc(site), [site]);
   const isMobile = useIsMobilePreview();
-  /** Remount iframe on each visit so intros (e.g. Junesun jaguar) replay. */
+  /** Remount iframe on each visit so intros (e.g. junesun jaguar) replay. */
   const [visit, setVisit] = useState(0);
   useEffect(() => {
     setVisit((v) => v + 1);
@@ -37,6 +37,8 @@ export function PreviewShell({ site }: Props) {
       typeof window !== "undefined" ? window.location.origin : "https://www.izdemo.com"
     );
     if (site.slug === "junesun") u.searchParams.set("intro", "1");
+    // Owned embeds can show a return chip back to the portal.
+    if (site.slug === "kumrucu") u.searchParams.set("izden", "1");
     u.searchParams.set("_v", String(visit));
     return u.toString();
   }, [baseSrc, site.slug, visit]);
@@ -46,6 +48,7 @@ export function PreviewShell({ site }: Props) {
   const [online, setOnline] = useState<boolean | null>(
     isHttps || hasLocal ? true : null
   );
+  const [frameOk, setFrameOk] = useState(true);
   const others = SITES.filter((s) => s.slug !== site.slug);
 
   useEffect(() => {
@@ -84,6 +87,17 @@ export function PreviewShell({ site }: Props) {
       document.documentElement.classList.remove("preview-immersive");
     };
   }, [isMobile]);
+
+  // Cross-origin iframe: if it never paints, offer a direct open after a short wait.
+  useEffect(() => {
+    if (!isHttps || !isMobile) return;
+    setFrameOk(true);
+    const t = window.setTimeout(() => {
+      // Keep true — we still show iframe; this only reveals the rescue CTA.
+      setFrameOk(false);
+    }, 7000);
+    return () => window.clearTimeout(t);
+  }, [isHttps, isMobile, src]);
 
   const goSiteler = () => {
     sessionStorage.setItem("izden-scroll-to", "siteler");
@@ -147,21 +161,30 @@ export function PreviewShell({ site }: Props) {
 
       <div className="preview-frame-wrap">
         {online !== false ? (
-          <iframe
-            key={src}
-            title={site.name}
-            src={src}
-            className="preview-frame"
-            allow="autoplay; fullscreen; encrypted-media"
-            referrerPolicy="no-referrer"
-            sandbox={
-              isHttps
-                ? "allow-scripts allow-same-origin allow-forms allow-popups allow-popups-to-escape-sandbox allow-presentation"
-                : "allow-scripts allow-same-origin allow-forms allow-popups allow-presentation"
-            }
-            /* Eager on mobile so customer sees the site immediately */
-            loading={isMobile ? "eager" : "lazy"}
-          />
+          <>
+            <iframe
+              key={src}
+              title={site.name}
+              src={src}
+              className="preview-frame"
+              allow="autoplay; fullscreen; encrypted-media"
+              referrerPolicy="strict-origin-when-cross-origin"
+              sandbox={
+                isHttps
+                  ? "allow-scripts allow-same-origin allow-forms allow-popups allow-popups-to-escape-sandbox allow-presentation"
+                  : "allow-scripts allow-same-origin allow-forms allow-popups allow-presentation"
+              }
+              loading={isMobile ? "eager" : "lazy"}
+            />
+            {isMobile && isHttps && !frameOk && (
+              <div className="preview-rescue" role="status">
+                <p>Önizleme yavaş açıldı. Doğrudan siteye geçebilirsiniz.</p>
+                <a href={src} className="btn-primary compact">
+                  Siteyi aç
+                </a>
+              </div>
+            )}
+          </>
         ) : (
           <div className="preview-fallback">
             <h2>{site.name}</h2>
