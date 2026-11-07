@@ -38,10 +38,23 @@ export async function POST(req: Request) {
   }
 
   try {
-    const body = (await req.json()) as {
-      message?: string;
-      history?: ChatTurn[];
-    };
+    const rawText = await req.text();
+    if (rawText.length > 24_000) {
+      return NextResponse.json(
+        {
+          answer: "Mesaj çok uzun. Lütfen kısaltıp tekrar deneyin.",
+          suggestions: ["Siteler listesi", "Teklif nasıl alınır?"],
+          actions: inferActions("teklif"),
+        },
+        { status: 413 }
+      );
+    }
+    let body: { message?: string; history?: ChatTurn[] };
+    try {
+      body = JSON.parse(rawText) as { message?: string; history?: ChatTurn[] };
+    } catch {
+      return NextResponse.json(answerAssistant(""), { status: 400 });
+    }
     const message = stripControls(String(body.message || ""), 1200);
     if (!message.trim()) {
       return NextResponse.json(answerAssistant(""));

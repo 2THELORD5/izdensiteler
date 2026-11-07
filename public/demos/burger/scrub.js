@@ -38,19 +38,24 @@ let currentP = 0;
 let velocity = 0;
 let activeAct = -1;
 const SEEK_EPS = 0.008;
+const IS_MOBILE =
+  typeof matchMedia === "function" &&
+  matchMedia("(max-width: 820px), (hover: none) and (pointer: coarse)").matches;
+const MAX_DPR = IS_MOBILE ? 1.25 : 2;
+const SEEK_EPS_LIVE = IS_MOBILE ? 0.02 : SEEK_EPS;
 
-/* Prefer 720 for reliable scroll-scrub (Safari + fast metadata). */
+/* Prefer 720 all-intra for reliable scroll-scrub (Safari + mobile). */
 video.preload = "auto";
 video.muted = true;
 video.playsInline = true;
 video.setAttribute("playsinline", "");
 video.setAttribute("webkit-playsinline", "");
-if (!String(video.getAttribute("src") || "").includes("film-full-720")) {
-  video.src = "./public/film-full-720.mp4";
-}
+video.src = IS_MOBILE
+  ? "./public/film-full-mobile.mp4?v=hq720"
+  : "./public/film-full-720.mp4?v=intra1";
 
 function resize() {
-  const dpr = Math.min(devicePixelRatio || 1, 2);
+  const dpr = Math.min(devicePixelRatio || 1, MAX_DPR);
   const r = canvas.getBoundingClientRect();
   const w = Math.max(1, Math.round(r.width * dpr));
   const h = Math.max(1, Math.round(r.height * dpr));
@@ -100,7 +105,7 @@ function readProgress() {
 function seek(t) {
   if (!ready || !Number.isFinite(t) || duration <= 0) return;
   const next = clamp(t, 0, Math.max(0, duration - 0.04));
-  if (Math.abs(next - lastApplied) < SEEK_EPS && Math.abs(next - video.currentTime) < SEEK_EPS * 1.5) {
+  if (Math.abs(next - lastApplied) < SEEK_EPS_LIVE && Math.abs(next - video.currentTime) < SEEK_EPS_LIVE * 1.5) {
     paint();
     return;
   }
@@ -161,8 +166,34 @@ function smoothFollow(cur, target, vel, dt) {
   return [cur, vel];
 }
 
+async function loadFilmBlob() {
+  const res = await fetch(video.currentSrc || video.src, { cache: "force-cache" });
+  if (!res.ok || !res.body) throw new Error(`HTTP ${res.status}`);
+  const total = Number(res.headers.get("content-length")) || 0;
+  const reader = res.body.getReader();
+  const chunks = [];
+  let got = 0;
+  for (;;) {
+    const { done, value } = await reader.read();
+    if (done) break;
+    chunks.push(value);
+    got += value.length;
+    if (total && loaderBar) {
+      loaderBar.style.width = `${Math.min(99, (got / total) * 100).toFixed(1)}%`;
+    }
+  }
+  return URL.createObjectURL(new Blob(chunks, { type: "video/mp4" }));
+}
+
 async function boot() {
   try {
+    try {
+      const blobUrl = await loadFilmBlob();
+      video.src = blobUrl;
+    } catch (err) {
+      console.warn("ANVIL blob failed, streaming", err);
+    }
+
     await new Promise((resolve) => {
       let settled = false;
       const done = () => {
@@ -203,17 +234,7 @@ async function boot() {
       });
     } catch {}
 
-    const t0 = performance.now();
-    await new Promise((resolve) => {
-      const step = () => {
-        const t = clamp((performance.now() - t0) / 700);
-        loaderBar.style.width = `${Math.round(t * 100)}%`;
-        if (t < 1) requestAnimationFrame(step);
-        else resolve();
-      };
-      requestAnimationFrame(step);
-    });
-
+    if (loaderBar) loaderBar.style.width = "100%";
     ready = duration > 0;
     paint();
     if (!ready) {

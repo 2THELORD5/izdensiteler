@@ -95,16 +95,23 @@ let targetP = 0;
 let currentP = 0;
 let velocity = 0;
 let activeAct = -1;
-const SEEK_EPS = 0.008;
+const SEEK_EPS =
+  typeof matchMedia === "function" &&
+  matchMedia("(max-width: 820px), (hover: none) and (pointer: coarse)").matches
+    ? 0.02
+    : 0.008;
 
 video.preload = "auto";
 video.muted = true;
 video.playsInline = true;
 video.setAttribute("playsinline", "");
 video.setAttribute("webkit-playsinline", "");
-if (!String(video.getAttribute("src") || "").includes("film-full-720")) {
-  video.src = "./public/film-full-720.mp4";
-}
+const IS_MOBILE_G =
+  typeof matchMedia === "function" &&
+  matchMedia("(max-width: 820px), (hover: none) and (pointer: coarse)").matches;
+video.src = IS_MOBILE_G
+  ? "./public/film-full-mobile.mp4?v=hq720"
+  : "./public/film-full-720.mp4?v=intra1";
 
 const stillImgs = STILLS.map((src) => {
   const im = new Image();
@@ -114,7 +121,7 @@ const stillImgs = STILLS.map((src) => {
 });
 
 function resize() {
-  const dpr = Math.min(devicePixelRatio || 1, 2);
+  const dpr = Math.min(devicePixelRatio || 1, typeof matchMedia === "function" && matchMedia("(max-width: 820px), (hover: none) and (pointer: coarse)").matches ? 1.25 : 2);
   const r = canvas.getBoundingClientRect();
   const w = Math.max(1, Math.round(r.width * dpr));
   const h = Math.max(1, Math.round(r.height * dpr));
@@ -263,9 +270,34 @@ stageDock?.addEventListener("click", (e) => {
   seekToProgress(Number(btn.dataset.seek));
 });
 
+async function loadFilmBlob() {
+  const res = await fetch(video.currentSrc || video.src, { cache: "force-cache" });
+  if (!res.ok || !res.body) throw new Error(`HTTP ${res.status}`);
+  const total = Number(res.headers.get("content-length")) || 0;
+  const reader = res.body.getReader();
+  const chunks = [];
+  let got = 0;
+  for (;;) {
+    const { done, value } = await reader.read();
+    if (done) break;
+    chunks.push(value);
+    got += value.length;
+    if (total && loaderBar) {
+      loaderBar.style.width = `${Math.min(99, (got / total) * 100).toFixed(1)}%`;
+    }
+  }
+  return URL.createObjectURL(new Blob(chunks, { type: "video/mp4" }));
+}
+
 async function boot() {
   resize();
   try {
+    try {
+      video.src = await loadFilmBlob();
+    } catch (err) {
+      console.warn("STRADA blob failed, streaming", err);
+    }
+
     await new Promise((resolve) => {
       let settled = false;
       const done = () => {
@@ -311,17 +343,7 @@ async function boot() {
       });
     } catch {}
 
-    const t0 = performance.now();
-    await new Promise((resolve) => {
-      const step = () => {
-        const t = clamp((performance.now() - t0) / 650);
-        if (loaderBar) loaderBar.style.width = `${Math.round(t * 100)}%`;
-        if (t < 1) requestAnimationFrame(step);
-        else resolve();
-      };
-      requestAnimationFrame(step);
-    });
-
+    if (loaderBar) loaderBar.style.width = "100%";
     ready = duration > 0;
     paint();
     if (!ready) {

@@ -222,9 +222,13 @@ export default function GlyphPortal({
       // Re-clip on scroll-back so the field never remains as a full-bleed leftover.
       field.style.clipPath = t >= 1 ? "none" : `url(#${clipId})`;
       pin.style.background = p < 0.02 ? "var(--gp-paper)" : "transparent";
-      section.style.setProperty("--gp-caption", String(1 - smooth(0.01, 0.16, p)));
-      section.style.setProperty("--gp-reveal", String(isStatic ? 1 : smooth(0.78, 0.9, p)));
-      section.style.setProperty("--gp-field-scale", String(1 + .16 * smooth(0, .82, p)));
+      // Round caption opacity — avoids subpixel opacity thrash on first mobile scrolls.
+      const caption = Math.round((1 - smooth(0.01, 0.18, p)) * 100) / 100;
+      const reveal = Math.round((isStatic ? 1 : smooth(0.78, 0.9, p)) * 100) / 100;
+      const fieldScale = Math.round((1 + 0.16 * smooth(0, 0.82, p)) * 1000) / 1000;
+      section.style.setProperty("--gp-caption", String(caption));
+      section.style.setProperty("--gp-reveal", String(reveal));
+      section.style.setProperty("--gp-field-scale", String(fieldScale));
       section.style.setProperty("--gp-caption-hit", p < 0.08 ? "auto" : "none");
       section.dataset.gpEntered = String(p >= 0.9);
       section.dataset.gpProgress = p.toFixed(5);

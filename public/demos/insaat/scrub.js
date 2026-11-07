@@ -4,22 +4,30 @@
  * 1920×1080, short-GOP, high bitrate — no quality crush.
  * Odalar sticky below is separate (site.js).
  */
-const SRC = "./public/film-house-scrub.mp4?v=embed-full";
+const IS_MOBILE =
+  typeof matchMedia === "function" &&
+  matchMedia("(max-width: 820px), (hover: none) and (pointer: coarse)").matches;
+/* Desktop HQ; mobile 720p all-intra — no 59MB RAM blob. */
+const SRC = IS_MOBILE
+  ? "./public/film-house-scrub-mobile.mp4?v=hq1280"
+  : "./public/film-house-scrub.mp4?v=cut25";
 const FPS = 30;
+const MAX_DPR = IS_MOBILE ? 1.15 : 2;
 
-/* Seconds: build → entry perde → living perde → kitchen → bedroom → dusk */
+/* Seconds: build → entry perde → living perde → kitchen → bedroom → dusk
+ * Morph bleed (living→kitchen) removed; all-intra for scrub seeks. */
 const ACTS = [
   { t: 0.0, act: "01 — Arrival", title: "The Site", body: "Boş arazi. İlk beton. Işık henüz yok.", idx: "01 / 05", rail: "Arrival" },
   { t: 2.1, act: "02 — Frame", title: "The Skeleton", body: "Çelik yükselir. Oranlar kilitlenir.", idx: "02 / 05", rail: "Frame" },
   { t: 6.8, act: "03 — Skin", title: "The Shell", body: "Taş, cam, yürüyüş. Cephe giyinir.", idx: "03 / 05", rail: "Skin" },
   { t: 9.43, act: "04 — Rooms", title: "Inside", body: "Perde, mutfak, yatak odası.", idx: "04 / 05", rail: "Rooms" },
-  { t: 23.43, act: "05 — Dusk", title: "Blue Hour", body: "Bitmiş villa. Su aynası. Mavi saat.", idx: "05 / 05", rail: "Dusk" },
+  { t: 22.23, act: "05 — Dusk", title: "Blue Hour", body: "Bitmiş villa. Su aynası. Mavi saat.", idx: "05 / 05", rail: "Dusk" },
 ];
-const NOMINAL_DURATION = 26.43;
+const NOMINAL_DURATION = 25.23;
 ACTS.forEach((a) => (a.at = a.t / NOMINAL_DURATION));
 
-/* Strict 1:1 — lag/kayma was the complaint. */
-const FOLLOW = 1;
+/* Desktop 1:1; mobile slight ease so decoder keeps up. */
+const FOLLOW = IS_MOBILE ? 0.55 : 1;
 
 const clamp = (v, a = 0, b = 1) => Math.min(b, Math.max(a, v));
 
@@ -50,7 +58,7 @@ let dirty = true;
 let activeAct = -1;
 
 function resize() {
-  const dpr = Math.min(devicePixelRatio || 1, 2);
+  const dpr = Math.min(devicePixelRatio || 1, MAX_DPR);
   const r = canvas.getBoundingClientRect();
   const w = Math.max(1, Math.round(r.width * dpr));
   const h = Math.max(1, Math.round(r.height * dpr));
@@ -58,7 +66,7 @@ function resize() {
     canvas.width = w;
     canvas.height = h;
     ctx.imageSmoothingEnabled = true;
-    ctx.imageSmoothingQuality = "high";
+    ctx.imageSmoothingQuality = IS_MOBILE ? "medium" : "high";
     dirty = true;
   }
 }
@@ -225,9 +233,15 @@ async function boot() {
   setAct(0);
   requestAnimationFrame(tick);
 
-  const hardStop = setTimeout(() => loader?.classList.add("is-done"), 20000);
+  const hardStop = setTimeout(() => loader?.classList.add("is-done"), 25000);
   let src = SRC;
+  // Compact mobile encode (~11MB) + desktop HQ: blob so seeks never wait on network.
   try {
+    if (loaderText) {
+      loaderText.textContent = IS_MOBILE
+        ? "House film yükleniyor…"
+        : "House film yükleniyor…";
+    }
     src = await loadBlob();
   } catch (err) {
     console.warn("FORMA scrub: blob load failed, streaming instead", err);

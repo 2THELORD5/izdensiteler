@@ -7,7 +7,7 @@ import { useEffect, useState } from "react";
 import { ArrowRight } from "lucide-react";
 import GlyphPortal from "@/components/ui/glyph-portal";
 import { WebShotButton } from "@/components/ui/web-shot-button";
-import { SITES } from "@/lib/sites";
+import { SITES, siteEmbedSrc } from "@/lib/sites";
 import { Logo } from "@/components/Logo";
 import { SurveyForm } from "@/components/SurveyForm";
 import { AiAssistant } from "@/components/AiAssistant";
@@ -149,7 +149,7 @@ export function PortalHome() {
                         <ArrowRight />
                       </WebShotButton>
                       <a
-                        href={site.localPath || site.externalUrl}
+                        href={siteEmbedSrc(site)}
                         target="_blank"
                         rel="noreferrer"
                         className="portal-link"

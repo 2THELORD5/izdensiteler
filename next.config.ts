@@ -16,9 +16,9 @@ const ContentSecurityPolicy = [
   "font-src 'self' data: https://api.fontshare.com https://cdn.fontshare.com https://fonts.gstatic.com",
   "media-src 'self' blob:",
   "worker-src 'self' blob:",
-  "connect-src 'self' https://api.groq.com https://api.web3forms.com",
-  // Same-origin /demos/* embeds (+ local fallback while developing)
-  "frame-src 'self' http://127.0.0.1:* http://localhost:*",
+  "connect-src 'self' https://api.groq.com https://api.resend.com https://api.web3forms.com",
+  // Same-origin /demos/* + canlı Kumrucu / Junesun embed
+  "frame-src 'self' https://kumrucu-kale.vercel.app https://www.junesun.com.tr https://junesun.com.tr http://127.0.0.1:* http://localhost:*",
   "upgrade-insecure-requests",
 ].join("; ");
 
@@ -27,12 +27,14 @@ const DemoContentSecurityPolicy = [
   "base-uri 'self'",
   "object-src 'none'",
   "frame-ancestors 'self'",
-  "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://unpkg.com",
+  // Demos are static self-hosted scripts; no third-party JS CDNs required.
+  "script-src 'self' 'unsafe-inline'",
   "style-src 'self' 'unsafe-inline' https://api.fontshare.com https://fonts.googleapis.com",
   "img-src 'self' data: blob: https:",
   "font-src 'self' data: https://api.fontshare.com https://cdn.fontshare.com https://fonts.gstatic.com",
-  "media-src 'self' blob: https://videos.pexels.com",
-  "connect-src 'self' https:",
+  "media-src 'self' blob:",
+  "frame-src 'self' https://www.youtube.com https://youtube.com https://www.youtube-nocookie.com",
+  "connect-src 'self'",
   "worker-src 'self' blob:",
 ].join("; ");
 
@@ -43,7 +45,7 @@ const securityHeaders = [
   {
     key: "Permissions-Policy",
     value:
-      "camera=(), microphone=(), geolocation=(), payment=(), usb=(), interest-cohort=()",
+      "camera=(), microphone=(), geolocation=(), payment=(), usb=(), interest-cohort=(), browsing-topics=(), accelerometer=(), gyroscope=(), magnetometer=()",
   },
   {
     key: "Strict-Transport-Security",
@@ -52,6 +54,7 @@ const securityHeaders = [
   { key: "Cross-Origin-Opener-Policy", value: "same-origin" },
   { key: "Cross-Origin-Resource-Policy", value: "same-origin" },
   { key: "X-DNS-Prefetch-Control", value: "off" },
+  { key: "X-Permitted-Cross-Domain-Policies", value: "none" },
   { key: "Content-Security-Policy", value: ContentSecurityPolicy },
 ];
 
@@ -75,6 +78,26 @@ const nextConfig: NextConfig = {
         source: "/:path*",
         headers: securityHeaders,
       },
+      // Versioned scrub media: long cache (query ?v= busts when we ship new encodes)
+      {
+        source: "/demos/:path*.mp4",
+        headers: [
+          {
+            key: "Cache-Control",
+            value: "public, max-age=31536000, immutable",
+          },
+          { key: "X-Content-Type-Options", value: "nosniff" },
+        ],
+      },
+      {
+        source: "/demos/:path*.jpg",
+        headers: [
+          {
+            key: "Cache-Control",
+            value: "public, max-age=31536000, immutable",
+          },
+        ],
+      },
       {
         source: "/demos/:path*",
         headers: [
@@ -83,6 +106,15 @@ const nextConfig: NextConfig = {
           {
             key: "Content-Security-Policy",
             value: DemoContentSecurityPolicy,
+          },
+        ],
+      },
+      {
+        source: "/previews/:path*",
+        headers: [
+          {
+            key: "Cache-Control",
+            value: "public, max-age=86400, stale-while-revalidate=604800",
           },
         ],
       },

@@ -13,12 +13,19 @@ export type Site = {
   category: string;
   accent: string;
   preview: string;
+  /** Dev localhost or live HTTPS embed */
   externalUrl: string;
+  /** Same-origin static pack under /public/demos */
   localPath?: string;
   order: number;
   metric: string;
 };
 
+/**
+ * Production embeds:
+ * - Static packs → /demos/{slug}/index.html (orijinal sitelerin kopyası)
+ * - Kumrucu / Junesun → canlı Next siteleri (son profesyonel build)
+ */
 export const SITES: Site[] = [
   {
     slug: "kumrucu",
@@ -27,8 +34,7 @@ export const SITES: Site[] = [
     category: "Yeme · İçme",
     accent: "#8B5E3C",
     preview: "/previews/kumrucu.jpg",
-    externalUrl: "http://127.0.0.1:5105",
-    localPath: "/demos/kumrucu/index.html",
+    externalUrl: "https://kumrucu-kale.vercel.app",
     order: 1,
     metric: "Film scrub",
   },
@@ -39,8 +45,8 @@ export const SITES: Site[] = [
     category: "Lifestyle",
     accent: "#C4A574",
     preview: "/previews/junesun.jpg",
-    externalUrl: "http://127.0.0.1:8770",
-    localPath: "/demos/junesun/index.html",
+    // intro=1 → jaguar walk her girişte yeniden başlar
+    externalUrl: "https://www.junesun.com.tr/?intro=1",
     order: 2,
     metric: "Runway",
   },
@@ -93,6 +99,13 @@ export const SITES: Site[] = [
     metric: "315 frames",
   },
 ];
+
+/** Preview iframe src: HTTPS live → local pack → localhost */
+export function siteEmbedSrc(site: Site): string {
+  if (site.externalUrl.startsWith("https://")) return site.externalUrl;
+  if (site.localPath) return site.localPath;
+  return site.externalUrl;
+}
 
 export function getSite(slug: string): Site | undefined {
   return SITES.find((s) => s.slug === slug);

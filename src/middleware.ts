@@ -10,6 +10,12 @@ const BLOCKED = [
   /^\/server-status/i,
   /^\/phpmyadmin/i,
   /^\/actuator/i,
+  /^\/\.aws/i,
+  /^\/\.docker/i,
+  /^\/xmlrpc\.php/i,
+  /^\/vendor\/phpunit/i,
+  /^\/config\.json$/i,
+  /^\/secrets?\//i,
 ];
 
 export function middleware(req: NextRequest) {
@@ -32,6 +38,6 @@ export function middleware(req: NextRequest) {
 
 export const config = {
   matcher: [
-    "/((?!_next/static|_next/image|favicon.ico|brand/|previews/).*)",
+    "/((?!_next/static|_next/image|favicon.ico|brand/|previews/|demos/).*)",
   ],
 };
