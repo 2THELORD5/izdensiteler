@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <title>SIGNAL — Immersive Brand Experiences</title>
   <meta name="description" content="SIGNAL builds scroll-driven brand worlds — film, identity, and motion engineered for the web." />
   <meta name="keywords" content="GSAP template, ScrollTrigger, scroll animation, website template, parallax video, canvas scroll scrub, clip-path animation, modern website, dark theme template, open source, frontend template, HTML CSS JS, motion design, cinematic web, RelaxKartikey, Entospark Studios" />
@@ -258,9 +258,10 @@
     </div>
   </section>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollToPlugin.min.js"></script>
-  <script src="main.js"></script>
+  <!-- Local GSAP — portal demo CSP blocks cdnjs -->
+  <script src="./vendor/gsap.min.js"></script>
+  <script src="./vendor/ScrollTrigger.min.js"></script>
+  <script src="./vendor/ScrollToPlugin.min.js"></script>
+  <script src="main.js?v=csp1"></script>
 </body>
 </html>
