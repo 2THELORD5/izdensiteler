@@ -134,8 +134,10 @@ function resize() {
 function coverDraw(srcW, srcH, draw) {
   const cw = canvas.width;
   const ch = canvas.height;
-  // Full-bleed cover on phone + desktop (same cinematic fill).
-  const s = Math.max(cw / srcW, ch / srcH);
+  const contain = Math.min(cw / srcW, ch / srcH);
+  const cover = Math.max(cw / srcW, ch / srcH);
+  // Phone: soft cover — cars stay readable (hard cover halves the subject).
+  const s = IS_PHONE ? contain + (cover - contain) * 0.38 : cover;
   ctx.fillStyle = "#070809";
   ctx.fillRect(0, 0, cw, ch);
   draw((cw - srcW * s) / 2, (ch - srcH * s) / 2, srcW * s, srcH * s);

@@ -454,7 +454,8 @@ body.is-locked { overflow: hidden; }
   .vault__filters { width: 100%; overflow-x: auto; flex-wrap: nowrap; scrollbar-width: none; }
   .vault__filters::-webkit-scrollbar { display: none; }
   .vault__filters button { flex-shrink: 0; min-height: 2.4rem; }
-  .car { min-height: 20rem; }
+  .car { min-height: 18.5rem; }
+  .car__img img { object-fit: cover; object-position: center 45%; }
 
   .detail {
     grid-template-rows: minmax(32svh, 38svh) 1fr;

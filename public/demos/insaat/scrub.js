@@ -78,8 +78,10 @@ function paint() {
   const ch = canvas.height;
   const iw = video.videoWidth || 1280;
   const ih = video.videoHeight || 720;
-  // Full-bleed cover on phone + desktop (same cinematic fill).
-  const s = Math.max(cw / iw, ch / ih);
+  const contain = Math.min(cw / iw, ch / ih);
+  const cover = Math.max(cw / iw, ch / ih);
+  // Phone: soft cover — villa/rooms stay whole (hard cover crops too hard).
+  const s = IS_MOBILE ? contain + (cover - contain) * 0.38 : cover;
   const w = iw * s;
   const h = ih * s;
   ctx.fillStyle = "#0c0b0a";
