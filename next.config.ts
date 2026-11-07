@@ -32,7 +32,8 @@ const DemoContentSecurityPolicy = [
   "style-src 'self' 'unsafe-inline' https://api.fontshare.com https://fonts.googleapis.com",
   "img-src 'self' data: blob: https:",
   "font-src 'self' data: https://api.fontshare.com https://cdn.fontshare.com https://fonts.gstatic.com",
-  "media-src 'self' blob:",
+  // Pexels stock clips used by SIGNAL cinematic sections
+  "media-src 'self' blob: https://videos.pexels.com",
   "frame-src 'self' https://www.youtube.com https://youtube.com https://www.youtube-nocookie.com",
   "connect-src 'self'",
   "worker-src 'self' blob:",

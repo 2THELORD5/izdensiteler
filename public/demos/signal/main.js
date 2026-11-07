@@ -640,12 +640,14 @@
       resources.push({ type: 'image', el: heroFrameSet.frames[i] });
     }
 
+    // Only same-origin videos block the preloader. External stock clips
+    // (Pexels) must not freeze first paint when CSP/network is slow.
     document.querySelectorAll('video').forEach(v => {
       const src = v.querySelector('source[src]');
-      if (src && src.getAttribute('src')) {
-        total++;
-        resources.push({ type: 'video', el: v });
-      }
+      const url = src && src.getAttribute('src');
+      if (!url || /^https?:\/\//i.test(url)) return;
+      total++;
+      resources.push({ type: 'video', el: v });
     });
 
     document.querySelectorAll('img[src]').forEach(img => {
@@ -715,7 +717,7 @@
     const maxWait = setTimeout(() => {
       targetPct = 100;
       loaded = total;
-    }, 12000);
+    }, 4500);
 
     function revealSite() {
       clearTimeout(maxWait);
