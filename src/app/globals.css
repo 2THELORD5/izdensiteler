@@ -12,6 +12,8 @@
   --border: rgba(20, 20, 20, 0.1);
   --line: rgba(20, 20, 20, 0.1);
   --paper: #f6f4ef;
+  --font-display: "Syne", system-ui, sans-serif;
+  --font-body: "Outfit", system-ui, sans-serif;
 }
 
 * { box-sizing: border-box; }
@@ -21,7 +23,7 @@ body {
   min-height: 100svh;
   color: var(--foreground);
   background: #fff;
-  font-family: var(--font-body), "Outfit", system-ui, sans-serif;
+  font-family: var(--font-body);
   font-feature-settings: "ss01" on, "kern" on;
   letter-spacing: -0.011em;
 }
