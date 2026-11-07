@@ -27,7 +27,7 @@ const NOMINAL_DURATION = 25.23;
 ACTS.forEach((a) => (a.at = a.t / NOMINAL_DURATION));
 
 /* Desktop 1:1; mobile slight ease so decoder keeps up. */
-const FOLLOW = IS_MOBILE ? 0.55 : 1;
+const FOLLOW = IS_MOBILE ? 0.88 : 1;
 
 const clamp = (v, a = 0, b = 1) => Math.min(b, Math.max(a, v));
 

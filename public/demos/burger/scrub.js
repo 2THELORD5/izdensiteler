@@ -42,7 +42,8 @@ const IS_MOBILE =
   typeof matchMedia === "function" &&
   matchMedia("(max-width: 820px), (hover: none) and (pointer: coarse)").matches;
 const MAX_DPR = IS_MOBILE ? 1.25 : 2;
-const SEEK_EPS_LIVE = IS_MOBILE ? 0.02 : SEEK_EPS;
+const SEEK_EPS_LIVE = IS_MOBILE ? 0.016 : SEEK_EPS;
+const FOLLOW_STIFF = IS_MOBILE ? 30 : 18;
 
 /* Prefer 720 all-intra for reliable scroll-scrub (Safari + mobile). */
 video.preload = "auto";
@@ -156,7 +157,7 @@ function syncUI(p) {
 
 /** Critically damped-ish follow — smoother than fixed lerp, less lag on reverse. */
 function smoothFollow(cur, target, vel, dt) {
-  const stiffness = 18;
+  const stiffness = FOLLOW_STIFF;
   const damping = 2 * Math.sqrt(stiffness);
   const accel = (target - cur) * stiffness - vel * damping;
   vel += accel * dt;

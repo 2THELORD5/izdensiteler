@@ -12,7 +12,7 @@
 *, *::before, *::after { box-sizing: border-box; }
 html, body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--sans); }
 html { scroll-behavior: auto; -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
-body { overflow-x: hidden; overscroll-behavior-y: none; }
+body { overflow-x: clip; overscroll-behavior-y: none; }
 a { color: inherit; text-decoration: none; }
 button, input, select, textarea { font: inherit; color: inherit; }
 img { display: block; max-width: 100%; }
@@ -76,7 +76,9 @@ em { font-style: italic; font-family: var(--serif); font-weight: 400; color: var
 .stage-track { height: 680vh; }
 
 .stage-pin {
-  position: sticky; top: 0; height: 100vh; width: 100%; overflow: hidden; background: #090807;
+  position: -webkit-sticky; position: sticky; top: 0; height: 100vh; width: 100%;
+  overflow: clip; background: #090807;
+  transform: translateZ(0); -webkit-backface-visibility: hidden;
 }
 .stage-pin canvas, .stage-pin video { position: absolute; inset: 0; width: 100%; height: 100%; }
 .stage-pin canvas { z-index: 1; }
@@ -477,7 +479,7 @@ body.no-film .hint { display: none; }
   .nav__links::-webkit-scrollbar { display: none; }
   .nav__links button { white-space: nowrap; font-size: .58rem; padding: .4rem .55rem; opacity: .85; color: var(--ink); }
 
-  .stage-track { height: 520vh; }
+  .stage-track { height: 420vh; }
   .rooms-track { height: 280vh; margin: 0 -1rem; }
   .rooms-ui {
     left: 1rem; right: 1rem; max-width: none;
@@ -487,7 +489,10 @@ body.no-film .hint { display: none; }
   .rooms-meta {
     left: 1rem; right: 1rem; bottom: calc(1rem + env(safe-area-inset-bottom)); font-size: .55rem;
   }
-  .stage-pin { height: 100dvh; height: 100svh; }
+  .stage-pin {
+    position: -webkit-sticky; position: sticky; top: 0;
+    height: 100dvh; height: 100svh;
+  }
   .stage-ui {
     left: 1rem; right: 1rem; max-width: none;
     bottom: calc(5.6rem + env(safe-area-inset-bottom));

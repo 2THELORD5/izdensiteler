@@ -14,7 +14,7 @@
 *, *::before, *::after { box-sizing: border-box; }
 html, body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--sans); }
 html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
-body { overflow-x: hidden; overscroll-behavior-y: none; }
+body { overflow-x: clip; overscroll-behavior-y: none; }
 a { color: inherit; text-decoration: none; }
 button, input, select, textarea { font: inherit; color: inherit; }
 img { display: block; max-width: 100%; }
@@ -76,7 +76,9 @@ img { display: block; max-width: 100%; }
 .stage-wrap { position: relative; }
 .stage-track { height: 520vh; }
 .stage-pin {
-  position: sticky; top: 0; height: 100vh; width: 100%; overflow: hidden; background: #050607;
+  position: -webkit-sticky; position: sticky; top: 0; height: 100vh; width: 100%;
+  overflow: clip; background: #050607;
+  transform: translateZ(0); -webkit-backface-visibility: hidden;
 }
 .stage-pin canvas, .stage-pin video { position: absolute; inset: 0; width: 100%; height: 100%; }
 .stage-pin video { opacity: 0; pointer-events: none; }
@@ -429,8 +431,11 @@ body.is-locked { overflow: hidden; }
   .nav__links::-webkit-scrollbar { display: none; }
   .nav__links a { white-space: nowrap; font-size: .62rem; }
 
-  .stage-track { height: 380vh; }
-  .stage-pin { height: 100dvh; height: 100svh; }
+  .stage-track { height: 400vh; }
+  .stage-pin {
+    position: -webkit-sticky; position: sticky; top: 0;
+    height: 100dvh; height: 100svh;
+  }
   .stage-ui {
     left: 1rem; right: 1rem; max-width: none;
     bottom: calc(6.2rem + env(safe-area-inset-bottom));

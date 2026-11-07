@@ -95,11 +95,11 @@ let targetP = 0;
 let currentP = 0;
 let velocity = 0;
 let activeAct = -1;
-const SEEK_EPS =
+const IS_PHONE =
   typeof matchMedia === "function" &&
-  matchMedia("(max-width: 820px), (hover: none) and (pointer: coarse)").matches
-    ? 0.02
-    : 0.008;
+  matchMedia("(max-width: 820px), (hover: none) and (pointer: coarse)").matches;
+const SEEK_EPS = IS_PHONE ? 0.016 : 0.008;
+const FOLLOW_STIFF = IS_PHONE ? 30 : 18;
 
 video.preload = "auto";
 video.muted = true;
@@ -250,7 +250,7 @@ function syncUI(p) {
 }
 
 function smoothFollow(cur, target, vel, dt) {
-  const stiffness = 18;
+  const stiffness = FOLLOW_STIFF;
   const damping = 2 * Math.sqrt(stiffness);
   const accel = (target - cur) * stiffness - vel * damping;
   vel += accel * dt;

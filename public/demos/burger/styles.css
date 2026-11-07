@@ -28,7 +28,8 @@ body {
   color: var(--ink);
   background: var(--bg);
   -webkit-font-smoothing: antialiased;
-  overflow-x: hidden;
+  /* clip keeps sticky scrub alive (hidden breaks it) */
+  overflow-x: clip;
   max-width: 100%;
 }
 body.sheet-open {
@@ -133,7 +134,8 @@ h1, h2, h3, h4 {
 
 .stage-track { height: 720vh; position: relative; background: #050506; }
 .stage-pin {
-  position: sticky; top: 0; height: 100dvh; min-height: 100svh; overflow: hidden; background: #050506;
+  position: -webkit-sticky; position: sticky; top: 0; height: 100dvh; min-height: 100svh;
+  overflow: clip; background: #050506;
   transform: translateZ(0); -webkit-backface-visibility: hidden; isolation: isolate;
   border: 0 !important;
 }
@@ -785,8 +787,11 @@ body { overscroll-behavior-y: none; }
     min-height: 2.45rem; display: inline-flex; align-items: center;
   }
 
-  .stage-track { height: 380vh; }
-  .stage-pin { height: 100dvh; min-height: 100svh; }
+  .stage-track { height: 420vh; }
+  .stage-pin {
+    position: -webkit-sticky; position: sticky; top: 0;
+    height: 100dvh; min-height: 100svh;
+  }
   .stage-ui {
     left: auto;
     right: 1rem;
