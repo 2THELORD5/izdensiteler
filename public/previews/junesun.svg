@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="750" viewBox="0 0 1200 750">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0a0a0b"/>
+      <stop offset="55%" stop-color="#12141a"/>
+      <stop offset="100%" stop-color="#C4A574" stop-opacity="0.55"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="750" fill="url(#g)"/>
+  <rect x="48" y="48" width="1104" height="654" fill="none" stroke="#C4A574" stroke-opacity="0.35" stroke-width="1"/>
+  <text x="80" y="120" fill="#C4A574" font-family="Arial,sans-serif" font-size="22" letter-spacing="8">LIFESTYLE</text>
+  <text x="80" y="420" fill="#f5f5f5" font-family="Arial Black,Arial,sans-serif" font-size="72">Junesun</text>
+  <text x="80" y="480" fill="#9a9a9a" font-family="Arial,sans-serif" font-size="24">İzden Creative örnek site</text>
+  <circle cx="1040" cy="580" r="48" fill="#C4A574" fill-opacity="0.9"/>
+</svg>

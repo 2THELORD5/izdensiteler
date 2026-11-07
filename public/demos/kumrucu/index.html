@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=5" />
+  <title>Kumrucu Kale — Alaçatı Fırın &amp; Kumru</title>
+  <meta name="description" content="1949’dan Alaçatı’ya. Meşhur Çeşme kumrusu, damla sakızlı kurabiye, sabah unluları ve kumru ekmeği. Çarşı &amp; yol kenarı." />
+  <meta name="theme-color" content="#f6eee3" />
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+  <link rel="icon" href="./public/brand/favicon-192.png" type="image/png" />
+  <link rel="apple-touch-icon" href="./public/brand/favicon-192.png" />
+  <link rel="preconnect" href="https://api.fontshare.com" crossorigin />
+  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,600,700&f[]=jet-brains-mono@400,500&display=swap" rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,560;9..144,600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./styles.css?v=k4" />
+</head>
+<body class="brand-kumru">
+  <div class="loader" id="loader">
+    <img class="loader__logo" src="./public/brand/logo.png" alt="Kumrucu Kale" width="72" height="72" />
+    <div class="loader__bar"><i id="loaderBar"></i></div>
+    <p>Susam kızarıyor</p>
+  </div>
+
+  <div class="progress" id="progress"></div>
+
+  <header class="nav" id="nav">
+    <a class="nav__brand" href="#top" aria-label="Kumrucu Kale">
+      <img src="./public/brand/logo.png" alt="" width="48" height="48" />
+      <span>Kumrucu Kale<small>Alaçatı · 1949</small></span>
+    </a>
+    <nav class="nav__links" id="chapterNav" aria-label="Bölümler">
+      <button type="button" data-seek="0.02">Tezgâh</button>
+      <button type="button" data-seek="0.16">Köz</button>
+      <button type="button" data-seek="0.32">Somun</button>
+      <button type="button" data-seek="0.48">Kumru</button>
+      <button type="button" data-seek="0.68">Sakız</button>
+      <button type="button" data-seek="0.88">Çarşı</button>
+    </nav>
+    <div class="nav__actions">
+      <a class="nav__ghost" href="#menu">Ürünler</a>
+      <a class="nav__cta" href="#visit">Şubeler</a>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="stage-wrap">
+      <div class="stage-track" id="track">
+        <div class="stage-pin">
+          <canvas id="c" aria-hidden="true"></canvas>
+          <video id="v" muted playsinline preload="auto" disablepictureinpicture src="./public/film-house-v2.mp4"></video>
+          <div class="vignette" aria-hidden="true"></div>
+          <div class="stage-ui">
+            <p class="act" id="act">Fiş 01</p>
+            <h1 id="title">Un henüz soğuk</h1>
+            <p id="body">Sabahın ilk tezgâhı. Alaçatı uyanmadan hamur yoğrulur.</p>
+          </div>
+          <div class="stage-rail" aria-hidden="true"><span id="railLabel">Tezgâh</span></div>
+          <div class="stage-meta">
+            <span id="chapterIdx">01 / 06</span>
+            <span>Kumrucu Kale · Alaçatı</span>
+          </div>
+          <p class="hint" id="hint">Aşağı <i></i></p>
+        </div>
+      </div>
+    </section>
+
+    <div class="ticker" aria-hidden="true">
+      <div class="ticker__track">
+        <span>Çeşme kumrusu</span><span>Damla sakızlı kurabiye</span><span>Kumru ekmeği</span><span>Sabah böreği</span><span>Yol kenarı &amp; çarşı</span><span>1949’dan beri</span>
+        <span>Çeşme kumrusu</span><span>Damla sakızlı kurabiye</span><span>Kumru ekmeği</span><span>Sabah böreği</span><span>Yol kenarı &amp; çarşı</span><span>1949’dan beri</span>
+      </div>
+    </div>
+
+    <section class="manifesto reveal" id="manifesto">
+      <div class="manifesto__copy">
+        <p class="eyebrow">Fırın notu</p>
+        <h2>Susam kabuğundan<br /><em>tezgâh düzeni.</em></h2>
+        <p>
+          1949’da Saim Menteş’in İzmir fırını. 1993’te Alaçatı Çarşı.
+          Meşhur Çeşme kumrusu, damla sakızlı kurabiye, sabah unluları —
+          aynı taş fırın dili, iki şube.
+        </p>
+        <div class="cta-row">
+          <a class="btn" href="#menu">Tüm ürünler</a>
+          <a class="btn btn--ghost" href="#visit">Şubelere git</a>
+        </div>
+        <div class="stats">
+          <div><strong>1949</strong><span>kök</span></div>
+          <div><strong>1993</strong><span>çarşı</span></div>
+          <div><strong>2</strong><span>şube</span></div>
+          <div><strong>30+</strong><span>ürün</span></div>
+        </div>
+      </div>
+      <div class="manifesto__stamp" aria-hidden="true">
+        <b>KK</b>
+        <span>fırın mühürü</span>
+      </div>
+    </section>
+
+    <section class="menu-sec" id="menu">
+      <header class="sec-head reveal">
+        <p class="eyebrow">Tezgâh kataloğu</p>
+        <h2>Ürünlerin<br /><em>tamamı.</em></h2>
+        <p>Kumru, kurabiye, sabah unluları ve toptan ekmek — orijinal menünün eksiksiz hali.</p>
+      </header>
+      <div class="menu-tabs" id="menuTabs" role="tablist">
+        <button type="button" data-filter="all" class="is-on">Tümü</button>
+        <button type="button" data-filter="kumru">Kumru</button>
+        <button type="button" data-filter="kurabiye">Kurabiye</button>
+        <button type="button" data-filter="sabah">Sabah</button>
+        <button type="button" data-filter="ekmek">Ekmek</button>
+      </div>
+      <div class="menu-grid" id="menuGrid"></div>
+    </section>
+
+    <section class="morning" id="morning">
+      <header class="sec-head reveal">
+        <p class="eyebrow">Güne Kale ile</p>
+        <h2>İlk ışık,<br /><em>sıcak tepsi.</em></h2>
+        <p>Börek, poğaça, açma, gevrek — Alaçatı sokaklarında kahvaltı.</p>
+      </header>
+      <ul class="morning__list reveal">
+        <li><b>01</b><span>Börek &amp; talaş</span><em>Kıymalı · peynirli</em></li>
+        <li><b>02</b><span>Poğaça &amp; açma</span><em>Kaşar · lor · dereotu</em></li>
+        <li><b>03</b><span>Gevrek &amp; simit</span><em>Çıtır klasik</em></li>
+        <li><b>04</b><span>Kurabiye tepsisi</span><em>Günün her saati</em></li>
+      </ul>
+    </section>
+
+    <section class="visit" id="visit">
+      <header class="sec-head reveal">
+        <p class="eyebrow">Adres</p>
+        <h2>Alaçatı’da<br /><em>iki tezgâh.</em></h2>
+        <p>Çarşı içi ve yol kenarı — aynı fırın, aynı susam.</p>
+      </header>
+      <div class="visit-grid" id="visitGrid"></div>
+    </section>
+
+    <section class="wholesale" id="wholesale">
+      <div class="wholesale__inner reveal">
+        <p class="eyebrow">Toptan</p>
+        <h2>Kumru ekmeği<br /><em>koli.</em></h2>
+        <p>
+          İzmir ve tüm Türkiye’ye 50’li / 100’lü koliler.
+          Jelatinli poşet, ezilmeye karşı özel kutu.
+        </p>
+        <ul class="wholesale__meta">
+          <li><b>Fabrika</b> Doğanlar · İzeltaş Atrium</li>
+          <li><b>Tel</b> 0551 658 05 80</li>
+          <li><b>Tel</b> 0537 790 45 20</li>
+          <li><b>Saat</b> 06:00 – 16:00</li>
+        </ul>
+        <a class="btn" href="tel:+905516580580">Toptan ara</a>
+      </div>
+      <div class="wholesale__media">
+        <img src="./public/kie/07-ekmek-stack.jpg" alt="Kumru ekmeği" width="800" height="900" loading="lazy" />
+      </div>
+    </section>
+
+    <section class="atelier" id="contact">
+      <div class="atelier__copy reveal">
+        <p class="eyebrow">Yazışma</p>
+        <h2>Mesaj bırak,<br /><em>uğra.</em></h2>
+        <p>Şube, tezgâh veya toptan ekmek — aynı gün dönüş.</p>
+        <ul class="atelier__list">
+          <li>info@kumrucukale.com</li>
+          <li>kalehan@kumrucukale.com</li>
+          <li>Yol kenarı · 0232 716 93 63</li>
+          <li>Çarşı · 0232 716 93 72</li>
+        </ul>
+      </div>
+      <form class="atelier__form reveal" id="contactForm">
+        <label>Ad Soyad<input name="name" required autocomplete="name" /></label>
+        <label>E-posta<input name="email" type="email" required autocomplete="email" /></label>
+        <label>Telefon<input name="phone" type="tel" required autocomplete="tel" /></label>
+        <label>Konu
+          <select name="topic" required>
+            <option value="sube">Şube / ziyaret</option>
+            <option value="menu">Menü / ürün</option>
+            <option value="toptan">Toptan ekmek</option>
+            <option value="diger">Diğer</option>
+          </select>
+        </label>
+        <label>Mesaj<textarea name="message" rows="4" required placeholder="Kısaca yazın…"></textarea></label>
+        <label class="check">
+          <input type="checkbox" name="kvkk" required />
+          İletişim için verilerimin işlenmesini kabul ediyorum.
+        </label>
+        <button class="btn" type="submit">Gönder</button>
+        <p class="form-note" id="formNote" hidden></p>
+      </form>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <div class="foot__brand">
+      <img src="./public/brand/logo.png" alt="" width="44" height="44" />
+      <div>
+        <strong>Kumrucu Kale</strong>
+        <span>Alaçatı fırın · kumru · kurabiye</span>
+      </div>
+    </div>
+    <nav class="foot__links">
+      <a href="#menu">Ürünler</a>
+      <a href="#visit">Şubeler</a>
+      <a href="#wholesale">Toptan</a>
+      <a href="#contact">İletişim</a>
+    </nav>
+    <p class="foot__copy">© 2026 Kumrucu Kale. Görseller temsilidir.</p>
+  </footer>
+
+  <script src="./scrub.js?v=k4" defer></script>
+  <script src="./site.js?v=k4" defer></script>
+</body>
+</html>

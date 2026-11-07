@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=5" />
+  <title>STRADA — Private Car Vault</title>
+  <meta name="description" content="STRADA — seçilmiş performans. Gece showroom, PPI, private vault. İstanbul Maslak." />
+  <meta name="theme-color" content="#070809" />
+  <link rel="preconnect" href="https://api.fontshare.com" crossorigin />
+  <link href="https://api.fontshare.com/v2/css?f[]=clash-display@500,600,700&f[]=satoshi@400,500,700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./styles.css?v=obs3" />
+</head>
+<body class="brand-strada">
+  <div class="loader" id="loader">
+    <div class="loader__mark">STRADA</div>
+    <div class="loader__bar"><i id="loaderBar"></i></div>
+    <p>Vault yükleniyor</p>
+  </div>
+
+  <div class="progress" id="progress"></div>
+
+  <header class="nav" id="nav">
+    <a class="nav__brand" href="#top">STRADA</a>
+    <nav class="nav__links">
+      <a href="#how">Süreç</a>
+      <a href="#vault">Envanter</a>
+      <a href="#race">Karşılaştır</a>
+      <a href="#visit">Showroom</a>
+    </nav>
+    <a class="nav__cta" href="#drop">Randevu</a>
+  </header>
+
+  <main id="top">
+    <section class="stage-wrap">
+      <div class="stage-track" id="track">
+        <div class="stage-pin">
+          <canvas id="c" aria-hidden="true"></canvas>
+          <video id="v" muted playsinline preload="auto" disablepictureinpicture src="./public/film-full-720.mp4"></video>
+          <div class="vignette" aria-hidden="true"></div>
+          <div class="stage-ui">
+            <p class="act" id="act">Bay 01</p>
+            <h1 id="title">
+              <span class="t-solid" id="titleSolid">Bring it</span>
+              <span class="t-outline" id="titleOutline">dark.</span>
+            </h1>
+            <p id="body">Obsidian bay. Spot altında S-Class Coupé.</p>
+          </div>
+          <div class="stage-meta">
+            <span id="chapterIdx">01 / 06</span>
+            <span>Private vault · Maslak</span>
+          </div>
+          <div class="stage-dock" id="stageDock" aria-hidden="true">
+            <button type="button" class="is-on" data-seek="0.05">Merc</button>
+            <button type="button" data-seek="0.55">BMW</button>
+            <button type="button" data-seek="0.9">Vault</button>
+          </div>
+          <p class="hint" id="hint">Kaydır <i></i></p>
+        </div>
+      </div>
+    </section>
+
+    <section class="pitch" id="pitch">
+      <p class="eyebrow">Private inventory</p>
+      <h2>Menü değil.<br /><span class="t-outline">Vault.</span></h2>
+      <p>Her araç tek dosya: marka, güç, 0–100, km, PPI, fiyat. Filmde iki bay — sonra filtrele, karşılaştır, gece randevusu al.</p>
+      <div class="trust">
+        <div><strong>48+</strong><span>aktif dosya</span></div>
+        <div><strong>18–23</strong><span>gece showroom</span></div>
+        <div><strong>PPI</strong><span>ön kontrol</span></div>
+        <div><strong>NDA</strong><span>gizlilik</span></div>
+      </div>
+    </section>
+
+    <section class="how" id="how">
+      <header class="sec-head">
+        <div>
+          <p class="eyebrow">A’dan Z’ye</p>
+          <h2>Nasıl çalışır</h2>
+        </div>
+        <p class="lede">Online keşif → dosya → randevu → showroom → teslim. Zincir bayii değil; private desk.</p>
+      </header>
+      <ol class="how__steps" id="howSteps"></ol>
+    </section>
+
+    <section class="vault" id="vault">
+      <header class="sec-head">
+        <div>
+          <p class="eyebrow">Inventory</p>
+          <h2>The Vault</h2>
+        </div>
+        <div class="vault__filters" id="filters">
+          <button type="button" class="is-on" data-f="all">Tümü</button>
+          <button type="button" data-f="new">Sıfır</button>
+          <button type="button" data-f="used">2. El</button>
+          <button type="button" data-f="gt">GT</button>
+          <button type="button" data-f="sedan">Sedan</button>
+          <button type="button" data-f="hyper">Hyper</button>
+        </div>
+      </header>
+      <div class="vault__list" id="vaultList"></div>
+    </section>
+
+    <section class="detail" id="detail" hidden>
+      <button type="button" class="detail__close" id="detailClose" aria-label="Kapat">×</button>
+      <div class="detail__visual"><img id="detailImg" alt="" /></div>
+      <div class="detail__panel">
+        <p class="eyebrow" id="detailYear"></p>
+        <h3 id="detailName"></h3>
+        <p id="detailBlurb"></p>
+        <dl class="specs" id="detailSpecs"></dl>
+        <div class="detail__actions">
+          <button type="button" class="btn" id="detailBook">Randevu iste</button>
+          <button type="button" class="btn btn--ghost" id="detailRace">Karşılaştırmaya ekle</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="finance" id="finance">
+      <header class="sec-head">
+        <div>
+          <p class="eyebrow">Desk</p>
+          <h2>Finans &amp; ekspertiz</h2>
+        </div>
+      </header>
+      <div class="finance__grid" id="financeGrid"></div>
+    </section>
+
+    <section class="race" id="race">
+      <header class="sec-head">
+        <div>
+          <p class="eyebrow">Settle it</p>
+          <h2>Pick <span class="t-outline">two.</span></h2>
+        </div>
+        <p class="lede">Yayımlanmış 0–100 ile sanal koşu. Sonuç dosyaya yazılmaz — sadece ikna için.</p>
+      </header>
+      <div class="race__board">
+        <div class="race__lane">
+          <label>Lane 1
+            <select id="lane1"></select>
+          </label>
+        </div>
+        <div class="race__lane">
+          <label>Lane 2
+            <select id="lane2"></select>
+          </label>
+        </div>
+        <button type="button" class="btn" id="raceGo">Race</button>
+        <div class="race__track" aria-hidden="true">
+          <div class="race__car" id="car1"></div>
+          <div class="race__car race__car--b" id="car2"></div>
+        </div>
+        <div class="race__stats" id="raceStats"></div>
+      </div>
+    </section>
+
+    <section class="visit" id="visit">
+      <div class="visit__copy">
+        <p class="eyebrow">Showroom</p>
+        <h2>Maslak · <span class="t-outline">gece.</span></h2>
+        <p>Adres randevu onayından sonra SMS ile gelir. Vale, NDA ve kapalı alan opsiyonel.</p>
+        <ul class="visit__meta">
+          <li><span>Saat</span><strong>18:00 – 23:00</strong></li>
+          <li><span>Dil</span><strong>TR / EN</strong></li>
+          <li><span>Park</span><strong>Vale dahil</strong></li>
+        </ul>
+      </div>
+      <div class="visit__map" aria-hidden="true">
+        <div class="visit__pin"></div>
+        <p>STRADA · Maslak</p>
+      </div>
+    </section>
+
+    <section class="faq" id="faq">
+      <header class="sec-head">
+        <div>
+          <p class="eyebrow">SSS</p>
+          <h2>Sık sorulanlar</h2>
+        </div>
+      </header>
+      <div class="faq__list" id="faqList"></div>
+    </section>
+
+    <section class="drop" id="drop">
+      <div class="drop__copy">
+        <p class="eyebrow">Drop-in</p>
+        <h2>Keys <span class="t-outline">tonight.</span></h2>
+        <p>Tek araç, tek saat. Formu gönder — desk 2 saat içinde dönüş yapar.</p>
+      </div>
+      <form class="drop__form" id="dropForm" novalidate>
+        <label>Ad Soyad <input name="name" required autocomplete="name" placeholder="Adınız" /></label>
+        <label>Telefon <input name="phone" required type="tel" autocomplete="tel" placeholder="05xx xxx xx xx" /></label>
+        <label>E-posta <input name="email" required type="email" autocomplete="email" placeholder="siz@firma.com" /></label>
+        <label>İlgilendiğin araç
+          <select name="car" id="dropCar" required></select>
+        </label>
+        <label>Tercih saati
+          <select name="slot" id="dropSlot">
+            <option value="18:30">18:30</option>
+            <option value="19:30">19:30</option>
+            <option value="20:30">20:30</option>
+            <option value="21:30">21:30</option>
+          </select>
+        </label>
+        <label>Not <textarea name="note" rows="3" placeholder="Test sürüşü, finansman, takas…"></textarea></label>
+        <label class="check"><input type="checkbox" name="privacy" required /> Kişisel verilerimin randevu için işlenmesini kabul ediyorum.</label>
+        <button type="submit" class="btn">Randevu iste</button>
+        <p class="form-note" id="dropNote" hidden></p>
+      </form>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <div class="foot__brand">
+      <strong>STRADA</strong>
+      <span>Private car vault · İstanbul</span>
+    </div>
+    <div class="foot__links">
+      <a href="#how">Süreç</a>
+      <a href="#vault">Vault</a>
+      <a href="#drop">Randevu</a>
+      <a href="mailto:desk@strada.vault">desk@strada.vault</a>
+    </div>
+    <p class="foot__legal">© 2026 STRADA Desk. Görseller temsilidir; stok değişebilir. Test sürüşü sigorta ve ehliyet şartına bağlıdır.</p>
+  </footer>
+
+  <script src="./icons.js" defer></script>
+  <script src="./scrub.js?v=obs3" defer></script>
+  <script src="./site.js?v=obs3" defer></script>
+</body>
+</html>

@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=5" />
+  <title>ANVIL Smash House — Menü & Sipariş</title>
+  <meta name="description" content="ANVIL — smash burger house. BK tarzı menü, boy/sos, sepet, üye girişi." />
+  <meta name="theme-color" content="#0a0908" />
+  <link rel="preconnect" href="https://api.fontshare.com" crossorigin />
+  <link href="https://api.fontshare.com/v2/css?f[]=melodrama@600,700&f[]=cabinet-grotesk@500,700,800&f[]=satoshi@500,700,900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./styles.css?v=bk2" />
+</head>
+<body class="brand-anvil">
+  <div class="loader" id="loader">
+    <div class="loader__mark">ANVIL</div>
+    <div class="loader__bar"><i id="loaderBar"></i></div>
+    <p>Izgara ısınıyor…</p>
+  </div>
+
+  <div class="progress" id="progress"></div>
+
+  <header class="nav" id="nav">
+    <a class="nav__brand" href="#top"><i data-sf="flame"></i>ANVIL</a>
+    <nav class="nav__links" aria-label="Menü">
+      <a href="#menu">Menü</a>
+      <a href="#cat-combos">Menüler</a>
+      <a href="#cat-burgers">Burger</a>
+      <a href="#visit">Şube</a>
+    </nav>
+    <div class="nav__end">
+      <button type="button" class="nav__auth" id="authBtn">Üye</button>
+      <a class="nav__cta" href="#menu">Sipariş</a>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="stage-wrap">
+      <div class="stage-track" id="track">
+        <div class="stage-pin">
+          <canvas id="c" aria-hidden="true"></canvas>
+          <video
+            id="v"
+            muted
+            playsinline
+            preload="auto"
+            disablepictureinpicture
+            src="./public/film-full-720.mp4"
+          ></video>
+          <div class="stage-ui">
+            <p class="act" id="act">STEP 01 / GRILL</p>
+            <h1 id="title">SOĞUK PATTİ</h1>
+            <p id="body">Tezgâh temiz. Ateş açık. Smash sırada.</p>
+          </div>
+          <p class="hint" id="hint">SCROLL <i></i></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- BK-STYLE ORDER BOARD (light paper — opposite of cafe dark) -->
+    <section class="board" id="menu">
+      <div class="board__head" id="how">
+        <p class="board__kicker">ANVIL · Kadıköy smash</p>
+        <h2>Sipariş tahtası</h2>
+        <p>Seç · özelleştir · öde · tezgâhta ismini söyle.</p>
+      </div>
+
+      <div class="cat-rail" id="catRail" role="tablist" aria-label="Kategoriler">
+        <button type="button" class="is-on" data-cat="all">Tümü</button>
+        <button type="button" data-cat="combos">Menüler</button>
+        <button type="button" data-cat="burgers">Burgerler</button>
+        <button type="button" data-cat="fries">Patates</button>
+        <button type="button" data-cat="drinks">İçecek</button>
+      </div>
+
+      <article class="deal" id="deal" data-open="combo-classic">
+        <div class="deal__badge">Bugünün menüsü</div>
+        <div class="deal__visual">
+          <img src="./public/menu/combo-tray.jpg?v=bk1" alt="Classic menü" width="1200" height="675" onerror="this.src='./public/menu/classic.jpg'" />
+        </div>
+        <div class="deal__copy">
+          <h3>Classic Menü</h3>
+          <p>Double smash + patates + içecek</p>
+          <strong>₺449</strong>
+          <span class="deal__cta">Hemen ekle</span>
+        </div>
+      </article>
+
+      <div id="menuGrid" class="bk-grid"></div>
+
+      <div class="store" id="visit">
+        <div>
+          <p class="board__kicker">Şube</p>
+          <h3>Kadıköy · Caferağa</h3>
+          <p>11:00 – 23:00 · gel-al · ~8–12 dk</p>
+        </div>
+        <ul>
+          <li>0216 000 11 11</li>
+          <li>hello@anvil.smash</li>
+          <li>Üye: her 5. patates bedava*</li>
+        </ul>
+      </div>
+
+      <footer class="foot">
+        <span>ANVIL Smash House</span>
+        <span>© 2026 · Demo ödeme</span>
+      </footer>
+    </section>
+  </main>
+
+  <div class="backdrop" id="backdrop"></div>
+
+  <aside class="sheet" id="sheet" aria-hidden="true">
+    <div id="sheetBody"></div>
+  </aside>
+
+  <aside class="cart-panel" id="cartPanel" aria-label="Sepet">
+    <header>
+      <h3>Sepetin</h3>
+      <button type="button" id="cartClose" aria-label="Kapat">×</button>
+    </header>
+    <div class="cart-panel__list" id="cartList"></div>
+    <footer>
+      <div>
+        <small>Toplam</small>
+        <strong id="cartPanelTotal">₺0</strong>
+      </div>
+      <button type="button" class="btn" id="checkoutBtn">Ödemeye geç</button>
+    </footer>
+  </aside>
+
+  <aside class="pay" id="pay" aria-label="Ödeme" hidden>
+    <header class="pay__head">
+      <button type="button" id="payBack" aria-label="Geri">←</button>
+      <h3>Ödeme</h3>
+      <button type="button" id="payClose" aria-label="Kapat">×</button>
+    </header>
+    <form class="pay__form" id="payForm" autocomplete="on">
+      <p class="pay__sum">Ödenecek · <strong id="payAmount">₺0</strong></p>
+      <label class="field">
+        <span>Kart üzerindeki isim</span>
+        <input name="name" type="text" required placeholder="AD SOYAD" maxlength="48" />
+      </label>
+      <label class="field">
+        <span>Kart numarası</span>
+        <input name="card" type="text" inputmode="numeric" required placeholder="4242 4242 4242 4242" maxlength="19" />
+      </label>
+      <div class="field-row">
+        <label class="field">
+          <span>SKT</span>
+          <input name="exp" type="text" inputmode="numeric" required placeholder="AA/YY" maxlength="5" />
+        </label>
+        <label class="field">
+          <span>CVC</span>
+          <input name="cvc" type="text" inputmode="numeric" required placeholder="123" maxlength="4" />
+        </label>
+      </div>
+      <label class="field">
+        <span>Teslim / çağrı adı</span>
+        <input name="pickup" type="text" required placeholder="Tezgâhta söylenecek isim" maxlength="32" />
+      </label>
+      <p class="pay__hint">Demo ödeme · gerçek tahsilat yok.</p>
+      <button type="submit" class="btn btn--pay" id="paySubmit">Ödemeyi tamamla</button>
+    </form>
+  </aside>
+
+  <div class="success" id="success" hidden>
+    <div class="success__card">
+      <p class="eyebrow">Sipariş alındı</p>
+      <h2 id="successTitle">Afiyet olsun</h2>
+      <p id="successBody">Tezgâha gelince adını söyle.</p>
+      <p class="success__code">Kod · <strong id="successCode">ANV-0000</strong></p>
+      <button type="button" class="btn" id="successDone">Menüye dön</button>
+    </div>
+  </div>
+
+  <canvas id="confetti" class="confetti" aria-hidden="true"></canvas>
+
+  <div class="auth" id="auth" aria-hidden="true" role="dialog" aria-modal="true">
+    <div class="auth__panel">
+      <button type="button" class="auth__close" id="authClose" aria-label="Kapat">×</button>
+      <p class="eyebrow">ANVIL üye</p>
+      <h3 id="authHeading">Giriş yap</h3>
+      <div class="auth__tabs" role="tablist">
+        <button type="button" class="is-on" data-auth-tab="login">Giriş</button>
+        <button type="button" data-auth-tab="register">Üye ol</button>
+      </div>
+      <form id="authForm" autocomplete="on">
+        <label id="authNameWrap" hidden>İsim<input type="text" name="name" placeholder="Tezgâhta söylenecek isim" /></label>
+        <label>E-posta<input type="email" name="email" required placeholder="sen@ornek.com" autocomplete="email" /></label>
+        <label>Şifre<input type="password" name="password" required minlength="4" placeholder="En az 4 karakter" autocomplete="current-password" /></label>
+        <p class="auth__err" id="authErr" aria-live="polite"></p>
+        <button type="submit" class="btn" id="authSubmit" style="width:100%">Giriş yap</button>
+      </form>
+      <p class="pay__hint" style="margin-top:.85rem">Demo üyelik — tarayıcıda saklanır.</p>
+    </div>
+  </div>
+
+  <div class="cart-bar" id="cartBar">
+    <button type="button" id="cartOpen" class="cart-bar__btn">
+      <span class="cart-bar__count" id="cartCount">0</span>
+      <span>Sepeti gör</span>
+      <strong id="cartTotal">₺0</strong>
+    </button>
+  </div>
+
+  <script src="./icons.js"></script>
+  <script src="./scrub.js?v=bk2"></script>
+  <script src="./menu.js?v=bk2"></script>
+</body>
+</html>

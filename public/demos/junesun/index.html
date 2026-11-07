@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Junesun — Lifestyle</title>
+  <meta name="theme-color" content="#0c0b0a" />
+  <link rel="preconnect" href="https://api.fontshare.com" crossorigin />
+  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@500,700,900&f[]=boska@500,700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <div class="progress" id="progress" aria-hidden="true"></div>
+  <header class="nav">
+    <img class="nav__logo" src="./public/brand/web-logo.png" alt="Junesun" height="28" />
+    <nav class="nav__links">
+      <a href="#runway">Runway</a>
+      <a href="#walk">Walk</a>
+      <a href="#katalog">Katalog</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="stage" id="runway">
+      <div class="stage__pin">
+        <video id="v1" class="stage__video" muted playsinline preload="auto"
+          poster="./public/video/runway-still.png"
+          src="./public/video/runway-stage.mp4"></video>
+        <div class="stage__ui">
+          <p class="eyebrow">Junesun · 01</p>
+          <h1 id="t1">Runway</h1>
+          <p id="b1">Sahne ışığı. Marka dünyası. Motion.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="stage stage--tall" id="walk">
+      <div class="stage__pin">
+        <video id="v2" class="stage__video" muted playsinline preload="auto"
+          poster="./public/video/jaguar-still-wide.png"
+          src="./public/video/jaguar-walk-wide-scrub.mp4"></video>
+        <div class="stage__ui">
+          <p class="eyebrow">Junesun · 02</p>
+          <h1 id="t2">Walk</h1>
+          <p id="b2">Scroll ile ilerleyen sinematik yürüyüş.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="katalog" id="katalog">
+      <div class="katalog__head">
+        <p class="eyebrow">Katalog</p>
+        <h2>Ürün sahnesi</h2>
+        <p>Konsept demo — üretimde markanıza özel film, tipografi ve sistem kurulur.</p>
+      </div>
+      <div class="katalog__grid" id="grid"></div>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <p>İzden Creative · Junesun konsept demo</p>
+  </footer>
+  <script src="./site.js"></script>
+</body>
+</html>

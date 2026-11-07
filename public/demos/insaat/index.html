@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=5" />
+  <title>FORMA — House Film &amp; Atölye</title>
+  <meta name="description" content="FORMA — şantiyeden alacakaranlığa mimari film. Villa, iç mimari, anahtar teslim." />
+  <meta name="theme-color" content="#0c0b0a" />
+  <link rel="preconnect" href="https://api.fontshare.com" crossorigin />
+  <link href="https://api.fontshare.com/v2/css?f[]=boska@400,500&f[]=switzer@300,400,500,600&display=swap" rel="stylesheet" />
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+  <link rel="stylesheet" href="./styles.css?v=bed1" />
+</head>
+<body class="brand-forma">
+  <div class="loader" id="loader">
+    <div class="loader__mark">FORMA</div>
+    <div class="loader__bar"><i id="loaderBar"></i></div>
+    <p>House film yükleniyor</p>
+  </div>
+
+  <div class="progress" id="progress"></div>
+
+  <header class="nav" id="nav">
+    <a class="nav__brand" href="#top">FORMA</a>
+    <nav class="nav__links" id="chapterNav">
+      <button type="button" data-seek="0">Arrival</button>
+      <button type="button" data-seek="0.08">Frame</button>
+      <button type="button" data-seek="0.26">Skin</button>
+      <button type="button" data-seek="0.36">Rooms</button>
+      <button type="button" data-seek="0.89">Dusk</button>
+    </nav>
+    <div class="nav__actions">
+      <a class="nav__ghost" href="#rooms">Odalar</a>
+      <a class="nav__cta" href="#atelier">Brief</a>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="stage-wrap">
+      <div class="stage-track" id="track">
+        <div class="stage-pin">
+          <canvas id="c" aria-hidden="true"></canvas>
+          <video id="v" muted playsinline preload="auto" disablepictureinpicture></video>
+          <div class="vignette" aria-hidden="true"></div>
+          <div class="stage-ui">
+            <p class="act" id="act">01 — Arrival</p>
+            <h1 id="title">The Site</h1>
+            <p id="body">Boş arazi. İlk beton. Işık henüz yok.</p>
+          </div>
+          <div class="stage-rail" aria-hidden="true"><span id="railLabel">Arrival</span></div>
+          <div class="stage-meta">
+            <span id="chapterIdx">01 / 05</span>
+            <span>A film by FORMA</span>
+          </div>
+          <p class="hint" id="hint">Kaydır <i></i></p>
+        </div>
+      </div>
+    </section>
+
+    <section class="manifesto reveal" id="manifesto">
+      <p class="eyebrow">House N° · İstanbul</p>
+      <h2>Beş sahne.<br /><em>Bir film.</em></h2>
+      <p>FORMA; villayı şantiyeden alacakaranlığa tek sinematik hatta okutur. Malzeme, oran, ışık ve teslim — katalog değil; yaşanacak bir deneyim.</p>
+      <div class="cta-row">
+        <a class="btn" href="#homes">Evleri gör</a>
+        <a class="btn btn--ghost" href="#atelier">Keşif randevusu</a>
+      </div>
+      <div class="stats">
+        <div><strong>40+</strong><span>teslim proje</span></div>
+        <div><strong>12</strong><span>yıl saha</span></div>
+        <div><strong>5</strong><span>film sahnesi</span></div>
+        <div><strong>48s</strong><span>brief dönüş</span></div>
+      </div>
+    </section>
+
+    <section class="rooms-scrub" id="rooms">
+      <header class="sec-head rooms-scrub__head reveal">
+        <div>
+          <p class="eyebrow">Inside the house</p>
+          <h2>Odalar</h2>
+        </div>
+        <p class="lede">Kaydırarak gez — her oda bir ışık durumu.</p>
+      </header>
+      <div class="rooms-track" id="roomsTrack">
+        <div class="rooms-pin" id="roomsPin">
+          <div class="rooms-slides" id="roomsSlides"></div>
+          <div class="rooms-ui">
+            <p class="act" id="roomAct">01 Living</p>
+            <h3 id="roomTitle">The Living</h3>
+            <p id="roomBody">Çift yükseklik salon. Cam, ahşap, orman.</p>
+          </div>
+          <div class="rooms-meta">
+            <span id="roomIdx">01 / 04</span>
+            <span>Scroll the rooms</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="services reveal" id="services">
+      <header class="sec-head">
+        <div>
+          <p class="eyebrow">Hizmetler</p>
+          <h2>Ne için geliyorlar</h2>
+        </div>
+      </header>
+      <div class="services__grid" id="servicesGrid"></div>
+    </section>
+
+    <section class="homes reveal" id="homes">
+      <header class="sec-head">
+        <div>
+          <p class="eyebrow">Örnek evler</p>
+          <h2>Satılık / anahtar teslim</h2>
+        </div>
+        <p class="lede">Tamamlanmış ve satışa açık örnekler. Fiyat talebi 48 saat içinde PDF.</p>
+      </header>
+      <div class="homes__grid" id="homesGrid"></div>
+    </section>
+
+    <section class="quote" id="quote" hidden>
+      <div class="quote__panel">
+        <button type="button" class="quote__x" id="quoteClose" aria-label="Kapat">×</button>
+        <p class="eyebrow">Fiyat talebi</p>
+        <h3 id="quoteTitle">Ev</h3>
+        <p id="quoteMeta" class="lede"></p>
+        <form class="atelier__form" id="quoteForm" novalidate>
+          <label>Ad Soyad <input name="name" required autocomplete="name" /></label>
+          <label>Telefon <input name="phone" type="tel" required autocomplete="tel" /></label>
+          <label>E-posta <input name="email" type="email" required autocomplete="email" /></label>
+          <label>Not <textarea name="note" rows="3" placeholder="Ödeme planı, ziyaret tarihi…"></textarea></label>
+          <input type="hidden" name="homeId" id="quoteHomeId" />
+          <button type="submit" class="btn">Teklif iste</button>
+          <p class="form-note" id="quoteNote" hidden></p>
+        </form>
+      </div>
+    </section>
+
+    <section class="dossier reveal" id="dossier">
+      <header class="sec-head">
+        <div>
+          <p class="eyebrow">Seçilmiş işler</p>
+          <h2>Proje dosyası</h2>
+        </div>
+        <p class="lede">Her yapı bir bölüm. Her bölüm bir ışık durumu.</p>
+      </header>
+      <div class="dossier__grid" id="projects"></div>
+    </section>
+
+    <section class="materials reveal" id="materials">
+      <header class="sec-head">
+        <div>
+          <p class="eyebrow">Palet</p>
+          <h2>Malzeme dili</h2>
+        </div>
+      </header>
+      <div class="materials__row" id="mats"></div>
+    </section>
+
+    <section class="process reveal" id="process">
+      <header class="sec-head">
+        <div>
+          <p class="eyebrow">Süreç</p>
+          <h2>A’dan Z’ye</h2>
+        </div>
+      </header>
+      <ol class="process__list" id="steps"></ol>
+    </section>
+
+    <section class="estimate reveal" id="estimate">
+      <header class="sec-head">
+        <div>
+          <p class="eyebrow">Ön hesap</p>
+          <h2>Kaba bütçe bandı</h2>
+        </div>
+        <p class="lede">Satış konuşması için yön gösterir; keşif sonrası netleşir.</p>
+      </header>
+      <form class="estimate__form" id="estimateForm">
+        <label>Tip
+          <select name="type">
+            <option value="villa">Villa</option>
+            <option value="apt">Apartman</option>
+            <option value="interior">İç mimari</option>
+            <option value="reno">Yenileme</option>
+          </select>
+        </label>
+        <label>m² <input name="sqm" type="number" min="40" max="2000" value="280" required /></label>
+        <label>Standart
+          <select name="tier">
+            <option value="1">Atölye</option>
+            <option value="1.35">Signature</option>
+            <option value="1.7">Ultra</option>
+          </select>
+        </label>
+        <button type="submit" class="btn">Hesapla</button>
+      </form>
+      <p class="estimate__out" id="estimateOut">Band: —</p>
+    </section>
+
+    <section class="faq reveal" id="faq">
+      <header class="sec-head">
+        <div>
+          <p class="eyebrow">SSS</p>
+          <h2>Sık sorulanlar</h2>
+        </div>
+      </header>
+      <div class="faq__list" id="faqList"></div>
+    </section>
+
+    <section class="atelier reveal" id="atelier">
+      <div class="atelier__copy">
+        <p class="eyebrow">Ofis</p>
+        <h2>Brieflen<br /><em>başlayalım.</em></h2>
+        <p>Arsa, program ve ışık tercihinizi yazın. 48 saat içinde beş karelik film çerçevesi öneririz.</p>
+        <ul>
+          <li>İstanbul · Beşiktaş Atölye</li>
+          <li>studio@forma.arch</li>
+          <li>+90 212 345 02 02</li>
+          <li>Pzt–Cum 10:00–19:00</li>
+        </ul>
+      </div>
+      <form class="atelier__form" id="briefForm" novalidate>
+        <label>Ad Soyad <input name="name" required autocomplete="name" /></label>
+        <label>E-posta <input name="email" type="email" required autocomplete="email" /></label>
+        <label>Telefon <input name="phone" type="tel" required autocomplete="tel" /></label>
+        <label>Proje tipi
+          <select name="type">
+            <option>Villa</option>
+            <option>Apartman</option>
+            <option>İç mimari</option>
+            <option>Yenileme</option>
+          </select>
+        </label>
+        <label>Tahmini m² <input name="sqm" type="number" min="40" placeholder="ör. 320" /></label>
+        <label>Mesaj <textarea name="msg" rows="4" required placeholder="Arsa konumu, bakı, atmosfer, bütçe bandı…"></textarea></label>
+        <label class="check"><input type="checkbox" name="privacy" required /> Brief’imin iletişime geçmek için kullanılmasını kabul ediyorum.</label>
+        <button type="submit" class="btn">Brief gönder</button>
+        <p class="form-note" id="formNote" hidden></p>
+      </form>
+    </section>
+  </main>
+
+  <footer class="foot foot--rich">
+    <div>
+      <strong>FORMA</strong>
+      <span>Mimari film · inşaat anlatısı</span>
+    </div>
+    <div class="foot__links">
+      <a href="#rooms">Odalar</a>
+      <a href="#homes">Evler</a>
+      <a href="#estimate">Bütçe</a>
+      <a href="#atelier">Brief</a>
+    </div>
+    <p>© 2026 FORMA Atölye. Görseller temsilidir. Teklif keşif sonrası geçerlidir.</p>
+  </footer>
+
+  <script src="./icons.js" defer></script>
+  <script src="./scrub.js?v=bed1" defer></script>
+  <script src="./site.js?v=curtain2" defer></script>
+</body>
+</html>
