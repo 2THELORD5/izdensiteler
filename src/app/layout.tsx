@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { CookieConsent } from "@/components/CookieConsent";
 import "./globals.css";
 
@@ -6,6 +6,13 @@ export const metadata: Metadata = {
   title: "İzden Siteler — Örnek site portalı",
   description:
     "Canlı demoları inceleyin, teklif alın. İzden Creative örnek site portalı.",
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover",
+  themeColor: "#0a0a0b",
 };
 
 export default function RootLayout({

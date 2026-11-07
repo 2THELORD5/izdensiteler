@@ -752,8 +752,11 @@ body {
 .preview--immersive {
   display: block;
   position: relative;
-  height: 100svh;
+  width: 100%;
+  height: 100vh;
   height: 100dvh;
+  min-height: 100vh;
+  min-height: -webkit-fill-available;
   max-height: 100dvh;
   overflow: hidden;
   background: #050505;
@@ -761,20 +764,22 @@ body {
 .preview--immersive .preview-frame-wrap {
   position: absolute;
   inset: 0;
+  width: 100%;
+  height: 100%;
   overflow: hidden;
   -webkit-overflow-scrolling: touch;
 }
 .preview--immersive .preview-frame {
   position: absolute;
   inset: 0;
-  height: 100%;
-  min-height: 100%;
   border: 0;
   display: block;
   /* iOS iframe layout-width quirk: 1px + min-width forces device width */
   width: 1px;
   min-width: 100%;
   max-width: 100%;
+  height: 100%;
+  min-height: 100%;
 }
 .preview--immersive .preview-fallback {
   width: 100%;

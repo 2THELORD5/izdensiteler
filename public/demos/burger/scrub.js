@@ -73,8 +73,8 @@ function paint() {
   const ch = canvas.height;
   const vw = video.videoWidth || 1280;
   const vh = video.videoHeight || 720;
-  // Mobile portrait: fit width (letterbox) — cover crops look like a broken zoom.
-  const s = IS_MOBILE ? Math.min(cw / vw, ch / vh) : Math.max(cw / vw, ch / vh);
+  // Full-bleed cover on phone + desktop (same cinematic fill).
+  const s = Math.max(cw / vw, ch / vh);
   ctx.fillStyle = "#000";
   ctx.fillRect(0, 0, cw, ch);
   ctx.drawImage(video, (cw - vw * s) / 2, (ch - vh * s) / 2, vw * s, vh * s);
