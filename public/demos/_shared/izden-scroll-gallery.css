@@ -1,0 +1,48 @@
+/* Scroll-owned galleries — pin stage, hide click chrome */
+.iz-sg .g-arrow,
+.iz-sg .hero__nav,
+.iz-sg .hero__navbtn,
+.iz-sg [data-slider-prev],
+.iz-sg [data-slider-next] {
+  pointer-events: none !important;
+  opacity: 0.28 !important;
+}
+
+.iz-sg__shell {
+  position: sticky;
+  top: 0;
+  height: 100svh;
+  height: 100dvh;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+}
+
+.gallery-section.iz-sg .gallery-head {
+  position: sticky;
+  top: 0;
+  z-index: 3;
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, Canvas 92%, transparent) 55%,
+    transparent
+  );
+  padding-top: 1.25rem;
+}
+
+.iz-sg .i-slide,
+.iz-sg .hero__figure {
+  will-change: opacity;
+}
+
+@media (max-width: 700px) {
+  .gallery-section.iz-sg {
+    min-height: 180vh !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .iz-sg .gallery-track {
+    transition: none !important;
+  }
+}

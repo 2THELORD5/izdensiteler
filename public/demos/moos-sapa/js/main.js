@@ -29,54 +29,8 @@
     revealEls.forEach(function (el) { el.classList.add('in'); });
   }
 
-  /* ---------- focus-peek sliders (auto-init every .gallery-track) ---------- */
-  function initGallery(track) {
-    var stub = track.getAttribute('data-stub');
-    var items = Array.prototype.slice.call(track.children);
-    var counter = document.getElementById(stub + '-counter');
-    var progress = document.getElementById(stub + '-progress');
-    var arrows = Array.prototype.slice.call(
-      document.querySelectorAll('.g-arrow[data-target="' + stub + '"]')
-    );
-    var index = 0;
-
-    function pad(n) { return String(n).padStart(2, '0'); }
-
-    function renderGallery() {
-      var shell = track.parentElement;
-      var item = items[index];
-      var gap = parseFloat(getComputedStyle(track).gap) || 26;
-      var x = shell.clientWidth / 2 - item.offsetWidth / 2 - index * (item.offsetWidth + gap);
-      track.style.transform = 'translateX(' + x + 'px)';
-      items.forEach(function (el, i) {
-        el.classList.toggle('active', i === index);
-        el.classList.toggle('peek', Math.abs(i - index) === 1);
-      });
-      if (counter) counter.innerHTML = '<b>' + pad(index + 1) + '</b> / ' + pad(items.length);
-      if (progress) progress.style.width = ((index + 1) / items.length * 100) + '%';
-      arrows.forEach(function (btn) {
-        var d = parseInt(btn.getAttribute('data-dir'), 10);
-        btn.disabled = index + d < 0 || index + d > items.length - 1;
-      });
-    }
-
-    function scrollGallery(dir) {
-      index = Math.max(0, Math.min(items.length - 1, index + dir));
-      renderGallery();
-    }
-
-    arrows.forEach(function (btn) {
-      btn.addEventListener('click', function () {
-        scrollGallery(parseInt(btn.getAttribute('data-dir'), 10));
-      });
-    });
-    items.forEach(function (el, i) {
-      el.addEventListener('click', function () { if (i !== index) { index = i; renderGallery(); } });
-    });
-    window.addEventListener('resize', renderGallery);
-    renderGallery();
-  }
-  Array.prototype.forEach.call(document.querySelectorAll('.gallery-track'), initGallery);
+  /* ---------- galleries: scroll-driven via izden-scroll-gallery.js ---------- */
+  /* Click/arrow carousels disabled — pin + scrub owns the index. */
 
   /* ---------- FAQ accordion ---------- */
   window.toggleFaq = function (btn) {
