@@ -37,8 +37,26 @@
     dots.forEach((b,idx)=>b.classList.toggle("is-active",idx===i));
   };
   dots.forEach((b)=>b.addEventListener("click",()=>go(Number(b.dataset.go)||0)));
-  if (!reduced && steps.length) {
-    let timer = setInterval(()=>go((step+1)%steps.length), 4500);
-    document.getElementById("ritualSteps")?.addEventListener("pointerenter",()=>clearInterval(timer));
-  }
+  const ritual = document.getElementById("ritualSteps") || document.querySelector(".sig--solace");
+  if (!reduced && steps.length && ritual) {
+    let locked = false;
+    const onScroll = () => {
+      if (locked) return;
+      const rect = ritual.getBoundingClientRect();
+      const span = Math.max(1, ritual.offsetHeight);
+      const p = Math.min(1, Math.max(0, (window.innerHeight * 0.55 - rect.top) / span));
+      go(Math.min(steps.length - 1, Math.floor(p * steps.length)));
+    };
+    let tick = false;
+    window.addEventListener("scroll", () => {
+      if (tick) return;
+      tick = true;
+      requestAnimationFrame(() => {
+        onScroll();
+        tick = false;
+      });
+    }, { passive: true });
+    onScroll();
+    dots.forEach((b) => b.addEventListener("click", () => { locked = true; }));
+  } else if (steps.length) go(0);
 })();

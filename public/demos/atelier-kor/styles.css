@@ -223,14 +223,46 @@ a {
   object-fit: cover;
 }
 
+.hero__poster img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
 .hero__video {
   z-index: 1;
+}
+
+/* Phone: portrait still — landscape fire loop letterboxes poorly */
+@media (max-width: 900px) {
+  .hero__video {
+    display: none;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .hero__video {
     display: none;
   }
+}
+
+/* Signature: ember heat rises with fire chapter scrub */
+.fire-heat {
+  --heat: 0;
+  position: relative;
+}
+
+.fire-heat::after {
+  content: "";
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 50% 110%, rgba(232, 93, 4, calc(0.08 + var(--heat) * 0.45)), transparent 55%),
+    linear-gradient(180deg, transparent, rgba(232, 93, 4, calc(var(--heat) * 0.18)));
+  mix-blend-mode: screen;
+  opacity: 1;
+  transition: none;
 }
 
 .hero__shade {

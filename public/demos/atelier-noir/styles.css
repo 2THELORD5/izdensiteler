@@ -545,6 +545,7 @@ a {
   overflow: hidden;
   justify-self: center;
   max-width: 22rem;
+  perspective: 900px;
 }
 
 .bottle-stage__img {
@@ -553,8 +554,17 @@ a {
   object-fit: cover;
   clip-path: inset(calc((1 - var(--bottle-reveal)) * 55%) 8% calc((1 - var(--bottle-reveal)) * 20%) 8% round 2px);
   opacity: calc(0.25 + var(--bottle-reveal) * 0.75);
-  transform: scale(calc(0.94 + var(--bottle-reveal) * 0.06));
-  will-change: clip-path, opacity, transform;
+  transform:
+    rotateY(calc((1 - var(--bottle-reveal)) * -18deg))
+    scale(calc(0.9 + var(--bottle-reveal) * 0.1));
+  filter: drop-shadow(0 28px 40px rgba(159, 18, 57, calc(var(--bottle-reveal) * 0.35)));
+  will-change: clip-path, opacity, transform, filter;
+  transition: none;
+}
+
+.bottle-stage__copy {
+  opacity: calc(0.15 + var(--bottle-reveal) * 0.85);
+  transform: translateY(calc((1 - var(--bottle-reveal)) * 1.5rem));
 }
 
 @media (prefers-reduced-motion: reduce) {

@@ -73,12 +73,19 @@
     const scrollable = ascent.offsetHeight - window.innerHeight;
     if (scrollable <= 0) {
       floorNum.textContent = padFloor(min);
+      ascent.style.setProperty("--ascent-p", "0");
       return;
     }
     const traveled = Math.min(scrollable, Math.max(0, -rect.top));
     const p = traveled / scrollable;
     const value = Math.round(min + p * (max - min));
     floorNum.textContent = padFloor(value);
+    ascent.style.setProperty("--ascent-p", String(p));
+    const ticks = ascent.querySelectorAll(".ascent__ticks i");
+    ticks.forEach((tick, i) => {
+      const on = p >= i / Math.max(1, ticks.length - 1);
+      tick.classList.toggle("is-lit", on);
+    });
   };
 
   if (ascent && floorNum && !reduced) {

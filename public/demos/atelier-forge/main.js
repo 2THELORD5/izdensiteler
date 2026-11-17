@@ -33,9 +33,11 @@
     const target = Number(grind.dataset.target)||420;
     if (reduced) grind.textContent = String(target);
     else {
+      const stage = document.querySelector(".sig--forge");
       const tick = (start) => (now) => {
         const t = Math.min(1,(now-start)/1400);
         grind.textContent = String(Math.round(t*target)).padStart(3,"0");
+        if (stage) stage.style.setProperty("--sig-p", String(t));
         if (t<1) requestAnimationFrame(tick(start));
       };
       const io = new IntersectionObserver((e)=>{if(e[0]?.isIntersecting){requestAnimationFrame(tick(performance.now()));io.disconnect();}},{threshold:.4});

@@ -109,4 +109,34 @@
     }
     form.reset();
   });
+
+  /* Signature: ember heat + scroll-driven Fire→Plate→Night */
+  const heatSec = document.querySelector(".fire-heat");
+  const heatOrder = ["fire", "plate", "night"];
+  const updateHeat = () => {
+    if (!heatSec || reduced) return;
+    const rect = heatSec.getBoundingClientRect();
+    const span = Math.max(1, heatSec.offsetHeight - window.innerHeight * 0.35);
+    const traveled = Math.min(span, Math.max(0, -rect.top + window.innerHeight * 0.2));
+    const p = traveled / span;
+    heatSec.style.setProperty("--heat", String(p));
+    const idx = Math.min(heatOrder.length - 1, Math.floor(p * heatOrder.length));
+    const id = heatOrder[idx];
+    const active = document.querySelector(".tabs__btn.is-active");
+    if (active?.getAttribute("data-panel") !== id) showPanel(id);
+  };
+  if (heatSec && !reduced) {
+    let heatTick = false;
+    const onHeat = () => {
+      if (heatTick) return;
+      heatTick = true;
+      requestAnimationFrame(() => {
+        updateHeat();
+        heatTick = false;
+      });
+    };
+    window.addEventListener("scroll", onHeat, { passive: true });
+    window.addEventListener("resize", onHeat, { passive: true });
+    updateHeat();
+  }
 })();

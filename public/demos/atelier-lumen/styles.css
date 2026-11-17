@@ -298,6 +298,7 @@ a {
 
 /* ——— Floor ascent pin (~180vh) ——— */
 .ascent {
+  --ascent-p: 0;
   position: relative;
   height: 180vh;
 }
@@ -312,6 +313,16 @@ a {
   overflow: hidden;
   background: #0e0e0d;
   border-block: 1px solid var(--line);
+}
+
+.ascent__pin::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, transparent, rgba(140, 160, 180, calc(var(--ascent-p) * 0.12))),
+    radial-gradient(ellipse at 30% calc(100% - var(--ascent-p) * 70%), rgba(200, 210, 220, 0.14), transparent 45%);
+  pointer-events: none;
 }
 
 .ascent__stage {
@@ -352,6 +363,7 @@ a {
   line-height: 1;
   color: var(--bone);
   font-variant-numeric: tabular-nums;
+  transform: translateY(calc(var(--ascent-p) * -0.4rem));
 }
 
 .ascent__ticks {
@@ -367,6 +379,14 @@ a {
   width: 28px;
   height: 1px;
   background: var(--steel);
+  transition: width 0.25s ease, background 0.25s ease, opacity 0.25s ease;
+  opacity: 0.45;
+}
+
+.ascent__ticks i.is-lit {
+  width: 42px;
+  background: var(--bone);
+  opacity: 1;
 }
 
 .ascent__kicker {

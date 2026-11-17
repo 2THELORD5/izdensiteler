@@ -12,6 +12,8 @@
   <link rel="stylesheet" href="styles.css" />
   <link rel="stylesheet" href="/demos/_shared/izden-afterglow.css" />
   <link rel="stylesheet" href="/demos/_shared/izden-agency.css" />
+  <link rel="stylesheet" href="/demos/_shared/izden-atelier-mobile.css" />
+  <link rel="stylesheet" href="/demos/_shared/izden-atelier-motion.css" />
 </head>
 <body>
   <header class="site-nav" id="nav" data-open="false">
@@ -49,7 +51,10 @@
   <main id="top">
     <section class="hero" aria-labelledby="hero-title">
       <div class="hero__media" aria-hidden="true">
-        <img class="hero__poster" src="media/hero.jpg" alt="" width="1920" height="1080" fetchpriority="high" />
+        <picture class="hero__poster">
+          <source media="(max-width:900px)" srcset="media/hero-mob.jpg" />
+          <img src="media/hero.jpg" alt="" width="1920" height="1080" fetchpriority="high" />
+        </picture>
         <video class="hero__video" autoplay muted loop playsinline poster="media/hero.jpg">
           <source src="media/fire-loop.mp4" type="video/mp4" />
         </video>
@@ -85,7 +90,7 @@
       </div>
     </section>
 
-    <section class="craft" id="fire" aria-labelledby="craft-heading" data-stack-section>
+    <section class="craft fire-heat" id="fire" aria-labelledby="craft-heading" data-stack-section>
       <header class="craft__head iz-reveal">
         <p class="section-kicker">Fire craft</p>
         <h2 class="craft__title" id="craft-heading">Üç bölüm, tek ocak</h2>

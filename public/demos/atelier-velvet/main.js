@@ -35,7 +35,15 @@
   const setChapter = (i) => {
     ch = i;
     chapters.forEach((el, idx) => el.classList.toggle("is-active", idx === i));
-    if (cork) cork.textContent = String(i + 1);
+    if (cork) {
+      cork.textContent = String(i + 1);
+      const counter = cork.closest('.velvet-counter');
+      if (counter) {
+        counter.classList.remove('is-tick');
+        void counter.offsetWidth;
+        counter.classList.add('is-tick');
+      }
+    }
   };
   if (stage && chapters.length) {
     if (!reduced) {

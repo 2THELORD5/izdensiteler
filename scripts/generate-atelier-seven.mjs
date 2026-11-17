@@ -313,13 +313,21 @@ function signatureHtml(d) {
   }
 }
 
+function heroPic() {
+  return `<picture>
+          <source media="(max-width:900px)" srcset="media/hero-mob.jpg" />
+          <img src="media/hero.jpg" alt="" width="1920" height="1280" fetchpriority="high" />
+        </picture>`;
+}
+
 function heroHtml(d) {
   const m = d.motion;
+  const pic = heroPic();
   if (m === "snap") {
     return `
     <section class="hero hero--split" aria-labelledby="hero-title">
       <div class="hero__split-media">
-        <img src="media/hero.jpg" alt="" width="1920" height="1280" fetchpriority="high" />
+        ${pic}
       </div>
       <div class="hero__split-copy">
         <p class="hero__eyebrow iz-reveal">Coastal dossier</p>
@@ -333,7 +341,7 @@ function heroHtml(d) {
     return `
     <section class="hero hero--center" aria-labelledby="hero-title">
       <div class="hero__media">
-        <img src="media/hero.jpg" alt="" width="1920" height="1280" fetchpriority="high" />
+        ${pic}
       </div>
       <div class="hero__veil hero__veil--vignette"></div>
       <div class="hero__inner hero__inner--center">
@@ -354,7 +362,7 @@ function heroHtml(d) {
         <a class="hero__btn iz-reveal" data-d="2" href="#${d.sigId}">${d.cta}</a>
       </div>
       <div class="hero__stack-media">
-        <img src="media/hero.jpg" alt="" width="1920" height="1280" fetchpriority="high" />
+        ${pic}
       </div>
     </section>`;
   }
@@ -362,7 +370,7 @@ function heroHtml(d) {
     return `
     <section class="hero hero--float" aria-labelledby="hero-title">
       <div class="hero__media">
-        <img src="media/hero.jpg" alt="" width="1920" height="1280" fetchpriority="high" />
+        ${pic}
       </div>
       <div class="hero__veil"></div>
       <div class="hero__float-card iz-reveal">
@@ -377,7 +385,7 @@ function heroHtml(d) {
     return `
     <section class="hero hero--bottom ken" aria-labelledby="hero-title">
       <div class="hero__media ken-burns">
-        <img src="media/hero.jpg" alt="" width="1920" height="1280" fetchpriority="high" />
+        ${pic}
       </div>
       <div class="hero__veil hero__veil--hard"></div>
       <div class="hero__inner hero__inner--wide">
@@ -392,7 +400,7 @@ function heroHtml(d) {
     return `
     <section class="hero hero--rail" aria-labelledby="hero-title">
       <div class="hero__rail-media">
-        <img src="media/hero.jpg" alt="" width="1920" height="1280" fetchpriority="high" />
+        ${pic}
       </div>
       <aside class="hero__rail-copy">
         <p class="hero__eyebrow iz-reveal">Bay 03 · Gloss</p>
@@ -412,7 +420,7 @@ function heroHtml(d) {
         <a class="hero__btn iz-reveal" data-d="2" href="#${d.sigId}">${d.cta}</a>
       </div>
       <div class="hero__mast-media">
-        <img src="media/hero.jpg" alt="" width="1920" height="1280" fetchpriority="high" />
+        ${pic}
       </div>
     </section>`;
 }
@@ -455,6 +463,7 @@ function html(d) {
   <link rel="stylesheet" href="styles.css" />
   <link rel="stylesheet" href="/demos/_shared/izden-afterglow.css" />
   <link rel="stylesheet" href="/demos/_shared/izden-agency.css" />
+  <link rel="stylesheet" href="/demos/_shared/izden-atelier-mobile.css" />
 </head>
 <body class="motion-${d.motion}">
 ${sharedNav(d)}
