@@ -7,6 +7,21 @@
   const title = root.querySelector("[data-iz-title]");
   const body = root.querySelector("[data-iz-body]");
   const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const portrait = matchMedia("(max-width:900px), (orientation:portrait)");
+
+  const applySources = () => {
+    const mob = portrait.matches;
+    frames.forEach((f) => {
+      const img = f.querySelector("img");
+      if (!img) return;
+      const pc = f.dataset.srcPc;
+      const m = f.dataset.srcMob;
+      const next = mob && m ? m : pc || img.getAttribute("src");
+      if (next && img.getAttribute("src") !== next) img.src = next;
+    });
+  };
+  applySources();
+  portrait.addEventListener?.("change", applySources);
 
   const chapters = frames.map((f, i) => ({
     el: f,

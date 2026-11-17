@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>MERIDIAN — Meridian Atelier</title>
+  <meta name="description" content="Coastal architecture shaped by tide and light." />
+  <meta name="theme-color" content="#082f49" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,500&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="/demos/_shared/izden-afterglow.css" />
+  <link rel="stylesheet" href="/demos/_shared/izden-agency.css" />
+</head>
+<body>
+
+  <header class="site-nav" id="nav" data-open="false">
+    <button type="button" class="site-nav__burger" id="navBurger" aria-label="Open menu" aria-expanded="false" aria-controls="navDrawer">
+      <span></span><span></span><span></span>
+    </button>
+    <a class="site-nav__brand" href="#top">MERIDIAN</a>
+    <nav class="site-nav__links" aria-label="Primary">
+      <a href="#coast">Signature</a>
+      <a href="#story">Story</a>
+      <a href="#craft">Craft</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#journal">Journal</a>
+      <a href="#contact" class="site-nav__cta">Request dossier</a>
+    </nav>
+  </header>
+  <div class="nav-drawer-backdrop" id="navBackdrop" hidden></div>
+  <aside class="nav-drawer" id="navDrawer" aria-hidden="true" data-open="false">
+    <div class="nav-drawer__head">
+      <strong>MERIDIAN</strong>
+      <button type="button" class="nav-drawer__close" id="navClose" aria-label="Close menu">×</button>
+    </div>
+    <nav class="nav-drawer__links" aria-label="Mobile">
+      <a href="#coast">Signature</a>
+      <a href="#story">Story</a>
+      <a href="#craft">Craft</a>
+      <a href="#process">Process</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#journal">Journal</a>
+      <a href="#faq">FAQ</a>
+      <a href="#contact">Request dossier</a>
+    </nav>
+  </aside>
+  <main id="top">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero__media">
+        <img src="media/hero.jpg" alt="" width="1920" height="1280" fetchpriority="high" />
+      </div>
+      <div class="hero__veil"></div>
+      <div class="hero__inner">
+        <p class="hero__eyebrow iz-reveal">İzden Creative · Brand demo</p>
+        <h1 class="hero__wordmark iz-reveal" id="hero-title">MERIDIAN</h1>
+        <p class="hero__tag iz-reveal" data-d="1">Coastal architecture shaped by tide and light.</p>
+        <a class="hero__btn iz-reveal" data-d="2" href="#coast">Request dossier</a>
+      </div>
+    </section>
+
+    <section class="sig sig--snap" id="coast" aria-label="Horizon panels">
+      <div class="sig__head iz-reveal">
+        <p class="sig__kicker">Horizon panels</p>
+        <h2 class="sig__title">Scroll snaps through coastal studies — each panel draws its seam line as it lands.</h2>
+      </div>
+      <div class="snap-rail" id="snapRail">
+        <div class="snap-rail__track" id="snapTrack">
+          <article class="snap-panel" data-panel="0">
+            <figure><img src="media/facade.jpg" alt="Coastal facade study" loading="lazy" /><svg class="line-draw" viewBox="0 0 400 120" aria-hidden="true"><path d="M8 100 L120 40 L220 72 L392 28" /></svg></figure>
+            <h3>Tide line</h3>
+            <p>Concrete set back from surge — openings sized for salt air, not spectacle.</p>
+          </article>
+          <article class="snap-panel" data-panel="1">
+            <figure><img src="media/silos.jpg" alt="Silhouette against horizon" loading="lazy" /><svg class="line-draw" viewBox="0 0 400 120" aria-hidden="true"><path d="M20 90 L180 50 L260 88 L380 20" /></svg></figure>
+            <h3>Meridian cut</h3>
+            <p>Roof angles track sun path; shadows become the secondary elevation.</p>
+          </article>
+          <article class="snap-panel" data-panel="2">
+            <figure><img src="media/cliff.jpg" alt="Cliffside deck" loading="lazy" /><svg class="line-draw" viewBox="0 0 400 120" aria-hidden="true"><path d="M4 70 L140 30 L300 60 L396 44" /></svg></figure>
+            <h3>Lantern deck</h3>
+            <p>Glass decks float above stone — privacy without losing the horizon.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+    <div class="marquee" aria-hidden="true"><div class="marquee__track"><span>Meridian Atelier · MERIDIAN · Craft motion study · </span><span>Meridian Atelier · MERIDIAN · Craft motion study · </span></div></div>
+    <section class="chapter" id="story">
+      <div class="chapter__grid">
+        <div class="chapter__copy">
+          <p class="chapter__kicker iz-reveal">01 — Story</p>
+          <h2 class="chapter__title iz-reveal" data-d="1">Built for <em>believers</em></h2>
+          <p class="chapter__lede iz-reveal" data-d="2">Meridian Atelier is a fictional identity exercise — real photography, deliberate typography, motion that serves the trade instead of decorating it.</p>
+          <a class="chapter__link iz-reveal" href="#craft">See craft</a>
+        </div>
+        <figure class="chapter__frame iz-reveal"><img src="media/cliff.jpg" alt="Brand story visual" loading="lazy" /></figure>
+      </div>
+    </section>
+    <section class="chapter chapter--flip" id="craft">
+      <div class="chapter__grid">
+        <figure class="chapter__frame iz-reveal"><img src="media/deck.jpg" alt="Craft detail" loading="lazy" /></figure>
+        <div class="chapter__copy">
+          <p class="chapter__kicker iz-reveal">02 — Craft</p>
+          <h2 class="chapter__title iz-reveal">Material <em>first</em></h2>
+          <p class="chapter__lede iz-reveal">Surfaces, joints, and finish lines are documented the way your team already speaks — no filler adjectives, no stock praise.</p>
+        </div>
+      </div>
+    </section>
+    <section class="process" id="process">
+      <header class="section-head"><p class="section-head__kicker iz-reveal">03 — Process</p><h2 class="section-head__title iz-reveal">How we ship</h2></header>
+      <ol class="process__list">
+        <li class="iz-reveal"><strong>Listen</strong><span>Stakeholder interviews, site walk, constraint map.</span></li>
+        <li class="iz-reveal" data-d="1"><strong>Compose</strong><span>One viewport, one idea — type and photo in tension.</span></li>
+        <li class="iz-reveal" data-d="2"><strong>Motion</strong><span>Single signature interaction, reduced-motion safe.</span></li>
+        <li class="iz-reveal" data-d="3"><strong>Handoff</strong><span>Static HTML demo + media kit for your engineers.</span></li>
+      </ol>
+    </section>
+    <section class="gallery" id="gallery">
+      <header class="section-head"><p class="section-head__kicker iz-reveal">04 — Gallery</p><h2 class="section-head__title iz-reveal">Field notes</h2></header>
+      <div class="gallery__grid">
+        <figure class="iz-reveal"><img src="media/facade.jpg" alt="Gallery 1" loading="lazy" /></figure>
+        <figure class="iz-reveal" data-d="1"><img src="media/silos.jpg" alt="Gallery 2" loading="lazy" /></figure>
+        <figure class="iz-reveal" data-d="2"><img src="media/plan.jpg" alt="Gallery 3" loading="lazy" /></figure>
+      </div>
+    </section>
+    <section class="journal" id="journal">
+      <header class="section-head"><p class="section-head__kicker iz-reveal">05 — Journal</p><h2 class="section-head__title iz-reveal">Release notes</h2></header>
+      <article class="journal__card iz-reveal">
+        <time datetime="2026-03-01">Mar 2026</time>
+        <h3>Motion pass</h3>
+        <p>Signature interaction tuned for thumb scroll on mobile — hamburger nav, 44px targets, prefers-reduced-motion fallbacks.</p>
+      </article>
+      <article class="journal__card iz-reveal" data-d="1">
+        <time datetime="2026-02-10">Feb 2026</time>
+        <h3>Photography</h3>
+        <p>Licensed Pexels stills, cropped per viewport — no remote hotlinking in production build.</p>
+      </article>
+    </section>
+    <section class="faq" id="faq">
+      <header class="section-head"><p class="section-head__kicker iz-reveal">06 — FAQ</p><h2 class="section-head__title iz-reveal">Before you write</h2></header>
+      <article class="faq__item iz-reveal">
+        <button type="button" class="faq__q" aria-expanded="false">How do I book the signature experience?<span class="faq__icon" aria-hidden="true"></span></button>
+        <div class="faq__a" hidden><p>Email or call — we confirm studio slots within one business day.</p></div>
+      </article>
+      <article class="faq__item iz-reveal" data-d="1">
+        <button type="button" class="faq__q" aria-expanded="false">Is this a live product?<span class="faq__icon" aria-hidden="true"></span></button>
+        <div class="faq__a" hidden><p>No — this is a fictional brand demo by İzden Creative.</p></div>
+      </article>
+    </section>
+    <section class="contact" id="contact">
+      <div class="contact__inner iz-reveal">
+        <h2>Studio</h2>
+        <p class="contact__brand">Meridian Atelier — demo by İzden Creative.</p>
+        <ul class="contact__list">
+          <li><a href="mailto:info@izdencreative.com">info@izdencreative.com</a></li>
+          <li><a href="tel:+902120000000">+90 212 000 00 00</a></li>
+          <li><a href="https://www.izdencreative.com" target="_blank" rel="noopener noreferrer">izdencreative.com</a></li>
+        </ul>
+        <img class="contact__logo" src="/demos/_shared/izden-creative.jpg" alt="İzden Creative" width="180" height="61" loading="lazy" />
+      </div>
+    </section>
+  </main>
+  <script src="/demos/_shared/izden-afterglow.js"></script>
+  <script src="/demos/_shared/izden-agency.js"></script>
+  <script src="main.js"></script>
+  <script src="/demos/_shared/izden-contact-rewrite.js" defer></script>
+</body>
+</html>
