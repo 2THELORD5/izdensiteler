@@ -12,8 +12,25 @@
 <link rel="preload" as="image" href="assets/Exterior/02-low-angle-hero.png">
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="/demos/_shared/izden-agency.css" />
+
+<link rel="stylesheet" href="/demos/_shared/izden-image-scrub.css" />
+<link rel="stylesheet" href="/demos/_shared/izden-afterglow.css" />
 </head>
 <body id="top">
+
+<section class="iz-scrub" data-iz-scrub aria-label="Scroll chapters">
+  <div class="iz-scrub__pin">
+    <div class="iz-scrub__stage"><div class="iz-scrub__frame" data-act="01 Residence" data-title="Arrive home." data-body="Residans eşiği."><img src="assets/Exterior/03-top-view-flat.png" alt="" loading="eager" decoding="async" /></div><div class="iz-scrub__frame" data-act="02 Gallery" data-title="Rooms in rail." data-body="Galeri rayında mekânlar."><img src="assets/Exterior/06-masterplan-wide-community.png" alt="" loading="lazy" decoding="async" /></div><div class="iz-scrub__frame" data-act="03 Map" data-title="Neighbourhood." data-body="Konum ve günlük rota."><img src="assets/Exterior/01-drone-three-quarter-day.png" alt="" loading="lazy" decoding="async" /></div><div class="iz-scrub__frame" data-act="04 Live" data-title="Soft luxury." data-body="Yaşam ritmi kilitlenir."><img src="assets/Exterior/02-low-angle-hero.png" alt="" loading="lazy" decoding="async" /></div></div>
+    <div class="iz-scrub__veil" aria-hidden="true"></div>
+    <div class="iz-scrub__ui">
+      <p class="iz-scrub__act" data-iz-act></p>
+      <h2 class="iz-scrub__title" data-iz-title></h2>
+      <p class="iz-scrub__body" data-iz-body></p>
+    </div>
+    <p class="iz-scrub__hint">Scroll</p>
+  </div>
+</section>
+
 
 <div class="ambient" aria-hidden="true"></div>
 
@@ -560,5 +577,9 @@
   <link rel="stylesheet" href="../_shared/izden-mark.css" />
   <script src="../_shared/izden-mark.js" defer></script>
 <script src="/demos/_shared/izden-agency.js" defer></script>
+
+<script src="/demos/_shared/izden-image-scrub.js" defer></script>
+<script src="/demos/_shared/izden-afterglow.js" defer></script>
+<script src="/demos/_shared/izden-contact-rewrite.js" defer></script>
 </body>
 </html>

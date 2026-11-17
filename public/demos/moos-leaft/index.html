@@ -23,6 +23,9 @@
 <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,75..125,300..700;1,75..125,300..700&family=Newsreader:ital,opsz,wght@0,6..72,300..500;1,6..72,300..500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 <link rel="stylesheet" href="/demos/_shared/izden-agency.css" />
+
+<link rel="stylesheet" href="/demos/_shared/izden-image-scrub.css" />
+<link rel="stylesheet" href="/demos/_shared/izden-afterglow.css" />
 </head>
 <body>
 
@@ -66,6 +69,20 @@
 </header>
 
 <main id="main">
+
+<section class="iz-scrub" data-iz-scrub aria-label="Scroll chapters">
+  <div class="iz-scrub__pin">
+    <div class="iz-scrub__stage"><div class="iz-scrub__frame" data-act="01 Ground" data-title="Soil & line." data-body="Arazi okunur, sınır çizilir."><img src="assets/img/p09-day.jpg" alt="" loading="eager" decoding="async" /></div><div class="iz-scrub__frame" data-act="02 Canopy" data-title="Day to dusk." data-body="Gündüzden alacakaranlığa geçiş."><img src="assets/img/step-1.jpg" alt="" loading="lazy" decoding="async" /></div><div class="iz-scrub__frame" data-act="03 Path" data-title="Walk the garden." data-body="Yürüyüş ekseni ve su."><img src="assets/img/p09-night.jpg" alt="" loading="lazy" decoding="async" /></div><div class="iz-scrub__frame" data-act="04 Settle" data-title="Lived green." data-body="Yerleşmiş, bakımlı peyzaj."><img src="assets/img/hero.jpg" alt="" loading="lazy" decoding="async" /></div></div>
+    <div class="iz-scrub__veil" aria-hidden="true"></div>
+    <div class="iz-scrub__ui">
+      <p class="iz-scrub__act" data-iz-act></p>
+      <h2 class="iz-scrub__title" data-iz-title></h2>
+      <p class="iz-scrub__body" data-iz-body></p>
+    </div>
+    <p class="iz-scrub__hint">Scroll</p>
+  </div>
+</section>
+
 
 <!-- ─────────────────────────  hero  ───────────────────────── -->
 <section class="hero" id="top">
@@ -472,5 +489,9 @@
   <link rel="stylesheet" href="../_shared/izden-mark.css" />
   <script src="../_shared/izden-mark.js" defer></script>
 <script src="/demos/_shared/izden-agency.js" defer></script>
+
+<script src="/demos/_shared/izden-image-scrub.js" defer></script>
+<script src="/demos/_shared/izden-afterglow.js" defer></script>
+<script src="/demos/_shared/izden-contact-rewrite.js" defer></script>
 </body>
 </html>

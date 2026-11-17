@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <title>LUMEN — Dress for the ascent</title>
-  <meta name="description" content="LUMEN — editorial womenswear for vertical cities. Collection, look, atelier." />
+  <title>LUMEN — Vertical-city womenswear</title>
+  <meta name="description" content="LUMEN — editorial womenswear shaped for vertical cities. Collection, atelier fittings, and altitude tailoring." />
   <meta name="theme-color" content="#0c0c0b" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@500;700;800&family=Manrope:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@500;600;700;800&family=Manrope:wght@400;500;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
   <link rel="stylesheet" href="/demos/_shared/izden-afterglow.css" />
   <link rel="stylesheet" href="/demos/_shared/izden-agency.css" />
@@ -21,8 +21,10 @@
     <a class="site-nav__brand" href="#top">LUMEN</a>
     <nav class="site-nav__links" aria-label="Primary">
       <a href="#collection">Collection</a>
-      <a href="#look">Look</a>
+      <a href="#look">Lookbook</a>
+      <a href="#craft">Craft</a>
       <a href="#atelier">Atelier</a>
+      <a href="#journal">Journal</a>
       <a href="#contact" class="site-nav__cta">Book fitting</a>
     </nav>
   </header>
@@ -30,89 +32,274 @@
   <aside class="nav-drawer" id="navDrawer" aria-hidden="true" data-open="false">
     <div class="nav-drawer__head">
       <strong>LUMEN</strong>
-      <button type="button" class="nav-drawer__close" id="navClose" aria-label="Close">×</button>
+      <button type="button" class="nav-drawer__close" id="navClose" aria-label="Close menu">×</button>
     </div>
     <nav class="nav-drawer__links" aria-label="Mobile">
       <a href="#collection">Collection</a>
-      <a href="#look">Look</a>
+      <a href="#look">Lookbook</a>
+      <a href="#craft">Craft</a>
+      <a href="#fabric">Fabric</a>
       <a href="#atelier">Atelier</a>
+      <a href="#journal">Journal</a>
+      <a href="#faq">FAQ</a>
       <a href="#contact">Book fitting</a>
     </nav>
   </aside>
 
   <main id="top">
+  <!-- 1 Hero -->
     <section class="hero" aria-labelledby="hero-title">
       <div class="hero__media ken-burns" aria-hidden="true">
-        <img src="https://images.unsplash.com/photo-1469334031210-e0fc212e504d?auto=format&amp;fit=crop&amp;w=1920&amp;q=80" alt="" width="1920" height="1280" fetchpriority="high" />
+        <img src="media/hero.jpg" alt="" width="1920" height="1280" fetchpriority="high" />
       </div>
       <div class="hero__veil"></div>
-      <div class="hero__floor" aria-hidden="true">
-        <span data-n="47">47</span>
-        <i></i><i></i><i></i>
-        <span data-n="48">48</span>
-      </div>
       <div class="hero__inner">
         <p class="hero__eyebrow iz-reveal">Winter 26 · Vertical edit</p>
         <h1 class="hero__wordmark iz-reveal" id="hero-title" data-d="1">LUMEN</h1>
-        <p class="hero__tag iz-reveal" data-d="2">Dress for the ascent.</p>
-        <a class="hero__btn iz-reveal" data-d="3" href="#collection">Explore collection</a>
+        <p class="hero__tag iz-reveal" data-d="2">Womenswear for cities that rise.</p>
+        <a class="hero__btn iz-reveal" data-d="3" href="#ascent">Begin ascent</a>
       </div>
     </section>
 
+  <!-- Floor ascent scrub (signature) -->
+    <section class="ascent" id="ascent" aria-label="Floor ascent">
+      <div class="ascent__pin">
+        <div class="ascent__stage">
+          <div class="ascent__rail" aria-hidden="true">
+            <span class="ascent__label">Floor</span>
+            <span class="ascent__num" id="floorNum" data-min="1" data-max="34">01</span>
+            <div class="ascent__ticks">
+              <i></i><i></i><i></i><i></i><i></i>
+            </div>
+          </div>
+          <div class="ascent__copy">
+            <p class="ascent__kicker iz-reveal">Ascent sequence</p>
+            <h2 class="ascent__title iz-reveal" data-d="1">From lobby<br />to skyline.</h2>
+            <p class="ascent__lede iz-reveal" data-d="2">Each collection is graded for elevator light, wind shear, and the quiet hour between floors. Scroll the ascent — watch the counter climb with you.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  <!-- 2 Marquee -->
     <div class="marquee" aria-hidden="true">
       <div class="marquee__track">
-        <span>Wool shear · Steel zip · Bone silk · Summit cut · Layered heat ·</span>
-        <span>Wool shear · Steel zip · Bone silk · Summit cut · Layered heat ·</span>
+        <span>Double-faced wool · Bone silk lining · Storm zip · Summit hem · Steel hardware · Layered heat ·</span>
+        <span>Double-faced wool · Bone silk lining · Storm zip · Summit hem · Steel hardware · Layered heat ·</span>
       </div>
     </div>
 
+  <!-- 3 Collection -->
     <section class="chapter" id="collection">
       <div class="chapter__grid">
         <div class="chapter__copy">
           <p class="chapter__kicker iz-reveal">01 — Collection</p>
           <h2 class="chapter__title iz-reveal" data-d="1">Altitude<br /><em>tailoring</em></h2>
-          <p class="chapter__lede iz-reveal" data-d="2">Structured coats that keep their line in wind tunnels and lobby light. Cut for motion, not pose.</p>
-          <p class="chapter__stat iz-reveal" data-d="3"><span class="counter" data-target="24">0</span> looks in this drop</p>
+          <p class="chapter__lede iz-reveal" data-d="2">Structured coats that hold their line in wind tunnels and lobby marble. Cut for motion between meetings and terraces — never for a single pose.</p>
+          <p class="chapter__meta iz-reveal" data-d="3"><span class="counter" data-target="18">0</span> pieces · Drop 03 live</p>
+          <a class="chapter__link iz-reveal" data-d="4" href="#look">View lookbook</a>
         </div>
         <figure class="chapter__frame iz-reveal" data-d="1">
-          <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&amp;fit=crop&amp;w=900&amp;q=80" alt="Editorial wool coat on neutral backdrop" width="900" height="1200" loading="lazy" />
+          <img src="media/look-01.jpg" alt="Structured coat in bone and steel palette" width="900" height="1200" loading="lazy" />
         </figure>
       </div>
     </section>
 
-    <section class="chapter chapter--invert" id="look">
-      <div class="chapter__grid">
-        <figure class="chapter__frame iz-reveal">
-          <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&amp;fit=crop&amp;w=900&amp;q=80" alt="Model in layered editorial look" width="900" height="1200" loading="lazy" />
+  <!-- 4 Lookbook grid -->
+    <section class="lookbook" id="look" aria-labelledby="look-title">
+      <header class="lookbook__head">
+        <p class="lookbook__kicker iz-reveal">02 — Lookbook</p>
+        <h2 class="lookbook__title iz-reveal" id="look-title" data-d="1">Vertical <em>looks</em></h2>
+      </header>
+      <div class="lookbook__grid">
+        <figure class="lookbook__cell lookbook__cell--tall iz-reveal">
+          <img src="media/look-01.jpg" alt="Look 01 — summit layering" width="800" height="1100" loading="lazy" />
+          <figcaption>01 · Summit layer</figcaption>
         </figure>
-        <div class="chapter__copy">
-          <p class="chapter__kicker iz-reveal">02 — Look</p>
-          <h2 class="chapter__title iz-reveal" data-d="1">One frame,<br />full climb.</h2>
-          <p class="chapter__lede iz-reveal" data-d="2">Bone under steel grey. A single palette from street to skyline terrace.</p>
-        </div>
+        <figure class="lookbook__cell iz-reveal" data-d="1">
+          <img src="media/look-02.jpg" alt="Look 02 — steel grey ensemble" width="800" height="1000" loading="lazy" />
+          <figcaption>02 · Lobby steel</figcaption>
+        </figure>
+        <figure class="lookbook__cell iz-reveal" data-d="2">
+          <img src="media/look-03.jpg" alt="Look 03 — evening ascent" width="800" height="1000" loading="lazy" />
+          <figcaption>03 · Night terrace</figcaption>
+        </figure>
       </div>
-    </section>
 
-    <section class="chapter" id="atelier">
-      <div class="chapter__grid">
-        <div class="chapter__copy">
-          <p class="chapter__kicker iz-reveal">03 — Atelier</p>
-          <h2 class="chapter__title iz-reveal" data-d="1">Fitted<br />in house.</h2>
-          <p class="chapter__lede iz-reveal" data-d="2">Nişantaşı atelier · by appointment. Measurements held for future ascents.</p>
-          <div class="chapter__cta iz-reveal" data-d="3">
-            <a href="#contact">Reserve a slot</a>
+  <!-- Horizontal look rail -->
+      <div class="look-rail" id="lookRail" aria-label="Scroll-linked look rail">
+        <p class="look-rail__hint iz-reveal">Scroll to travel the rail</p>
+        <div class="look-rail__viewport">
+          <div class="look-rail__track" id="lookTrack">
+            <figure class="look-rail__slide">
+              <img src="media/look-01.jpg" alt="" width="640" height="800" loading="lazy" />
+              <span>Motion cut</span>
+            </figure>
+            <figure class="look-rail__slide">
+              <img src="media/look-02.jpg" alt="" width="640" height="800" loading="lazy" />
+              <span>Wind seam</span>
+            </figure>
+            <figure class="look-rail__slide">
+              <img src="media/look-03.jpg" alt="" width="640" height="800" loading="lazy" />
+              <span>Bone underlayer</span>
+            </figure>
+            <figure class="look-rail__slide">
+              <img src="media/hero.jpg" alt="" width="640" height="800" loading="lazy" />
+              <span>City light</span>
+            </figure>
           </div>
         </div>
-        <figure class="chapter__frame iz-reveal" data-d="1">
-          <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&amp;fit=crop&amp;w=900&amp;q=80" alt="Tailoring hands at work" width="900" height="1200" loading="lazy" />
-        </figure>
       </div>
     </section>
 
+  <!-- 5 Process -->
+    <section class="craft" id="craft" aria-labelledby="craft-title">
+      <header class="craft__head">
+        <p class="craft__kicker iz-reveal">03 — Process</p>
+        <h2 class="craft__title iz-reveal" id="craft-title" data-d="1">Craft in three acts</h2>
+      </header>
+      <ol class="craft__steps">
+        <li class="craft__step iz-reveal">
+          <span class="craft__step-n">I</span>
+          <h3>Measure the climb</h3>
+          <p>Proportions mapped for your daily route — desk, terrace, transit. No generic block.</p>
+        </li>
+        <li class="craft__step iz-reveal" data-d="1">
+          <span class="craft__step-n">II</span>
+          <h3>Drape in bone</h3>
+          <p>Double canvas and silk underlay tested under LED and overcast. Color stays honest.</p>
+        </li>
+        <li class="craft__step iz-reveal" data-d="2">
+          <span class="craft__step-n">III</span>
+          <h3>Finish for shear</h3>
+          <p>Storm zips, bonded hems, and weighted pleats that stay quiet in an open atrium.</p>
+        </li>
+      </ol>
+    </section>
+
+  <!-- 6 Fabric -->
+    <section class="fabric" id="fabric" aria-labelledby="fabric-title">
+      <div class="fabric__grid">
+        <figure class="fabric__visual iz-reveal">
+          <img src="media/fabric.jpg" alt="Close weave of double-faced wool in bone and steel" width="1000" height="750" loading="lazy" />
+        </figure>
+        <div class="fabric__copy">
+          <p class="fabric__kicker iz-reveal">04 — Fabric</p>
+          <h2 class="fabric__title iz-reveal" id="fabric-title" data-d="1">Double face,<br />single calm.</h2>
+          <p class="fabric__lede iz-reveal" data-d="2">Milled wool with a bone face and steel reverse — reversible in the same garment without bulk. Sourced in small lots; each roll numbered for traceability.</p>
+          <ul class="fabric__specs iz-reveal" data-d="3">
+            <li>340 g/m² · bonded hem tape</li>
+            <li>OEKO-TEX · Istanbul finish house</li>
+            <li>Complimentary re-wax on Drop 03</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+  <!-- 7 Atelier -->
+    <section class="chapter chapter--atelier" id="atelier" aria-labelledby="atelier-title">
+      <div class="chapter__grid chapter__grid--reverse">
+        <figure class="chapter__frame chapter__frame--wide iz-reveal">
+          <img src="media/atelier.jpg" alt="LUMEN atelier fitting room in Nişantaşı" width="1200" height="800" loading="lazy" />
+        </figure>
+        <div class="chapter__copy">
+          <p class="chapter__kicker iz-reveal">05 — Atelier</p>
+          <h2 class="chapter__title iz-reveal" id="atelier-title" data-d="1">Fitted<br />in house.</h2>
+          <p class="chapter__lede iz-reveal" data-d="2">Nişantaşı studio · by appointment only. First fitting 90 minutes; alterations held on file for future drops.</p>
+          <div class="atelier__slots iz-reveal" data-d="3">
+            <p><strong>Tue–Thu</strong> · 11:00 – 19:00</p>
+            <p><strong>Sat</strong> · 10:00 – 16:00</p>
+          </div>
+          <a class="chapter__link iz-reveal" data-d="4" href="#contact">Reserve a slot</a>
+        </div>
+      </div>
+    </section>
+
+  <!-- 8 Journal -->
+    <section class="journal" id="journal" aria-labelledby="journal-title">
+      <header class="journal__head">
+        <p class="journal__kicker iz-reveal">06 — Journal</p>
+        <h2 class="journal__title iz-reveal" id="journal-title" data-d="1">Drops &amp; notes</h2>
+      </header>
+      <ul class="journal__list">
+        <li class="journal__item iz-reveal">
+          <time datetime="2026-02-12">12 Feb 2026</time>
+          <div>
+            <h3>Drop 03 — Wind Corridor</h3>
+            <p>Eighteen pieces, steel-forward. Fittings open through March.</p>
+          </div>
+          <a href="#contact" class="journal__cta">Request piece list</a>
+        </li>
+        <li class="journal__item iz-reveal" data-d="1">
+          <time datetime="2026-01-08">08 Jan 2026</time>
+          <div>
+            <h3>Atelier winter hours</h3>
+            <p>Extended Saturday slots for alteration returns on Drop 02.</p>
+          </div>
+          <a href="#atelier" class="journal__cta">Hours</a>
+        </li>
+        <li class="journal__item iz-reveal" data-d="2">
+          <time datetime="2025-11-20">20 Nov 2025</time>
+          <div>
+            <h3>Fabric lot 47-B</h3>
+            <p>New bone face wool — limited to twelve coats. Waitlist via email.</p>
+          </div>
+          <a href="mailto:info@izdencreative.com" class="journal__cta">Join waitlist</a>
+        </li>
+      </ul>
+    </section>
+
+  <!-- 9 FAQ -->
+    <section class="faq" id="faq" aria-labelledby="faq-title">
+      <header class="faq__head">
+        <p class="faq__kicker iz-reveal">07 — FAQ</p>
+        <h2 class="faq__title iz-reveal" id="faq-title" data-d="1">Before you book</h2>
+      </header>
+      <div class="faq__list">
+        <article class="faq__item iz-reveal">
+          <button type="button" class="faq__q" aria-expanded="false">
+            How do I book an atelier fitting?
+            <span class="faq__icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq__a" hidden>
+            <p>Email or call with your preferred date. We confirm within one business day and send a brief intake form for your daily routes and layering preferences.</p>
+          </div>
+        </article>
+        <article class="faq__item iz-reveal" data-d="1">
+          <button type="button" class="faq__q" aria-expanded="false">
+            Do you ship internationally?
+            <span class="faq__icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq__a" hidden>
+            <p>Yes — insured courier from Istanbul. Duties vary by destination; we provide HS codes and declared value on request.</p>
+          </div>
+        </article>
+        <article class="faq__item iz-reveal" data-d="2">
+          <button type="button" class="faq__q" aria-expanded="false">
+            What is your alteration policy?
+            <span class="faq__icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq__a" hidden>
+            <p>First hem and sleeve adjustment within 60 days is complimentary at the atelier. Complex structural changes are quoted per garment.</p>
+          </div>
+        </article>
+        <article class="faq__item iz-reveal" data-d="3">
+          <button type="button" class="faq__q" aria-expanded="false">
+            Is LUMEN ready-to-wear or made-to-measure?
+            <span class="faq__icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq__a" hidden>
+            <p>Both. Drop pieces ship in standard sizes; atelier appointments add individual adjustments and optional MTM for coats and tailoring.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+  <!-- 10 Contact -->
     <section class="contact" id="contact">
       <div class="contact__inner iz-reveal">
         <h2>Studio</h2>
-        <p>LUMEN demo — crafted with İzden Creative.</p>
+        <p class="contact__brand">LUMEN — demo environment by İzden Creative.</p>
         <ul class="contact__list">
           <li><a href="mailto:info@izdencreative.com">info@izdencreative.com</a></li>
           <li><a href="tel:+902120000000">+90 212 000 00 00</a></li>
@@ -123,8 +310,9 @@
     </section>
   </main>
 
-  <script src="main.js"></script>
-      <script src="/demos/_shared/izden-afterglow.js"></script>
+  <script src="/demos/_shared/izden-afterglow.js"></script>
   <script src="/demos/_shared/izden-agency.js"></script>
+  <script src="main.js"></script>
+<script src="/demos/_shared/izden-contact-rewrite.js" defer></script>
 </body>
 </html>

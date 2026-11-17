@@ -308,7 +308,7 @@ export const SITES: Site[] = [
   {
     slug: "lumen",
     name: "LUMEN",
-    tagline: "Streetwear editorial — kısa sayfa, bölüm reveal’ları.",
+    tagline: "LUMEN — katlar, lookbook, atölye; sticky floor scrub.",
     category: "Moda · Motion",
     accent: "#c5c8ce",
     preview: "/previews/lumen.jpg",
@@ -321,7 +321,7 @@ export const SITES: Site[] = [
   {
     slug: "kor",
     name: "KOR",
-    tagline: "Ateş mutfağı — scrollsüz hero + animasyonlu tabaklar.",
+    tagline: "KOR — ateş hero, menü tahtası, rezervasyon; video loop.",
     category: "Yeme · Motion",
     accent: "#E85D04",
     preview: "/previews/kor.jpg",
@@ -334,7 +334,7 @@ export const SITES: Site[] = [
   {
     slug: "noir",
     name: "NOIR",
-    tagline: "After dark fragrance — yumuşak panel geçişleri.",
+    tagline: "NOIR — notes/ritual/collection; bottle scrub + panel fade.",
     category: "Parfüm · Motion",
     accent: "#9F1239",
     preview: "/previews/noir.jpg",

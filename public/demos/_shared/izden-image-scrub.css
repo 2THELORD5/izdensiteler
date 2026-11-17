@@ -1,0 +1,107 @@
+/* Lightweight sticky image-chapter scrub — uses existing site stills (no Kie) */
+.iz-scrub {
+  position: relative;
+  height: 220vh;
+  background: #0a0a0a;
+  color: #f4f0ea;
+}
+.iz-scrub__pin {
+  position: sticky;
+  top: 0;
+  height: 100svh;
+  height: 100dvh;
+  overflow: hidden;
+  display: grid;
+  place-items: center;
+}
+.iz-scrub__stage {
+  position: absolute;
+  inset: 0;
+}
+.iz-scrub__frame {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: none;
+}
+.iz-scrub__frame.is-on {
+  opacity: 1;
+}
+.iz-scrub__frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.iz-scrub__veil {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.55) 55%, rgba(0, 0, 0, 0.75));
+  pointer-events: none;
+}
+.iz-scrub__ui {
+  position: relative;
+  z-index: 2;
+  width: min(920px, calc(100% - 2.5rem));
+  padding: 0 0 12svh;
+  align-self: end;
+  justify-self: start;
+  margin-left: clamp(1.25rem, 4vw, 3rem);
+}
+.iz-scrub__act {
+  margin: 0 0 0.55rem;
+  font-size: 0.68rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  opacity: 0.65;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+.iz-scrub__title {
+  margin: 0 0 0.55rem;
+  font-size: clamp(2rem, 6vw, 3.8rem);
+  line-height: 0.95;
+  letter-spacing: -0.03em;
+  max-width: 12ch;
+}
+.iz-scrub__body {
+  margin: 0;
+  max-width: 34rem;
+  font-size: clamp(0.95rem, 1.6vw, 1.1rem);
+  line-height: 1.5;
+  opacity: 0.82;
+}
+.iz-scrub__hint {
+  position: absolute;
+  right: clamp(1.25rem, 4vw, 3rem);
+  bottom: max(1.25rem, env(safe-area-inset-bottom));
+  z-index: 2;
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  opacity: 0.55;
+}
+@media (max-width: 720px) {
+  .iz-scrub {
+    height: 170vh;
+  }
+  .iz-scrub__ui {
+    padding-bottom: 18svh;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .iz-scrub {
+    height: auto;
+  }
+  .iz-scrub__pin {
+    position: relative;
+    height: auto;
+    min-height: 70svh;
+  }
+  .iz-scrub__frame {
+    position: absolute;
+    opacity: 0;
+  }
+  .iz-scrub__frame.is-on {
+    opacity: 1;
+  }
+}

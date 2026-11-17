@@ -40,6 +40,9 @@
   document.documentElement.classList.add('js');
 </script>
 <link rel="stylesheet" href="/demos/_shared/izden-agency.css" />
+
+<link rel="stylesheet" href="/demos/_shared/izden-image-scrub.css" />
+<link rel="stylesheet" href="/demos/_shared/izden-afterglow.css" />
 </head>
 
 <body>
@@ -89,6 +92,20 @@
 </header>
 
 <main>
+
+<section class="iz-scrub" data-iz-scrub aria-label="Scroll chapters">
+  <div class="iz-scrub__pin">
+    <div class="iz-scrub__stage"><div class="iz-scrub__frame" data-act="01 Arrival" data-title="Light first." data-body="Oda, oran ve sessizlik — giriş hikâyesi."><img src="assets/opt/01-hero-living-room.jpg" alt="" loading="eager" decoding="async" /></div><div class="iz-scrub__frame" data-act="02 Plan" data-title="Space composed." data-body="Her duvar bir niyet; her boşluk bir nefes."><img src="assets/opt/02-service-interior-design.jpg" alt="" loading="lazy" decoding="async" /></div><div class="iz-scrub__frame" data-act="03 Material" data-title="Hand & grain." data-body="Dokunulan yüzeyler, seçilmiş taş ve ahşap."><img src="assets/opt/05-about-atmosphere.jpg" alt="" loading="lazy" decoding="async" /></div><div class="iz-scrub__frame" data-act="04 Atmosphere" data-title="Evening hold." data-body="Akşam ışığında tamamlanan iç dünya."><img src="assets/opt/08-portfolio-sauna-a.jpg" alt="" loading="lazy" decoding="async" /></div><div class="iz-scrub__frame" data-act="05 Handover" data-title="Turnkey calm." data-body="Anahtar teslim — sakin, ölçülü, bitmiş."><img src="assets/opt/03-service-turnkey-renovation.jpg" alt="" loading="lazy" decoding="async" /></div></div>
+    <div class="iz-scrub__veil" aria-hidden="true"></div>
+    <div class="iz-scrub__ui">
+      <p class="iz-scrub__act" data-iz-act></p>
+      <h2 class="iz-scrub__title" data-iz-title></h2>
+      <p class="iz-scrub__body" data-iz-body></p>
+    </div>
+    <p class="iz-scrub__hint">Scroll</p>
+  </div>
+</section>
+
   <!-- ============================== HERO ============================== -->
   <section id="home" class="hero">
     <div class="hero__media">
@@ -395,5 +412,9 @@
   <link rel="stylesheet" href="../_shared/izden-mark.css" />
   <script src="../_shared/izden-mark.js" defer></script>
 <script src="/demos/_shared/izden-agency.js" defer></script>
+
+<script src="/demos/_shared/izden-image-scrub.js" defer></script>
+<script src="/demos/_shared/izden-afterglow.js" defer></script>
+<script src="/demos/_shared/izden-contact-rewrite.js" defer></script>
 </body>
 </html>

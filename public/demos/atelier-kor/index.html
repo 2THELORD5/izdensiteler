@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <title>KOR — Built by fire</title>
-  <meta name="description" content="KOR — kömür ateşi, tabak disiplini, gece servisi. Demo mutfak markası." />
+  <title>KOR — Açık ateş mutfağı</title>
+  <meta name="description" content="KOR — Karaköy’de kömür ateşi, tabak disiplini ve gece servisi. Open fire kitchen demo markası." />
   <meta name="theme-color" content="#0a0807" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;1,9..40,400&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
   <link rel="stylesheet" href="/demos/_shared/izden-afterglow.css" />
   <link rel="stylesheet" href="/demos/_shared/izden-agency.css" />
@@ -20,10 +20,11 @@
     </button>
     <a class="site-nav__brand" href="#top">KOR</a>
     <nav class="site-nav__links" aria-label="Ana menü">
-      <a href="#fire">Fire</a>
-      <a href="#plate">Plate</a>
-      <a href="#night">Night</a>
-      <a href="#contact" class="site-nav__cta">Rezervasyon</a>
+      <a href="#manifesto">Manifesto</a>
+      <a href="#fire">Ateş</a>
+      <a href="#menu">Menü</a>
+      <a href="#galeri">Atmosfer</a>
+      <a href="#rezervasyon" class="site-nav__cta btn-ember">Rezervasyon</a>
     </nav>
   </header>
   <div class="nav-drawer-backdrop" id="navBackdrop" hidden></div>
@@ -33,84 +34,288 @@
       <button type="button" class="nav-drawer__close" id="navClose" aria-label="Kapat">×</button>
     </div>
     <nav class="nav-drawer__links" aria-label="Mobil menü">
-      <a href="#fire">Fire</a>
-      <a href="#plate">Plate</a>
-      <a href="#night">Night</a>
-      <a href="#contact">Rezervasyon</a>
+      <a href="#manifesto">Manifesto</a>
+      <a href="#fire">Fire / Plate / Night</a>
+      <a href="#menu">Menü tahtası</a>
+      <a href="#chef">Şef kurulu</a>
+      <a href="#galeri">Atmosfer</a>
+      <a href="#rezervasyon">Rezervasyon</a>
+      <a href="#saatler">Saatler &amp; konum</a>
+      <a href="#sss">SSS</a>
+      <a href="#iletisim">İletişim</a>
     </nav>
   </aside>
 
   <main id="top">
     <section class="hero" aria-labelledby="hero-title">
-      <video class="hero__video" autoplay muted loop playsinline poster="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&amp;fit=crop&amp;w=1200&amp;q=80">
-        <source src="https://videos.pexels.com/video-files/3765350/3765350-sd_640_360_30fps.mp4" type="video/mp4" />
-      </video>
+      <div class="hero__media" aria-hidden="true">
+        <img class="hero__poster" src="media/hero.jpg" alt="" width="1920" height="1080" fetchpriority="high" />
+        <video class="hero__video" autoplay muted loop playsinline poster="media/hero.jpg">
+          <source src="media/fire-loop.mp4" type="video/mp4" />
+        </video>
+      </div>
       <div class="hero__shade"></div>
       <div class="hero__content">
-        <p class="hero__eyebrow iz-reveal">Karaköy · open fire</p>
-        <h1 class="hero__title iz-reveal" id="hero-title" data-d="1">BUILT BY FIRE.</h1>
-        <p class="hero__lede iz-reveal" data-d="2">Kömür, demir ve gece. Tabaklar ateşin ritmine göre gelir — menü değil, seans.</p>
-        <a class="hero__btn iz-reveal" data-d="3" href="#plate">Menüye in</a>
+        <p class="hero__eyebrow iz-reveal">Karaköy · open fire kitchen</p>
+        <h1 class="hero__title iz-reveal" id="hero-title" data-d="1">ATEŞE KURULU.</h1>
+        <p class="hero__lede iz-reveal" data-d="2">Kömür, demir ve gece ritmi. Menü değil seans — her tabak ateşin anına göre servis edilir.</p>
+        <div class="hero__actions iz-reveal" data-d="3">
+          <a class="hero__btn btn-ember" href="#rezervasyon">Masa ayırt</a>
+          <a class="hero__link" href="#menu">Gece menüsü</a>
+        </div>
       </div>
     </section>
 
-    <section class="tabs" id="fire" data-chapter-section>
-      <div class="tabs__rail" role="tablist" aria-label="Bölümler">
-        <button type="button" class="tabs__btn is-active" role="tab" aria-selected="true" data-panel="fire">Fire</button>
-        <button type="button" class="tabs__btn" role="tab" aria-selected="false" data-panel="plate">Plate</button>
-        <button type="button" class="tabs__btn" role="tab" aria-selected="false" data-panel="night">Night</button>
-      </div>
-      <div class="tabs__panels">
-        <article class="tabs__panel is-visible iz-reveal" id="panel-fire" data-panel-id="fire">
-          <div class="tabs__grid">
-            <figure class="tabs__visual">
-              <img src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&amp;fit=crop&amp;w=1000&amp;q=80" alt="Alevde ızgara" width="1000" height="700" loading="lazy" />
-            </figure>
-            <div>
-              <h2>Fire</h2>
-              <p>Odun kömürü 480°C. Yağ dumanı değil, duman imzası. Her servis öncesi ısı yeniden ölçülür.</p>
-            </div>
-          </div>
-        </article>
-        <article class="tabs__panel" id="panel-plate" data-panel-id="plate" hidden>
-          <div class="tabs__grid">
-            <figure class="tabs__visual">
-              <img src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&amp;fit=crop&amp;w=1000&amp;q=80" alt="Kömürde pişmiş tabak" width="1000" height="700" loading="lazy" />
-            </figure>
-            <div>
-              <h2>Plate</h2>
-              <p>Üç tabaklık gece seti: kök, protein, kül tuz. Sunum taş tahtada — çatal opsiyonel.</p>
-            </div>
-          </div>
-        </article>
-        <article class="tabs__panel" id="panel-night" data-panel-id="night" hidden>
-          <div class="tabs__grid">
-            <figure class="tabs__visual">
-              <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&amp;fit=crop&amp;w=1000&amp;q=80" alt="Gece servisi salonu" width="1000" height="700" loading="lazy" />
-            </figure>
-            <div>
-              <h2>Night</h2>
-              <p>20:30 sonrası: loş amber, tek servis akışı. Masa başına sekiz koltuk — sessiz müzik yok.</p>
-            </div>
-          </div>
-        </article>
+    <section class="manifesto" id="manifesto" aria-labelledby="manifesto-title">
+      <div class="manifesto__grid">
+        <div class="manifesto__copy">
+          <p class="section-kicker iz-reveal">Manifesto</p>
+          <h2 class="manifesto__title iz-reveal" id="manifesto-title" data-d="1">Ateş, ölçülen<br />bir dil.</h2>
+          <p class="manifesto__lede iz-reveal" data-d="2">KOR’da ocak tek merkezdir. Odun kömürü, kül tuz ve sabırlı pişirme — sos değil, duman imzası konuşur.</p>
+          <ul class="manifesto__points iz-reveal" data-d="3">
+            <li>480°C ölçülü ızgara zonları</li>
+            <li>Tahta servis · minimal müdahale</li>
+            <li>Gece seansı: 20:30 – 01:00</li>
+          </ul>
+          <p class="manifesto__stat iz-reveal" data-d="4"><span class="counter" data-target="12">0</span> yıllık kömür disiplini (demo)</p>
+        </div>
+        <figure class="manifesto__frame iz-reveal" data-d="1">
+          <img src="media/grill.jpg" alt="Kömür ızgarasında alev ve et" width="900" height="1200" loading="lazy" />
+        </figure>
       </div>
     </section>
 
-    <section class="band" id="signature" aria-labelledby="band-title">
-      <p class="band__kicker iz-reveal">Tonight</p>
-      <h2 class="band__title iz-reveal" id="band-title" data-d="1">Chef’s ember board</h2>
-      <p class="band__lede iz-reveal" data-d="2">Kül tuzlu kök · odun kuzu · gece hunisi</p>
-      <div class="band__numbers iz-reveal" data-d="3">
-        <div><span class="counter" data-target="8">0</span><small>kişi / masa</small></div>
-        <div><span class="counter" data-target="3">0</span><small>tabak set</small></div>
+    <section class="craft" id="fire" aria-labelledby="craft-heading" data-stack-section>
+      <header class="craft__head iz-reveal">
+        <p class="section-kicker">Fire craft</p>
+        <h2 class="craft__title" id="craft-heading">Üç bölüm, tek ocak</h2>
+        <p class="craft__lede">Fire · Plate · Night — sekmeler arası yumuşak geçiş veya menüden doğrudan atlama.</p>
+      </header>
+      <div class="tabs" data-chapter-section>
+        <div class="tabs__rail" role="tablist" aria-label="Fire, Plate, Night">
+          <button type="button" class="tabs__btn is-active" role="tab" id="tab-fire" aria-selected="true" aria-controls="panel-fire" data-panel="fire">Fire</button>
+          <button type="button" class="tabs__btn" role="tab" id="tab-plate" aria-selected="false" aria-controls="panel-plate" data-panel="plate">Plate</button>
+          <button type="button" class="tabs__btn" role="tab" id="tab-night" aria-selected="false" aria-controls="panel-night" data-panel="night">Night</button>
+        </div>
+        <div class="tabs__panels">
+          <article class="tabs__panel is-active" id="panel-fire" role="tabpanel" aria-labelledby="tab-fire" data-panel-id="fire">
+            <div class="tabs__grid">
+              <figure class="tabs__visual">
+                <img src="media/grill.jpg" alt="Alevde ızgara ve kömür" width="1000" height="700" loading="lazy" />
+              </figure>
+              <div class="tabs__copy">
+                <h3>Fire</h3>
+                <p>Odun kömürü iki zon: sert alev ve kül yatağı. Proteinler önce yüksek, sonra düşük ısıda dinlenir — kırılma yok, sadece duman tatlılığı.</p>
+                <dl class="tabs__spec">
+                  <div><dt>İzgara</dt><dd>Demir, 480°C</dd></div>
+                  <div><dt>Kömür</dt><dd>Meşe + zeytin çırpı</dd></div>
+                </dl>
+              </div>
+            </div>
+          </article>
+          <article class="tabs__panel" id="panel-plate" role="tabpanel" aria-labelledby="tab-plate" data-panel-id="plate" hidden>
+            <div class="tabs__grid">
+              <figure class="tabs__visual">
+                <img src="media/plate.jpg" alt="Kömürde pişmiş tabak sunumu" width="1000" height="700" loading="lazy" />
+              </figure>
+              <div class="tabs__copy">
+                <h3>Plate</h3>
+                <p>Üçlü gece seti: kök, protein, kül tuz. Sunum çam tahtada — çatal opsiyonel, bıçak zorunlu.</p>
+                <dl class="tabs__spec">
+                  <div><dt>Set</dt><dd>3 tabak / kişi</dd></div>
+                  <div><dt>Aralık</dt><dd>22 dk servis ritmi</dd></div>
+                </dl>
+              </div>
+            </div>
+          </article>
+          <article class="tabs__panel" id="panel-night" role="tabpanel" aria-labelledby="tab-night" data-panel-id="night" hidden>
+            <div class="tabs__grid">
+              <figure class="tabs__visual">
+                <img src="media/night.jpg" alt="Gece servisi ve loş salon" width="1000" height="700" loading="lazy" />
+              </figure>
+              <div class="tabs__copy">
+                <h3>Night</h3>
+                <p>20:30 sonrası tek akış: loş amber, masa başına sekiz koltuk. Arka planda müzik yok — sadece ocak ve çatal sesi.</p>
+                <dl class="tabs__spec">
+                  <div><dt>Kapasite</dt><dd>32 koltuk</dd></div>
+                  <div><dt>Son servis</dt><dd>00:15</dd></div>
+                </dl>
+              </div>
+            </div>
+          </article>
+        </div>
       </div>
     </section>
 
-    <section class="contact" id="contact">
+    <section class="menu-board" id="menu" aria-labelledby="menu-title">
+      <div class="menu-board__inner">
+        <div class="menu-board__intro iz-reveal">
+          <p class="section-kicker">Menü tahtası</p>
+          <h2 class="menu-board__title" id="menu-title">Bu gece tahtada</h2>
+          <p class="menu-board__note">Fiyatlar demo — mevsime göre değişir. Tam menü rezervasyon onayı ile paylaşılır.</p>
+        </div>
+        <div class="menu-board__layout">
+          <figure class="menu-board__visual iz-reveal" data-d="1">
+            <img src="media/board.jpg" alt="Şef menü tahtası" width="800" height="1000" loading="lazy" />
+          </figure>
+          <ul class="menu-board__list iz-reveal" data-d="2">
+            <li><span class="dish">Kül tuzlu kök sebze</span><span class="price">₺320</span></li>
+            <li><span class="dish">Odun kuzu pirzola</span><span class="price">₺890</span></li>
+            <li><span class="dish">Kömür bavette · 48 saat</span><span class="price">₺780</span></li>
+            <li><span class="dish">Alev alabalık · pancar küllü</span><span class="price">₺650</span></li>
+            <li><span class="dish">Ember board (2 kişi)</span><span class="price">₺1.450</span></li>
+            <li><span class="dish">Gece hunisi · tatlı</span><span class="price">₺380</span></li>
+            <li><span class="dish">Közlenmiş ekmek · tuz yağı</span><span class="price">₺180</span></li>
+            <li><span class="dish">KOR kokteyl · ahşap duman</span><span class="price">₺420</span></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="chef" id="chef" aria-labelledby="chef-title">
+      <div class="chef__grid">
+        <figure class="chef__visual iz-reveal">
+          <img src="media/plate.jpg" alt="Şef imzası tabak" width="700" height="900" loading="lazy" />
+        </figure>
+        <div class="chef__copy">
+          <p class="section-kicker iz-reveal">Chef board</p>
+          <h2 class="chef__title iz-reveal" id="chef-title" data-d="1">Şefin ember kurulu</h2>
+          <p class="chef__lede iz-reveal" data-d="2">Bu akşam: kül tuzlu kök · odun kuzu · gece hunisi. Tahta her servisten önce yeniden yazılır.</p>
+          <div class="chef__numbers iz-reveal" data-d="3">
+            <div>
+              <span class="counter" data-target="8">0</span>
+              <small>kişi / masa</small>
+            </div>
+            <div>
+              <span class="counter" data-target="3">0</span>
+              <small>tabak seti</small>
+            </div>
+            <div>
+              <span class="counter" data-target="480">0</span>
+              <small>°C ızgara</small>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="gallery" id="galeri" aria-labelledby="gallery-title">
+      <header class="gallery__head iz-reveal">
+        <p class="section-kicker">Atmosfer</p>
+        <h2 class="gallery__title" id="gallery-title">Gece, yan, tahta</h2>
+      </header>
+      <div class="gallery__mosaic">
+        <figure class="gallery__cell gallery__cell--wide iz-reveal">
+          <img src="media/night.jpg" alt="Salon gece aydınlatması" width="1200" height="800" loading="lazy" />
+          <figcaption>Gece servisi</figcaption>
+        </figure>
+        <figure class="gallery__cell iz-reveal" data-d="1">
+          <img src="media/sides.jpg" alt="Yan ürünler ve garnitür" width="600" height="800" loading="lazy" />
+          <figcaption>Yan ritüel</figcaption>
+        </figure>
+        <figure class="gallery__cell iz-reveal" data-d="2">
+          <img src="media/board.jpg" alt="Menü tahtası detay" width="600" height="800" loading="lazy" />
+          <figcaption>Tahta imza</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="reserve" id="rezervasyon" aria-labelledby="reserve-title">
+      <div class="reserve__grid">
+        <div class="reserve__intro iz-reveal">
+          <p class="section-kicker">Rezervasyon</p>
+          <h2 class="reserve__title" id="reserve-title">Masa isteği</h2>
+          <p class="reserve__note">Demo form — gönderim işlem yapmaz. Gerçek rezervasyon için iletişim bölümünü kullanın.</p>
+        </div>
+        <form class="reserve__form iz-reveal" data-d="1" id="reserveForm" novalidate>
+          <label>
+            <span>Ad soyad</span>
+            <input type="text" name="name" autocomplete="name" required placeholder="Adınız" />
+          </label>
+          <label>
+            <span>E-posta</span>
+            <input type="email" name="email" autocomplete="email" required placeholder="ornek@mail.com" />
+          </label>
+          <label>
+            <span>Tarih</span>
+            <input type="date" name="date" required />
+          </label>
+          <label>
+            <span>Kişi sayısı</span>
+            <select name="guests" required>
+              <option value="">Seçin</option>
+              <option value="2">2</option>
+              <option value="4">4</option>
+              <option value="6">6</option>
+              <option value="8">8</option>
+            </select>
+          </label>
+          <label class="reserve__full">
+            <span>Not</span>
+            <textarea name="note" rows="3" placeholder="Alerji, kutlama, geç saat…"></textarea>
+          </label>
+          <button type="submit" class="reserve__submit btn-ember">Talep gönder</button>
+          <p class="reserve__status" id="reserveStatus" role="status" hidden></p>
+        </form>
+      </div>
+    </section>
+
+    <section class="hours" id="saatler" aria-labelledby="hours-title">
+      <div class="hours__grid">
+        <div class="hours__copy iz-reveal">
+          <p class="section-kicker">Saatler &amp; konum</p>
+          <h2 class="hours__title" id="hours-title">Karaköy limanı</h2>
+          <address class="hours__address">
+            Kemankes Karamustafa Paşa Mah.<br />
+            Mumhane Cd. No: 42, Beyoğlu / İstanbul
+          </address>
+          <table class="hours__table">
+            <tbody>
+              <tr><th>Salı – Perşembe</th><td>18:00 – 23:30</td></tr>
+              <tr><th>Cuma – Cumartesi</th><td>18:00 – 01:00</td></tr>
+              <tr><th>Pazar</th><td>18:00 – 22:00</td></tr>
+              <tr><th>Pazartesi</th><td>Kapalı</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="hours__map iz-reveal" data-d="1" role="img" aria-label="Karaköy bölgesi şematik harita — demo">
+          <span class="hours__pin">KOR</span>
+          <span class="hours__river">Haliç</span>
+          <span class="hours__street">Mumhane Cd.</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="faq" id="sss" aria-labelledby="faq-title">
+      <div class="faq__inner">
+        <header class="faq__head iz-reveal">
+          <p class="section-kicker">SSS</p>
+          <h2 class="faq__title" id="faq-title">Sık sorulanlar</h2>
+        </header>
+        <details class="faq__item iz-reveal">
+          <summary>Dress code var mı?</summary>
+          <p>Smart casual yeterli. Aşırı parfüm ve flaş fotoğraf servis sırasında kabul edilmez.</p>
+        </details>
+        <details class="faq__item iz-reveal" data-d="1">
+          <summary>Çocuk / bebek koltuğu?</summary>
+          <p>Gece seansı yetişkin odaklıdır; 12 yaş altı için öğle provası randevusu önerilir (demo).</p>
+        </details>
+        <details class="faq__item iz-reveal" data-d="2">
+          <summary>Vejetaryen seçenek?</summary>
+          <p>Kök tabakları ve ember sebze tahtası her akşam mevcut. Rezervasyon notuna yazın.</p>
+        </details>
+        <details class="faq__item iz-reveal" data-d="3">
+          <summary>İptal politikası?</summary>
+          <p>Demo: 24 saat öncesine kadar ücretsiz iptal. Geç iptallerde kişi başı ₺200 kesinti.</p>
+        </details>
+      </div>
+    </section>
+
+    <section class="contact" id="iletisim" aria-labelledby="contact-title">
       <div class="contact__inner iz-reveal">
-        <h2>Rezervasyon</h2>
-        <p>KOR demo — İzden Creative ile hazırlandı.</p>
+        <p class="section-kicker">İletişim</p>
+        <h2 class="contact__title" id="contact-title">İZDEN Creative</h2>
+        <p class="contact__lede">KOR marka demosu — tasarım ve geliştirme İZDEN tarafından.</p>
         <ul class="contact__list">
           <li><a href="mailto:info@izdencreative.com">info@izdencreative.com</a></li>
           <li><a href="tel:+902120000000">+90 212 000 00 00</a></li>
@@ -122,7 +327,8 @@
   </main>
 
   <script src="main.js"></script>
-      <script src="/demos/_shared/izden-afterglow.js"></script>
+  <script src="/demos/_shared/izden-afterglow.js"></script>
   <script src="/demos/_shared/izden-agency.js"></script>
+<script src="/demos/_shared/izden-contact-rewrite.js" defer></script>
 </body>
 </html>

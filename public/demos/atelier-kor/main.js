@@ -24,6 +24,12 @@
   });
 
   const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const video = document.querySelector(".hero__video");
+  if (reduced && video) {
+    video.pause();
+    video.removeAttribute("autoplay");
+  }
+
   const buttons = document.querySelectorAll(".tabs__btn");
   const panels = document.querySelectorAll(".tabs__panel");
 
@@ -35,8 +41,8 @@
     });
     panels.forEach((panel) => {
       const match = panel.getAttribute("data-panel-id") === id;
+      panel.classList.toggle("is-active", match);
       panel.hidden = !match;
-      panel.classList.toggle("is-visible", match);
     });
   };
 
@@ -44,35 +50,38 @@
     btn.addEventListener("click", () => showPanel(btn.getAttribute("data-panel")));
   });
 
-  const chapterIds = ["fire", "plate", "night"];
+  const chapterToPanel = { fire: "fire", plate: "plate", night: "night" };
+
   document.querySelectorAll('a[href^="#"]').forEach((link) => {
-    const id = link.getAttribute("href")?.slice(1);
-    if (!id || !chapterIds.includes(id)) return;
+    const raw = link.getAttribute("href")?.slice(1);
+    if (!raw || !(raw in chapterToPanel)) return;
     link.addEventListener("click", (e) => {
       e.preventDefault();
-      showPanel(id);
+      showPanel(chapterToPanel[raw]);
       document.getElementById("fire")?.scrollIntoView({ behavior: reduced ? "auto" : "smooth" });
     });
   });
 
   const runCounter = (el) => {
+    if (el.dataset.done === "1") return;
     const target = Number(el.getAttribute("data-target")) || 0;
+    el.dataset.done = "1";
     if (reduced) {
       el.textContent = String(target);
       return;
     }
     const start = performance.now();
-    const duration = 1200;
+    const duration = target > 100 ? 1600 : 1200;
     const tick = (now) => {
       const t = Math.min(1, (now - start) / duration);
-      el.textContent = String(Math.round(t * target));
+      const eased = 1 - (1 - t) ** 3;
+      el.textContent = String(Math.round(eased * target));
       if (t < 1) requestAnimationFrame(tick);
     };
     requestAnimationFrame(tick);
   };
 
-  const counters = document.querySelectorAll(".counter");
-  if (counters.length) {
+  document.querySelectorAll(".counter").forEach((counter) => {
     const io = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -83,6 +92,21 @@
       },
       { threshold: 0.35 }
     );
-    counters.forEach((c) => io.observe(c));
-  }
+    io.observe(counter);
+  });
+
+  const form = document.getElementById("reserveForm");
+  const status = document.getElementById("reserveStatus");
+  form?.addEventListener("submit", (e) => {
+    e.preventDefault();
+    if (!form.checkValidity()) {
+      form.reportValidity();
+      return;
+    }
+    if (status) {
+      status.hidden = false;
+      status.textContent = "Teşekkürler — demo talebiniz alındı. Ekibimiz 24 saat içinde dönüş yapacak.";
+    }
+    form.reset();
+  });
 })();

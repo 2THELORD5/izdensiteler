@@ -14,6 +14,9 @@
 <link rel="preload" as="image" href="assets/01-cover-hero-building-ground.png" fetchpriority="high" />
 <link rel="stylesheet" href="css/style.css?v=8" />
 <link rel="stylesheet" href="/demos/_shared/izden-agency.css" />
+
+<link rel="stylesheet" href="/demos/_shared/izden-image-scrub.css" />
+<link rel="stylesheet" href="/demos/_shared/izden-afterglow.css" />
 </head>
 <body>
 
@@ -44,6 +47,20 @@
 </nav>
 
 <main>
+
+<section class="iz-scrub" data-iz-scrub aria-label="Scroll chapters">
+  <div class="iz-scrub__pin">
+    <div class="iz-scrub__stage"><div class="iz-scrub__frame" data-act="01 Chapter" data-title="Editorial space." data-body="Sayfa gibi mekân."><img src="assets/01-cover-hero-building-ground.png" alt="" loading="eager" decoding="async" /></div><div class="iz-scrub__frame" data-act="02 Running" data-title="Head & margin." data-body="Tipografi ve boşluk."><img src="assets/01-cover-hero-sky.png" alt="" loading="lazy" decoding="async" /></div><div class="iz-scrub__frame" data-act="03 Spread" data-title="Project spread." data-body="İşler yayılır."><img src="assets/15-start-a-new-chapter.jpg" alt="" loading="lazy" decoding="async" /></div><div class="iz-scrub__frame" data-act="04 Close" data-title="Colophon." data-body="Kapanış notu."><img src="assets/extra-02-interior-mood.jpg" alt="" loading="lazy" decoding="async" /></div></div>
+    <div class="iz-scrub__veil" aria-hidden="true"></div>
+    <div class="iz-scrub__ui">
+      <p class="iz-scrub__act" data-iz-act></p>
+      <h2 class="iz-scrub__title" data-iz-title></h2>
+      <p class="iz-scrub__body" data-iz-body></p>
+    </div>
+    <p class="iz-scrub__hint">Scroll</p>
+  </div>
+</section>
+
 
   <!-- ==================== 01 · HERO ==================== -->
   <section class="hero" id="home" data-chapter="Cover">
@@ -475,5 +492,9 @@
   <link rel="stylesheet" href="../_shared/izden-mark.css" />
   <script src="../_shared/izden-mark.js" defer></script>
 <script src="/demos/_shared/izden-agency.js" defer></script>
+
+<script src="/demos/_shared/izden-image-scrub.js" defer></script>
+<script src="/demos/_shared/izden-afterglow.js" defer></script>
+<script src="/demos/_shared/izden-contact-rewrite.js" defer></script>
 </body>
 </html>
