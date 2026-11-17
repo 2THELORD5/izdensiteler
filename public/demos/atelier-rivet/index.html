@@ -14,8 +14,9 @@
   <link rel="stylesheet" href="/demos/_shared/izden-agency.css" />
   <link rel="stylesheet" href="/demos/_shared/izden-atelier-mobile.css" />
   <link rel="stylesheet" href="/demos/_shared/izden-atelier-motion.css" />
+  <link rel="stylesheet" href="/demos/_shared/izden-atelier-enrich.css" />
 </head>
-<body class="motion-rivet">
+<body class="motion-rivet" data-enrich="rail">
 
   <header class="site-nav" id="nav" data-open="false">
     <button type="button" class="site-nav__burger" id="navBurger" aria-label="Open menu" aria-expanded="false" aria-controls="navDrawer">
@@ -38,6 +39,7 @@
       <button type="button" class="nav-drawer__close" id="navClose" aria-label="Close menu">×</button>
     </div>
     <nav class="nav-drawer__links" aria-label="Mobile">
+      <a href="#catalogue">Catalogue</a>
       <a href="#gloss">Signature</a>
       <a href="#story">Story</a>
       <a href="#craft">Craft</a>
@@ -128,7 +130,28 @@
         <p>Licensed Pexels stills, cropped per viewport — no remote hotlinking in production build.</p>
       </article>
     </section>
-    <section class="faq" id="faq">
+
+    <section class="enrich-rail" id="catalogue" aria-label="Finish catalogue">
+      <div class="enrich-rail__head">
+        <p class="section-kicker eyebrow" style="margin:0 0 0.4rem">Before / after truth</p>
+        <h2 class="section-title" style="margin:0">Finish catalogue</h2>
+      </div>
+      <div class="enrich-rail__track">
+        <figure class="enrich-rail__card">
+          <img src="media/gloss.jpg" alt="" width="800" height="1100" loading="lazy" />
+          <figcaption>01 · Ceramic gloss</figcaption>
+        </figure>
+        <figure class="enrich-rail__card">
+          <img src="media/detail.jpg" alt="" width="800" height="1100" loading="lazy" />
+          <figcaption>02 · Wheel detail</figcaption>
+        </figure>
+        <figure class="enrich-rail__card">
+          <img src="media/studio.jpg" alt="" width="800" height="1100" loading="lazy" />
+          <figcaption>03 · Studio bay</figcaption>
+        </figure>
+      </div>
+    </section>
+<section class="faq" id="faq">
       <header class="section-head"><p class="section-head__kicker iz-reveal">06 — FAQ</p><h2 class="section-head__title iz-reveal">Before you write</h2></header>
       <article class="faq__item iz-reveal">
         <button type="button" class="faq__q" aria-expanded="false">Detay seansı nasıl ayırtılır?<span class="faq__icon" aria-hidden="true"></span></button>
@@ -156,5 +179,6 @@
   <script src="/demos/_shared/izden-agency.js"></script>
   <script src="main.js"></script>
   <script src="/demos/_shared/izden-contact-rewrite.js" defer></script>
+  <script src="/demos/_shared/izden-atelier-enrich.js" defer></script>
 </body>
 </html>

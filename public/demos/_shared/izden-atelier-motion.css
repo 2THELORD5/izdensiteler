@@ -126,3 +126,23 @@
     display: none;
   }
 }
+
+/* Gallery grid reveal (seven + shared) */
+.gallery__grid figure,
+.lookbook__cell {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.65s ease, transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.gallery__grid figure.is-in,
+.lookbook__cell.is-in {
+  opacity: 1;
+  transform: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  .gallery__grid figure,
+  .lookbook__cell {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}

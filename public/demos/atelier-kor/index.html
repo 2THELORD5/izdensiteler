@@ -14,8 +14,9 @@
   <link rel="stylesheet" href="/demos/_shared/izden-agency.css" />
   <link rel="stylesheet" href="/demos/_shared/izden-atelier-mobile.css" />
   <link rel="stylesheet" href="/demos/_shared/izden-atelier-motion.css" />
+  <link rel="stylesheet" href="/demos/_shared/izden-atelier-enrich.css" />
 </head>
-<body>
+<body data-enrich="stack">
   <header class="site-nav" id="nav" data-open="false">
     <button type="button" class="site-nav__burger" id="navBurger" aria-label="Menüyü aç" aria-expanded="false" aria-controls="navDrawer">
       <span></span><span></span><span></span>
@@ -36,6 +37,7 @@
       <button type="button" class="nav-drawer__close" id="navClose" aria-label="Kapat">×</button>
     </div>
     <nav class="nav-drawer__links" aria-label="Mobil menü">
+      <a href="#catalogue">Catalogue</a>
       <a href="#manifesto">Manifesto</a>
       <a href="#fire">Fire / Plate / Night</a>
       <a href="#menu">Menü tahtası</a>
@@ -291,7 +293,27 @@
       </div>
     </section>
 
-    <section class="faq" id="sss" aria-labelledby="faq-title">
+    <section class="enrich-stack-wrap" id="catalogue" aria-label="Tezgâh kataloğu">
+      <div style="max-width:72rem;margin:0 auto;padding:clamp(2rem,6vw,3rem) clamp(1.25rem,4vw,2.75rem) 0">
+        <p class="section-kicker eyebrow" style="margin:0 0 0.4rem">Ateş · tabak · gece</p>
+        <h2 class="section-title" style="margin:0 0 1rem">Tezgâh kataloğu</h2>
+      </div>
+      <div class="enrich-stack">
+        <figure>
+          <img src="media/plate.jpg" alt="Ember board" width="900" height="1200" loading="lazy" />
+          <figcaption>01 · Ember board</figcaption>
+        </figure>
+        <figure>
+          <img src="media/grill.jpg" alt="Izgara" width="900" height="1200" loading="lazy" />
+          <figcaption>02 · Izgara</figcaption>
+        </figure>
+        <figure>
+          <img src="media/night.jpg" alt="Gece salonu" width="900" height="1200" loading="lazy" />
+          <figcaption>03 · Gece salonu</figcaption>
+        </figure>
+      </div>
+    </section>
+<section class="faq" id="sss" aria-labelledby="faq-title">
       <div class="faq__inner">
         <header class="faq__head iz-reveal">
           <p class="section-kicker">SSS</p>
@@ -335,5 +357,6 @@
   <script src="/demos/_shared/izden-afterglow.js"></script>
   <script src="/demos/_shared/izden-agency.js"></script>
 <script src="/demos/_shared/izden-contact-rewrite.js" defer></script>
+  <script src="/demos/_shared/izden-atelier-enrich.js" defer></script>
 </body>
 </html>
