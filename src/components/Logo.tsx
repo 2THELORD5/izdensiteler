@@ -25,7 +25,7 @@ export function Logo({ variant = "light", className = "", priority }: Props) {
       className={`izden-logo ${className}`.trim()}
       decoding="async"
       draggable={false}
-      style={{ maxWidth: "100%", height: "auto" }}
+      style={{ maxWidth: "100%" }}
       {...(priority ? { fetchPriority: "high" as const } : {})}
     />
   );

@@ -1,0 +1,107 @@
+/* İZDEN — professional scroll-linked image transitions */
+html.izden-sv {
+  scroll-behavior: auto;
+}
+
+.izden-sv-media {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  transform: translateZ(0);
+  will-change: clip-path, transform, opacity;
+  backface-visibility: hidden;
+}
+
+.izden-sv-media > img,
+.izden-sv-media > picture,
+.izden-sv-media > video {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: translateZ(0) scale(1.08);
+  transform-origin: center center;
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+}
+
+.izden-sv-media.is-ready > img,
+.izden-sv-media.is-ready > picture img,
+.izden-sv-media.is-ready > video {
+  /* scale driven by --sv-zoom */
+  transform: translate3d(0, var(--sv-y, 0px), 0) scale(var(--sv-zoom, 1.08));
+  opacity: var(--sv-op, 1);
+}
+
+.izden-sv-media {
+  clip-path: inset(var(--sv-clip-t, 100%) var(--sv-clip-r, 0%) var(--sv-clip-b, 0%) var(--sv-clip-l, 0%) round var(--sv-radius, 0px));
+}
+
+.izden-sv-stack {
+  position: relative;
+  min-height: 70vh;
+}
+
+.izden-sv-stack__pin {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  height: 100svh;
+  overflow: hidden;
+  background: #0a0a0b;
+}
+
+.izden-sv-stack__frame {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transform: scale(1.06);
+  transition: none;
+  will-change: opacity, transform;
+}
+
+.izden-sv-stack__frame.is-on {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.izden-sv-stack__frame img,
+.izden-sv-stack__frame picture,
+.izden-sv-stack__frame video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.izden-sv-stack__meter {
+  position: absolute;
+  left: 1.25rem;
+  right: 1.25rem;
+  bottom: 1.25rem;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.18);
+  z-index: 3;
+  pointer-events: none;
+}
+
+.izden-sv-stack__meter > i {
+  display: block;
+  height: 100%;
+  width: 0%;
+  background: #fff;
+  transform-origin: left center;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .izden-sv-media,
+  .izden-sv-media > img,
+  .izden-sv-media > picture img,
+  .izden-sv-media > video,
+  .izden-sv-stack__frame {
+    clip-path: none !important;
+    transform: none !important;
+    opacity: 1 !important;
+    transition: none !important;
+  }
+}

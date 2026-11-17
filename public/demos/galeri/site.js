@@ -336,5 +336,33 @@ document.getElementById("dropForm")?.addEventListener("submit", (e) => {
   fillSelects();
 });
 
+/* Mobile hamburger drawer */
+(() => {
+  const nav = document.getElementById("nav");
+  const burger = document.getElementById("navBurger");
+  const drawer = document.getElementById("navDrawer");
+  const backdrop = document.getElementById("navDrawerBackdrop");
+  const closeBtn = document.getElementById("navDrawerClose");
+  if (!nav || !burger || !drawer || !backdrop) return;
+
+  const setOpen = (open) => {
+    nav.dataset.open = open ? "true" : "false";
+    drawer.dataset.open = open ? "true" : "false";
+    drawer.setAttribute("aria-hidden", open ? "false" : "true");
+    burger.setAttribute("aria-expanded", open ? "true" : "false");
+    burger.setAttribute("aria-label", open ? "Menüyü kapat" : "Menüyü aç");
+    backdrop.hidden = !open;
+    document.body.classList.toggle("nav-open", open);
+  };
+
+  burger.addEventListener("click", () => setOpen(nav.dataset.open !== "true"));
+  closeBtn?.addEventListener("click", () => setOpen(false));
+  backdrop.addEventListener("click", () => setOpen(false));
+  drawer.querySelectorAll("a").forEach((a) => a.addEventListener("click", () => setOpen(false)));
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && nav.dataset.open === "true") setOpen(false);
+  });
+})();
+
 fillSelects();
 renderVault();

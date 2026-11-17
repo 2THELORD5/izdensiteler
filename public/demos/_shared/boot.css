@@ -1,0 +1,8 @@
+html, body { max-width: 100%; }
+body.is-loading { overflow: hidden; touch-action: none; }
+.loader {
+  position: fixed; inset: 0; z-index: 100;
+  display: grid; place-content: center; gap: 0.85rem;
+  transition: opacity .5s ease, visibility .5s;
+}
+.loader.is-done { opacity: 0; visibility: hidden; pointer-events: none; }

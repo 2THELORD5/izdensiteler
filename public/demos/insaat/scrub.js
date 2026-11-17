@@ -150,6 +150,9 @@ function setAct(i) {
   document.querySelectorAll("#chapterNav [data-seek]").forEach((btn, n) => {
     btn.classList.toggle("is-on", n === i);
   });
+  document.querySelectorAll("#chapterNavMobile [data-seek]").forEach((btn, n) => {
+    btn.classList.toggle("is-on", n === i);
+  });
 }
 
 function scrollRange() {
@@ -171,12 +174,14 @@ function syncUI(p) {
   nav?.classList.toggle("is-solid", p > 0.92 || onBelow);
 }
 
-document.getElementById("chapterNav")?.addEventListener("click", (e) => {
+function seekChapter(e) {
   const btn = e.target.closest("[data-seek]");
   if (!btn || !track) return;
   const { top, total } = scrollRange();
   scrollTo({ top: Math.ceil(top + Number(btn.dataset.seek) * total), behavior: "auto" });
-});
+}
+document.getElementById("chapterNav")?.addEventListener("click", seekChapter);
+document.getElementById("chapterNavMobile")?.addEventListener("click", seekChapter);
 
 function tick() {
   const target = readProgress();

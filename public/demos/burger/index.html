@@ -8,18 +8,24 @@
   <meta name="theme-color" content="#0a0908" />
   <link rel="preconnect" href="https://api.fontshare.com" crossorigin />
   <link href="https://api.fontshare.com/v2/css?f[]=melodrama@600,700&f[]=cabinet-grotesk@500,700,800&f[]=satoshi@500,700,900&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="./styles.css?v=bleed1" />
+  <link rel="stylesheet" href="./styles.css?v=loadfix1" />
+<link rel="stylesheet" href="../_shared/izden-scroll-visuals.css" />
+<link rel="stylesheet" href="../_shared/izden-agency.css" />
 </head>
 <body class="brand-anvil">
   <div class="loader" id="loader">
     <div class="loader__mark">ANVIL</div>
+    <p class="loader__hint">Film ısınıyor — smash hazırlanıyor</p>
     <div class="loader__bar"><i id="loaderBar"></i></div>
     <p>Izgara ısınıyor…</p>
   </div>
 
   <div class="progress" id="progress"></div>
 
-  <header class="nav" id="nav">
+  <header class="nav" id="nav" data-open="false">
+    <button type="button" class="nav__burger" id="navBurger" aria-label="Menüyü aç" aria-expanded="false" aria-controls="navDrawer">
+      <span></span><span></span><span></span>
+    </button>
     <a class="nav__brand" href="#top"><i data-sf="flame"></i>ANVIL</a>
     <nav class="nav__links" aria-label="Menü">
       <a href="#menu">Menü</a>
@@ -32,6 +38,19 @@
       <a class="nav__cta" href="#menu">Sipariş</a>
     </div>
   </header>
+  <div class="nav-drawer-backdrop" id="navDrawerBackdrop" hidden></div>
+  <aside class="nav-drawer" id="navDrawer" aria-hidden="true" data-open="false">
+    <div class="nav-drawer__head">
+      <strong>ANVIL</strong>
+      <button type="button" class="nav-drawer__close" id="navDrawerClose" aria-label="Kapat">×</button>
+    </div>
+    <nav class="nav-drawer__links" aria-label="Mobil menü">
+      <a href="#menu">Menü</a>
+      <a href="#cat-combos">Menüler</a>
+      <a href="#cat-burgers">Burger</a>
+      <a href="#visit">Şube</a>
+    </nav>
+  </aside>
 
   <main id="top">
     <section class="stage-wrap">
@@ -95,7 +114,7 @@
         </div>
         <ul>
           <li>0216 000 11 11</li>
-          <li>hello@anvil.smash</li>
+          <li>info@izdencreative.com</li>
           <li>Üye: her 5. patates bedava*</li>
         </ul>
       </div>
@@ -205,6 +224,8 @@
 
   <script src="./icons.js"></script>
   <script src="./scrub.js?v=bleed1"></script>
-  <script src="./menu.js?v=bk2"></script>
+  <script src="./menu.js?v=mobnav1"></script>
+<script src="../_shared/izden-scroll-visuals.js" defer></script>
+<script src="../_shared/izden-agency.js" defer></script>
 </body>
 </html>

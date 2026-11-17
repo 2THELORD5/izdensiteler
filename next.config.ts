@@ -17,8 +17,8 @@ const ContentSecurityPolicy = [
   "media-src 'self' blob:",
   "worker-src 'self' blob:",
   "connect-src 'self' https://api.groq.com https://api.resend.com https://api.web3forms.com",
-  // Same-origin /demos/* + canlı Kumrucu / Junesun embed
-  "frame-src 'self' https://kumrucu-kale.vercel.app https://www.junesun.com.tr https://junesun.com.tr http://127.0.0.1:* http://localhost:*",
+  // Same-origin /demos/* + canlı embeds (Kumrucu / Junesun / Ascenta concepts)
+  "frame-src 'self' https://kumrucu-kale.vercel.app https://www.junesun.com.tr https://junesun.com.tr https://ascentastudio.com http://127.0.0.1:* http://localhost:*",
   "upgrade-insecure-requests",
 ].join("; ");
 
@@ -27,15 +27,14 @@ const DemoContentSecurityPolicy = [
   "base-uri 'self'",
   "object-src 'none'",
   "frame-ancestors 'self'",
-  // Demos are static self-hosted scripts; no third-party JS CDNs required.
-  "script-src 'self' 'unsafe-inline'",
+  "script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com",
   "style-src 'self' 'unsafe-inline' https://api.fontshare.com https://fonts.googleapis.com",
   "img-src 'self' data: blob: https:",
   "font-src 'self' data: https://api.fontshare.com https://cdn.fontshare.com https://fonts.gstatic.com",
   // Pexels stock clips used by SIGNAL cinematic sections
   "media-src 'self' blob: https://videos.pexels.com",
   "frame-src 'self' https://www.youtube.com https://youtube.com https://www.youtube-nocookie.com",
-  "connect-src 'self'",
+  "connect-src 'self' https://cdnjs.cloudflare.com",
   "worker-src 'self' blob:",
 ].join("; ");
 

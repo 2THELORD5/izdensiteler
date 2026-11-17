@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="theme-color" content="#F7F4EF" />
+<title>Ores Interiors — Creating interiors that inspire</title>
+<meta
+  name="description"
+  content="Ores Interiors is a design and turnkey renovation studio shaping calm, considered spaces — from spatial planning to the final material in hand."
+/>
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  href="https://fonts.googleapis.com/css2?family=Syne:wght@500;600;700;800&family=Manrope:wght@300;400;500;600;700&display=swap"
+  rel="stylesheet"
+/>
+
+<!-- Critical CSS so the loader paints instantly, before Tailwind / fonts / GSAP arrive -->
+<style>
+  :root { --paper: #f7f4ef; --ink: #211e19; }
+  html { background: var(--paper); }
+  body { margin: 0; }
+  /* Reveal targets start hidden only when JS is available */
+  html.js [data-reveal] { opacity: 0; }
+  #loader {
+    position: fixed; inset: 0; z-index: 90;
+    background: var(--paper);
+    display: flex; align-items: center; justify-content: center;
+  }
+  html:not(.js) #loader { display: none; }
+</style>
+
+<link rel="stylesheet" href="css/styles.css?v=5" />
+
+<!-- Mark JS available immediately (controls reveal + loader gating) -->
+<script>
+  document.documentElement.classList.add('js');
+</script>
+<link rel="stylesheet" href="../_shared/izden-agency.css" />
+</head>
+
+<body>
+<!-- ============================== LOADER ============================== -->
+<div id="loader" aria-hidden="true">
+  <div class="loader__inner">
+    <div class="loader__brand">Ores Interiors</div>
+    <div class="loader__count"><span id="loaderNum">0</span><i>%</i></div>
+    <div class="loader__bar"><span id="loaderBar"></span></div>
+    <div class="loader__tag">Composing the space</div>
+  </div>
+</div>
+
+<!-- ============================== NAV ============================== -->
+<header id="nav" class="nav" data-nav>
+  <div class="nav__inner">
+    <a class="nav__brand" href="#home" aria-label="Ores Interiors — home">
+      Ores<span>Interiors</span>
+    </a>
+
+    <nav class="nav__links" aria-label="Primary">
+      <a href="#home" class="is-active">Homepage</a>
+      <a href="#services">Services</a>
+      <a href="#about">About&nbsp;Us</a>
+      <a href="#portfolio">Portfolio</a>
+      <a href="#contact">Contacts</a>
+    </nav>
+
+    <a class="nav__phone" href="tel:+14155550192">
+      <span class="nav__phone-dot" aria-hidden="true"></span>+1&nbsp;415&nbsp;555&nbsp;0192
+    </a>
+
+    <button class="nav__toggle" aria-label="Open menu" aria-expanded="false" data-toggle>
+      <span></span><span></span>
+    </button>
+  </div>
+
+  <!-- Mobile drawer -->
+  <div class="nav__drawer" data-drawer>
+    <a href="#home">Homepage</a>
+    <a href="#services">Services</a>
+    <a href="#about">About Us</a>
+    <a href="#portfolio">Portfolio</a>
+    <a href="#contact">Contacts</a>
+    <a class="nav__drawer-phone" href="tel:+14155550192">+1 415 555 0192</a>
+  </div>
+</header>
+
+<main>
+  <!-- ============================== HERO ============================== -->
+  <section id="home" class="hero">
+    <div class="hero__media">
+      <video
+        class="hero__video"
+        muted
+        playsinline
+        preload="auto"
+        poster="assets/opt/01-hero-living-room.jpg"
+        data-src="assets/hero.mp4"
+        aria-label="A slow cinematic walk through a sunlit modern living room with a low linen sofa and floor-to-ceiling glass"
+      ></video>
+      <div class="hero__scrim"></div>
+    </div>
+
+    <div class="hero__inner">
+      <p class="hero__eyebrow" data-reveal>Interior Design &amp; Turnkey Renovation</p>
+      <h1 class="hero__title">
+        <span class="hero__line" data-reveal>Ores</span>
+        <span class="hero__line hero__line--wide" data-reveal>Interiors</span>
+      </h1>
+      <p class="hero__subtitle" data-reveal>Creating interiors that inspire.</p>
+      <div class="hero__cta" data-reveal>
+        <a href="#contact" class="btn btn--primary">
+          Calculate the Estimate
+          <span class="btn__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+        </a>
+      </div>
+    </div>
+
+    <a href="#services" class="hero__scroll" aria-label="Scroll to services">
+      <span>Scroll</span>
+      <span class="hero__scroll-line" aria-hidden="true"></span>
+    </a>
+  </section>
+
+  <!-- ============================== SERVICES ============================== -->
+  <section id="services" class="services section">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow" data-reveal><span>01 — 03</span>What we do</p>
+        <h2 class="section-title" data-reveal>Our Services</h2>
+        <p class="section-lead" data-reveal>
+          Three disciplines, one point of responsibility — carried from the first sketch
+          to the last coat of oil on the timber.
+        </p>
+      </div>
+
+      <!-- 01 -->
+      <article class="service">
+        <span class="ghost ghost--num" data-parallax="0.12" aria-hidden="true">01</span>
+        <div class="service__text">
+          <p class="service__index" data-reveal>N<sup>o</sup>&nbsp;01</p>
+          <h3 class="service__name" data-reveal>Interior Design</h3>
+          <p class="service__body" data-reveal>
+            From spatial planning to the final styling, we shape rooms around the way you
+            actually live — light, proportion and material held in quiet balance.
+          </p>
+          <ul class="service__list" data-reveal>
+            <li>Concept &amp; spatial planning</li>
+            <li>3D visualisation</li>
+            <li>Lighting &amp; furniture layout</li>
+          </ul>
+        </div>
+        <figure class="service__media" data-clip>
+          <img src="assets/opt/02-service-interior-design.jpg" loading="lazy" decoding="async"
+            alt="A serene designed interior with warm neutral furnishings and soft natural light" />
+        </figure>
+      </article>
+
+      <!-- 02 (reversed) -->
+      <article class="service service--reverse">
+        <span class="ghost ghost--num" data-parallax="0.12" aria-hidden="true">02</span>
+        <div class="service__text">
+          <p class="service__index" data-reveal>N<sup>o</sup>&nbsp;02</p>
+          <h3 class="service__name" data-reveal>Turnkey Renovation</h3>
+          <p class="service__body" data-reveal>
+            A single point of responsibility from demolition to handover. We manage the
+            trades, the timeline and the budget, so the space is ready to live in on the
+            day we promise.
+          </p>
+          <ul class="service__list" data-reveal>
+            <li>Project &amp; site management</li>
+            <li>Engineering &amp; finishing works</li>
+            <li>Snagging &amp; handover</li>
+          </ul>
+        </div>
+        <figure class="service__media" data-clip>
+          <img src="assets/opt/03-service-turnkey-renovation.jpg" loading="lazy" decoding="async"
+            alt="A designer drafting a floor plan beside a fan of stone, timber and marble samples" />
+        </figure>
+      </article>
+
+      <!-- 03 -->
+      <article class="service">
+        <span class="ghost ghost--num" data-parallax="0.12" aria-hidden="true">03</span>
+        <div class="service__text">
+          <p class="service__index" data-reveal>N<sup>o</sup>&nbsp;03</p>
+          <h3 class="service__name" data-reveal>Selection of Materials</h3>
+          <p class="service__body" data-reveal>
+            Stone, timber, textile and metal — sourced and sampled in person. Every surface
+            is chosen to age well and to feel right underfoot and in the hand.
+          </p>
+          <ul class="service__list" data-reveal>
+            <li>Material &amp; finish sourcing</li>
+            <li>Sample boards &amp; approvals</li>
+            <li>Supplier &amp; trade coordination</li>
+          </ul>
+        </div>
+        <figure class="service__media" data-clip>
+          <img src="assets/opt/04-service-material-selection.jpg" loading="lazy" decoding="async"
+            alt="A composed arrangement of stone, wood and textile material samples" />
+        </figure>
+      </article>
+    </div>
+  </section>
+
+  <!-- ============================== ABOUT ============================== -->
+  <section id="about" class="about section">
+    <span class="about__rail" aria-hidden="true">Ores</span>
+    <div class="wrap about__grid">
+      <div class="about__media">
+        <figure class="about__img about__img--a" data-clip>
+          <img src="assets/opt/05-about-atmosphere.jpg" loading="lazy" decoding="async"
+            alt="A quiet corner of a finished interior with warm textures and diffused light" />
+        </figure>
+        <figure class="about__img about__img--b" data-clip>
+          <img src="assets/opt/06-about-team.jpg" loading="lazy" decoding="async"
+            alt="A designer working at a studio desk surrounded by material samples and drawings" />
+        </figure>
+        <figure class="about__img about__img--c" data-clip>
+          <img src="assets/opt/07-about-contractors.jpg" loading="lazy" decoding="async"
+            alt="On-site collaboration between the studio and its network of contractors" />
+        </figure>
+      </div>
+
+      <div class="about__body">
+        <div class="section-head section-head--left">
+          <p class="eyebrow" data-reveal><span>About</span>The studio</p>
+          <h2 class="section-title" data-reveal>About&nbsp;Company</h2>
+          <p class="section-lead" data-reveal>
+            Ores is a studio of designers, architects and project leads who treat every
+            brief as a single, unbroken line — from the first measurement to the day you
+            move in.
+          </p>
+        </div>
+
+        <dl class="stats">
+          <div class="stat" data-reveal>
+            <dt class="stat__num"><span class="count" data-count="45">0</span><i>+</i></dt>
+            <dd class="stat__label">Design Projects</dd>
+            <dd class="stat__desc">
+              Owners of large commercial and residential facilities trust us with spaces
+              that have to perform for years.
+            </dd>
+          </div>
+          <div class="stat" data-reveal>
+            <dt class="stat__num"><span class="count" data-count="20">0</span><i>+</i></dt>
+            <dd class="stat__label">Employees</dd>
+            <dd class="stat__desc">
+              Designers, architects and project leads — always ready to answer your
+              questions and carry the detail.
+            </dd>
+          </div>
+          <div class="stat" data-reveal>
+            <dt class="stat__num"><span class="count" data-count="100">0</span><i>+</i></dt>
+            <dd class="stat__label">Contractors</dd>
+            <dd class="stat__desc">
+              A vetted network that guarantees on-time completion without compromising the
+              finish.
+            </dd>
+          </div>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================== PORTFOLIO (horizontal scroll) ============================== -->
+  <section id="portfolio" class="portfolio" data-portfolio>
+    <div class="portfolio__inner">
+      <header class="portfolio__head">
+        <div class="portfolio__head-text">
+          <p class="eyebrow" data-reveal><span>Selected work</span>Recent projects</p>
+          <h2 class="section-title" data-reveal>Our Portfolio</h2>
+        </div>
+        <div class="portfolio__meterwrap" data-reveal aria-hidden="true">
+          <span class="portfolio__hint">Scroll to explore</span>
+          <span class="portfolio__meter"><span class="portfolio__meter-fill" data-portfolio-meter></span></span>
+        </div>
+      </header>
+
+      <div class="portfolio__track" data-portfolio-track>
+        <!-- 01 — Sauna -->
+        <article class="panel">
+          <span class="ghost ghost--word panel__ghost" aria-hidden="true">01</span>
+          <header class="panel__meta">
+            <p class="project__index">N<sup>o</sup>&nbsp;01</p>
+            <h3 class="project__name">Sauna Design</h3>
+            <dl class="project__facts">
+              <div><dt>Location</dt><dd>Aspen, Colorado</dd></div>
+              <div><dt>Terms</dt><dd>30 Days</dd></div>
+            </dl>
+          </header>
+          <figure class="panel__img panel__img--a" data-clip>
+            <img src="assets/opt/08-portfolio-sauna-a.jpg" loading="lazy" decoding="async"
+              alt="A backlit cedar sauna with a glass wall and integrated warm lighting" />
+          </figure>
+          <figure class="panel__img panel__img--b" data-clip>
+            <img src="assets/opt/09-portfolio-sauna-b.jpg" loading="lazy" decoding="async"
+              alt="Detail of the sauna's timber benches and stone heater" />
+          </figure>
+        </article>
+
+        <!-- 02 — Apartment -->
+        <article class="panel">
+          <span class="ghost ghost--word panel__ghost" aria-hidden="true">02</span>
+          <header class="panel__meta">
+            <p class="project__index">N<sup>o</sup>&nbsp;02</p>
+            <h3 class="project__name">Apartment Design</h3>
+            <dl class="project__facts">
+              <div><dt>Location</dt><dd>Tribeca, New York</dd></div>
+              <div><dt>Terms</dt><dd>60 Days</dd></div>
+            </dl>
+          </header>
+          <figure class="panel__img panel__img--a" data-clip>
+            <img src="assets/opt/10-portfolio-apartment-a.jpg" loading="lazy" decoding="async"
+              alt="An open-plan apartment living space in warm neutral tones" />
+          </figure>
+          <figure class="panel__img panel__img--b" data-clip>
+            <img src="assets/opt/11-portfolio-apartment-b.jpg" loading="lazy" decoding="async"
+              alt="A styled apartment corner with layered textiles and considered lighting" />
+          </figure>
+        </article>
+
+        <!-- 03 — Kitchen -->
+        <article class="panel">
+          <span class="ghost ghost--word panel__ghost" aria-hidden="true">03</span>
+          <header class="panel__meta">
+            <p class="project__index">N<sup>o</sup>&nbsp;03</p>
+            <h3 class="project__name">Kitchen Design</h3>
+            <dl class="project__facts">
+              <div><dt>Location</dt><dd>Marin County, California</dd></div>
+              <div><dt>Terms</dt><dd>45 Days</dd></div>
+            </dl>
+          </header>
+          <figure class="panel__img panel__img--a" data-clip>
+            <img src="assets/opt/12-portfolio-kitchen-a.jpg" loading="lazy" decoding="async"
+              alt="A minimal kitchen with handleless cabinetry and a stone island" />
+          </figure>
+          <figure class="panel__img panel__img--b" data-clip>
+            <img src="assets/opt/13-portfolio-kitchen-b.jpg" loading="lazy" decoding="async"
+              alt="Detail of the kitchen's material palette and integrated storage" />
+          </figure>
+        </article>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- ============================== CONTACT / FOOTER ============================== -->
+<footer id="contact" class="contact">
+  <div class="contact__media">
+    <img src="assets/opt/14-footer-contact.jpg" loading="lazy" decoding="async"
+      alt="Dried pampas grass in a stoneware vase against a warm plaster wall in raking light" />
+    <div class="contact__scrim"></div>
+  </div>
+
+  <div class="contact__inner">
+    <p class="eyebrow eyebrow--light" data-reveal><span>Let's talk</span>Start a project</p>
+    <h2 class="contact__title">
+      <span data-reveal>Creating a</span>
+      <span data-reveal>Cozy Interior</span>
+    </h2>
+
+    <a class="contact__phone" href="tel:+14155550192" data-reveal>+1&nbsp;415&nbsp;555&nbsp;0192</a>
+
+    <div class="contact__cta" data-reveal>
+      <a href="tel:+14155550192" class="btn btn--light">
+        Contact Us
+        <span class="btn__icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </span>
+      </a>
+    </div>
+  </div>
+
+  <div class="contact__foot">
+    <span class="contact__brand">Ores Interiors</span>
+    <nav class="contact__nav" aria-label="Footer">
+      <a href="#services">Services</a>
+      <a href="#about">About</a>
+      <a href="#portfolio">Portfolio</a>
+    </nav>
+    <span class="contact__copy">© 2026 Ores Interiors — Creating interiors that inspire.</span>
+  </div>
+</footer>
+
+<!-- GSAP + ScrollTrigger -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="js/main.js?v=5"></script>
+  <link rel="stylesheet" href="../_shared/izden-mark.css" />
+  <script src="../_shared/izden-mark.js" defer></script>
+<script src="../_shared/izden-agency.js" defer></script>
+</body>
+</html>

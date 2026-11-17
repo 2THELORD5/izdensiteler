@@ -1,0 +1,1970 @@
+<!doctype html>
+<html lang="en" class="is-intro">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Green It | Garden Landscape Design Dubai</title>
+<meta name="description" content="Shape a clear garden design brief through a guided set of simple choices with Green It in Dubai">
+<meta name="theme-color" content="#F2EFE5">
+<link rel="icon" href="favicon.png" type="image/png">
+<meta property="og:title" content="Green It | Garden Landscape Design Dubai">
+<meta property="og:description" content="A guided garden design brief for Dubai homes">
+<meta property="og:type" content="website">
+<meta property="og:image" content="og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Green It garden landscape design in Dubai">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300..700&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   Green It — guided garden brief
+   A drawing-sheet composition: hairline frame, marginal index,
+   schedule rows, arched portal, image plates.
+   ============================================================ */
+
+:root{
+  --canvas:#F2EFE5;
+  --ink:#15382D;
+  --muted:#68736A;
+  --leaf:#34634D;
+  --lime:#C9DB7D;
+  --cream:#FBF8EF;
+  --sand:#D7C09B;
+  --line:rgba(21,56,45,.16);
+  --hair:rgba(21,56,45,.09);
+
+  --ease:cubic-bezier(.16,1,.3,1);
+  --pad-x:clamp(28px,5.2vw,90px);
+  --frame:18px;
+
+  /* the one gradient: garden green resolving into soft lime */
+  --bloom:radial-gradient(112% 136% at 100% 108%, var(--lime) 0%, #8fa96e 20%, var(--leaf) 52%, var(--ink) 92%);
+  --bloom-top:radial-gradient(112% 136% at 100% -8%, var(--lime) 0%, #8fa96e 20%, var(--leaf) 52%, var(--ink) 92%);
+}
+
+*,*::before,*::after{box-sizing:border-box}
+
+[hidden]{display:none !important}
+
+html,body{height:100%;margin:0}
+
+body{
+  height:100svh;
+  overflow:hidden;
+  background-color:var(--canvas);
+  background-image:
+    linear-gradient(90deg,rgba(21,56,45,.028) 1px,transparent 1px),
+    linear-gradient(rgba(21,56,45,.028) 1px,transparent 1px);
+  background-size:7.6vmin 7.6vmin;
+  background-position:center center;
+  color:var(--ink);
+  font-family:"Geist",-apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial,sans-serif;
+  font-weight:400;
+  font-synthesis-weight:none;
+  text-rendering:optimizeLegibility;
+  -webkit-font-smoothing:antialiased;
+  touch-action:pan-y;
+}
+
+button,input,a{font:inherit;color:inherit}
+button{margin:0;background:none;border:0;cursor:pointer}
+h1,h2{margin:0;font-weight:500;text-wrap:balance}
+p{margin:0}
+
+:where(button,a,input):focus-visible{
+  outline:2px solid var(--ink);
+  outline-offset:4px;
+  border-radius:2px;
+}
+.opt:focus-visible,.tile:focus-visible,.shot:focus-visible{outline-offset:-3px}
+
+.sr{
+  position:absolute;width:1px;height:1px;margin:-1px;padding:0;
+  overflow:hidden;clip:rect(0 0 0 0);clip-path:inset(50%);white-space:nowrap;
+}
+
+/* ---------------------------------------------------- sheet frame ---- */
+.sheet{
+  position:fixed;
+  inset:var(--frame);
+  z-index:1;
+  border:1px solid var(--hair);
+  pointer-events:none;
+}
+.sheet::before,.sheet::after{
+  content:"";position:absolute;width:9px;height:9px;
+  border:1px solid var(--line);border-width:1px 0 0 1px;
+}
+.sheet::before{left:-1px;top:-1px}
+.sheet::after{right:-1px;bottom:-1px;border-width:0 1px 1px 0}
+
+/* ------------------------------------------------------- masthead ---- */
+.masthead{
+  position:fixed;
+  inset:0 0 auto 0;
+  z-index:70;
+  height:clamp(70px,9vh,90px);
+  padding:0 var(--pad-x);
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  pointer-events:none;
+}
+.masthead>*{pointer-events:auto}
+
+.brand{
+  display:inline-flex;align-items:center;gap:11px;
+  min-height:44px;
+  font-size:16px;font-weight:600;letter-spacing:-.03em;
+}
+.brand img{width:30px;height:30px;object-fit:contain;transition:transform .8s var(--ease)}
+.brand:hover img{transform:rotate(-7deg) scale(1.07)}
+
+.burger{
+  width:46px;height:46px;
+  display:grid;place-content:center;gap:5px;
+  border:1px solid var(--line);border-radius:50%;
+  transition:border-color .5s ease,background-color .5s ease,transform .7s var(--ease);
+}
+.burger span{display:block;width:16px;height:1px;background:currentColor;transition:transform .55s var(--ease)}
+.burger:hover{border-color:var(--ink)}
+.burger[aria-expanded="true"]{background:var(--lime);border-color:transparent;transform:rotate(90deg)}
+.burger[aria-expanded="true"]:focus-visible{outline-color:var(--cream)}
+.burger[aria-expanded="true"] span:first-child{transform:translateY(3px) rotate(45deg)}
+.burger[aria-expanded="true"] span:last-child{transform:translateY(-3px) rotate(-45deg)}
+
+/* ---------------------------------------------------------- stage ---- */
+.stage{position:fixed;inset:0;z-index:2}
+
+.panel{
+  position:absolute;
+  inset:0;
+  padding:clamp(88px,11vh,118px) var(--pad-x) clamp(80px,10vh,104px);
+  display:grid;
+  opacity:0;
+  visibility:hidden;
+  transform:translate3d(6vw,0,0);
+  transition:
+    opacity .7s var(--ease),
+    transform .95s var(--ease),
+    visibility 0s linear .95s;
+}
+.panel[data-side="before"]{transform:translate3d(-6vw,0,0)}
+.panel.is-active{
+  opacity:1;
+  visibility:visible;
+  transform:none;
+  transition:opacity .7s var(--ease),transform .95s var(--ease),visibility 0s;
+}
+
+/* --------------------------------------------------- shared voice ---- */
+.say>p{
+  max-width:44ch;
+  margin-top:clamp(18px,2.4vh,30px);
+  color:var(--muted);
+  font-size:clamp(15px,1.15vw,18px);
+  line-height:1.55;
+}
+h1{font-size:clamp(58px,6.2vw,104px);line-height:.92;letter-spacing:-.055em;max-width:11ch}
+h2{font-size:clamp(46px,5.2vw,82px);line-height:.94;letter-spacing:-.05em;max-width:14ch}
+h1:focus,h2:focus{outline:none}
+
+.tally{
+  margin-top:clamp(14px,2vh,22px);
+  color:var(--muted);
+  font-size:12px;
+  letter-spacing:.06em;
+  text-transform:uppercase;
+}
+.tally.center{text-align:center;text-transform:none;letter-spacing:.02em;font-size:11px}
+
+/* -------------------------------------------------- primary action --- */
+.act{
+  --mx:0px;--my:0px;
+  min-height:56px;
+  padding:0 26px;
+  display:inline-flex;align-items:center;justify-content:space-between;gap:30px;
+  border-radius:999px;
+  background:var(--ink);
+  color:var(--cream);
+  font-size:15px;font-weight:500;letter-spacing:-.01em;
+  text-decoration:none;
+  transform:translate3d(var(--mx),var(--my),0);
+  transition:transform .5s var(--ease),background-color .5s ease,color .5s ease,opacity .4s ease;
+}
+.act span{font-size:19px;transition:transform .5s var(--ease)}
+.act:hover:not(:disabled){background:var(--lime);color:var(--ink)}
+.act:hover:not(:disabled) span{transform:translateX(5px)}
+.act:disabled{
+  background:transparent;
+  color:var(--muted);
+  box-shadow:inset 0 0 0 1px var(--line);
+  cursor:not-allowed;
+}
+.act.wide{width:100%;justify-content:center;gap:18px}
+.say>.act{margin-top:clamp(24px,3.6vh,40px)}
+
+.quiet{
+  min-height:44px;
+  padding:6px 2px;
+  border-bottom:1px solid var(--line);
+  font-size:14px;
+  transition:border-color .4s ease,color .4s ease;
+}
+.quiet:hover{border-color:var(--ink)}
+
+/* =========================================== 01  welcome / portal ==== */
+.p-welcome{
+  grid-template-columns:minmax(0,1fr) minmax(0,.88fr);
+  gap:clamp(36px,5.6vw,100px);
+  align-items:center;
+}
+
+.portal{
+  position:relative;
+  justify-self:end;
+  align-self:center;
+  height:100%;
+  aspect-ratio:5/7;
+  width:auto;
+  max-width:min(100%,560px);
+}
+.portal-echo{
+  position:absolute;
+  left:-16px;top:-16px;right:16px;bottom:0;
+  border:1px solid var(--line);
+  border-radius:50% 50% 3px 3px / 44% 44% 3px 3px;
+}
+.portal-frame{
+  position:absolute;inset:0;margin:0;
+  overflow:hidden;
+  border-radius:50% 50% 3px 3px / 44% 44% 3px 3px;
+  background:#cdc7b5;
+  animation:drift 9s ease-in-out infinite alternate;
+}
+.portal-frame::after{
+  content:"";position:absolute;inset:0;z-index:1;
+  background:linear-gradient(180deg,transparent 58%,rgba(11,28,21,.46));
+}
+.portal-frame img{
+  width:100%;height:100%;
+  object-fit:cover;object-position:57% 50%;
+  transform:scale(1.02);
+  transition:transform 1.6s var(--ease),filter 1.2s ease;
+}
+.portal:hover .portal-frame img{transform:scale(1.07);filter:saturate(1.05)}
+.portal-frame figcaption{
+  position:absolute;z-index:2;left:26px;bottom:22px;
+  color:var(--cream);font-size:12px;letter-spacing:.05em;
+}
+@keyframes drift{from{transform:translate3d(0,0,0)}to{transform:translate3d(0,9px,0)}}
+
+/* ================================== 02/03/06/07/08  schedule rows ==== */
+.p-ask{
+  grid-template-columns:minmax(0,.86fr) minmax(0,1.14fr);
+  gap:clamp(38px,6.4vw,112px);
+  align-items:center;
+}
+
+.list{
+  align-self:center;
+  border-bottom:1px solid var(--line);
+}
+
+.opt{
+  position:relative;
+  width:100%;
+  min-height:clamp(66px,10.5vh,96px);
+  padding:0 clamp(16px,1.6vw,24px);
+  border-top:1px solid var(--line);
+  display:grid;
+  grid-template-columns:clamp(32px,3.6vw,50px) auto minmax(18px,1fr) auto clamp(30px,3vw,44px);
+  align-items:center;
+  gap:clamp(10px,1.4vw,20px);
+  text-align:left;
+  color:var(--ink);
+  overflow:hidden;
+  transition:color .5s ease,padding-left .7s var(--ease);
+}
+.opt::after{
+  content:"";
+  position:absolute;left:0;top:0;bottom:0;width:3px;z-index:2;
+  background:var(--lime);
+  transform:scaleX(0);
+  transform-origin:left center;
+  transition:transform .55s var(--ease);
+}
+.opt[aria-pressed="true"]::after{transform:none}
+.opt-fill{position:absolute;inset:0;overflow:hidden;z-index:0}
+.opt-fill i{
+  position:absolute;inset:0;display:block;
+  background:var(--bloom);
+  transform:translate3d(-100.5%,0,0);
+  transition:transform .85s var(--ease);
+}
+.opt>:not(.opt-fill){position:relative;z-index:1}
+
+.opt-i{font-size:11px;letter-spacing:.1em;color:var(--muted);transition:color .5s ease}
+.opt-t{font-size:clamp(17px,1.35vw,23px);font-weight:600;letter-spacing:-.025em}
+.opt-lead{
+  height:1px;
+  align-self:center;
+  border-bottom:1px dotted var(--line);
+  transition:border-color .5s ease;
+}
+.opt-n{font-size:13px;color:var(--muted);text-align:right;transition:color .5s ease}
+.opt-mark{
+  justify-self:end;
+  width:11px;height:11px;
+  border:1px solid var(--line);border-radius:50%;
+  transition:background-color .5s ease,border-color .5s ease,box-shadow .5s ease;
+}
+
+.opt:hover,.opt[aria-pressed="true"]{color:var(--cream);padding-left:clamp(22px,2.4vw,34px)}
+.opt:hover .opt-fill i,.opt[aria-pressed="true"] .opt-fill i{transform:translate3d(0,0,0)}
+.opt:hover .opt-i,.opt[aria-pressed="true"] .opt-i{color:rgba(251,248,239,.6)}
+.opt:hover .opt-n,.opt[aria-pressed="true"] .opt-n{color:rgba(251,248,239,.74)}
+.opt:hover .opt-lead,.opt[aria-pressed="true"] .opt-lead{border-color:rgba(251,248,239,.34)}
+.opt:hover .opt-mark{border-color:rgba(251,248,239,.55)}
+.opt[aria-pressed="true"] .opt-mark{
+  background:var(--lime);border-color:transparent;
+  box-shadow:0 0 0 3px rgba(21,56,45,.5);
+}
+
+/* ================================================= 04  living tiles == */
+.p-living{
+  grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);
+  grid-template-rows:auto auto;
+  gap:clamp(20px,3vh,34px) clamp(38px,6vw,104px);
+  align-content:center;
+}
+.p-living .say{grid-column:1;grid-row:1;align-self:end}
+.p-living>.act{grid-column:1;grid-row:2;align-self:start;justify-self:start;margin-top:0}
+.p-living .tiles{grid-column:2;grid-row:1/3;align-self:center}
+
+.tiles{
+  align-self:center;
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:1px;
+  background:var(--line);
+  border:1px solid var(--line);
+}
+.tile{
+  position:relative;
+  min-height:clamp(92px,16vh,158px);
+  padding:clamp(14px,1.5vw,22px);
+  background:rgba(251,248,239,.62);
+  display:flex;align-items:flex-end;
+  overflow:hidden;
+  color:var(--ink);
+  transition:color .5s ease;
+}
+.tile::after{
+  content:"";
+  position:absolute;inset:0;z-index:2;
+  box-shadow:inset 0 0 0 2px var(--lime);
+  opacity:0;
+  pointer-events:none;
+  transition:opacity .5s ease;
+}
+.tile[aria-pressed="true"]::after{opacity:1}
+.tile-fill{position:absolute;inset:0;overflow:hidden;z-index:0}
+.tile-fill i{
+  position:absolute;inset:0;display:block;
+  background:var(--bloom-top);
+  opacity:0;
+  transform:translate3d(0,26%,0);
+  transition:opacity .55s ease,transform .85s var(--ease);
+}
+.tile-t{position:relative;z-index:1;font-size:clamp(16px,1.25vw,21px);font-weight:600;letter-spacing:-.025em;text-align:left}
+.tile-mark{
+  position:absolute;z-index:1;
+  right:clamp(14px,1.5vw,22px);top:clamp(14px,1.5vw,22px);
+  width:11px;height:11px;
+  border:1px solid var(--line);border-radius:50%;
+  transition:background-color .5s ease,border-color .5s ease,box-shadow .5s ease;
+}
+.tile:hover,.tile[aria-pressed="true"]{color:var(--cream)}
+.tile:hover .tile-fill i,.tile[aria-pressed="true"] .tile-fill i{opacity:1;transform:translate3d(0,0,0)}
+.tile:hover .tile-mark{border-color:rgba(21,56,45,.5)}
+.tile[aria-pressed="true"] .tile-mark{
+  background:var(--ink);border-color:transparent;
+  box-shadow:0 0 0 3px rgba(21,56,45,.28);
+}
+
+/* ======================= 05-09  image plates (2x2 and 3x2) =========== */
+.p-shots{
+  grid-template-columns:minmax(0,.74fr) minmax(0,1.26fr);
+  grid-template-rows:auto auto;
+  gap:clamp(20px,3vh,34px) clamp(34px,5.4vw,92px);
+  align-content:center;
+}
+.p-shots .say{grid-column:1;grid-row:1;align-self:end}
+.p-shots>.act{grid-column:1;grid-row:2;align-self:start;justify-self:start;margin-top:0}
+.p-shots .shots{grid-column:2;grid-row:1/3;align-self:center}
+
+.p-shots h2{font-size:clamp(38px,3.7vw,60px);max-width:12ch}
+
+.shots{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  grid-auto-rows:1fr;
+  gap:11px;
+  width:100%;
+  height:min(66vh,620px);
+}
+.shots.six{grid-template-columns:repeat(3,minmax(0,1fr))}
+
+.shot{
+  position:relative;
+  min-width:0;min-height:0;
+  padding:0;
+  overflow:hidden;
+  border-radius:3px;
+  background:#b6bAa4;
+  cursor:pointer;
+  transition:transform .6s var(--ease),box-shadow .5s ease;
+}
+/* one deliberately organic corner, the rest stay restrained */
+.shot:first-child{border-radius:74px 3px 3px 3px}
+
+.shot img{
+  width:100%;height:100%;
+  object-fit:cover;
+  transform:scale(1.04);
+  transition:transform 1.6s var(--ease),filter 1.1s ease;
+}
+.shot::after{
+  content:"";
+  position:absolute;inset:0;z-index:1;
+  background:linear-gradient(180deg,transparent 44%,rgba(9,26,19,.72));
+  transition:background .6s ease;
+}
+.shot::before{
+  content:"";
+  position:absolute;inset:0;z-index:3;
+  border-radius:inherit;
+  box-shadow:inset 0 0 0 2px var(--lime);
+  opacity:0;
+  pointer-events:none;
+  transition:opacity .45s ease;
+}
+.shot[aria-pressed="true"]::before{opacity:1}
+
+.shot-label{
+  position:absolute;z-index:2;left:15px;right:15px;bottom:13px;
+  display:flex;flex-direction:column;gap:3px;
+  color:var(--cream);
+  font-size:15px;font-weight:600;letter-spacing:-.025em;
+  text-align:left;
+}
+.shot-label i{
+  font-style:normal;font-size:11px;font-weight:400;letter-spacing:.1em;
+  color:rgba(251,248,239,.62);
+}
+.shot-mark{
+  position:absolute;z-index:3;right:12px;top:12px;
+  width:28px;height:28px;
+  display:grid;place-items:center;
+  border:1px solid rgba(251,248,239,.55);
+  border-radius:50%;
+  background:rgba(15,36,27,.34);
+  color:var(--cream);
+  font-size:15px;font-weight:400;font-style:normal;
+  line-height:1;
+  transition:background-color .45s ease,color .45s ease,border-color .45s ease,transform .5s var(--ease);
+}
+.shot:hover{transform:translateY(-5px);box-shadow:0 24px 46px rgba(24,50,39,.18)}
+.shot:hover img,.shot[aria-pressed="true"] img{transform:scale(1.1);filter:saturate(1.05)}
+.shot:hover .shot-mark{background:rgba(15,36,27,.6);border-color:var(--cream)}
+.shot[aria-pressed="true"] .shot-mark{
+  background:var(--lime);
+  border-color:transparent;
+  color:var(--ink);
+  transform:rotate(360deg);
+}
+.shot[aria-pressed="true"]::after{
+  background:linear-gradient(180deg,rgba(201,219,125,.05) 28%,rgba(21,56,45,.8));
+}
+
+/* ============================================ 11  budget slider ====== */
+.p-budget{
+  grid-template-columns:minmax(0,.86fr) minmax(0,1.14fr);
+  gap:clamp(38px,6.4vw,112px);
+  align-items:center;
+}
+.p-budget h2{font-size:clamp(38px,4.2vw,66px);max-width:13ch}
+.dial{align-self:center;width:100%;max-width:640px}
+
+.dial-figure{
+  display:block;
+  font-size:clamp(42px,4.6vw,72px);
+  font-weight:500;
+  letter-spacing:-.05em;
+  line-height:1;
+  font-variant-numeric:tabular-nums;
+}
+.dial-figure em{font-style:normal;font-size:.42em;font-weight:450;letter-spacing:-.01em;margin-right:.5em;color:var(--muted)}
+
+.dial-range{
+  -webkit-appearance:none;appearance:none;
+  width:100%;height:44px;
+  margin:clamp(22px,3.4vh,38px) 0 0;
+  background:transparent;
+  cursor:pointer;
+}
+.dial-range::-webkit-slider-runnable-track{
+  height:2px;border-radius:2px;
+  background:linear-gradient(90deg,var(--ink) var(--fill,18%),var(--line) var(--fill,18%));
+}
+.dial-range::-webkit-slider-thumb{
+  -webkit-appearance:none;appearance:none;
+  width:26px;height:26px;margin-top:-12px;
+  border:1px solid var(--ink);border-radius:50%;
+  background:var(--canvas);
+  box-shadow:0 2px 10px rgba(21,56,45,.18);
+  transition:background-color .3s ease,transform .3s var(--ease);
+}
+.dial-range:hover::-webkit-slider-thumb,
+.dial-range:focus-visible::-webkit-slider-thumb{background:var(--lime);transform:scale(1.08)}
+.dial-range::-moz-range-track{height:2px;border-radius:2px;background:var(--line)}
+.dial-range::-moz-range-progress{height:2px;border-radius:2px;background:var(--ink)}
+.dial-range::-moz-range-thumb{
+  width:24px;height:24px;
+  border:1px solid var(--ink);border-radius:50%;
+  background:var(--canvas);
+  transition:background-color .3s ease;
+}
+.dial-range:hover::-moz-range-thumb,.dial-range:focus-visible::-moz-range-thumb{background:var(--lime)}
+.dial-range:focus-visible{outline:2px solid var(--ink);outline-offset:6px;border-radius:4px}
+
+.dial-scale{
+  position:relative;
+  height:24px;
+  margin-top:2px;
+  color:var(--muted);
+  font-size:11px;letter-spacing:.06em;
+}
+.dial-scale span{
+  position:absolute;top:0;
+  padding-top:9px;
+  transform:translateX(-50%);
+  white-space:nowrap;
+}
+.dial-scale span::before{
+  content:"";position:absolute;top:0;left:50%;
+  width:1px;height:5px;background:var(--line);
+}
+.dial-scale span:first-child{transform:none}
+.dial-scale span:first-child::before{left:0}
+.dial-scale span:last-child{transform:translateX(-100%)}
+.dial-scale span:last-child::before{left:auto;right:0}
+.dial .act{margin-top:clamp(24px,3.6vh,40px)}
+
+/* ==================================================== 09  brief ====== */
+.p-brief{align-content:center}
+.brief-view{
+  display:grid;
+  grid-template-columns:minmax(0,1fr) minmax(0,.72fr);
+  gap:clamp(44px,8vw,150px);
+  align-items:center;
+  width:100%;
+  max-width:1420px;
+  margin:0 auto;
+}
+
+.schedule{margin:clamp(24px,3.4vh,40px) 0 0;max-width:520px}
+.schedule div{
+  display:flex;align-items:baseline;gap:12px;
+  padding:7px 0;
+  border-top:1px solid var(--hair);
+}
+.schedule div:last-child{border-bottom:1px solid var(--hair)}
+.schedule dt{
+  flex:0 0 auto;
+  color:var(--muted);font-size:11px;letter-spacing:.1em;text-transform:uppercase;
+}
+.schedule .lead{flex:1 1 auto;height:1px;border-bottom:1px dotted var(--line)}
+.schedule dd{margin:0;flex:0 0 auto;font-size:15px;font-weight:500;letter-spacing:-.015em;max-width:56%;text-align:right}
+.schedule dd.empty{color:rgba(104,115,106,.55);font-weight:400}
+
+.form{display:grid;gap:clamp(14px,2.2vh,22px)}
+.form label{display:grid;gap:6px}
+.form label>span{color:var(--muted);font-size:11px;letter-spacing:.1em;text-transform:uppercase}
+.form input{
+  width:100%;height:50px;
+  border:0;border-bottom:1px solid var(--line);border-radius:0;
+  background:transparent;
+  font-size:17px;letter-spacing:-.01em;
+  transition:border-color .4s ease;
+}
+.form input:hover{border-color:var(--muted)}
+.form input:focus-visible{outline-offset:2px}
+.form input::placeholder{color:rgba(104,115,106,.45)}
+.form-error{color:#8c2f22;font-size:12px}
+
+.done{
+  grid-column:1/-1;
+  display:flex;flex-direction:column;align-items:center;text-align:center;
+  margin:auto;
+  max-width:640px;
+}
+.done h2{max-width:none}
+.done>p{
+  margin-top:20px;max-width:38ch;
+  color:var(--muted);font-size:clamp(15px,1.15vw,18px);line-height:1.55;
+}
+.seal{
+  width:74px;height:88px;
+  margin-bottom:clamp(20px,3vh,34px);
+  background:var(--lime);
+  border-radius:50% 50% 3px 3px / 44% 44% 3px 3px;
+  position:relative;
+  animation:seal-in .9s var(--ease) both;
+}
+.seal::before{
+  content:"";position:absolute;left:50%;top:52%;
+  width:20px;height:10px;
+  border:1.5px solid var(--ink);border-width:0 0 1.5px 1.5px;
+  transform:translate(-50%,-50%) rotate(-45deg);
+}
+@keyframes seal-in{from{transform:scale(.4) translateY(14px);opacity:0}to{transform:none;opacity:1}}
+.done-acts{margin-top:clamp(24px,3.6vh,38px);display:flex;align-items:center;gap:22px;flex-wrap:wrap;justify-content:center}
+
+/* ----------------------------------------------- title block rail ---- */
+.rail{
+  position:fixed;
+  inset:auto 0 0 0;
+  z-index:30;
+  height:clamp(62px,8.4vh,84px);
+  padding:0 var(--pad-x);
+  display:flex;align-items:center;justify-content:space-between;gap:24px;
+  pointer-events:none;
+}
+.rail>*{pointer-events:auto}
+
+.meter{display:flex;align-items:center;gap:14px;width:min(420px,42vw)}
+.num{font-size:11px;letter-spacing:.14em;font-variant-numeric:tabular-nums}
+.num.muted{color:var(--muted)}
+.track{position:relative;flex:1 1 auto;height:12px;display:block}
+.track::before{
+  content:"";position:absolute;left:0;right:0;top:50%;height:1px;
+  background:var(--line);
+}
+.track-fill{
+  position:absolute;left:0;right:0;top:50%;height:1px;
+  background:var(--ink);
+  transform-origin:left center;
+  transform:scaleX(.1111);
+  transition:transform 1s var(--ease);
+}
+.ticks{position:absolute;inset:0;display:block}
+.ticks i{
+  position:absolute;top:50%;
+  width:1px;height:5px;
+  margin-top:-2.5px;
+  background:var(--line);
+  transform:translateX(-50%);
+  transition:height .6s var(--ease),margin-top .6s var(--ease),background-color .6s ease;
+}
+.ticks i.done{background:var(--ink)}
+.ticks i.now{height:13px;margin-top:-6.5px;background:var(--ink)}
+
+.paddles{display:flex;align-items:center;gap:6px}
+.paddles button{
+  min-height:44px;
+  padding:0 14px;
+  color:var(--muted);
+  font-size:13px;letter-spacing:-.01em;
+  display:inline-flex;align-items:center;gap:9px;
+  transition:color .4s ease,opacity .4s ease,transform .5s var(--ease);
+}
+.paddles button:hover:not(:disabled){color:var(--ink);transform:translateY(-1px)}
+.paddles button:disabled{opacity:.28;cursor:not-allowed}
+.paddles span{font-size:16px;transition:transform .45s var(--ease)}
+.paddles button:hover:not(:disabled) span{transform:translateX(4px)}
+
+/* ---------------------------------------------------- side drawer ---- */
+.drawer{
+  position:fixed;
+  z-index:60;
+  inset:0 0 0 auto;
+  width:min(440px,90vw);
+  background:var(--ink);
+  color:var(--cream);
+  transform:translate3d(101%,0,0);
+  transition:transform .9s var(--ease);
+}
+.drawer.is-open{transform:none}
+.drawer-in{
+  height:100%;
+  padding:clamp(88px,12vh,120px) clamp(28px,4vw,52px) clamp(30px,5vh,46px);
+  display:flex;flex-direction:column;
+}
+.drawer-head{margin-bottom:22px;color:var(--lime);font-size:11px;letter-spacing:.14em;text-transform:uppercase}
+.drawer-nav{display:grid}
+.drawer-nav button{
+  display:grid;
+  grid-template-columns:38px minmax(0,1fr) auto;
+  align-items:baseline;
+  gap:10px;
+  min-height:48px;
+  padding:12px 0;
+  border-bottom:1px solid rgba(251,248,239,.13);
+  color:rgba(251,248,239,.55);
+  font-size:19px;letter-spacing:-.03em;
+  text-align:left;
+  transition:color .45s ease,padding-left .6s var(--ease);
+}
+.drawer-nav button i{font-style:normal;font-size:11px;letter-spacing:.1em;color:rgba(251,248,239,.3)}
+.drawer-nav button em{
+  font-style:normal;font-size:12px;letter-spacing:-.005em;
+  color:var(--lime);opacity:.85;
+  max-width:150px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;
+}
+.drawer-nav button:hover,.drawer-nav button.is-here{color:var(--cream);padding-left:7px}
+.drawer-nav button:focus-visible{outline-color:var(--lime)}
+.drawer-mail{margin-top:auto;padding:24px 0 5px;font-size:14px;color:var(--cream);text-decoration:none;border-bottom:1px solid rgba(251,248,239,.3);justify-self:start;align-self:flex-start}
+.drawer-mail:focus-visible{outline-color:var(--lime)}
+
+.scrim{
+  position:fixed;z-index:50;inset:0;
+  background:rgba(13,31,24,.4);
+  opacity:0;pointer-events:none;
+  transition:opacity .6s ease;
+}
+.scrim.is-open{opacity:1;pointer-events:auto}
+
+/* ===================================================== the opening === */
+/* One picture, one continuous move. The hero starts as a full-viewport
+   plate and its own box contracts into the arch, so object-fit re-crops
+   it frame by frame — never two images cross-fading.
+   The copy is untouched until the plate has landed. */
+
+.is-intro .portal-frame{
+  position:fixed;
+  left:0;
+  top:0;
+  width:100vw;
+  height:100vh;
+  border-radius:0;
+  animation:none;
+}
+.is-intro .portal-frame::after,
+.is-intro .portal-echo,
+.is-intro .portal-frame figcaption,
+.is-intro .sheet,
+.is-intro .masthead,
+.is-intro .rail,
+.is-intro .p-welcome .say>*{opacity:0}
+.is-intro .p-welcome h1{clip-path:inset(0 -10% 101% -10%);transform:translate3d(0,26px,0)}
+.is-intro .p-welcome .say>p,
+.is-intro .p-welcome .say>.act{transform:translate3d(0,22px,0)}
+.is-intro .p-welcome .say,
+.is-intro .masthead,
+.is-intro .rail{pointer-events:none}
+
+/* armed only once the plate has reached its frame */
+.is-revealing .sheet{transition:opacity .8s ease}
+.is-revealing .portal-frame::after{transition:opacity .8s ease .05s}
+.is-revealing .masthead{transition:opacity .8s ease .06s}
+.is-revealing .rail{transition:opacity .8s ease .16s}
+.is-revealing .portal-echo{transition:opacity .9s ease .2s}
+.is-revealing .portal-frame figcaption{transition:opacity .8s ease .3s}
+.is-revealing .p-welcome h1{
+  clip-path:inset(0 -10% -32% -10%);
+  transition:opacity .8s ease .05s,
+             clip-path .95s var(--open) .05s,
+             transform .95s var(--open) .05s;
+}
+.is-revealing .p-welcome .say>p{transition:opacity .8s ease .22s,transform .9s var(--open) .22s}
+.is-revealing .p-welcome .say>.act{transition:opacity .8s ease .36s,transform .9s var(--open) .36s}
+
+/* ====================================================== responsive === */
+
+/* tablet — title stacks above the choices, viewport still fixed */
+@media (max-width:1040px){
+  .p-welcome{grid-template-columns:minmax(0,1fr) minmax(0,.82fr);gap:32px}
+  .portal{max-width:420px}
+  .p-ask,.p-living,.p-shots{
+    grid-template-columns:minmax(0,1fr);
+    gap:clamp(20px,3.4vh,34px);
+    align-content:center;
+  }
+  .brief-view{gap:clamp(28px,4.6vw,70px)}
+  h2{font-size:clamp(40px,6.4vw,62px);max-width:20ch}
+  .say>p{margin-top:12px}
+  .list,.tiles,.shots{align-self:auto}
+  .p-living,.p-shots{grid-template-rows:none}
+  .p-living .say,.p-living>.act,.p-living .tiles,
+  .p-shots .say,.p-shots>.act,.p-shots .shots{grid-column:1;grid-row:auto}
+  .p-living .say,.p-shots .say{align-self:auto}
+  .p-living>.act,.p-shots>.act{justify-self:start}
+  .shots{max-height:44vh}
+  .p-budget{grid-template-columns:minmax(0,1fr);gap:clamp(20px,3.4vh,34px);align-content:center}
+  .dial{max-width:none}
+  .meter{width:min(300px,46vw)}
+}
+
+/* portrait tablets — the hero stacks so the arch keeps its proportion */
+@media (max-width:1040px) and (orientation:portrait){
+  .p-welcome{display:flex;flex-direction:column;justify-content:center;align-items:stretch;gap:clamp(22px,3.4vh,34px)}
+  .portal{
+    flex:1 1 auto;
+    align-self:center;
+    width:min(100%,520px);
+    max-width:none;
+    height:auto;min-height:0;
+    aspect-ratio:auto;
+    justify-self:auto;
+  }
+}
+
+/* mobile — every question inside one viewport, grids to two columns */
+@media (max-width:720px){
+  :root{--pad-x:22px;--frame:12px}
+  .masthead{height:66px}
+  .brand{font-size:15px}
+  .brand img{width:27px;height:27px}
+  .panel{padding:78px var(--pad-x) 72px}
+
+  h1{font-size:clamp(44px,13vw,64px);max-width:none}
+  h2{font-size:clamp(34px,9.4vw,50px);max-width:none}
+  .say>p{font-size:15px;margin-top:10px}
+  .act{min-height:52px;font-size:14px;gap:20px}
+
+  .p-welcome{display:flex;flex-direction:column;justify-content:center;align-items:stretch;gap:22px}
+  .portal{max-width:none;width:100%;flex:1 1 auto;height:auto;min-height:0;justify-self:auto;aspect-ratio:auto}
+  .portal-echo{left:-10px;top:-10px;right:10px}
+  .portal-frame figcaption{left:18px;bottom:16px;font-size:11px}
+
+  .opt{
+    min-height:0;
+    padding:13px 14px;
+    grid-template-columns:28px minmax(0,1fr) 26px;
+    grid-template-rows:auto auto;
+    gap:2px 10px;
+    align-items:center;
+  }
+  .opt-i{grid-row:1/3}
+  .opt-lead{display:none}
+  .opt-t{grid-column:2;font-size:16px}
+  .opt-n{grid-column:2;grid-row:2;text-align:left;font-size:12px}
+  .opt-mark{grid-column:3;grid-row:1/3}
+  .opt:hover,.opt[aria-pressed="true"]{padding-left:19px}
+
+  .tiles{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .tile{min-height:0;padding:14px;aspect-ratio:1.45}
+  .tile-t{font-size:15px}
+  .tile-mark{right:12px;top:12px;width:9px;height:9px}
+  .p-budget{display:flex;flex-direction:column;justify-content:center}
+  .dial-figure{font-size:clamp(34px,10vw,48px)}
+  .dial-range{margin-top:18px}
+  .ticks{display:none}
+  .p-living{display:flex;flex-direction:column;justify-content:center;align-items:stretch}
+  .p-living .tiles{align-self:stretch;width:100%}
+  .p-living>.act,.p-shots>.act{width:100%;justify-content:center;justify-self:auto}
+  .tally{margin-top:10px;font-size:11px}
+
+  .p-shots{display:flex;flex-direction:column;justify-content:center;align-items:stretch}
+  .shots{align-self:stretch;width:100%;flex:1 1 auto;min-height:0;max-height:none;gap:7px}
+  .shots.six{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .shot-label{left:11px;right:11px;bottom:10px;font-size:13px}
+  .shot-mark{right:9px;top:9px;width:26px;height:26px;font-size:14px}
+  .shot:first-child{border-radius:46px 3px 3px 3px}
+
+  .brief-view{grid-template-columns:minmax(0,1fr);gap:clamp(12px,1.8vh,18px)}
+  .schedule{margin-top:8px;max-width:none}
+  .schedule div{padding:2px 0}
+  .schedule dt{font-size:9.5px}
+  .schedule dd{font-size:13.5px}
+  .form{gap:8px}
+  .form input{height:44px;font-size:16px}
+  .form label>span{font-size:10px}
+  .seal{width:58px;height:70px}
+  .done-acts{gap:16px}
+
+  .rail{height:58px;gap:14px}
+  .meter{width:auto;flex:1 1 auto;gap:10px}
+  .paddles button{padding:0 9px;font-size:12px}
+  .drawer-in{padding:78px 24px 28px}
+  .drawer-nav button{font-size:17px;min-height:44px;padding:9px 0}
+  .drawer-nav button em{max-width:96px}
+}
+
+/* short screens — pull the scale down, never scroll */
+@media (max-height:700px) and (min-width:721px){
+  .panel{padding-top:84px;padding-bottom:74px}
+  h1{font-size:clamp(48px,5vw,74px)}
+  h2{font-size:clamp(38px,4.3vw,60px)}
+  .say>p{margin-top:14px;font-size:15px}
+  .opt{min-height:62px}
+  .schedule div{padding:4px 0}
+  .tile{min-height:84px}
+  .shots{max-height:58vh}
+  .dial-figure{font-size:clamp(36px,4vw,56px)}
+  .portal{max-width:430px}
+}
+/* shorter phones — tighten the brief so it still holds one viewport */
+@media (max-width:720px) and (max-height:780px){
+  .panel{padding-top:62px;padding-bottom:58px}
+  h2{font-size:clamp(26px,7.2vw,38px)}
+  .say>p{margin-top:6px}
+  .brief-view{gap:10px}
+  .brief-view{gap:8px}
+  .schedule{margin-top:4px}
+  .schedule div{padding:1px 0}
+  .schedule dt{font-size:9px;line-height:1.3}
+  .schedule dd{font-size:13px;line-height:1.3}
+  .form{gap:5px}
+  .form label{gap:1px}
+  .form label>span{font-size:10px;line-height:1.1}
+  .act{min-height:46px}
+  .tile{aspect-ratio:1.7}
+}
+
+@media (max-height:620px) and (max-width:720px){
+  h1{font-size:clamp(36px,10vw,46px)}
+  h2{font-size:clamp(28px,7.6vw,38px)}
+  .say>p{font-size:14px}
+  .tile{aspect-ratio:1.9}
+}
+
+/* very short phones — the field captions are clipped rather than removed,
+   so the accessible name survives while the placeholder carries the visual cue */
+@media (max-width:720px) and (max-height:700px){
+  .form label>span{
+    position:absolute;width:1px;height:1px;margin:-1px;padding:0;
+    overflow:hidden;clip:rect(0 0 0 0);clip-path:inset(50%);white-space:nowrap;
+  }
+  .form label{gap:0}
+  .act{min-height:44px}
+}
+
+/* thirteen items must fit without scrolling, so the row rhythm
+   tightens with the viewport rather than the drawer overflowing */
+@media (max-height:900px){
+  .drawer-in{padding-top:clamp(76px,10vh,96px);padding-bottom:26px}
+  .drawer-nav button{min-height:40px;padding:8px 0;font-size:18px}
+}
+@media (max-height:760px){
+  .drawer-in{padding-top:72px;padding-bottom:20px}
+  .drawer-head{margin-bottom:14px}
+  .drawer-nav button{min-height:36px;padding:6px 0;font-size:16px}
+  .drawer-mail{padding-top:16px}
+}
+@media (max-height:700px){
+  .drawer-in{padding-top:62px;padding-bottom:16px}
+  .drawer-head{margin-bottom:10px}
+  .drawer-nav button{min-height:31px;padding:4px 0;font-size:15px}
+  .drawer-nav button i{width:30px}
+  .drawer-mail{padding-top:12px;font-size:13px}
+}
+
+/* ------------------------------------------------- reduced motion ---- */
+@media (prefers-reduced-motion:reduce){
+  .is-intro .portal-frame{
+    position:absolute !important;
+    inset:0 !important;
+    left:auto !important;top:auto !important;
+    width:auto !important;height:auto !important;
+    border-radius:50% 50% 3px 3px / 44% 44% 3px 3px !important;
+  }
+  .is-intro .portal-frame::after,
+  .is-intro .portal-echo,
+  .is-intro .portal-frame figcaption,
+  .is-intro .sheet,
+  .is-intro .masthead,
+  .is-intro .rail,
+  .is-intro .p-welcome .say>*{opacity:1 !important}
+  .is-intro .p-welcome h1,
+  .is-intro .p-welcome .say>p,
+  .is-intro .p-welcome .say>.act{clip-path:none !important;transform:none !important}
+  .is-intro .p-welcome .say,
+  .is-intro .masthead,
+  .is-intro .rail{pointer-events:auto !important}
+
+  *,*::before,*::after{
+    animation-duration:.01ms !important;
+    animation-iteration-count:1 !important;
+    transition-duration:.01ms !important;
+  }
+  .panel{transform:none !important}
+  .panel[data-side="before"]{transform:none !important}
+}
+</style>
+<noscript><style>
+  .is-intro .portal-frame{
+    position:absolute;inset:0;left:auto;top:auto;width:auto;height:auto;
+    border-radius:50% 50% 3px 3px / 44% 44% 3px 3px;
+  }
+  .is-intro .portal-frame::after,
+  .is-intro .portal-echo,
+  .is-intro .portal-frame figcaption,
+  .is-intro .sheet,
+  .is-intro .masthead,
+  .is-intro .rail,
+  .is-intro .p-welcome .say>*{opacity:1}
+  .is-intro .p-welcome h1{clip-path:none;transform:none}
+  .is-intro .p-welcome .say>p,
+  .is-intro .p-welcome .say>.act{transform:none}
+  .is-intro .p-welcome .say,
+  .is-intro .masthead,
+  .is-intro .rail{pointer-events:auto}
+</style></noscript>
+<link rel="stylesheet" href="../_shared/izden-agency.css" />
+</head>
+<body>
+
+<!-- drawing-sheet frame -->
+<div class="sheet" aria-hidden="true"></div>
+
+<header class="masthead">
+  <button class="brand" type="button" data-go="0" aria-label="Green It, return to the start">
+    <img src="images/green-it-mark.png" alt="" width="34" height="34">
+    <span>Green It</span>
+  </button>
+  <button class="burger" type="button" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="drawer">
+    <span></span><span></span>
+  </button>
+</header>
+
+<p class="sr" role="status" aria-live="polite" id="status"></p>
+
+<main class="stage" id="stage">
+
+  <section class="panel p-welcome is-active" data-step="0" aria-labelledby="t0">
+    <div class="say">
+      <h1 id="t0" tabindex="-1">Let&rsquo;s shape your garden</h1>
+      <p>A few simple choices become a clear starting brief for your designer</p>
+      <button class="act magnet" type="button" data-next>Start with your space <span aria-hidden="true">&rarr;</span></button>
+    </div>
+    <div class="portal">
+      <span class="portal-echo" aria-hidden="true"></span>
+      <figure class="portal-frame">
+        <img src="images/dubai-courtyard.jpg" alt="A sunlit contemporary Dubai villa garden with olive trees and a narrow water channel" width="1536" height="1024" fetchpriority="high">
+        <figcaption>Designed for Dubai living</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="panel p-ask" data-step="1" aria-labelledby="t1" inert>
+    <div class="say">
+      <h2 id="t1" tabindex="-1">What space are we designing</h2>
+      <p>Choose the closest match</p>
+    </div>
+    <div class="list" role="group" aria-labelledby="t1">
+      <button class="opt" type="button" data-key="space" data-value="Villa garden" aria-pressed="false">
+        <span class="opt-fill" aria-hidden="true"><i></i></span>
+        <span class="opt-i" aria-hidden="true">01</span>
+        <span class="opt-t">Villa garden</span>
+        <span class="opt-lead" aria-hidden="true"></span>
+        <span class="opt-n">Front, back or both</span>
+        <span class="opt-mark" aria-hidden="true"></span>
+      </button>
+      <button class="opt" type="button" data-key="space" data-value="Townhouse courtyard" aria-pressed="false">
+        <span class="opt-fill" aria-hidden="true"><i></i></span>
+        <span class="opt-i" aria-hidden="true">02</span>
+        <span class="opt-t">Townhouse courtyard</span>
+        <span class="opt-lead" aria-hidden="true"></span>
+        <span class="opt-n">Compact and private</span>
+        <span class="opt-mark" aria-hidden="true"></span>
+      </button>
+      <button class="opt" type="button" data-key="space" data-value="Terrace or rooftop" aria-pressed="false">
+        <span class="opt-fill" aria-hidden="true"><i></i></span>
+        <span class="opt-i" aria-hidden="true">03</span>
+        <span class="opt-t">Terrace or rooftop</span>
+        <span class="opt-lead" aria-hidden="true"></span>
+        <span class="opt-n">Elevated outdoor space</span>
+        <span class="opt-mark" aria-hidden="true"></span>
+      </button>
+    </div>
+  </section>
+
+  <section class="panel p-ask" data-step="2" aria-labelledby="t2" inert>
+    <div class="say">
+      <h2 id="t2" tabindex="-1">How large is your outdoor space</h2>
+      <p>A rough estimate is enough</p>
+    </div>
+    <div class="list" role="group" aria-labelledby="t2">
+      <button class="opt" type="button" data-key="scale" data-value="Under 150 m²" aria-pressed="false">
+        <span class="opt-fill" aria-hidden="true"><i></i></span>
+        <span class="opt-i" aria-hidden="true">01</span>
+        <span class="opt-t">Under 150 m²</span>
+        <span class="opt-lead" aria-hidden="true"></span>
+        <span class="opt-n">Compact</span>
+        <span class="opt-mark" aria-hidden="true"></span>
+      </button>
+      <button class="opt" type="button" data-key="scale" data-value="150–400 m²" aria-pressed="false">
+        <span class="opt-fill" aria-hidden="true"><i></i></span>
+        <span class="opt-i" aria-hidden="true">02</span>
+        <span class="opt-t">150–400 m²</span>
+        <span class="opt-lead" aria-hidden="true"></span>
+        <span class="opt-n">Family garden</span>
+        <span class="opt-mark" aria-hidden="true"></span>
+      </button>
+      <button class="opt" type="button" data-key="scale" data-value="Over 400 m²" aria-pressed="false">
+        <span class="opt-fill" aria-hidden="true"><i></i></span>
+        <span class="opt-i" aria-hidden="true">03</span>
+        <span class="opt-t">Over 400 m²</span>
+        <span class="opt-lead" aria-hidden="true"></span>
+        <span class="opt-n">Large garden</span>
+        <span class="opt-mark" aria-hidden="true"></span>
+      </button>
+      <button class="opt" type="button" data-key="scale" data-value="Not sure" aria-pressed="false">
+        <span class="opt-fill" aria-hidden="true"><i></i></span>
+        <span class="opt-i" aria-hidden="true">04</span>
+        <span class="opt-t">Not sure</span>
+        <span class="opt-lead" aria-hidden="true"></span>
+        <span class="opt-n">We can measure</span>
+        <span class="opt-mark" aria-hidden="true"></span>
+      </button>
+    </div>
+  </section>
+
+  <section class="panel p-living" data-step="3" aria-labelledby="t3" inert>
+    <div class="say">
+      <h2 id="t3" tabindex="-1">How should the garden feel to live in</h2>
+      <p>Choose up to three</p>
+      <p class="tally" id="tally-living" aria-live="polite">None chosen yet</p>
+    </div>
+    <div class="tiles" role="group" aria-labelledby="t3">
+      <button class="tile" type="button" data-key="living" data-value="Quiet mornings" aria-pressed="false">
+        <span class="tile-fill" aria-hidden="true"><i></i></span>
+        <span class="tile-t">Quiet mornings</span>
+        <span class="tile-mark" aria-hidden="true"></span>
+      </button>
+      <button class="tile" type="button" data-key="living" data-value="Family time" aria-pressed="false">
+        <span class="tile-fill" aria-hidden="true"><i></i></span>
+        <span class="tile-t">Family time</span>
+        <span class="tile-mark" aria-hidden="true"></span>
+      </button>
+      <button class="tile" type="button" data-key="living" data-value="Entertaining" aria-pressed="false">
+        <span class="tile-fill" aria-hidden="true"><i></i></span>
+        <span class="tile-t">Entertaining</span>
+        <span class="tile-mark" aria-hidden="true"></span>
+      </button>
+      <button class="tile" type="button" data-key="living" data-value="Pool life" aria-pressed="false">
+        <span class="tile-fill" aria-hidden="true"><i></i></span>
+        <span class="tile-t">Pool life</span>
+        <span class="tile-mark" aria-hidden="true"></span>
+      </button>
+      <button class="tile" type="button" data-key="living" data-value="Play" aria-pressed="false">
+        <span class="tile-fill" aria-hidden="true"><i></i></span>
+        <span class="tile-t">Play</span>
+        <span class="tile-mark" aria-hidden="true"></span>
+      </button>
+      <button class="tile" type="button" data-key="living" data-value="Growing food" aria-pressed="false">
+        <span class="tile-fill" aria-hidden="true"><i></i></span>
+        <span class="tile-t">Growing food</span>
+        <span class="tile-mark" aria-hidden="true"></span>
+      </button>
+    </div>
+    <button class="act magnet" type="button" id="go-living" data-next disabled>Continue <span aria-hidden="true">&rarr;</span></button>
+  </section>
+
+  <section class="panel p-shots" data-step="4" aria-labelledby="t4" inert>
+    <div class="say">
+      <h2 id="t4" tabindex="-1">Which garden design feels like you</h2>
+      <p>Follow your first instinct</p>
+    </div>
+    <div class="shots" role="group" aria-labelledby="t4">
+      <button class="shot" type="button" data-key="gardenDesign" data-value="Natural calm" aria-pressed="false">
+        <img src="images/dubai-courtyard.jpg" alt="Natural Dubai garden with olive trees and soft grasses" width="1536" height="1024" loading="lazy" sizes="(max-width:720px) 50vw, 30vw">
+        <span class="shot-label"><i aria-hidden="true">01</i>Natural calm</span>
+        <i class="shot-mark" aria-hidden="true">+</i>
+      </button>
+      <button class="shot" type="button" data-key="gardenDesign" data-value="Social garden" aria-pressed="false">
+        <img src="images/social-garden.jpg" alt="Lush social garden with shaded outdoor seating" width="1448" height="1086" loading="lazy" sizes="(max-width:720px) 50vw, 30vw">
+        <span class="shot-label"><i aria-hidden="true">02</i>Social garden</span>
+        <i class="shot-mark" aria-hidden="true">+</i>
+      </button>
+      <button class="shot" type="button" data-key="gardenDesign" data-value="Minimal water" aria-pressed="false">
+        <img src="images/water-garden.jpg" alt="Minimal limestone courtyard with a reflecting pool" width="1448" height="1086" loading="lazy" sizes="(max-width:720px) 50vw, 30vw">
+        <span class="shot-label"><i aria-hidden="true">03</i>Minimal water</span>
+        <i class="shot-mark" aria-hidden="true">+</i>
+      </button>
+      <button class="shot" type="button" data-key="gardenDesign" data-value="Desert modern" aria-pressed="false">
+        <img src="images/desert-modern.jpg" alt="Desert-modern garden with a mature ghaf tree and sculptural planting" width="1448" height="1086" loading="lazy" sizes="(max-width:720px) 50vw, 30vw">
+        <span class="shot-label"><i aria-hidden="true">04</i>Desert modern</span>
+        <i class="shot-mark" aria-hidden="true">+</i>
+      </button>
+    </div>
+  </section>
+
+  <section class="panel p-shots" data-step="5" aria-labelledby="t5" inert>
+    <div class="say">
+      <h2 id="t5" tabindex="-1">Would you like a pool</h2>
+      <p>Choose no pool or the style you prefer</p>
+    </div>
+    <div class="shots" role="group" aria-labelledby="t5">
+      <button class="shot" type="button" data-key="pool" data-value="No pool" aria-pressed="false">
+        <img src="images/desert-modern.jpg" alt="Landscaped garden without a swimming pool" width="1448" height="1086" loading="lazy" sizes="(max-width:720px) 50vw, 30vw">
+        <span class="shot-label"><i aria-hidden="true">01</i>No pool</span>
+        <i class="shot-mark" aria-hidden="true">+</i>
+      </button>
+      <button class="shot" type="button" data-key="pool" data-value="Lap pool" aria-pressed="false">
+        <img src="images/pool-lap.jpg" alt="Long narrow lap pool in a Dubai villa garden" width="1448" height="1086" loading="lazy" sizes="(max-width:720px) 50vw, 30vw">
+        <span class="shot-label"><i aria-hidden="true">02</i>Lap pool</span>
+        <i class="shot-mark" aria-hidden="true">+</i>
+      </button>
+      <button class="shot" type="button" data-key="pool" data-value="Plunge pool" aria-pressed="false">
+        <img src="images/pool-plunge.jpg" alt="Compact plunge pool in a shaded courtyard" width="1448" height="1086" loading="lazy" sizes="(max-width:720px) 50vw, 30vw">
+        <span class="shot-label"><i aria-hidden="true">03</i>Plunge pool</span>
+        <i class="shot-mark" aria-hidden="true">+</i>
+      </button>
+      <button class="shot" type="button" data-key="pool" data-value="Family pool" aria-pressed="false">
+        <img src="images/pool-family.jpg" alt="Generous family swimming pool with broad shallow steps" width="1448" height="1086" loading="lazy" sizes="(max-width:720px) 50vw, 30vw">
+        <span class="shot-label"><i aria-hidden="true">04</i>Family pool</span>
+        <i class="shot-mark" aria-hidden="true">+</i>
+      </button>
+    </div>
+  </section>
+
+  <section class="panel p-shots" data-step="6" aria-labelledby="t6" inert>
+    <div class="say">
+      <h2 id="t6" tabindex="-1">Would you like a pergola</h2>
+      <p>Choose no pergola or a shade style</p>
+    </div>
+    <div class="shots" role="group" aria-labelledby="t6">
+      <button class="shot" type="button" data-key="pergola" data-value="No pergola" aria-pressed="false">
+        <img src="images/dubai-courtyard.jpg" alt="Open garden courtyard without a pergola" width="1536" height="1024" loading="lazy" sizes="(max-width:720px) 50vw, 30vw">
+        <span class="shot-label"><i aria-hidden="true">01</i>No pergola</span>
+        <i class="shot-mark" aria-hidden="true">+</i>
+      </button>
+      <button class="shot" type="button" data-key="pergola" data-value="Timber slats" aria-pressed="false">
+        <img src="images/pergola-timber.jpg" alt="Warm timber slatted garden pergola" width="1448" height="1086" loading="lazy" sizes="(max-width:720px) 50vw, 30vw">
+        <span class="shot-label"><i aria-hidden="true">02</i>Timber slats</span>
+        <i class="shot-mark" aria-hidden="true">+</i>
+      </button>
+      <button class="shot" type="button" data-key="pergola" data-value="Minimal steel" aria-pressed="false">
+        <img src="images/pergola-steel.jpg" alt="Slim dark steel louvered pergola" width="1448" height="1086" loading="lazy" sizes="(max-width:720px) 50vw, 30vw">
+        <span class="shot-label"><i aria-hidden="true">03</i>Minimal steel</span>
+        <i class="shot-mark" aria-hidden="true">+</i>
+      </button>
+      <button class="shot" type="button" data-key="pergola" data-value="Fabric canopy" aria-pressed="false">
+        <img src="images/pergola-canopy.jpg" alt="Light tensile fabric canopy over a garden lounge" width="1448" height="1086" loading="lazy" sizes="(max-width:720px) 50vw, 30vw">
+        <span class="shot-label"><i aria-hidden="true">04</i>Fabric canopy</span>
+        <i class="shot-mark" aria-hidden="true">+</i>
+      </button>
+    </div>
+  </section>
+
+  <section class="panel p-shots" data-step="7" aria-labelledby="t7" inert>
+    <div class="say">
+      <h2 id="t7" tabindex="-1">Would you like a BBQ counter</h2>
+      <p>Choose no counter or a finish level</p>
+    </div>
+    <div class="shots" role="group" aria-labelledby="t7">
+      <button class="shot" type="button" data-key="bbq" data-value="No BBQ counter" aria-pressed="false">
+        <img src="images/water-garden.jpg" alt="Minimal garden courtyard without an outdoor kitchen" width="1448" height="1086" loading="lazy" sizes="(max-width:720px) 50vw, 30vw">
+        <span class="shot-label"><i aria-hidden="true">01</i>No BBQ counter</span>
+        <i class="shot-mark" aria-hidden="true">+</i>
+      </button>
+      <button class="shot" type="button" data-key="bbq" data-value="Stone counter" aria-pressed="false">
+        <img src="images/bbq-stone.jpg" alt="Compact limestone barbecue counter with timber cabinets" width="1448" height="1086" loading="lazy" sizes="(max-width:720px) 50vw, 30vw">
+        <span class="shot-label"><i aria-hidden="true">02</i>Stone counter</span>
+        <i class="shot-mark" aria-hidden="true">+</i>
+      </button>
+      <button class="shot" type="button" data-key="bbq" data-value="Minimal counter" aria-pressed="false">
+        <img src="images/bbq-minimal.jpg" alt="Linear charcoal outdoor barbecue counter" width="1448" height="1086" loading="lazy" sizes="(max-width:720px) 50vw, 30vw">
+        <span class="shot-label"><i aria-hidden="true">03</i>Minimal counter</span>
+        <i class="shot-mark" aria-hidden="true">+</i>
+      </button>
+      <button class="shot" type="button" data-key="bbq" data-value="Full outdoor kitchen" aria-pressed="false">
+        <img src="images/bbq-full-kitchen.jpg" alt="Complete outdoor kitchen with grill sink and bar seating" width="1448" height="1086" loading="lazy" sizes="(max-width:720px) 50vw, 30vw">
+        <span class="shot-label"><i aria-hidden="true">04</i>Full outdoor kitchen</span>
+        <i class="shot-mark" aria-hidden="true">+</i>
+      </button>
+    </div>
+  </section>
+
+  <section class="panel p-shots" data-step="8" aria-labelledby="t8" inert>
+    <div class="say">
+      <h2 id="t8" tabindex="-1">What else belongs in your garden</h2>
+      <p>Choose up to four</p>
+      <p class="tally" id="tally-features" aria-live="polite">None chosen yet</p>
+    </div>
+    <div class="shots six" role="group" aria-labelledby="t8">
+      <button class="shot" type="button" data-key="features" data-value="Sunken lounge" aria-pressed="false">
+        <img src="images/feature-sunken.jpg" alt="Sunken garden lounge with integrated fire bowl" width="1448" height="1086" loading="lazy" sizes="(max-width:720px) 50vw, 24vw">
+        <span class="shot-label"><i aria-hidden="true">01</i>Sunken lounge</span>
+        <i class="shot-mark" aria-hidden="true">+</i>
+      </button>
+      <button class="shot" type="button" data-key="features" data-value="Tall trees" aria-pressed="false">
+        <img src="images/feature-tall-trees.jpg" alt="Row of tall trees screening a villa garden boundary" width="1448" height="1086" loading="lazy" sizes="(max-width:720px) 50vw, 24vw">
+        <span class="shot-label"><i aria-hidden="true">02</i>Tall trees</span>
+        <i class="shot-mark" aria-hidden="true">+</i>
+      </button>
+      <button class="shot" type="button" data-key="features" data-value="Seating area" aria-pressed="false">
+        <img src="images/social-garden.jpg" alt="Shaded built-in garden seating area" width="1448" height="1086" loading="lazy" sizes="(max-width:720px) 50vw, 24vw">
+        <span class="shot-label"><i aria-hidden="true">03</i>Seating area</span>
+        <i class="shot-mark" aria-hidden="true">+</i>
+      </button>
+      <button class="shot" type="button" data-key="features" data-value="Water feature" aria-pressed="false">
+        <img src="images/water-garden.jpg" alt="Linear reflecting pool in a quiet courtyard" width="1448" height="1086" loading="lazy" sizes="(max-width:720px) 50vw, 24vw">
+        <span class="shot-label"><i aria-hidden="true">04</i>Water feature</span>
+        <i class="shot-mark" aria-hidden="true">+</i>
+      </button>
+      <button class="shot" type="button" data-key="features" data-value="Fire feature" aria-pressed="false">
+        <img src="images/feature-fire.jpg" alt="Circular outdoor fire feature with lounge chairs" width="1448" height="1086" loading="lazy" sizes="(max-width:720px) 50vw, 24vw">
+        <span class="shot-label"><i aria-hidden="true">05</i>Fire feature</span>
+        <i class="shot-mark" aria-hidden="true">+</i>
+      </button>
+      <button class="shot" type="button" data-key="features" data-value="Play garden" aria-pressed="false">
+        <img src="images/feature-play.jpg" alt="Natural timber play area integrated into a garden" width="1448" height="1086" loading="lazy" sizes="(max-width:720px) 50vw, 24vw">
+        <span class="shot-label"><i aria-hidden="true">06</i>Play garden</span>
+        <i class="shot-mark" aria-hidden="true">+</i>
+      </button>
+    </div>
+    <button class="act magnet" type="button" id="go-features" data-next disabled>Continue <span aria-hidden="true">&rarr;</span></button>
+  </section>
+
+  <section class="panel p-ask" data-step="9" aria-labelledby="t9" inert>
+    <div class="say">
+      <h2 id="t9" tabindex="-1">What light reaches the garden</h2>
+      <p>Think about a usual afternoon</p>
+    </div>
+    <div class="list" role="group" aria-labelledby="t9">
+      <button class="opt" type="button" data-key="sun" data-value="Full sun" aria-pressed="false">
+        <span class="opt-fill" aria-hidden="true"><i></i></span>
+        <span class="opt-i" aria-hidden="true">01</span>
+        <span class="opt-t">Full sun</span>
+        <span class="opt-lead" aria-hidden="true"></span>
+        <span class="opt-n">Most of the day</span>
+        <span class="opt-mark" aria-hidden="true"></span>
+      </button>
+      <button class="opt" type="button" data-key="sun" data-value="Morning sun" aria-pressed="false">
+        <span class="opt-fill" aria-hidden="true"><i></i></span>
+        <span class="opt-i" aria-hidden="true">02</span>
+        <span class="opt-t">Morning sun</span>
+        <span class="opt-lead" aria-hidden="true"></span>
+        <span class="opt-n">Cooler afternoons</span>
+        <span class="opt-mark" aria-hidden="true"></span>
+      </button>
+      <button class="opt" type="button" data-key="sun" data-value="Mixed shade" aria-pressed="false">
+        <span class="opt-fill" aria-hidden="true"><i></i></span>
+        <span class="opt-i" aria-hidden="true">03</span>
+        <span class="opt-t">Mixed shade</span>
+        <span class="opt-lead" aria-hidden="true"></span>
+        <span class="opt-n">Sun and shelter</span>
+        <span class="opt-mark" aria-hidden="true"></span>
+      </button>
+      <button class="opt" type="button" data-key="sun" data-value="Not sure" aria-pressed="false">
+        <span class="opt-fill" aria-hidden="true"><i></i></span>
+        <span class="opt-i" aria-hidden="true">04</span>
+        <span class="opt-t">Not sure</span>
+        <span class="opt-lead" aria-hidden="true"></span>
+        <span class="opt-n">We will assess it</span>
+        <span class="opt-mark" aria-hidden="true"></span>
+      </button>
+    </div>
+  </section>
+
+  <section class="panel p-budget" data-step="10" aria-labelledby="t10" inert>
+    <div class="say">
+      <h2 id="t10" tabindex="-1">What construction budget feels comfortable</h2>
+      <p>A rough planning figure is enough</p>
+    </div>
+    <div class="dial">
+      <output class="dial-figure" id="dial-out" for="dial">AED 350,000</output>
+      <input class="dial-range" id="dial" type="range" min="100000" max="1500000" step="50000" value="350000"
+             aria-label="Construction budget in AED" style="--fill:17.86%">
+      <div class="dial-scale" aria-hidden="true"><span style="left:0%">AED 100k</span><span style="left:28.571%">500k</span><span style="left:64.286%">1m</span><span style="left:100%">1.5m</span></div>
+      <button class="act magnet" type="button" data-next>Use this budget <span aria-hidden="true">&rarr;</span></button>
+    </div>
+  </section>
+
+  <section class="panel p-ask" data-step="11" aria-labelledby="t11" inert>
+    <div class="say">
+      <h2 id="t11" tabindex="-1">When would you like to begin</h2>
+      <p>There is no wrong timing</p>
+    </div>
+    <div class="list" role="group" aria-labelledby="t11">
+      <button class="opt" type="button" data-key="timing" data-value="Ready now" aria-pressed="false">
+        <span class="opt-fill" aria-hidden="true"><i></i></span>
+        <span class="opt-i" aria-hidden="true">01</span>
+        <span class="opt-t">Ready now</span>
+        <span class="opt-lead" aria-hidden="true"></span>
+        <span class="opt-n">Start the conversation</span>
+        <span class="opt-mark" aria-hidden="true"></span>
+      </button>
+      <button class="opt" type="button" data-key="timing" data-value="Within 3 months" aria-pressed="false">
+        <span class="opt-fill" aria-hidden="true"><i></i></span>
+        <span class="opt-i" aria-hidden="true">02</span>
+        <span class="opt-t">Within 3 months</span>
+        <span class="opt-lead" aria-hidden="true"></span>
+        <span class="opt-n">Planning ahead</span>
+        <span class="opt-mark" aria-hidden="true"></span>
+      </button>
+      <button class="opt" type="button" data-key="timing" data-value="This year" aria-pressed="false">
+        <span class="opt-fill" aria-hidden="true"><i></i></span>
+        <span class="opt-i" aria-hidden="true">03</span>
+        <span class="opt-t">This year</span>
+        <span class="opt-lead" aria-hidden="true"></span>
+        <span class="opt-n">Exploring options</span>
+        <span class="opt-mark" aria-hidden="true"></span>
+      </button>
+    </div>
+  </section>
+
+  <section class="panel p-brief" data-step="12" aria-labelledby="t12" inert>
+    <div class="brief-view" id="brief-view">
+      <div class="say">
+        <h2 id="t12" tabindex="-1">Your garden brief is ready</h2>
+        <p>Leave your details and a Green It designer can take it from here</p>
+        <dl class="schedule" id="schedule"></dl>
+      </div>
+      <form class="form" id="form" novalidate>
+        <label><span>Name</span><input name="name" id="f-name" autocomplete="name" required placeholder="Your name"></label>
+        <label><span>Email</span><input name="email" id="f-email" type="email" autocomplete="email" required placeholder="name@email.com"></label>
+        <label><span>Phone</span><input name="phone" id="f-phone" type="tel" autocomplete="tel" placeholder="+971"></label>
+        <p class="form-error" id="form-error" role="alert" hidden></p>
+        <button class="act magnet wide" type="submit">Prepare my brief <span aria-hidden="true">&rarr;</span></button>
+        <p class="tally center">Your details stay with Green It</p>
+      </form>
+    </div>
+
+    <div class="done" id="done" hidden>
+      <span class="seal" aria-hidden="true"></span>
+      <h2 id="t12b" tabindex="-1">Ready to grow</h2>
+      <p>Your answers are organised into a designer-ready brief</p>
+      <div class="done-acts">
+        <!-- placeholder studio address: replace only when the confirmed Green It inbox is supplied -->
+        <a class="act magnet" id="mail-brief" href="mailto:studio@greenit.ae">Email my brief <span aria-hidden="true">&rarr;</span></a>
+        <button class="quiet" type="button" id="review">Review choices</button>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- title block -->
+<div class="rail">
+  <div class="meter">
+    <span class="num" id="num-now">01</span>
+    <span class="track" aria-hidden="true">
+      <i class="track-fill" id="track-fill"></i>
+      <span class="ticks" id="ticks"></span>
+    </span>
+    <span class="num muted">13</span>
+  </div>
+  <nav class="paddles" aria-label="Question navigation">
+    <button type="button" id="back" data-back>Back</button>
+    <button type="button" id="next" data-next>Next <span aria-hidden="true">&rarr;</span></button>
+  </nav>
+</div>
+
+<aside class="drawer" id="drawer" aria-label="Consultation index" inert>
+  <div class="drawer-in">
+    <p class="drawer-head">Garden brief</p>
+    <nav class="drawer-nav" id="drawer-nav" aria-label="Consultation steps"></nav>
+    <a class="drawer-mail" href="mailto:studio@greenit.ae">studio@greenit.ae</a>
+  </div>
+</aside>
+<button class="scrim" id="scrim" type="button" tabindex="-1" aria-hidden="true"></button>
+
+<script>
+/* ============================================================
+   Green It — guided garden brief, thirteen screens
+   Horizontal step state, no page scrolling.
+   ============================================================ */
+(function () {
+  "use strict";
+
+  var STUDIO_EMAIL = "studio@greenit.ae"; // placeholder — replace only on confirmation
+  var BUDGET_MIN = 100000, BUDGET_MAX = 1500000, BUDGET_START = 350000;
+
+  /* ---------------------------------------------------- the brief ---- */
+  /** @type {{space?:string,scale?:string,living:string[],gardenDesign?:string,
+      pool?:string,pergola?:string,bbq?:string,features:string[],sun?:string,
+      budget:number,timing?:string,name?:string,email?:string,phone?:string}} */
+  var brief = { living: [], features: [], budget: BUDGET_START };
+
+  var STEPS = [
+    { label: "Welcome",       key: null },
+    { label: "Space",         key: "space" },
+    { label: "Scale",         key: "scale" },
+    { label: "Living",        key: "living" },
+    { label: "Garden design", key: "gardenDesign" },
+    { label: "Pool",          key: "pool" },
+    { label: "Pergola",       key: "pergola" },
+    { label: "BBQ",           key: "bbq" },
+    { label: "Features",      key: "features" },
+    { label: "Sun",           key: "sun" },
+    { label: "Budget",        key: "budget" },
+    { label: "Timing",        key: "timing" },
+    { label: "Your brief",    key: null }
+  ];
+
+  /* label, key, cap — drives the tallies and the multi-select cards */
+  var CAPS = { living: 3, features: 4 };
+
+  /* the summary schedule and the email body share one ordering */
+  var ROWS = [
+    ["Space", "space"], ["Scale", "scale"], ["Living", "living"],
+    ["Garden design", "gardenDesign"], ["Pool", "pool"], ["Pergola", "pergola"],
+    ["BBQ counter", "bbq"], ["Features", "features"], ["Sun", "sun"],
+    ["Budget", "budget"], ["Timing", "timing"]
+  ];
+
+  /* ------------------------------------------------------- element ---- */
+  var $  = function (s, r) { return (r || document).querySelector(s); };
+  var $$ = function (s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); };
+
+  var panels    = $$(".panel");
+  var stage     = $("#stage");
+  var status    = $("#status");
+  var numNow    = $("#num-now");
+  var trackFill = $("#track-fill");
+  var ticksBox  = $("#ticks");
+  var backBtn   = $("#back");
+  var nextBtn   = $("#next");
+  var burger    = $("#burger");
+  var drawer    = $("#drawer");
+  var drawerNav = $("#drawer-nav");
+  var scrim     = $("#scrim");
+  var schedule  = $("#schedule");
+  var form      = $("#form");
+  var formError = $("#form-error");
+  var briefView = $("#brief-view");
+  var done      = $("#done");
+  var mailBrief = $("#mail-brief");
+  var dial      = $("#dial");
+  var dialOut   = $("#dial-out");
+
+  var TALLY = { living: $("#tally-living"), features: $("#tally-features") };
+  var GO    = { living: $("#go-living"),    features: $("#go-features") };
+
+  var LAST = panels.length - 1;
+  var current = 0;
+  var advanceTimer = null;
+  var calm = window.matchMedia("(prefers-reduced-motion: reduce)");
+
+  function pad(n) { return String(n).padStart(2, "0"); }
+  function aed(n) { return "AED " + Number(n).toLocaleString("en-AE"); }
+
+  /* ================================================== navigation ==== */
+
+  function goTo(index, opts) {
+    var target = Math.max(0, Math.min(index, LAST));
+    if (target === current) return;
+    window.clearTimeout(advanceTimer);
+    current = target;
+    render(!(opts && opts.silent));
+  }
+
+  function next() { goTo(current + 1); }
+  function back() { goTo(current - 1); }
+
+  function render(moveFocus) {
+    panels.forEach(function (panel, i) {
+      var on = i === current;
+      panel.classList.toggle("is-active", on);
+      if (on) panel.removeAttribute("inert");
+      else panel.setAttribute("inert", "");
+      if (i < current) panel.setAttribute("data-side", "before");
+      else panel.removeAttribute("data-side");
+    });
+
+    numNow.textContent = pad(current + 1);
+    trackFill.style.transform = "scaleX(" + ((current + 1) / STEPS.length) + ")";
+    $$("i", ticksBox).forEach(function (tick, i) {
+      tick.classList.toggle("done", i <= current);
+      tick.classList.toggle("now", i === current);
+    });
+
+    backBtn.disabled = current === 0;
+    nextBtn.disabled = current === LAST;
+
+    if (current === LAST) drawSchedule();
+    syncDrawer();
+    status.textContent = "Step " + pad(current + 1) + " of " + pad(STEPS.length) + ", " + STEPS[current].label;
+
+    if (moveFocus) {
+      var head = panels[current].querySelector("[tabindex='-1']");
+      if (current === LAST) head = (done.hidden ? briefView : done).querySelector("[tabindex='-1']");
+      if (head) head.focus({ preventScroll: true });
+    }
+  }
+
+  /* ====================================================== choices ==== */
+
+  function setSingle(key, value, group) {
+    brief[key] = value;
+    $$("[data-key='" + key + "']", group).forEach(function (b) {
+      var on = b.dataset.value === value;
+      b.setAttribute("aria-pressed", String(on));
+      var mark = b.querySelector(".shot-mark");
+      if (mark) mark.textContent = on ? "✓" : "+";
+    });
+    syncDrawer();
+    advanceTimer = window.setTimeout(next, 300);
+  }
+
+  function toggleMany(key, value) {
+    var cap = CAPS[key];
+    var at = brief[key].indexOf(value);
+    if (at > -1) brief[key].splice(at, 1);
+    else {
+      brief[key].push(value);
+      if (brief[key].length > cap) brief[key].shift();
+    }
+    $$("[data-key='" + key + "']").forEach(function (b) {
+      var on = brief[key].indexOf(b.dataset.value) > -1;
+      b.setAttribute("aria-pressed", String(on));
+      var mark = b.querySelector(".shot-mark");
+      if (mark) mark.textContent = on ? "✓" : "+";
+    });
+    var n = brief[key].length;
+    TALLY[key].textContent = n === 0 ? "None chosen yet" : n + " of " + cap + " chosen";
+    GO[key].disabled = n === 0;
+    syncDrawer();
+  }
+
+  document.addEventListener("click", function (event) {
+    var hit = event.target.closest("[data-key],[data-next],[data-back],[data-go]");
+    if (!hit) return;
+
+    if (hit.hasAttribute("data-next")) { next(); return; }
+    if (hit.hasAttribute("data-back")) { back(); return; }
+    if (hit.hasAttribute("data-go")) {
+      if (drawer.classList.contains("is-open")) closeDrawer();
+      goTo(Number(hit.dataset.go));
+      return;
+    }
+
+    var key = hit.dataset.key;
+    if (CAPS[key]) toggleMany(key, hit.dataset.value);
+    else setSingle(key, hit.dataset.value, hit.closest(".list,.shots,.tiles"));
+  });
+
+  /* =============================================== budget control ==== */
+
+  function paintDial() {
+    var value = Number(dial.value);
+    brief.budget = value;
+    dialOut.textContent = aed(value);
+    dial.style.setProperty("--fill", ((value - BUDGET_MIN) / (BUDGET_MAX - BUDGET_MIN)) * 100 + "%");
+    syncDrawer();
+  }
+  dial.addEventListener("input", paintDial);
+  paintDial();
+
+  /* the slider owns its own gestures — it must never move the flow */
+  function onDial(target) { return !!(target && target.closest && target.closest(".dial-range, .dial")); }
+
+  /* ======================================= wheel, keys and swipes ==== */
+
+  var wheelLocked = false;
+  window.addEventListener("wheel", function (event) {
+    if (drawer.classList.contains("is-open")) return;
+    if (onDial(event.target)) return;
+    var force = Math.abs(event.deltaX) > Math.abs(event.deltaY) ? event.deltaX : event.deltaY;
+    if (Math.abs(force) < 16 || wheelLocked) return;
+    wheelLocked = true;
+    if (force > 0) next(); else back();
+    window.setTimeout(function () { wheelLocked = false; }, 820);
+  }, { passive: true });
+
+  window.addEventListener("keydown", function (event) {
+    if (event.key === "Escape" && drawer.classList.contains("is-open")) { closeDrawer(); return; }
+    if (drawer.classList.contains("is-open")) {
+      if (event.key === "Tab") trapTab(event);
+      return;
+    }
+    var tag = (event.target.tagName || "").toUpperCase();
+    if (tag === "INPUT" || tag === "TEXTAREA" || tag === "SELECT") return;
+    if (event.metaKey || event.ctrlKey || event.altKey) return;
+    if (event.key === "ArrowRight") { event.preventDefault(); next(); }
+    if (event.key === "ArrowLeft")  { event.preventDefault(); back(); }
+  });
+
+  var swipeFrom = null;
+  stage.addEventListener("pointerdown", function (event) {
+    if (event.pointerType === "mouse" || onDial(event.target)) return;
+    swipeFrom = { x: event.clientX, y: event.clientY };
+  });
+  stage.addEventListener("pointerup", function (event) {
+    if (!swipeFrom) return;
+    var dx = swipeFrom.x - event.clientX;
+    var dy = Math.abs(swipeFrom.y - event.clientY);
+    swipeFrom = null;
+    if (Math.abs(dx) < 56 || Math.abs(dx) < dy) return;
+    if (dx > 0) next(); else back();
+  });
+  stage.addEventListener("pointercancel", function () { swipeFrom = null; });
+
+  /* ================================================ magnetic hover === */
+
+  $$(".magnet").forEach(function (el) {
+    el.addEventListener("pointermove", function (event) {
+      if (event.pointerType === "touch" || calm.matches) return;
+      var box = el.getBoundingClientRect();
+      el.style.setProperty("--mx", ((event.clientX - box.left - box.width / 2) * 0.16).toFixed(1) + "px");
+      el.style.setProperty("--my", ((event.clientY - box.top - box.height / 2) * 0.16).toFixed(1) + "px");
+    });
+    ["pointerleave", "pointerup", "blur"].forEach(function (type) {
+      el.addEventListener(type, function () {
+        el.style.setProperty("--mx", "0px");
+        el.style.setProperty("--my", "0px");
+      });
+    });
+  });
+
+  /* ======================================================= drawer ==== */
+
+  var drawerReturn = null;
+
+  function openDrawer() {
+    drawerReturn = document.activeElement;
+    drawer.classList.add("is-open");
+    drawer.removeAttribute("inert");
+    scrim.classList.add("is-open");
+    scrim.removeAttribute("aria-hidden");
+    scrim.tabIndex = 0;
+    burger.setAttribute("aria-expanded", "true");
+    burger.setAttribute("aria-label", "Close menu");
+    stage.setAttribute("inert", "");
+    syncDrawer();
+    var first = drawerNav.querySelector("button");
+    if (first) first.focus({ preventScroll: true });
+  }
+
+  function closeDrawer() {
+    drawer.classList.remove("is-open");
+    drawer.setAttribute("inert", "");
+    scrim.classList.remove("is-open");
+    scrim.setAttribute("aria-hidden", "true");
+    scrim.tabIndex = -1;
+    burger.setAttribute("aria-expanded", "false");
+    burger.setAttribute("aria-label", "Open menu");
+    stage.removeAttribute("inert");
+    var goHome = drawerReturn && document.contains(drawerReturn) ? drawerReturn : burger;
+    goHome.focus({ preventScroll: true });
+    drawerReturn = null;
+  }
+
+  function trapTab(event) {
+    var stops = $$("button, a[href]", drawer).filter(function (el) { return el.offsetParent !== null; });
+    stops.push(burger);
+    if (!stops.length) return;
+    var first = stops[0], last = stops[stops.length - 1];
+    if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last.focus(); }
+    else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first.focus(); }
+  }
+
+  burger.addEventListener("click", function () {
+    if (drawer.classList.contains("is-open")) closeDrawer(); else openDrawer();
+  });
+  scrim.addEventListener("click", closeDrawer);
+
+  STEPS.forEach(function (step, i) {
+    var item = document.createElement("button");
+    item.type = "button";
+    item.innerHTML = "<i>" + pad(i + 1) + "</i><span></span><em></em>";
+    item.querySelector("span").textContent = step.label;
+    item.addEventListener("click", function () { closeDrawer(); goTo(i); });
+    drawerNav.appendChild(item);
+  });
+
+  function syncDrawer() {
+    $$("button", drawerNav).forEach(function (item, i) {
+      item.classList.toggle("is-here", i === current);
+      item.setAttribute("aria-current", i === current ? "step" : "false");
+      item.querySelector("em").textContent = answerFor(STEPS[i].key, true);
+    });
+  }
+
+  function answerFor(key, terse) {
+    if (!key) return "";
+    if (key === "budget") return terse ? aed(brief.budget).replace("AED ", "") : aed(brief.budget);
+    if (Array.isArray(brief[key])) return brief[key].join(", ");
+    return brief[key] || "";
+  }
+
+  /* ====================================================== the rail === */
+
+  STEPS.forEach(function (_, i) {
+    var tick = document.createElement("i");
+    tick.style.left = (i / (STEPS.length - 1)) * 100 + "%";
+    ticksBox.appendChild(tick);
+  });
+
+  /* =================================================== brief sheet === */
+
+  function drawSchedule() {
+    schedule.textContent = "";
+    ROWS.forEach(function (row) {
+      var value = answerFor(row[1]);
+      var wrap = document.createElement("div");
+      var dt = document.createElement("dt");
+      var lead = document.createElement("span");
+      var dd = document.createElement("dd");
+      dt.textContent = row[0];
+      lead.className = "lead";
+      lead.setAttribute("aria-hidden", "true");
+      dd.textContent = value || "Not chosen";
+      if (!value) dd.className = "empty";
+      wrap.appendChild(dt); wrap.appendChild(lead); wrap.appendChild(dd);
+      schedule.appendChild(wrap);
+    });
+  }
+
+  function briefAsText() {
+    var lines = ["Green It — garden brief", ""];
+    ROWS.forEach(function (row) {
+      var label = row[0] === "Budget" ? "Construction budget" : row[0];
+      lines.push(label + ": " + (answerFor(row[1]) || "Not chosen"));
+    });
+    lines.push("", "Name: " + (brief.name || ""), "Email: " + (brief.email || ""),
+               "Phone: " + (brief.phone || "—"));
+    return lines.join("\n");
+  }
+
+  /* ========================================================= form ==== */
+
+  form.addEventListener("submit", function (event) {
+    event.preventDefault();
+    var name = $("#f-name").value.trim();
+    var email = $("#f-email").value.trim();
+    var phone = $("#f-phone").value.trim();
+
+    if (!name) return fail("Please add your name so we know who to reply to", "#f-name");
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) return fail("Please check the email address", "#f-email");
+
+    formError.hidden = true;
+    brief.name = name; brief.email = email; brief.phone = phone;
+
+    // The prototype keeps the brief in browser state. Post `brief` to the studio
+    // endpoint here, and reveal the success view only once it confirms delivery.
+    mailBrief.href = "mailto:" + STUDIO_EMAIL +
+      "?subject=" + encodeURIComponent("New Green It garden brief — " + name) +
+      "&body=" + encodeURIComponent(briefAsText());
+
+    briefView.hidden = true;
+    done.hidden = false;
+    $("#t12b").focus({ preventScroll: true });
+  });
+
+  function fail(message, selector) {
+    formError.textContent = message;
+    formError.hidden = false;
+    $(selector).focus();
+  }
+
+  $("#review").addEventListener("click", function () {
+    done.hidden = true;
+    briefView.hidden = false;
+    goTo(1);
+  });
+
+  /* =================================================== the opening === */
+  /* The plate is already full-viewport in CSS, so the first paint is right
+     with or without this script. All we do is contract its own box into the
+     arch — one element, one image, object-fit re-cropping as it goes — and
+     only hand the copy its reveal once the plate has landed. */
+
+  var root = document.documentElement;
+  var portal = $(".portal");
+  var frame = $(".portal-frame");
+  var hero = $(".portal-frame img");
+
+  var HOLD = 500;    // full-screen beat before anything moves
+  var MOVE = 1400;   // full-screen -> arch
+  var OPEN = "cubic-bezier(0.76, 0, 0.24, 1)";
+  var ARCH = "50% 50% 3px 3px / 44% 44% 3px 3px";
+
+  var plate = null;
+  var introTimer = null;
+  var introStarted = false;
+  var introPlaying = true;
+
+  function land() {
+    if (!introPlaying) return;
+    introPlaying = false;
+    window.clearTimeout(introTimer);
+    // cancel and unpin in one go: the animation ends on the very rect the
+    // resting CSS gives the frame, so the hand-off is pixel-identical
+    if (plate) { try { plate.cancel(); } catch (e) {} plate = null; }
+    root.classList.remove("is-intro");
+    if (document.hidden) {
+      // nothing would animate anyway; hand over the finished page
+      root.classList.remove("is-revealing");
+    } else {
+      root.classList.add("is-revealing");
+      window.setTimeout(function () { root.classList.remove("is-revealing"); }, 1800);
+    }
+    ["pointerdown", "keydown", "wheel"].forEach(function (type) {
+      window.removeEventListener(type, land, true);
+    });
+  }
+
+  function whenVisible(run) {
+    if (!document.hidden) { run(); return; }
+    var onShow = function () {
+      if (document.hidden) return;
+      document.removeEventListener("visibilitychange", onShow);
+      run();
+    };
+    document.addEventListener("visibilitychange", onShow);
+  }
+
+  function startIntro() {
+    if (introStarted || !introPlaying) return;
+    introStarted = true;
+
+    var rest = portal.getBoundingClientRect();
+    if (!rest.width || !frame.animate) { land(); return; }
+
+    plate = frame.animate([
+      { left: "0px", top: "0px", width: "100vw", height: "100vh", borderRadius: "0px" },
+      { left: rest.left + "px", top: rest.top + "px",
+        width: rest.width + "px", height: rest.height + "px", borderRadius: ARCH }
+    ], { duration: MOVE, delay: HOLD, easing: OPEN, fill: "both" });
+
+    plate.finished.then(land, function () {});
+    introTimer = window.setTimeout(land, HOLD + MOVE + 600); // safety net
+    ["pointerdown", "keydown", "wheel"].forEach(function (type) {
+      window.addEventListener(type, land, true);
+    });
+  }
+
+  /* wait for the picture and for webfont metrics, so the frame cannot
+     shift underneath the animation once it is running */
+  function whenReady() {
+    var waited = false;
+    var go = function () { if (!waited) { waited = true; whenVisible(startIntro); } };
+    var pending = [];
+    if (hero && !hero.complete) {
+      pending.push(new Promise(function (done) {
+        hero.addEventListener("load", done, { once: true });
+        hero.addEventListener("error", done, { once: true });
+      }));
+    }
+    if (document.fonts && document.fonts.status !== "loaded") pending.push(document.fonts.ready);
+    if (pending.length) Promise.all(pending).then(go, go); else go();
+    window.setTimeout(go, 2000); // never hold the page on a slow asset
+  }
+
+  if (calm.matches) {
+    root.classList.remove("is-intro");
+    introPlaying = false;
+  } else {
+    whenReady();
+  }
+
+  /* ========================================================= start === */
+
+  render(false);
+})();
+</script>
+  <link rel="stylesheet" href="../_shared/izden-mark.css" />
+  <script src="../_shared/izden-mark.js" defer></script>
+<script src="../_shared/izden-agency.js" defer></script>
+</body>
+</html>

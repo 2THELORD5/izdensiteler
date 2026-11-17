@@ -1,0 +1,36 @@
+/* İZDEN portal return chip — include on every demo */
+.izden-mark {
+  position: fixed;
+  top: max(10px, env(safe-area-inset-top));
+  left: max(10px, env(safe-area-inset-left));
+  z-index: 90;
+  display: none;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.45rem 0.75rem;
+  border-radius: 999px;
+  background: rgba(8, 8, 9, 0.82);
+  color: #f4f1ea;
+  text-decoration: none;
+  font-family: ui-sans-serif, system-ui, sans-serif;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  -webkit-tap-highlight-color: transparent;
+}
+.izden-mark.is-on {
+  display: inline-flex;
+}
+.izden-mark img {
+  width: 18px;
+  height: 18px;
+  object-fit: contain;
+}
+.izden-mark:active {
+  transform: scale(0.98);
+  opacity: 0.92;
+}

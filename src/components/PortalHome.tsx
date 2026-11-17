@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { ArrowRight } from "lucide-react";
 import GlyphPortal from "@/components/ui/glyph-portal";
@@ -27,8 +26,15 @@ function scrollToHashTarget() {
 }
 
 export function PortalHome() {
-  const router = useRouter();
   const [scrollLength, setScrollLength] = useState(2.6);
+
+  useEffect(() => {
+    // Kill orphaned preview chrome from prior incele visits
+    document.getElementById("izden-preview-chrome")?.remove();
+    document.querySelectorAll(".preview-bar").forEach((el) => el.remove());
+    document.documentElement.classList.remove("is-preview", "preview-immersive");
+    document.body.style.overflow = "";
+  }, []);
 
   useEffect(() => {
     const syncScroll = () => {
@@ -143,7 +149,9 @@ export function PortalHome() {
                       <WebShotButton
                         color="#ffffff"
                         size="md"
-                        onClick={() => router.push(`/incele/${site.slug}`)}
+                        onClick={() => {
+                          window.location.assign(`/incele/${site.slug}`);
+                        }}
                       >
                         İncele
                         <ArrowRight />

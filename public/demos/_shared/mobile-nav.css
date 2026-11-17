@@ -1,0 +1,120 @@
+/* Shared mobile hamburger + left drawer */
+.iz-burger {
+  appearance: none;
+  width: 2.55rem;
+  height: 2.55rem;
+  border-radius: 0.75rem;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  background: transparent;
+  color: inherit;
+  display: none;
+  place-content: center;
+  gap: 5px;
+  flex-shrink: 0;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  padding: 0;
+}
+.iz-burger span {
+  display: block;
+  width: 1.05rem;
+  height: 1.5px;
+  background: currentColor;
+  border-radius: 2px;
+  transition: transform 0.25s, opacity 0.2s;
+}
+[data-nav-open="true"] .iz-burger span:nth-child(1) {
+  transform: translateY(6.5px) rotate(45deg);
+}
+[data-nav-open="true"] .iz-burger span:nth-child(2) {
+  opacity: 0;
+}
+[data-nav-open="true"] .iz-burger span:nth-child(3) {
+  transform: translateY(-6.5px) rotate(-45deg);
+}
+
+.iz-drawer-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 70;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(2px);
+  display: none;
+}
+.iz-drawer-backdrop.is-on {
+  display: block;
+}
+.iz-drawer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  z-index: 80;
+  width: min(19.5rem, 86vw);
+  background: #0f0f10;
+  color: #f4f1ea;
+  box-shadow: 18px 0 48px rgba(0, 0, 0, 0.4);
+  transform: translateX(-104%);
+  transition: transform 0.32s cubic-bezier(0.16, 1, 0.3, 1);
+  display: flex;
+  flex-direction: column;
+  padding: calc(env(safe-area-inset-top) + 1rem) 1.15rem calc(env(safe-area-inset-bottom) + 1.25rem);
+  pointer-events: none;
+  visibility: hidden;
+}
+.iz-drawer.is-on {
+  transform: translateX(0);
+  pointer-events: auto;
+  visibility: visible;
+}
+.iz-drawer__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.1rem;
+}
+.iz-drawer__head strong {
+  font-size: 1.05rem;
+  letter-spacing: 0.04em;
+}
+.iz-drawer__close {
+  width: 2.5rem;
+  height: 2.5rem;
+  font-size: 1.7rem;
+  background: none;
+  border: 0;
+  color: inherit;
+  cursor: pointer;
+}
+.iz-drawer__links {
+  display: grid;
+  gap: 0.1rem;
+  overflow: auto;
+}
+.iz-drawer__links a,
+.iz-drawer__links button {
+  display: block;
+  width: 100%;
+  text-align: left;
+  background: none;
+  border: 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 0.95rem 0.2rem;
+  color: inherit;
+  font: inherit;
+  font-size: 1.05rem;
+  text-decoration: none;
+  cursor: pointer;
+}
+body.nav-open {
+  overflow: hidden;
+}
+
+@media (max-width: 900px) {
+  .iz-burger {
+    display: grid;
+  }
+  .iz-desktop-nav {
+    display: none !important;
+  }
+}

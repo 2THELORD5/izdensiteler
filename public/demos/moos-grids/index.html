@@ -1,0 +1,264 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Grid — Architecture Studio</title>
+  <meta name="description" content="Grid — an architecture studio. Selected works." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="styles.css" />
+<link rel="stylesheet" href="../_shared/izden-agency.css" />
+</head>
+<body>
+
+  <!-- ─────────────  LOADING SCREEN  ───────────── -->
+  <div class="loader" data-loader role="status" aria-live="polite">
+    <div class="loader__mark" aria-hidden="true">
+      <span class="sq sq--a is-outline"></span>
+      <span class="sq sq--b"></span>
+      <span class="sq sq--c"></span>
+      <span class="sq sq--d"></span>
+    </div>
+    <span class="u-visually-hidden">Loading Grid</span>
+  </div>
+
+
+  <!-- ─────────────  HEADER  ───────────── -->
+  <header class="header" data-header>
+    <div class="header__inner">
+
+      <!-- Logo (left) -->
+      <a class="brand" href="index.html" aria-label="Grid Architects — home">
+        <span class="brand__word">GRID<sup class="brand__reg">®</sup></span>
+      </a>
+
+      <!-- Grid menu icon (right) -->
+      <button class="menu-btn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="site-menu" data-menu-toggle>
+        <span class="grid-glyph" aria-hidden="true">
+          <span class="gg gg--1 is-outline"></span>
+          <span class="gg gg--2"></span>
+          <span class="gg gg--3"></span>
+          <span class="gg gg--4"></span>
+        </span>
+      </button>
+
+    </div>
+  </header>
+
+
+  <!-- ─────────────  MENU OVERLAY  ───────────── -->
+  <div class="menu" id="site-menu" data-menu hidden>
+    <div class="menu__bar">
+      <span class="brand__word menu__brand">GRID<sup class="brand__reg">®</sup></span>
+      <button class="menu__close" type="button" aria-label="Close menu" data-menu-toggle>
+        <span class="menu__close-x" aria-hidden="true"></span>
+      </button>
+    </div>
+
+    <nav class="menu__nav" aria-label="Menu">
+      <a class="menu__link is-active" href="index.html"><span class="menu__num">01</span><span class="menu__word">Work</span></a>
+      <a class="menu__link" href="about.html"><span class="menu__num">02</span><span class="menu__word">About</span></a>
+    </nav>
+
+    <div class="menu__foot">
+      <a class="menu__mail" href="mailto:hello@gridarchitects.studio">hello@gridarchitects.studio</a>
+      <div class="menu__social">
+        <a href="#">Instagram</a><a href="#">LinkedIn</a><a href="#">Journal</a>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ─────────────  WORK GRID (home)  ───────────── -->
+  <main class="work" id="top">
+    <section class="grid" aria-label="Selected works">
+
+      <!-- 01 -->
+      <a class="tile" href="project.html?p=01-pleated-museum" style="--i:0; --ar: 1122 / 1402" data-tile>
+        <span class="tile__inner">
+          <span class="tile__face tile__front">
+            <img src="images/01-pleated-museum.jpg" alt="Pleated concrete museum façade seen from below" width="1122" height="1402" loading="eager" decoding="async" />
+          </span>
+          <span class="tile__face tile__back">
+            <span class="tile__top"><span class="tile__idx">01</span><span class="tile__glyph" aria-hidden="true"><i class="is-outline"></i><i></i><i></i><i></i></span></span>
+            <span class="tile__info">
+              <span class="tile__name">Pleated Museum</span>
+              <span class="tile__meta">Museum · Lisbon · 2024</span>
+              <span class="tile__cta">Explore more <span class="arw">&#8594;</span></span>
+            </span>
+          </span>
+        </span>
+      </a>
+
+      <!-- 02 -->
+      <a class="tile" href="project.html?p=03-cable-bridge" style="--i:1; --ar: 1672 / 941" data-tile>
+        <span class="tile__inner">
+          <span class="tile__face tile__front">
+            <img src="images/03-cable-bridge.jpg" alt="Cable-stayed pedestrian bridge" width="1672" height="941" loading="eager" decoding="async" />
+          </span>
+          <span class="tile__face tile__back">
+            <span class="tile__top"><span class="tile__idx">02</span><span class="tile__glyph" aria-hidden="true"><i class="is-outline"></i><i></i><i></i><i></i></span></span>
+            <span class="tile__info">
+              <span class="tile__name">Tension Span</span>
+              <span class="tile__meta">Infrastructure · Porto · 2022</span>
+              <span class="tile__cta">Explore more <span class="arw">&#8594;</span></span>
+            </span>
+          </span>
+        </span>
+      </a>
+
+      <!-- 03 -->
+      <a class="tile" href="project.html?p=04-glass-tower" style="--i:2; --ar: 941 / 1672" data-tile>
+        <span class="tile__inner">
+          <span class="tile__face tile__front">
+            <img src="images/04-glass-tower.jpg" alt="Reflective glass tower rising into the sky" width="941" height="1672" loading="eager" decoding="async" />
+          </span>
+          <span class="tile__face tile__back">
+            <span class="tile__top"><span class="tile__idx">03</span><span class="tile__glyph" aria-hidden="true"><i class="is-outline"></i><i></i><i></i><i></i></span></span>
+            <span class="tile__info">
+              <span class="tile__name">Glass Monolith</span>
+              <span class="tile__meta">Tower · Dubai · 2025</span>
+              <span class="tile__cta">Explore more <span class="arw">&#8594;</span></span>
+            </span>
+          </span>
+        </span>
+      </a>
+
+      <!-- 04 -->
+      <a class="tile" href="project.html?p=08-terracotta-facade" style="--i:3; --ar: 1254 / 1254" data-tile>
+        <span class="tile__inner">
+          <span class="tile__face tile__front">
+            <img src="images/08-terracotta-facade.jpg" alt="Terracotta louvered housing façade" width="1254" height="1254" loading="lazy" decoding="async" />
+          </span>
+          <span class="tile__face tile__back">
+            <span class="tile__top"><span class="tile__idx">04</span><span class="tile__glyph" aria-hidden="true"><i class="is-outline"></i><i></i><i></i><i></i></span></span>
+            <span class="tile__info">
+              <span class="tile__name">Terracotta Weave</span>
+              <span class="tile__meta">Housing · Bologna · 2024</span>
+              <span class="tile__cta">Explore more <span class="arw">&#8594;</span></span>
+            </span>
+          </span>
+        </span>
+      </a>
+
+      <!-- 05 -->
+      <a class="tile" href="project.html?p=06-parametric-canopy" style="--i:4; --ar: 1915 / 821" data-tile>
+        <span class="tile__inner">
+          <span class="tile__face tile__front">
+            <img src="images/06-parametric-canopy.jpg" alt="Parametric perforated metal canopy against the sky" width="1915" height="821" loading="lazy" decoding="async" />
+          </span>
+          <span class="tile__face tile__back">
+            <span class="tile__top"><span class="tile__idx">05</span><span class="tile__glyph" aria-hidden="true"><i class="is-outline"></i><i></i><i></i><i></i></span></span>
+            <span class="tile__info">
+              <span class="tile__name">Parametric Canopy</span>
+              <span class="tile__meta">Pavilion · Seoul · 2024</span>
+              <span class="tile__cta">Explore more <span class="arw">&#8594;</span></span>
+            </span>
+          </span>
+        </span>
+      </a>
+
+      <!-- 06 -->
+      <a class="tile" href="project.html?p=07-rammed-earth-campus" style="--i:5; --ar: 1086 / 1448" data-tile>
+        <span class="tile__inner">
+          <span class="tile__face tile__front">
+            <img src="images/07-rammed-earth-campus.jpg" alt="Rammed-earth campus wall in warm light" width="1086" height="1448" loading="lazy" decoding="async" />
+          </span>
+          <span class="tile__face tile__back">
+            <span class="tile__top"><span class="tile__idx">06</span><span class="tile__glyph" aria-hidden="true"><i class="is-outline"></i><i></i><i></i><i></i></span></span>
+            <span class="tile__info">
+              <span class="tile__name">Earth Campus</span>
+              <span class="tile__meta">Education · Marrakesh · 2022</span>
+              <span class="tile__cta">Explore more <span class="arw">&#8594;</span></span>
+            </span>
+          </span>
+        </span>
+      </a>
+
+      <!-- 07 -->
+      <a class="tile" href="project.html?p=02-mall-atrium" style="--i:6; --ar: 1254 / 1254" data-tile>
+        <span class="tile__inner">
+          <span class="tile__face tile__front">
+            <img src="images/02-mall-atrium.jpg" alt="Sculptural timber atrium with oval skylight" width="1254" height="1254" loading="lazy" decoding="async" />
+          </span>
+          <span class="tile__face tile__back">
+            <span class="tile__top"><span class="tile__idx">07</span><span class="tile__glyph" aria-hidden="true"><i class="is-outline"></i><i></i><i></i><i></i></span></span>
+            <span class="tile__info">
+              <span class="tile__name">Helix Atrium</span>
+              <span class="tile__meta">Retail · Osaka · 2023</span>
+              <span class="tile__cta">Explore more <span class="arw">&#8594;</span></span>
+            </span>
+          </span>
+        </span>
+      </a>
+
+      <!-- 08 -->
+      <a class="tile" href="project.html?p=09-observation-tower" style="--i:7; --ar: 1448 / 1086" data-tile>
+        <span class="tile__inner">
+          <span class="tile__face tile__front">
+            <img src="images/09-observation-tower.jpg" alt="Observation tower structure" width="1448" height="1086" loading="lazy" decoding="async" />
+          </span>
+          <span class="tile__face tile__back">
+            <span class="tile__top"><span class="tile__idx">08</span><span class="tile__glyph" aria-hidden="true"><i class="is-outline"></i><i></i><i></i><i></i></span></span>
+            <span class="tile__info">
+              <span class="tile__name">Observation Spire</span>
+              <span class="tile__meta">Tower · Oslo · 2023</span>
+              <span class="tile__cta">Explore more <span class="arw">&#8594;</span></span>
+            </span>
+          </span>
+        </span>
+      </a>
+
+      <!-- 09 -->
+      <a class="tile" href="project.html?p=05-brutalist-center" style="--i:8; --ar: 1536 / 1024" data-tile>
+        <span class="tile__inner">
+          <span class="tile__face tile__front">
+            <img src="images/05-brutalist-center.jpg" alt="Brutalist cultural center in board-formed concrete" width="1536" height="1024" loading="lazy" decoding="async" />
+          </span>
+          <span class="tile__face tile__back">
+            <span class="tile__top"><span class="tile__idx">09</span><span class="tile__glyph" aria-hidden="true"><i class="is-outline"></i><i></i><i></i><i></i></span></span>
+            <span class="tile__info">
+              <span class="tile__name">Civic Mass</span>
+              <span class="tile__meta">Cultural · Bilbao · 2023</span>
+              <span class="tile__cta">Explore more <span class="arw">&#8594;</span></span>
+            </span>
+          </span>
+        </span>
+      </a>
+
+      <!-- 10 -->
+      <a class="tile" href="project.html?p=10-performing-arts" style="--i:9; --ar: 1402 / 1122" data-tile>
+        <span class="tile__inner">
+          <span class="tile__face tile__front">
+            <img src="images/10-performing-arts.jpg" alt="Performing arts center clad in folded metal" width="1402" height="1122" loading="lazy" decoding="async" />
+          </span>
+          <span class="tile__face tile__back">
+            <span class="tile__top"><span class="tile__idx">10</span><span class="tile__glyph" aria-hidden="true"><i class="is-outline"></i><i></i><i></i><i></i></span></span>
+            <span class="tile__info">
+              <span class="tile__name">Metal Overture</span>
+              <span class="tile__meta">Culture · Rotterdam · 2025</span>
+              <span class="tile__cta">Explore more <span class="arw">&#8594;</span></span>
+            </span>
+          </span>
+        </span>
+      </a>
+
+    </section>
+  </main>
+
+
+  <!-- ─────────────  FOOTER  ───────────── -->
+  <footer class="footer">
+    <p class="footer__copy">© 2026 Grid Architects. All rights reserved.</p>
+  </footer>
+
+  <script src="script.js"></script>
+  <link rel="stylesheet" href="../_shared/izden-mark.css" />
+  <script src="../_shared/izden-mark.js" defer></script>
+<script src="../_shared/izden-agency.js" defer></script>
+</body>
+</html>

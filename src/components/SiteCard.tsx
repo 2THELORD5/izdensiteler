@@ -1,7 +1,6 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
 import { useRef, type MouseEvent } from "react";
 import type { Site } from "@/lib/sites";
 
@@ -58,9 +57,9 @@ export function SiteCard({ site, index }: { site: Site; index: number }) {
         <h3>{site.name}</h3>
         <p>{site.tagline}</p>
         <div className="site-actions">
-          <Link href={`/incele/${site.slug}`} className="btn-primary compact">
+          <a href={`/incele/${site.slug}`} className="btn-primary compact">
             Siteye gir
-          </Link>
+          </a>
           <a
             href={site.localPath || site.externalUrl}
             target="_blank"

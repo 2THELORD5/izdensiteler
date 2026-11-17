@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="K is an architecture studio dedicated to the design of exceptional large-scale modern villas — strong geometry, calm proportions, and a refined modern language." />
+<title>K — Modern Villa Architecture</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%230c0d0f'/%3E%3Ctext x='16' y='23' font-family='Arial,Helvetica,sans-serif' font-size='21' font-weight='700' fill='%23f4f4f2' text-anchor='middle'%3EK%3C/text%3E%3C/svg%3E" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="preload" as="image" href="assets/01-cover-hero-sky.png" fetchpriority="high" />
+<link rel="preload" as="image" href="assets/01-cover-hero-building-ground.png" fetchpriority="high" />
+<link rel="stylesheet" href="css/style.css?v=8" />
+<link rel="stylesheet" href="../_shared/izden-agency.css" />
+</head>
+<body>
+
+<!-- ============================ HEADER ============================ -->
+<header class="site-header" id="siteHeader">
+  <a class="brand" href="#home" aria-label="K — home">K</a>
+  <p class="running-head" aria-hidden="true"><span id="runningHead">Cover</span></p>
+  <button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="menuOverlay">
+    <span class="menu-toggle__label">Menu</span>
+    <span class="menu-toggle__bars"><i></i><i></i></span>
+  </button>
+</header>
+
+<!-- ============================ MENU OVERLAY ============================ -->
+<nav class="menu-overlay" id="menuOverlay" aria-hidden="true">
+  <ul class="menu-list">
+    <li><a href="#home" data-menu-link><span class="menu-list__index">I</span><span class="menu-list__name">Home</span></a></li>
+    <li><a href="#started" data-menu-link><span class="menu-list__index">II</span><span class="menu-list__name">Story</span></a></li>
+    <li><a href="#process" data-menu-link><span class="menu-list__index">III</span><span class="menu-list__name">Process</span></a></li>
+    <li><a href="#work" data-menu-link><span class="menu-list__index">IV</span><span class="menu-list__name">Work</span></a></li>
+    <li><a href="#people" data-menu-link><span class="menu-list__index">V</span><span class="menu-list__name">People</span></a></li>
+    <li><a href="#contact" data-menu-link><span class="menu-list__index">VI</span><span class="menu-list__name">Contact</span></a></li>
+  </ul>
+  <div class="menu-foot">
+    <span>Luxury modern villa design</span>
+    <span>K — Architecture Studio</span>
+  </div>
+</nav>
+
+<main>
+
+  <!-- ==================== 01 · HERO ==================== -->
+  <section class="hero" id="home" data-chapter="Cover">
+    <!-- Layered scene: static sky + movable architectural foreground (cursor parallax) -->
+    <div class="hero__scene" aria-hidden="true">
+      <img class="hero__sky" src="assets/01-cover-hero-sky.png" alt="" width="1600" height="900" draggable="false" fetchpriority="high" />
+      <img class="hero__building" id="heroBuilding" src="assets/01-cover-hero-building-ground.png" alt="" width="1600" height="900" draggable="false" fetchpriority="high" />
+    </div>
+    <div class="hero__scrim"></div>
+    <div class="hero__inner">
+      <div class="hero__mark">
+        <h1 class="hero__k">K</h1>
+        <span class="hero__rule"></span>
+      </div>
+      <p class="hero__lead">Modern villas — clarity, precision, presence.</p>
+      <a class="hero__cta" href="#started">
+        <span>Explore the story</span>
+        <span class="hero__cta-line"></span>
+      </a>
+    </div>
+    <span class="hero__scroll" aria-hidden="true">Scroll</span>
+  </section>
+
+  <!-- ==================== 02 · HOW WE STARTED ==================== -->
+  <section class="chapter chapter--light editorial" id="started" data-chapter="How We Started">
+    <div class="editorial__media media" data-parallax-tilt>
+      <img src="assets/02-how-we-started.jpg" alt="A quiet, unbranded architecture studio workspace with plans, a monochrome material board, and a minimal villa model" width="1672" height="941" loading="lazy" decoding="async" />
+    </div>
+    <div class="editorial__text">
+      <span class="eyebrow reveal">How We Started</span>
+      <span class="datum reveal"></span>
+      <h2 class="display reveal">A belief before<br />a building.</h2>
+      <div class="prose reveal-group">
+        <p class="reveal-item">K began with a simple belief: a villa should be more than impressive. It should feel composed, intentional, and deeply connected to the people who live in it.</p>
+        <p class="reveal-item">The studio was founded with a clear focus on luxury modern villas at a larger scale — homes where architecture is not treated as decoration, but as structure, rhythm, light, and experience.</p>
+        <p class="reveal-item">From the beginning, the ambition was not to do more projects. It was to do the right projects, with the right level of precision — and to create homes that feel timeless from the very first line.</p>
+      </div>
+      <figure class="pull reveal">
+        <blockquote>“We started K to create villas that feel powerful in form, yet calm in experience.”</blockquote>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ==================== 03 · OUR STORY / RESTRAINT ==================== -->
+  <section class="chapter chapter--light editorial editorial--reverse" data-chapter="Our Story">
+    <div class="editorial__media media" data-parallax-tilt>
+      <img src="assets/03-our-story-restraint.jpg" alt="A luxury villa of interlocking horizontal and vertical volumes in white concrete and charcoal, with continuous glass" width="1672" height="941" loading="lazy" decoding="async" />
+    </div>
+    <div class="editorial__text">
+      <span class="eyebrow reveal">Our Story</span>
+      <span class="datum reveal"></span>
+      <h2 class="display reveal">A language built<br />on restraint.</h2>
+      <div class="prose reveal-group">
+        <p class="reveal-item">At K, our work is shaped by clarity. We believe strong architecture does not need noise. It needs order, proportion, and conviction.</p>
+        <p class="reveal-item">Our design language is modern, sharp, and highly controlled. Every line has purpose. Every volume has weight. Every opening, material, and transition is carefully considered.</p>
+        <p class="reveal-item">We design villas that feel bold without excess — visually striking, but never chaotic; luxurious, but never loud.</p>
+      </div>
+      <ul class="tenets reveal-group">
+        <li class="reveal-item">Strong geometry</li>
+        <li class="reveal-item">Clean silhouettes</li>
+        <li class="reveal-item">Refined materiality</li>
+        <li class="reveal-item">Controlled light</li>
+        <li class="reveal-item">Seamless indoor–outdoor living</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ==================== 04 · OUR STORY / LIVING ==================== -->
+  <section class="chapter chapter--light editorial" data-chapter="Our Story">
+    <div class="editorial__media media" data-parallax-tilt>
+      <img src="assets/04-our-story-living.jpg" alt="A spacious double-height villa living hall opening to a courtyard, olive tree and linear pool through floor-to-ceiling glass" width="1672" height="941" loading="lazy" decoding="async" />
+    </div>
+    <div class="editorial__text">
+      <span class="eyebrow reveal">Our Story</span>
+      <span class="datum reveal"></span>
+      <h2 class="display reveal">Architecture shaped<br />around living.</h2>
+      <div class="prose reveal-group">
+        <p class="reveal-item">For us, luxury is not only about scale. It is about how a home feels when you move through it.</p>
+        <p class="reveal-item">A well-designed villa creates rhythm between arrival and privacy, openness and shelter, statement and stillness. It frames light. It guides movement. It gives space to everyday rituals while elevating the experience of living.</p>
+        <p class="reveal-item">This is the architecture we pursue at K — homes with presence, but also with calm; homes that stand out, yet remain deeply livable.</p>
+      </div>
+      <figure class="pull reveal">
+        <blockquote>“True luxury is clarity, space, and the confidence to keep only what matters.”</blockquote>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ==================== K REVEAL (scroll-scrubbed mask) ==================== -->
+  <section class="k-reveal" data-chapter="Our Story">
+    <div class="k-stage">
+      <img class="k-reveal__img" src="assets/extra-02-interior-mood.jpg" alt="A serene villa lounge with floor-to-ceiling glass framing a courtyard and water plane" width="1672" height="941" loading="lazy" decoding="async" />
+      <div class="k-reveal__cover" aria-hidden="true"></div>
+      <span class="k-reveal__hint" aria-hidden="true">Scroll</span>
+    </div>
+  </section>
+
+  <!-- ==================== 05 · OUR ACHIEVEMENTS ==================== -->
+  <section class="chapter chapter--dark achievements" data-chapter="Our Achievements">
+    <div class="achievements__head">
+      <span class="eyebrow reveal">Our Achievements</span>
+      <span class="datum reveal"></span>
+      <h2 class="display reveal">Progress measured<br />in discipline.</h2>
+      <p class="lede reveal">Our progress has been shaped by trust, consistency, and a commitment to excellence in every detail.</p>
+    </div>
+    <ol class="ach-list reveal-group">
+      <li class="ach-list__item reveal-item">
+        <span class="ach-list__num">01</span>
+        <p>Specialized focus on luxury modern large-scale villas.</p>
+      </li>
+      <li class="ach-list__item reveal-item">
+        <span class="ach-list__num">02</span>
+        <p>A growing portfolio of bespoke residential design studies and private commissions.</p>
+      </li>
+      <li class="ach-list__item reveal-item">
+        <span class="ach-list__num">03</span>
+        <p>A clear architectural language recognized for precision, sharp form, and spatial clarity.</p>
+      </li>
+      <li class="ach-list__item reveal-item">
+        <span class="ach-list__num">04</span>
+        <p>A collaborative approach trusted by private clients and project stakeholders.</p>
+      </li>
+      <li class="ach-list__item reveal-item">
+        <span class="ach-list__num">05</span>
+        <p>A design philosophy centered on timelessness over trends.</p>
+      </li>
+    </ol>
+    <p class="ach-close reveal">Each project adds to a body of work defined not by repetition, but by discipline, character, and intent.</p>
+  </section>
+
+  <!-- ==================== 06–09 · HOW WE WORK ==================== -->
+  <section class="process" id="process" data-chapter="How We Work">
+    <div class="process__intro">
+      <span class="eyebrow reveal">How We Work</span>
+      <span class="datum reveal"></span>
+      <h2 class="display reveal">Four movements,<br />one intention.</h2>
+    </div>
+
+    <article class="step" data-chapter="How We Work">
+      <div class="step__text">
+        <span class="step__label reveal">Step 01</span>
+        <h3 class="step__name reveal">Listen</h3>
+        <div class="prose reveal-group">
+          <p class="reveal-item">Every project begins with understanding. We start by listening carefully — to the client’s vision, lifestyle, priorities, site conditions, and long-term aspirations.</p>
+          <p class="reveal-item">This first stage builds the foundation for everything that follows. It allows us to define the architectural direction with clarity and purpose.</p>
+        </div>
+        <ul class="keywords reveal-group">
+          <li class="reveal-item">Vision</li>
+          <li class="reveal-item">Lifestyle</li>
+          <li class="reveal-item">Site</li>
+          <li class="reveal-item">Brief</li>
+          <li class="reveal-item">Intent</li>
+        </ul>
+      </div>
+      <div class="step__media media">
+        <img src="assets/06-how-we-work-listen.jpg" alt="A refined meeting table with unbranded plans, a precise site model, and monochrome stone and metal samples" width="1672" height="941" loading="lazy" decoding="async" />
+      </div>
+    </article>
+
+    <article class="step" data-chapter="How We Work">
+      <div class="step__text">
+        <span class="step__label reveal">Step 02</span>
+        <h3 class="step__name reveal">Define</h3>
+        <div class="prose reveal-group">
+          <p class="reveal-item">Once the brief is clear, we translate ideas into architectural direction. We study massing, spatial planning, circulation, hierarchy, and the overall character of the villa.</p>
+          <p class="reveal-item">This is where the project begins to take shape — not as a final image, but as a strong concept with order and logic.</p>
+        </div>
+        <ul class="keywords reveal-group">
+          <li class="reveal-item">Concept</li>
+          <li class="reveal-item">Massing</li>
+          <li class="reveal-item">Planning</li>
+          <li class="reveal-item">Hierarchy</li>
+          <li class="reveal-item">Direction</li>
+        </ul>
+      </div>
+      <div class="step__media media">
+        <img src="assets/07-how-we-work-define.jpg" alt="A studio worktable with a family of white and charcoal massing studies, diagram sheets and a site base" width="1672" height="941" loading="lazy" decoding="async" />
+      </div>
+    </article>
+
+    <article class="step" data-chapter="How We Work">
+      <div class="step__text">
+        <span class="step__label reveal">Step 03</span>
+        <h3 class="step__name reveal">Design</h3>
+        <div class="prose reveal-group">
+          <p class="reveal-item">We develop the concept into a refined architectural proposal. Openings, volumes, materials, transitions, and proportions are carefully resolved to create a coherent design language.</p>
+          <p class="reveal-item">At this stage, the villa becomes more than a concept. It becomes an architectural experience — both visually powerful and highly livable.</p>
+        </div>
+        <ul class="keywords reveal-group">
+          <li class="reveal-item">Form</li>
+          <li class="reveal-item">Material</li>
+          <li class="reveal-item">Light</li>
+          <li class="reveal-item">Detail</li>
+          <li class="reveal-item">Experience</li>
+        </ul>
+      </div>
+      <div class="step__media media">
+        <img src="assets/08-how-we-work-design.jpg" alt="A design-development workspace with a large villa model, technical drawings, and stone, glass and metal samples" width="1672" height="941" loading="lazy" decoding="async" />
+      </div>
+    </article>
+
+    <article class="step step--last" data-chapter="How We Work">
+      <div class="step__text">
+        <span class="step__label reveal">Step 04</span>
+        <h3 class="step__name reveal">Refine</h3>
+        <div class="prose reveal-group">
+          <p class="reveal-item">The final stage is about precision. We refine the design through review, coordination, and focused development to ensure the original vision remains strong all the way through.</p>
+          <p class="reveal-item">Our goal is simple: to deliver architecture that feels resolved, intentional, and complete.</p>
+        </div>
+        <ul class="keywords reveal-group">
+          <li class="reveal-item">Precision</li>
+          <li class="reveal-item">Coordination</li>
+          <li class="reveal-item">Consistency</li>
+          <li class="reveal-item">Resolution</li>
+          <li class="reveal-item">Completion</li>
+        </ul>
+      </div>
+      <div class="step__media media">
+        <img src="assets/09-how-we-work-refine.jpg" alt="An exacting interior detail: a floating stone stair meeting a smooth concrete wall with a recessed black handrail" width="1672" height="941" loading="lazy" decoding="async" />
+      </div>
+    </article>
+  </section>
+
+  <!-- ==================== 10 · THE WORK / PORTFOLIO ==================== -->
+  <section class="work-hero" id="work" data-chapter="The Work">
+    <div class="work-hero__bg" data-parallax="0.14">
+      <img src="assets/10-the-work-portfolio.jpg" alt="A striking bespoke villa of sculptural interlocking volumes, broad cantilevers, glass living wings and a linear pool by the sea" width="1672" height="941" loading="lazy" decoding="async" />
+    </div>
+    <div class="work-hero__scrim"></div>
+    <div class="work-hero__inner">
+      <span class="eyebrow eyebrow--light reveal">The Work</span>
+      <span class="datum datum--light reveal"></span>
+      <h2 class="display display--light reveal">A selection defined by scale,<br />discipline, and identity.</h2>
+      <div class="prose prose--light reveal-group">
+        <p class="reveal-item">Our projects are shaped by individual stories, but united by a consistent architectural mindset.</p>
+        <p class="reveal-item">We approach each villa as a complete composition — site, structure, landscape, movement, and atmosphere working together as one. The result is a body of work that feels distinctive, contemporary, and deeply considered.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== 11 · THE WORK / PRINCIPLES ==================== -->
+  <section class="chapter chapter--light principles" data-chapter="The Work">
+    <div class="principles__head">
+      <span class="eyebrow reveal">The Work</span>
+      <span class="datum reveal"></span>
+      <h2 class="display reveal">Designed with precision.<br />Experienced through space.</h2>
+    </div>
+    <div class="principles__media media">
+      <img src="assets/11-the-work-principles.jpg" alt="Four moments from one villa: grand arrival, continuous circulation, a courtyard framed by light, and a precise material detail" width="1672" height="941" loading="lazy" decoding="async" />
+    </div>
+    <ol class="principle-list reveal-group">
+      <li class="principle reveal-item">
+        <h3 class="principle__title">Grand Arrival</h3>
+        <p>Architecture that creates presence from the first approach.</p>
+      </li>
+      <li class="principle reveal-item">
+        <h3 class="principle__title">Spatial Continuity</h3>
+        <p>Open, connected interiors with clear movement and visual flow.</p>
+      </li>
+      <li class="principle reveal-item">
+        <h3 class="principle__title">Framed Light</h3>
+        <p>Openings and volumes designed to control brightness, shadow, and atmosphere.</p>
+      </li>
+      <li class="principle reveal-item">
+        <h3 class="principle__title">Indoor–Outdoor Harmony</h3>
+        <p>Seamless transitions between architecture, terraces, courtyards, and landscape.</p>
+      </li>
+      <li class="principle reveal-item">
+        <h3 class="principle__title">Material Discipline</h3>
+        <p>A restrained palette chosen for longevity, texture, and elegance.</p>
+      </li>
+    </ol>
+    <p class="principles__close reveal">Every project is tailored. The design language remains disciplined, but the outcome is always unique to its context and client.</p>
+  </section>
+
+  <!-- ==================== 12 · THE PEOPLE / LEADERSHIP ==================== -->
+  <section class="chapter chapter--dark leadership" id="people" data-chapter="The People">
+    <div class="leadership__media media">
+      <img src="assets/12-leadership-portrait.jpg" alt="A black-and-white portrait of a calm, confident studio leader in minimal black tailoring within a concrete-and-glass villa" width="1122" height="1402" loading="lazy" decoding="async" />
+    </div>
+    <div class="leadership__text">
+      <span class="eyebrow reveal">The People — Leadership</span>
+      <span class="datum reveal"></span>
+      <h2 class="display reveal">Strong design begins<br />with strong direction.</h2>
+      <div class="prose prose--light reveal-group">
+        <p class="reveal-item">K is guided by a leadership team that brings architectural vision, strategic clarity, and a commitment to design excellence.</p>
+        <p class="reveal-item">Their role is not only to lead the business, but to protect the quality, depth, and integrity of the work — from first concept to final resolution.</p>
+      </div>
+      <ul class="roles reveal-group">
+        <li class="reveal-item"><span>Founder</span> Design Director</li>
+        <li class="reveal-item"><span>Managing</span> Director</li>
+        <li class="reveal-item"><span>Senior</span> Architect</li>
+        <li class="reveal-item"><span>Design</span> Lead</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ==================== 13 · THE PEOPLE / TEAM ==================== -->
+  <section class="chapter chapter--light team" data-chapter="The People">
+    <div class="team__head">
+      <span class="eyebrow reveal">The People — The Team</span>
+      <span class="datum reveal"></span>
+      <h2 class="display reveal">A studio is only as strong<br />as the people behind its work.</h2>
+    </div>
+    <div class="team__media media">
+      <img src="assets/13-team.jpg" alt="Six architects and designers in monochrome, collaborating around a villa model and unbranded drawings in a refined studio" width="1672" height="941" loading="lazy" decoding="async" />
+    </div>
+    <div class="team__body reveal-group">
+      <p class="team__intro reveal-item">Behind every project is a team of architects, designers, and professionals working with rigor, care, and shared intent.</p>
+      <p class="reveal-item">At K, collaboration is essential to the design process. Our team combines creative thinking with technical discipline to shape villas that are elegant, resolved, and highly functional. Each member contributes to the same goal: creating architecture that feels refined in every dimension.</p>
+      <ul class="team__words reveal-item">
+        <li>Architecture</li>
+        <li>Design</li>
+        <li>Coordination</li>
+        <li>Detail</li>
+        <li>Execution</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ==================== INTERLUDE · EXTERIOR NIGHT ==================== -->
+  <section class="interlude interlude--dark" data-chapter="Where We Are Going" aria-hidden="true">
+    <div class="interlude__bg" data-parallax="0.18">
+      <img src="assets/extra-03-exterior-night.jpg" alt="" width="1672" height="941" loading="lazy" decoding="async" />
+    </div>
+    <p class="interlude__line interlude__line--light reveal">The next chapter, taking form.</p>
+  </section>
+
+  <!-- ==================== 14 · WHERE WE ARE GOING ==================== -->
+  <section class="chapter chapter--dark future" data-chapter="Where We Are Going">
+    <div class="future__bg" data-parallax="0.10">
+      <img src="assets/14-future-direction.jpg" alt="A visionary modern villa of clean floating planes, deep courtyards and a controlled water plane in luminous soft daylight" width="1672" height="941" loading="lazy" decoding="async" />
+    </div>
+    <div class="future__scrim"></div>
+    <div class="future__inner">
+      <span class="eyebrow eyebrow--light reveal">Where We Are Going</span>
+      <span class="datum datum--light reveal"></span>
+      <h2 class="display display--light reveal">A future defined<br />by depth, not volume.</h2>
+      <div class="prose prose--light reveal-group">
+        <p class="reveal-item">We are focused on growing with intention — taking on projects that align with our values, expanding our body of work with discipline, and continuing to refine a design language that feels both current and lasting.</p>
+        <p class="reveal-item">Our direction is clear: to become a recognized name in luxury modern villa architecture through consistency, clarity, and architectural excellence.</p>
+      </div>
+      <figure class="pull pull--light reveal">
+        <blockquote>“The future of K will be shaped the same way we design — with precision, vision, and purpose.”</blockquote>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ==================== 15 · START A NEW CHAPTER ==================== -->
+  <section class="chapter contact" id="contact" data-chapter="Start a New Chapter">
+    <div class="contact__media media">
+      <img src="assets/15-start-a-new-chapter.jpg" alt="A villa entrance at dusk — a long white concrete canopy, pale stone path, charcoal pivot door and warm glow within" width="1672" height="941" loading="lazy" decoding="async" />
+      <div class="contact__media-text">
+        <span class="eyebrow eyebrow--light reveal">Start a New Chapter</span>
+        <p class="contact__media-quote reveal">Luxury begins with a clear idea — and the right studio to shape it.</p>
+      </div>
+    </div>
+    <div class="contact__panel">
+      <div class="contact__head">
+        <h2 class="display reveal">Let’s begin something<br />exceptional.</h2>
+        <p class="lede reveal">If you are planning a villa defined by scale, presence, and architectural clarity, we would be pleased to begin the conversation. Whether you have a site, an early vision, or a developed brief, K is ready to help shape the next chapter.</p>
+      </div>
+      <form class="contact-form reveal-group" id="contactForm" novalidate>
+        <div class="field reveal-item">
+          <input type="text" id="fullName" name="fullName" required placeholder=" " autocomplete="name" />
+          <label for="fullName">Full name</label>
+        </div>
+        <div class="field-row">
+          <div class="field reveal-item">
+            <input type="email" id="email" name="email" required placeholder=" " autocomplete="email" />
+            <label for="email">Email</label>
+          </div>
+          <div class="field reveal-item">
+            <input type="tel" id="phone" name="phone" placeholder=" " autocomplete="tel" />
+            <label for="phone">Phone</label>
+          </div>
+        </div>
+        <div class="field-row">
+          <div class="field reveal-item">
+            <input type="text" id="location" name="location" placeholder=" " />
+            <label for="location">Project location</label>
+          </div>
+          <div class="field field--select reveal-item">
+            <select id="projectType" name="projectType" required>
+              <option value="" selected disabled></option>
+              <option>New villa</option>
+              <option>Private residence</option>
+              <option>Development</option>
+              <option>Other</option>
+            </select>
+            <label for="projectType">Project type</label>
+          </div>
+        </div>
+        <div class="field field--area reveal-item">
+          <textarea id="message" name="message" rows="3" placeholder=" "></textarea>
+          <label for="message">Message</label>
+        </div>
+        <button type="submit" class="btn reveal-item">
+          <span>Start a conversation</span>
+          <span class="btn__line"></span>
+        </button>
+        <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
+      </form>
+    </div>
+  </section>
+
+</main>
+
+<!-- ============================ FOOTER ============================ -->
+<footer class="site-footer">
+  <div class="site-footer__brand">
+    <span class="site-footer__k">K</span>
+    <p>Luxury modern villa design.</p>
+  </div>
+  <nav class="site-footer__nav" aria-label="Footer">
+    <a href="#home">Home</a>
+    <a href="#started">Story</a>
+    <a href="#process">Process</a>
+    <a href="#work">Work</a>
+    <a href="#people">People</a>
+    <a href="#contact">Contact</a>
+  </nav>
+  <div class="site-footer__meta">
+    <span>Architecture &amp; Design Studio</span>
+    <span>&copy; <span id="year">2026</span> K. All rights reserved.</span>
+  </div>
+</footer>
+
+<script src="js/main.js?v=8"></script>
+  <link rel="stylesheet" href="../_shared/izden-mark.css" />
+  <script src="../_shared/izden-mark.js" defer></script>
+<script src="../_shared/izden-agency.js" defer></script>
+</body>
+</html>

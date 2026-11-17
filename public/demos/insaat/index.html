@@ -9,18 +9,24 @@
   <link rel="preconnect" href="https://api.fontshare.com" crossorigin />
   <link href="https://api.fontshare.com/v2/css?f[]=boska@400,500&f[]=switzer@300,400,500,600&display=swap" rel="stylesheet" />
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
-  <link rel="stylesheet" href="./styles.css?v=soft2" />
+  <link rel="stylesheet" href="./styles.css?v=loadfix1" />
+<link rel="stylesheet" href="../_shared/izden-scroll-visuals.css" />
+<link rel="stylesheet" href="../_shared/izden-agency.css" />
 </head>
 <body class="brand-forma">
   <div class="loader" id="loader">
     <div class="loader__mark">FORMA</div>
+    <p class="loader__hint">Villa yükseliyor — sahadan ışığa</p>
     <div class="loader__bar"><i id="loaderBar"></i></div>
     <p>House film yükleniyor</p>
   </div>
 
   <div class="progress" id="progress"></div>
 
-  <header class="nav" id="nav">
+  <header class="nav" id="nav" data-open="false">
+    <button type="button" class="nav__burger" id="navBurger" aria-label="Menüyü aç" aria-expanded="false" aria-controls="navDrawer">
+      <span></span><span></span><span></span>
+    </button>
     <a class="nav__brand" href="#top">FORMA</a>
     <nav class="nav__links" id="chapterNav">
       <button type="button" data-seek="0">Arrival</button>
@@ -34,6 +40,22 @@
       <a class="nav__cta" href="#atelier">Brief</a>
     </div>
   </header>
+  <div class="nav-drawer-backdrop" id="navDrawerBackdrop" hidden></div>
+  <aside class="nav-drawer" id="navDrawer" aria-hidden="true" data-open="false">
+    <div class="nav-drawer__head">
+      <strong>FORMA</strong>
+      <button type="button" class="nav-drawer__close" id="navDrawerClose" aria-label="Kapat">×</button>
+    </div>
+    <nav class="nav-drawer__links" id="chapterNavMobile" aria-label="Mobil menü">
+      <button type="button" data-seek="0">Arrival</button>
+      <button type="button" data-seek="0.083">Frame</button>
+      <button type="button" data-seek="0.269">Skin</button>
+      <button type="button" data-seek="0.374">Rooms</button>
+      <button type="button" data-seek="0.881">Dusk</button>
+      <a href="#rooms">Odalar</a>
+      <a href="#atelier">Brief</a>
+    </nav>
+  </aside>
 
   <main id="top">
     <section class="stage-wrap">
@@ -214,8 +236,8 @@
         <p>Arsa, program ve ışık tercihinizi yazın. 48 saat içinde beş karelik film çerçevesi öneririz.</p>
         <ul>
           <li>İstanbul · Beşiktaş Atölye</li>
-          <li>studio@forma.arch</li>
-          <li>+90 212 345 02 02</li>
+          <li>info@izdencreative.com</li>
+          <li>+90 — İzden Creative</li>
           <li>Pzt–Cum 10:00–19:00</li>
         </ul>
       </div>
@@ -255,7 +277,9 @@
   </footer>
 
   <script src="./icons.js" defer></script>
-  <script src="./scrub.js?v=soft1" defer></script>
-  <script src="./site.js?v=curtain2" defer></script>
+  <script src="./scrub.js?v=mobnav1" defer></script>
+  <script src="./site.js?v=mobnav1" defer></script>
+<script src="../_shared/izden-scroll-visuals.js" defer></script>
+<script src="../_shared/izden-agency.js" defer></script>
 </body>
 </html>

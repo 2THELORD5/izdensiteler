@@ -127,10 +127,43 @@ video {
   width: 100%;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  gap: 0.75rem;
   padding: 1.5rem 3rem;
   z-index: 100;
   mix-blend-mode: difference;
+}
+
+.nav__burger {
+  appearance: none;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 0.7rem;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  background: transparent;
+  color: inherit;
+  display: none;
+  place-content: center;
+  gap: 5px;
+  flex-shrink: 0;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+.nav__burger span {
+  display: block;
+  width: 1rem;
+  height: 1.5px;
+  background: currentColor;
+  border-radius: 2px;
+  transition: transform 0.25s, opacity 0.2s;
+}
+.nav[data-open="true"] .nav__burger span:nth-child(1) {
+  transform: translateY(6.5px) rotate(45deg);
+}
+.nav[data-open="true"] .nav__burger span:nth-child(2) {
+  opacity: 0;
+}
+.nav[data-open="true"] .nav__burger span:nth-child(3) {
+  transform: translateY(-6.5px) rotate(-45deg);
 }
 
 .nav__logo {
@@ -138,6 +171,8 @@ video {
   font-weight: 800;
   letter-spacing: var(--tracking-tight);
   text-transform: uppercase;
+  flex: 1;
+  min-width: 0;
 }
 
 .accent {
@@ -151,6 +186,7 @@ video {
   font-size: 0.875rem;
   font-weight: 500;
   letter-spacing: 0.02em;
+  margin-left: auto;
 }
 
 .nav__links a {
@@ -174,6 +210,70 @@ video {
   color: var(--black);
   border-color: var(--white);
   opacity: 1 !important;
+}
+
+.nav-drawer-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 110;
+  background: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(2px);
+  mix-blend-mode: normal;
+}
+.nav-drawer-backdrop[hidden] {
+  display: none !important;
+}
+.nav-drawer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  z-index: 120;
+  width: min(19.5rem, 86vw);
+  background: #0a0a0a;
+  color: #fff;
+  box-shadow: 18px 0 48px rgba(0, 0, 0, 0.45);
+  transform: translateX(-104%);
+  transition: transform 0.32s cubic-bezier(0.16, 1, 0.3, 1);
+  display: flex;
+  flex-direction: column;
+  padding: calc(env(safe-area-inset-top) + 1rem) 1.15rem calc(env(safe-area-inset-bottom) + 1.25rem);
+  mix-blend-mode: normal;
+}
+.nav-drawer[data-open="true"] {
+  transform: translateX(0);
+}
+.nav-drawer__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.1rem;
+}
+.nav-drawer__head strong {
+  font-size: 1.1rem;
+  letter-spacing: 0.04em;
+}
+.nav-drawer__close {
+  width: 2.5rem;
+  height: 2.5rem;
+  font-size: 1.7rem;
+  background: none;
+  border: 0;
+  color: #fff;
+  cursor: pointer;
+}
+.nav-drawer__links {
+  display: grid;
+  gap: 0.1rem;
+}
+.nav-drawer__links a {
+  display: block;
+  padding: 0.95rem 0.2rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  font-size: 1.1rem;
+}
+body.nav-open {
+  overflow: hidden;
 }
 
 .hero {
@@ -840,11 +940,23 @@ video {
 
 @media (max-width: 768px) {
   .nav {
-    padding: 1.25rem 1.5rem;
+    padding: calc(0.85rem + env(safe-area-inset-top)) 1rem 0.85rem;
   }
 
-  .nav__links a:not(.nav__cta) {
+  .nav__burger {
+    display: grid;
+  }
+
+  .nav__links {
     display: none;
+  }
+
+  /* Keep .hero at 250vh for scrub length — only pin/canvas fill the viewport */
+  .hero__pin,
+  .hero__canvas,
+  .hero__overlay {
+    height: 100svh;
+    min-height: 100svh;
   }
 
   .hero__content {

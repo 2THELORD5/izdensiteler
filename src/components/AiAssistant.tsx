@@ -42,7 +42,7 @@ function goToHref(href: string, router: ReturnType<typeof useRouter>) {
     return;
   }
   if (href.startsWith("/incele/")) {
-    router.push(href);
+    window.location.assign(href);
     return;
   }
   if (href.startsWith("#")) {
