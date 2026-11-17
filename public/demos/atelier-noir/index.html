@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>NOIR — After dark</title>
+  <meta name="description" content="NOIR — night fragrance. Notes, ritual, collection. After-dark luxury." />
+  <meta name="theme-color" content="#050505" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=DM+Sans:opsz,wght@9..40,400;9..40,500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="/demos/_shared/izden-afterglow.css" />
+  <link rel="stylesheet" href="/demos/_shared/izden-agency.css" />
+</head>
+<body>
+  <header class="site-nav" id="nav" data-open="false">
+    <button type="button" class="site-nav__burger" id="navBurger" aria-label="Open menu" aria-expanded="false" aria-controls="navDrawer">
+      <span></span><span></span><span></span>
+    </button>
+    <a class="site-nav__brand" href="#top">NOIR</a>
+    <nav class="site-nav__links" aria-label="Primary">
+      <a href="#notes">Notes</a>
+      <a href="#ritual">Ritual</a>
+      <a href="#collection">Collection</a>
+      <a href="#contact" class="site-nav__cta">Enquire</a>
+    </nav>
+  </header>
+  <div class="nav-drawer-backdrop" id="navBackdrop" hidden></div>
+  <aside class="nav-drawer" id="navDrawer" aria-hidden="true" data-open="false">
+    <div class="nav-drawer__head">
+      <strong>NOIR</strong>
+      <button type="button" class="nav-drawer__close" id="navClose" aria-label="Close">×</button>
+    </div>
+    <nav class="nav-drawer__links" aria-label="Mobile">
+      <a href="#notes">Notes</a>
+      <a href="#ritual">Ritual</a>
+      <a href="#collection">Collection</a>
+      <a href="#contact">Enquire</a>
+    </nav>
+  </aside>
+
+  <main id="top">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero__glow" aria-hidden="true"></div>
+      <div class="hero__photo ken-burns" aria-hidden="true">
+        <img src="https://images.unsplash.com/photo-1541643600911-781b1747ebd7?auto=format&amp;fit=crop&amp;w=1920&amp;q=80" alt="" width="1920" height="1280" fetchpriority="high" />
+      </div>
+      <div class="hero__veil"></div>
+      <div class="hero__copy">
+        <p class="hero__serif iz-reveal">Eau de parfum</p>
+        <h1 class="hero__title iz-reveal" id="hero-title" data-d="1"><span class="hero__italic">After</span> dark.</h1>
+        <p class="hero__sans iz-reveal" data-d="2">Velvet iris, smoked rose, iron midnight. Worn when the city exhales.</p>
+        <a class="hero__link iz-reveal" data-d="3" href="#notes">Discover notes</a>
+      </div>
+    </section>
+
+    <section class="panels" id="notes" aria-label="Product chapters">
+      <div class="panels__nav" role="tablist" aria-label="Chapters">
+        <button type="button" role="tab" class="panels__tab is-on" aria-selected="true" data-step="0">Notes</button>
+        <button type="button" role="tab" class="panels__tab" aria-selected="false" data-step="1">Ritual</button>
+        <button type="button" role="tab" class="panels__tab" aria-selected="false" data-step="2">Collection</button>
+      </div>
+      <div class="panels__stack">
+        <article class="panels__card is-active" data-step="0">
+          <div class="panels__inner iz-reveal">
+            <p class="panels__label">Top · Heart · Base</p>
+            <h2>Notes</h2>
+            <ul class="panels__notes">
+              <li>Blackcurrant bud &amp; pink pepper</li>
+              <li>Turkish rose absolute, suede</li>
+              <li>Incense resin, patchouli, benzoin</li>
+            </ul>
+            <figure class="panels__figure">
+              <img src="https://images.unsplash.com/photo-1594035910387-fea47794261e?auto=format&amp;fit=crop&amp;w=900&amp;q=80" alt="Fragrance bottle in dramatic light" width="900" height="1100" loading="lazy" />
+            </figure>
+          </div>
+        </article>
+        <article class="panels__card" data-step="1" id="ritual" hidden>
+          <div class="panels__inner iz-reveal">
+            <p class="panels__label">Pulse points</p>
+            <h2>Ritual</h2>
+            <p class="panels__text">Two sprays to the wrist, one to the sternum. Breathe once before the lift doors open. No layering — NOIR is the final coat.</p>
+            <figure class="panels__figure">
+              <img src="https://images.unsplash.com/photo-1615634260167-c8cdede054cc?auto=format&amp;fit=crop&amp;w=900&amp;q=80" alt="Hand applying fragrance" width="900" height="1100" loading="lazy" />
+            </figure>
+          </div>
+        </article>
+        <article class="panels__card" data-step="2" id="collection" hidden>
+          <div class="panels__inner iz-reveal">
+            <p class="panels__label">50 ml · extrait</p>
+            <h2>Collection</h2>
+            <p class="panels__text">NOIR 01 — After dark. Matte obsidian glass, magnetic cap, numbered sleeve. Limited 400 flacons.</p>
+            <div class="panels__marquee" aria-hidden="true">
+              <span>NOIR · AFTER DARK · ISTANBUL · NOIR · AFTER DARK ·</span>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="contact" id="contact">
+      <div class="contact__inner iz-reveal">
+        <h2>Maison</h2>
+        <p>NOIR demo — designed by İzden Creative.</p>
+        <ul class="contact__list">
+          <li><a href="mailto:info@izdencreative.com">info@izdencreative.com</a></li>
+          <li><a href="tel:+902120000000">+90 212 000 00 00</a></li>
+          <li><a href="https://www.izdencreative.com" target="_blank" rel="noopener noreferrer">izdencreative.com</a></li>
+        </ul>
+        <img class="contact__logo" src="/demos/_shared/izden-creative.jpg" alt="İzden Creative" width="180" height="61" loading="lazy" />
+      </div>
+    </section>
+  </main>
+
+  <script src="main.js"></script>
+      <script src="/demos/_shared/izden-afterglow.js"></script>
+  <script src="/demos/_shared/izden-agency.js"></script>
+</body>
+</html>

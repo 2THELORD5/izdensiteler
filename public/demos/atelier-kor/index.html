@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>KOR — Built by fire</title>
+  <meta name="description" content="KOR — kömür ateşi, tabak disiplini, gece servisi. Demo mutfak markası." />
+  <meta name="theme-color" content="#0a0807" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;1,9..40,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="/demos/_shared/izden-afterglow.css" />
+  <link rel="stylesheet" href="/demos/_shared/izden-agency.css" />
+</head>
+<body>
+  <header class="site-nav" id="nav" data-open="false">
+    <button type="button" class="site-nav__burger" id="navBurger" aria-label="Menüyü aç" aria-expanded="false" aria-controls="navDrawer">
+      <span></span><span></span><span></span>
+    </button>
+    <a class="site-nav__brand" href="#top">KOR</a>
+    <nav class="site-nav__links" aria-label="Ana menü">
+      <a href="#fire">Fire</a>
+      <a href="#plate">Plate</a>
+      <a href="#night">Night</a>
+      <a href="#contact" class="site-nav__cta">Rezervasyon</a>
+    </nav>
+  </header>
+  <div class="nav-drawer-backdrop" id="navBackdrop" hidden></div>
+  <aside class="nav-drawer" id="navDrawer" aria-hidden="true" data-open="false">
+    <div class="nav-drawer__head">
+      <strong>KOR</strong>
+      <button type="button" class="nav-drawer__close" id="navClose" aria-label="Kapat">×</button>
+    </div>
+    <nav class="nav-drawer__links" aria-label="Mobil menü">
+      <a href="#fire">Fire</a>
+      <a href="#plate">Plate</a>
+      <a href="#night">Night</a>
+      <a href="#contact">Rezervasyon</a>
+    </nav>
+  </aside>
+
+  <main id="top">
+    <section class="hero" aria-labelledby="hero-title">
+      <video class="hero__video" autoplay muted loop playsinline poster="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&amp;fit=crop&amp;w=1200&amp;q=80">
+        <source src="https://videos.pexels.com/video-files/3765350/3765350-sd_640_360_30fps.mp4" type="video/mp4" />
+      </video>
+      <div class="hero__shade"></div>
+      <div class="hero__content">
+        <p class="hero__eyebrow iz-reveal">Karaköy · open fire</p>
+        <h1 class="hero__title iz-reveal" id="hero-title" data-d="1">BUILT BY FIRE.</h1>
+        <p class="hero__lede iz-reveal" data-d="2">Kömür, demir ve gece. Tabaklar ateşin ritmine göre gelir — menü değil, seans.</p>
+        <a class="hero__btn iz-reveal" data-d="3" href="#plate">Menüye in</a>
+      </div>
+    </section>
+
+    <section class="tabs" id="fire" data-chapter-section>
+      <div class="tabs__rail" role="tablist" aria-label="Bölümler">
+        <button type="button" class="tabs__btn is-active" role="tab" aria-selected="true" data-panel="fire">Fire</button>
+        <button type="button" class="tabs__btn" role="tab" aria-selected="false" data-panel="plate">Plate</button>
+        <button type="button" class="tabs__btn" role="tab" aria-selected="false" data-panel="night">Night</button>
+      </div>
+      <div class="tabs__panels">
+        <article class="tabs__panel is-visible iz-reveal" id="panel-fire" data-panel-id="fire">
+          <div class="tabs__grid">
+            <figure class="tabs__visual">
+              <img src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&amp;fit=crop&amp;w=1000&amp;q=80" alt="Alevde ızgara" width="1000" height="700" loading="lazy" />
+            </figure>
+            <div>
+              <h2>Fire</h2>
+              <p>Odun kömürü 480°C. Yağ dumanı değil, duman imzası. Her servis öncesi ısı yeniden ölçülür.</p>
+            </div>
+          </div>
+        </article>
+        <article class="tabs__panel" id="panel-plate" data-panel-id="plate" hidden>
+          <div class="tabs__grid">
+            <figure class="tabs__visual">
+              <img src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&amp;fit=crop&amp;w=1000&amp;q=80" alt="Kömürde pişmiş tabak" width="1000" height="700" loading="lazy" />
+            </figure>
+            <div>
+              <h2>Plate</h2>
+              <p>Üç tabaklık gece seti: kök, protein, kül tuz. Sunum taş tahtada — çatal opsiyonel.</p>
+            </div>
+          </div>
+        </article>
+        <article class="tabs__panel" id="panel-night" data-panel-id="night" hidden>
+          <div class="tabs__grid">
+            <figure class="tabs__visual">
+              <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&amp;fit=crop&amp;w=1000&amp;q=80" alt="Gece servisi salonu" width="1000" height="700" loading="lazy" />
+            </figure>
+            <div>
+              <h2>Night</h2>
+              <p>20:30 sonrası: loş amber, tek servis akışı. Masa başına sekiz koltuk — sessiz müzik yok.</p>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="band" id="signature" aria-labelledby="band-title">
+      <p class="band__kicker iz-reveal">Tonight</p>
+      <h2 class="band__title iz-reveal" id="band-title" data-d="1">Chef’s ember board</h2>
+      <p class="band__lede iz-reveal" data-d="2">Kül tuzlu kök · odun kuzu · gece hunisi</p>
+      <div class="band__numbers iz-reveal" data-d="3">
+        <div><span class="counter" data-target="8">0</span><small>kişi / masa</small></div>
+        <div><span class="counter" data-target="3">0</span><small>tabak set</small></div>
+      </div>
+    </section>
+
+    <section class="contact" id="contact">
+      <div class="contact__inner iz-reveal">
+        <h2>Rezervasyon</h2>
+        <p>KOR demo — İzden Creative ile hazırlandı.</p>
+        <ul class="contact__list">
+          <li><a href="mailto:info@izdencreative.com">info@izdencreative.com</a></li>
+          <li><a href="tel:+902120000000">+90 212 000 00 00</a></li>
+          <li><a href="https://www.izdencreative.com" target="_blank" rel="noopener noreferrer">izdencreative.com</a></li>
+        </ul>
+        <img class="contact__logo" src="/demos/_shared/izden-creative.jpg" alt="İzden Creative" width="180" height="61" loading="lazy" />
+      </div>
+    </section>
+  </main>
+
+  <script src="main.js"></script>
+      <script src="/demos/_shared/izden-afterglow.js"></script>
+  <script src="/demos/_shared/izden-agency.js"></script>
+</body>
+</html>

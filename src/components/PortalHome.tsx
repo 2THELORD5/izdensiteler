@@ -6,12 +6,58 @@ import { useEffect, useState } from "react";
 import { ArrowRight } from "lucide-react";
 import GlyphPortal from "@/components/ui/glyph-portal";
 import { WebShotButton } from "@/components/ui/web-shot-button";
-import { SITES, siteEmbedSrc } from "@/lib/sites";
+import { FILM_SITES, MOTION_SITES, siteEmbedSrc, type Site } from "@/lib/sites";
 import { Logo } from "@/components/Logo";
 import { SurveyForm } from "@/components/SurveyForm";
 import { AiAssistant } from "@/components/AiAssistant";
 
 const GLYPH_FACE = '"Arial Black", Arial, sans-serif';
+
+function PortalSiteGrid({ sites }: { sites: Site[] }) {
+  return (
+    <div className="portal-grid">
+      {sites.map((site) => (
+        <article key={site.slug} className="portal-card">
+          <div className="portal-card-media">
+            <Image
+              src={site.preview}
+              alt={site.name}
+              fill
+              unoptimized
+              sizes="(max-width: 900px) 100vw, 33vw"
+              className="object-cover"
+            />
+          </div>
+          <div className="portal-card-body">
+            <p>{site.category}</p>
+            <h3>{site.name}</h3>
+            <p className="muted">{site.tagline}</p>
+            <div className="portal-card-actions">
+              <WebShotButton
+                color="#ffffff"
+                size="md"
+                onClick={() => {
+                  window.location.assign(`/incele/${site.slug}`);
+                }}
+              >
+                İncele
+                <ArrowRight />
+              </WebShotButton>
+              <a
+                href={siteEmbedSrc(site)}
+                target="_blank"
+                rel="noreferrer"
+                className="portal-link"
+              >
+                Tam ekran
+              </a>
+            </div>
+          </div>
+        </article>
+      ))}
+    </div>
+  );
+}
 
 function scrollToHashTarget() {
   let id = location.hash.replace(/^#/, "");
@@ -112,7 +158,8 @@ export function PortalHome() {
               <Logo variant="light" className="portal-brand-img" />
             </Link>
             <nav>
-              <a href="#siteler">Siteler</a>
+              <a href="#siteler">Scroll film</a>
+              <a href="#animasyon">Şık motion</a>
               <a href="#nasil">Süreç</a>
               <a href="#teklif">Teklif al</a>
             </nav>
@@ -120,55 +167,26 @@ export function PortalHome() {
 
           <section id="siteler" className="portal-sites">
             <div className="portal-sites-head">
-              <p className="eyebrow">Canlı demolar</p>
-              <h2>Altı örnek. Aynı standart.</h2>
+              <p className="eyebrow">Scroll · Film</p>
+              <h2>Scrub ve cinematic anlatı.</h2>
               <p>
-                Her site bağımsız bir konsept demosu. Üretimde markanıza özel film,
-                tipografi ve sistem kurulur.
+                Uzun pin / frame scrub / chapter film. Scroll kaynağı; alt bölümler
+                animasyonla tamamlanır.
               </p>
             </div>
+            <PortalSiteGrid sites={FILM_SITES} />
+          </section>
 
-            <div className="portal-grid">
-              {SITES.map((site) => (
-                <article key={site.slug} className="portal-card">
-                  <div className="portal-card-media">
-                    <Image
-                      src={site.preview}
-                      alt={site.name}
-                      fill
-                      unoptimized
-                      sizes="(max-width: 900px) 100vw, 33vw"
-                      className="object-cover"
-                    />
-                  </div>
-                  <div className="portal-card-body">
-                    <p>{site.category}</p>
-                    <h3>{site.name}</h3>
-                    <p className="muted">{site.tagline}</p>
-                    <div className="portal-card-actions">
-                      <WebShotButton
-                        color="#ffffff"
-                        size="md"
-                        onClick={() => {
-                          window.location.assign(`/incele/${site.slug}`);
-                        }}
-                      >
-                        İncele
-                        <ArrowRight />
-                      </WebShotButton>
-                      <a
-                        href={siteEmbedSrc(site)}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="portal-link"
-                      >
-                        Tam ekran
-                      </a>
-                    </div>
-                  </div>
-                </article>
-              ))}
+          <section id="animasyon" className="portal-sites portal-sites--motion">
+            <div className="portal-sites-head">
+              <p className="eyebrow">Şık · Animasyonlu</p>
+              <h2>Scrollsuz veya çok kısa. Bölüm motion.</h2>
+              <p>
+                Hero kompozisyonu + görsel geçişler, reveal’lar ve panel fade.
+                Film scrub yok — marka sahnesi ve tipografi önde.
+              </p>
             </div>
+            <PortalSiteGrid sites={MOTION_SITES} />
           </section>
 
           <section id="nasil" className="portal-how">

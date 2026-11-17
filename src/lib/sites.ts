@@ -18,7 +18,13 @@ export type SiteSlug =
   | "blok"
   | "niche"
   | "nacre"
-  | "pivoine";
+  | "pivoine"
+  | "lumen"
+  | "kor"
+  | "noir";
+
+/** film = scroll/scrub led; motion = section animation, short or no scrub */
+export type SiteLane = "film" | "motion";
 
 export type Site = {
   slug: SiteSlug;
@@ -31,12 +37,14 @@ export type Site = {
   localPath?: string;
   order: number;
   metric: string;
+  lane: SiteLane;
 };
 
 /**
- * Orijinal İZDEN demoları + Moos Hostinger’dan birebir aynalanmış paketler
- * (public/demos/moos-*). Next.js tabanlı Moos demoları (retro/peak/blok/niche/qad)
- * ayrı export edilene kadar listede yok.
+ * Portal demoları.
+ * lane=film → scroll / film scrub ağırlıklı
+ * lane=motion → kısa scroll veya scrollsüz, bölüm animasyonları
+ * Kumrucu & Junesun: marka sahibi — İZDEN agency strip yok
  */
 export const SITES: Site[] = [
   {
@@ -49,6 +57,7 @@ export const SITES: Site[] = [
     externalUrl: "https://kumrucu-kale.vercel.app",
     order: 1,
     metric: "Film scrub",
+    lane: "film",
   },
   {
     slug: "junesun",
@@ -60,11 +69,12 @@ export const SITES: Site[] = [
     externalUrl: "https://www.junesun.com.tr/?intro=1",
     order: 2,
     metric: "Runway",
+    lane: "film",
   },
   {
     slug: "burger",
     name: "Burger · Anvil",
-    tagline: "Smash burger film, menü ve sipariş tahtası.",
+    tagline: "Smash film + sipariş tahtası + craft bölümleri.",
     category: "Yeme · İçme",
     accent: "#E23B2F",
     preview: "/previews/burger.jpg",
@@ -72,23 +82,25 @@ export const SITES: Site[] = [
     localPath: "/demos/burger/index.html",
     order: 3,
     metric: "Grill scrub",
+    lane: "film",
   },
   {
     slug: "insaat",
     name: "İnşaat · Forma",
-    tagline: "Şantiye → perde → mutfak → yatak → mavi saat. Tek HQ film scrub.",
+    tagline: "Şantiye film scrub + oda/brief animasyonları.",
     category: "Mimari · Villa",
     accent: "#A67C52",
     preview: "/previews/insaat.jpg",
     externalUrl: "http://127.0.0.1:5211",
     localPath: "/demos/insaat/index.html",
     order: 4,
-    metric: "House film scrub",
+    metric: "House film",
+    lane: "film",
   },
   {
     slug: "galeri",
     name: "Galeri · Strada",
-    tagline: "Gece showroom, private vault, performans.",
+    tagline: "Gece vault scrub + desk / randevu akışı.",
     category: "Kültür · Otomotiv",
     accent: "#6B7C8A",
     preview: "/previews/galeri.jpg",
@@ -96,11 +108,12 @@ export const SITES: Site[] = [
     localPath: "/demos/galeri/index.html",
     order: 5,
     metric: "Vault scrub",
+    lane: "film",
   },
   {
     slug: "signal",
     name: "SIGNAL",
-    tagline: "VR frame-scrub — el, gözlük, sinematik scroll.",
+    tagline: "VR frame-scrub + motion studio bölümleri.",
     category: "Studio",
     accent: "#E10600",
     preview: "/previews/signal.jpg",
@@ -108,11 +121,12 @@ export const SITES: Site[] = [
     localPath: "/demos/signal/index.html",
     order: 6,
     metric: "315 frames",
+    lane: "film",
   },
   {
     slug: "ores",
     name: "Maden İç Mimarlık",
-    tagline: "Moos Ores birebir — GSAP pin portfolyo, hero video, hizmet panelleri.",
+    tagline: "Moos Ores — GSAP pin portfolyo, hero video.",
     category: "İç mimari",
     accent: "#a78bfa",
     preview: "/previews/ores.jpg",
@@ -120,11 +134,12 @@ export const SITES: Site[] = [
     localPath: "/demos/moos-ores/index.html",
     order: 7,
     metric: "GSAP pin",
+    lane: "film",
   },
   {
     slug: "leaft",
     name: "Yaprak Peyzaj",
-    tagline: "Moos Leaft birebir — day/dusk, proje rayı, süreç chip’leri.",
+    tagline: "Moos Leaft — day/dusk, proje rayı.",
     category: "Peyzaj",
     accent: "#d4a017",
     preview: "/previews/leaft.jpg",
@@ -132,11 +147,12 @@ export const SITES: Site[] = [
     localPath: "/demos/moos-leaft/index.html",
     order: 8,
     metric: "Day/dusk",
+    lane: "film",
   },
   {
     slug: "trio",
     name: "Üçlü Peyzaj",
-    tagline: "Moos Trio birebir — ambient video hero, filtreli projeler.",
+    tagline: "Moos Trio — ambient video hero, filtreli projeler.",
     category: "Peyzaj",
     accent: "#7dd3a0",
     preview: "/previews/trio.jpg",
@@ -144,11 +160,12 @@ export const SITES: Site[] = [
     localPath: "/demos/moos-trio/index.html",
     order: 9,
     metric: "Video hero",
+    lane: "film",
   },
   {
     slug: "sapa",
     name: "Sapa Residans",
-    tagline: "Moos Sapa birebir — galeri rayları, harita, SSS.",
+    tagline: "Moos Sapa — galeri rayları, harita, SSS.",
     category: "Gayrimenkul",
     accent: "#b87333",
     preview: "/previews/sapa.jpg",
@@ -156,11 +173,12 @@ export const SITES: Site[] = [
     localPath: "/demos/moos-sapa/index.html",
     order: 10,
     metric: "Galleries",
+    lane: "film",
   },
   {
     slug: "bold",
     name: "Cesur Stüdyo",
-    tagline: "Moos Bold birebir — landmark portfolyo, ödüller, ekip.",
+    tagline: "Moos Bold — landmark portfolyo, ödüller.",
     category: "Mimari",
     accent: "#e11d48",
     preview: "/previews/bold.jpg",
@@ -168,11 +186,12 @@ export const SITES: Site[] = [
     localPath: "/demos/moos-bold/index.html",
     order: 11,
     metric: "Case study",
+    lane: "film",
   },
   {
     slug: "kstudio",
     name: "K Atelye",
-    tagline: "Moos K Studio birebir — editorial chapter’lar, running head.",
+    tagline: "Moos K Studio — editorial chapter’lar.",
     category: "Mimari · Editorial",
     accent: "#4f7cff",
     preview: "/previews/kstudio.jpg",
@@ -180,11 +199,12 @@ export const SITES: Site[] = [
     localPath: "/demos/moos-kstudio/index.html",
     order: 12,
     metric: "Chapters",
+    lane: "film",
   },
   {
     slug: "greenit",
     name: "Yeşil İt",
-    tagline: "Moos Green It birebir — 13 adımlı bahçe brief funnel.",
+    tagline: "Moos Green It — 13 adımlı bahçe funnel.",
     category: "Peyzaj · Funnel",
     accent: "#14b8a6",
     preview: "/previews/greenit.jpg",
@@ -192,11 +212,12 @@ export const SITES: Site[] = [
     localPath: "/demos/moos-greenit/index.html",
     order: 13,
     metric: "13-step",
+    lane: "film",
   },
   {
     slug: "grids",
     name: "Izgara Mimarlık",
-    tagline: "Moos Grids birebir — flip-card iş ızgarası, overlay menü.",
+    tagline: "Moos Grids — flip-card iş ızgarası.",
     category: "Mimari",
     accent: "#a855f7",
     preview: "/previews/grids.jpg",
@@ -204,11 +225,12 @@ export const SITES: Site[] = [
     localPath: "/demos/moos-grids/index.html",
     order: 14,
     metric: "Flip grid",
+    lane: "film",
   },
   {
     slug: "retro",
     name: "Vintage Atelye",
-    tagline: "Moos Retro birebir — canvas hero sequence, seçili işler.",
+    tagline: "Moos Retro — canvas hero sequence.",
     category: "İç mimari · Retro",
     accent: "#c9a66b",
     preview: "/previews/retro.jpg",
@@ -216,11 +238,12 @@ export const SITES: Site[] = [
     localPath: "/demos/moos-retro/index.html",
     order: 15,
     metric: "Canvas scrub",
+    lane: "film",
   },
   {
     slug: "peak",
     name: "Ufuk İç Mimarlık",
-    tagline: "Moos Peak birebir — hero sequence, malzemeler, yaklaşım.",
+    tagline: "Moos Peak — hero sequence, malzemeler.",
     category: "İç mimari",
     accent: "#0d3b3a",
     preview: "/previews/peak.jpg",
@@ -228,11 +251,12 @@ export const SITES: Site[] = [
     localPath: "/demos/moos-peak/index.html",
     order: 16,
     metric: "Sequence",
+    lane: "film",
   },
   {
     slug: "blok",
     name: "Kara Blok",
-    tagline: "Moos Black Block birebir — video hero, pinned süreç.",
+    tagline: "Moos Black Block — video hero, pinned süreç.",
     category: "Atölye · Model",
     accent: "#3b82f6",
     preview: "/previews/blok.jpg",
@@ -240,11 +264,12 @@ export const SITES: Site[] = [
     localPath: "/demos/moos-blok/index.html",
     order: 17,
     metric: "Pinned steps",
+    lane: "film",
   },
   {
     slug: "niche",
     name: "Niş Atelyesi",
-    tagline: "Moos Niche birebir — 20 panelli scroll anlatı.",
+    tagline: "Moos Niche — 20 panelli scroll anlatı.",
     category: "İç mimari",
     accent: "#d4a574",
     preview: "/previews/niche.jpg",
@@ -252,6 +277,7 @@ export const SITES: Site[] = [
     localPath: "/demos/moos-niche/index.html",
     order: 18,
     metric: "Chapter panels",
+    lane: "film",
   },
   {
     slug: "nacre",
@@ -264,6 +290,7 @@ export const SITES: Site[] = [
     localPath: "/demos/ascenta-nacre/index.html",
     order: 19,
     metric: "Film scrub",
+    lane: "film",
   },
   {
     slug: "pivoine",
@@ -276,11 +303,53 @@ export const SITES: Site[] = [
     localPath: "/demos/ascenta-pivoine/index.html",
     order: 20,
     metric: "Product reveal",
+    lane: "film",
+  },
+  {
+    slug: "lumen",
+    name: "LUMEN",
+    tagline: "Streetwear editorial — kısa sayfa, bölüm reveal’ları.",
+    category: "Moda · Motion",
+    accent: "#c5c8ce",
+    preview: "/previews/lumen.jpg",
+    externalUrl: "http://127.0.0.1:5250",
+    localPath: "/demos/atelier-lumen/index.html",
+    order: 21,
+    metric: "Section motion",
+    lane: "motion",
+  },
+  {
+    slug: "kor",
+    name: "KOR",
+    tagline: "Ateş mutfağı — scrollsüz hero + animasyonlu tabaklar.",
+    category: "Yeme · Motion",
+    accent: "#E85D04",
+    preview: "/previews/kor.jpg",
+    externalUrl: "http://127.0.0.1:5251",
+    localPath: "/demos/atelier-kor/index.html",
+    order: 22,
+    metric: "Fire motion",
+    lane: "motion",
+  },
+  {
+    slug: "noir",
+    name: "NOIR",
+    tagline: "After dark fragrance — yumuşak panel geçişleri.",
+    category: "Parfüm · Motion",
+    accent: "#9F1239",
+    preview: "/previews/noir.jpg",
+    externalUrl: "http://127.0.0.1:5252",
+    localPath: "/demos/atelier-noir/index.html",
+    order: 23,
+    metric: "Panel fade",
+    lane: "motion",
   },
 ];
 
+export const FILM_SITES = SITES.filter((s) => s.lane === "film");
+export const MOTION_SITES = SITES.filter((s) => s.lane === "motion");
+
 export function siteEmbedSrc(site: Site): string {
-  // Local packs first — live Ascenta blocks iframe embeds (frame-ancestors self).
   if (site.localPath) return site.localPath;
   if (site.externalUrl.startsWith("https://")) return site.externalUrl;
   return site.externalUrl;

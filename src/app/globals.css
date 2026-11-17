@@ -288,6 +288,13 @@ body {
   gap: 1.25rem;
 }
 
+.portal-sites--motion {
+  border-top: 1px solid var(--line);
+  background:
+    radial-gradient(ellipse at 10% 0%, rgba(159, 18, 57, 0.06), transparent 55%),
+    radial-gradient(ellipse at 90% 20%, rgba(232, 93, 4, 0.05), transparent 50%);
+}
+
 .portal-card {
   border: 1px solid var(--line);
   background: #fff;

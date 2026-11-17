@@ -10,6 +10,7 @@
   <link href="https://api.fontshare.com/v2/css?f[]=melodrama@600,700&f[]=cabinet-grotesk@500,700,800&f[]=satoshi@500,700,900&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="./styles.css?v=loadfix1" />
 <link rel="stylesheet" href="../_shared/izden-scroll-visuals.css" />
+<link rel="stylesheet" href="/demos/_shared/izden-afterglow.css" />
 <link rel="stylesheet" href="/demos/_shared/izden-agency.css" />
 </head>
 <body class="brand-anvil">
@@ -75,6 +76,49 @@
       </div>
     </section>
 
+    <div class="iz-marquee" aria-hidden="true">
+      <div class="iz-marquee__track">
+        <span>Smash · Fire · Salt · Butter · Press · Rest · Serve</span>
+        <span>Smash · Fire · Salt · Butter · Press · Rest · Serve</span>
+        <span>Smash · Fire · Salt · Butter · Press · Rest · Serve</span>
+        <span>Smash · Fire · Salt · Butter · Press · Rest · Serve</span>
+      </div>
+    </div>
+
+    <section class="iz-band iz-band--dark" id="craft" aria-labelledby="craft-title">
+      <div class="iz-split">
+        <div class="iz-reveal">
+          <p class="iz-band__kicker">Craft</p>
+          <h2 class="iz-band__title" id="craft-title">Ateşte<br />şekillenen.</h2>
+          <p class="iz-band__lede">Soğuk patti, sıcak demir, ince kabuk. Film bittiğinde tahta açılır — sipariş ritüeli başlar.</p>
+          <div class="iz-cta">
+            <a class="iz-cta__primary" href="#menu">Sipariş tahtası</a>
+            <a class="iz-cta__ghost" href="#visit">Şube</a>
+          </div>
+        </div>
+        <div class="iz-media iz-reveal" data-d="2">
+          <img src="./public/menu/classic.jpg" alt="ANVIL classic smash" width="900" height="1200" loading="lazy" />
+        </div>
+      </div>
+      <div class="iz-steps">
+        <article class="iz-step iz-reveal" data-d="1">
+          <span class="iz-step__n">01</span>
+          <h3>Smash</h3>
+          <p>Demire bastır — maillard kabuğu, ince et, hızlı pişme.</p>
+        </article>
+        <article class="iz-step iz-reveal" data-d="2">
+          <span class="iz-step__n">02</span>
+          <h3>Stack</h3>
+          <p>Cheddar erirken sos ve turşu aynı sıcaklıkta birleşir.</p>
+        </article>
+        <article class="iz-step iz-reveal" data-d="3">
+          <span class="iz-step__n">03</span>
+          <h3>Serve</h3>
+          <p>Tezgâhta ismini söyle. Paket yok — ateş taze kalır.</p>
+        </article>
+      </div>
+    </section>
+
     <!-- BK-STYLE ORDER BOARD (light paper — opposite of cafe dark) -->
     <section class="board" id="menu">
       <div class="board__head" id="how">
@@ -108,19 +152,19 @@
 
       <div class="store" id="visit">
         <div>
-          <p class="board__kicker">Şube</p>
-          <h3>Kadıköy · Caferağa</h3>
+          <p class="board__kicker">İletişim · İZDEN</p>
+          <h3>Demo şube · Kadıköy</h3>
           <p>11:00 – 23:00 · gel-al · ~8–12 dk</p>
         </div>
         <ul>
-          <li>0216 000 11 11</li>
-          <li>info@izdencreative.com</li>
-          <li>Üye: her 5. patates bedava*</li>
+          <li><a href="tel:+902120000000">+90 212 000 00 00</a></li>
+          <li><a href="mailto:info@izdencreative.com">info@izdencreative.com</a></li>
+          <li><a href="https://www.izdencreative.com" target="_blank" rel="noopener">izdencreative.com</a></li>
         </ul>
       </div>
 
       <footer class="foot">
-        <span>ANVIL Smash House</span>
+        <span>ANVIL Smash House · İzden Creative demo</span>
         <span>© 2026 · Demo ödeme</span>
       </footer>
     </section>
@@ -226,6 +270,7 @@
   <script src="./scrub.js?v=bleed1"></script>
   <script src="./menu.js?v=mobnav1"></script>
 <script src="../_shared/izden-scroll-visuals.js" defer></script>
+<script src="/demos/_shared/izden-afterglow.js" defer></script>
 <script src="/demos/_shared/izden-agency.js" defer></script>
 </body>
 </html>

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>LUMEN — Dress for the ascent</title>
+  <meta name="description" content="LUMEN — editorial womenswear for vertical cities. Collection, look, atelier." />
+  <meta name="theme-color" content="#0c0c0b" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@500;700;800&family=Manrope:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="/demos/_shared/izden-afterglow.css" />
+  <link rel="stylesheet" href="/demos/_shared/izden-agency.css" />
+</head>
+<body>
+  <header class="site-nav" id="nav" data-open="false">
+    <button type="button" class="site-nav__burger" id="navBurger" aria-label="Open menu" aria-expanded="false" aria-controls="navDrawer">
+      <span></span><span></span><span></span>
+    </button>
+    <a class="site-nav__brand" href="#top">LUMEN</a>
+    <nav class="site-nav__links" aria-label="Primary">
+      <a href="#collection">Collection</a>
+      <a href="#look">Look</a>
+      <a href="#atelier">Atelier</a>
+      <a href="#contact" class="site-nav__cta">Book fitting</a>
+    </nav>
+  </header>
+  <div class="nav-drawer-backdrop" id="navBackdrop" hidden></div>
+  <aside class="nav-drawer" id="navDrawer" aria-hidden="true" data-open="false">
+    <div class="nav-drawer__head">
+      <strong>LUMEN</strong>
+      <button type="button" class="nav-drawer__close" id="navClose" aria-label="Close">×</button>
+    </div>
+    <nav class="nav-drawer__links" aria-label="Mobile">
+      <a href="#collection">Collection</a>
+      <a href="#look">Look</a>
+      <a href="#atelier">Atelier</a>
+      <a href="#contact">Book fitting</a>
+    </nav>
+  </aside>
+
+  <main id="top">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero__media ken-burns" aria-hidden="true">
+        <img src="https://images.unsplash.com/photo-1469334031210-e0fc212e504d?auto=format&amp;fit=crop&amp;w=1920&amp;q=80" alt="" width="1920" height="1280" fetchpriority="high" />
+      </div>
+      <div class="hero__veil"></div>
+      <div class="hero__floor" aria-hidden="true">
+        <span data-n="47">47</span>
+        <i></i><i></i><i></i>
+        <span data-n="48">48</span>
+      </div>
+      <div class="hero__inner">
+        <p class="hero__eyebrow iz-reveal">Winter 26 · Vertical edit</p>
+        <h1 class="hero__wordmark iz-reveal" id="hero-title" data-d="1">LUMEN</h1>
+        <p class="hero__tag iz-reveal" data-d="2">Dress for the ascent.</p>
+        <a class="hero__btn iz-reveal" data-d="3" href="#collection">Explore collection</a>
+      </div>
+    </section>
+
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee__track">
+        <span>Wool shear · Steel zip · Bone silk · Summit cut · Layered heat ·</span>
+        <span>Wool shear · Steel zip · Bone silk · Summit cut · Layered heat ·</span>
+      </div>
+    </div>
+
+    <section class="chapter" id="collection">
+      <div class="chapter__grid">
+        <div class="chapter__copy">
+          <p class="chapter__kicker iz-reveal">01 — Collection</p>
+          <h2 class="chapter__title iz-reveal" data-d="1">Altitude<br /><em>tailoring</em></h2>
+          <p class="chapter__lede iz-reveal" data-d="2">Structured coats that keep their line in wind tunnels and lobby light. Cut for motion, not pose.</p>
+          <p class="chapter__stat iz-reveal" data-d="3"><span class="counter" data-target="24">0</span> looks in this drop</p>
+        </div>
+        <figure class="chapter__frame iz-reveal" data-d="1">
+          <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&amp;fit=crop&amp;w=900&amp;q=80" alt="Editorial wool coat on neutral backdrop" width="900" height="1200" loading="lazy" />
+        </figure>
+      </div>
+    </section>
+
+    <section class="chapter chapter--invert" id="look">
+      <div class="chapter__grid">
+        <figure class="chapter__frame iz-reveal">
+          <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&amp;fit=crop&amp;w=900&amp;q=80" alt="Model in layered editorial look" width="900" height="1200" loading="lazy" />
+        </figure>
+        <div class="chapter__copy">
+          <p class="chapter__kicker iz-reveal">02 — Look</p>
+          <h2 class="chapter__title iz-reveal" data-d="1">One frame,<br />full climb.</h2>
+          <p class="chapter__lede iz-reveal" data-d="2">Bone under steel grey. A single palette from street to skyline terrace.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="chapter" id="atelier">
+      <div class="chapter__grid">
+        <div class="chapter__copy">
+          <p class="chapter__kicker iz-reveal">03 — Atelier</p>
+          <h2 class="chapter__title iz-reveal" data-d="1">Fitted<br />in house.</h2>
+          <p class="chapter__lede iz-reveal" data-d="2">Nişantaşı atelier · by appointment. Measurements held for future ascents.</p>
+          <div class="chapter__cta iz-reveal" data-d="3">
+            <a href="#contact">Reserve a slot</a>
+          </div>
+        </div>
+        <figure class="chapter__frame iz-reveal" data-d="1">
+          <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&amp;fit=crop&amp;w=900&amp;q=80" alt="Tailoring hands at work" width="900" height="1200" loading="lazy" />
+        </figure>
+      </div>
+    </section>
+
+    <section class="contact" id="contact">
+      <div class="contact__inner iz-reveal">
+        <h2>Studio</h2>
+        <p>LUMEN demo — crafted with İzden Creative.</p>
+        <ul class="contact__list">
+          <li><a href="mailto:info@izdencreative.com">info@izdencreative.com</a></li>
+          <li><a href="tel:+902120000000">+90 212 000 00 00</a></li>
+          <li><a href="https://www.izdencreative.com" target="_blank" rel="noopener noreferrer">izdencreative.com</a></li>
+        </ul>
+        <img class="contact__logo" src="/demos/_shared/izden-creative.jpg" alt="İzden Creative" width="180" height="61" loading="lazy" />
+      </div>
+    </section>
+  </main>
+
+  <script src="main.js"></script>
+      <script src="/demos/_shared/izden-afterglow.js"></script>
+  <script src="/demos/_shared/izden-agency.js"></script>
+</body>
+</html>

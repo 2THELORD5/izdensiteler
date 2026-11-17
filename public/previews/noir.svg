@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="750" viewBox="0 0 1200 750">
+  <rect width="1200" height="750" fill="#0a0608"/>
+  <rect x="0" y="0" width="1200" height="8" fill="#9F1239"/>
+  <text x="72" y="340" fill="#f4f0ea" font-family="Georgia, serif" font-size="96" font-weight="700">NOIR</text>
+  <text x="76" y="400" fill="#9F1239" font-family="ui-monospace, monospace" font-size="22" letter-spacing="6">AFTER DARK</text>
+  <text x="76" y="680" fill="rgba(244,240,234,0.45)" font-family="ui-sans-serif, system-ui" font-size="18">İZDEN · motion demo</text>
+</svg>
