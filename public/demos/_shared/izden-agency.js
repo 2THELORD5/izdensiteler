@@ -7,7 +7,7 @@
     url: "https://www.izdencreative.com",
     email: "info@izdencreative.com",
     phone: "+90 850 000 00 00",
-    logo: "../_shared/izden-creative.jpg",
+    logo: "/demos/_shared/izden-creative.jpg",
   };
 
   // Depth: if page is nested under demos/*/sub/, adjust — demos are flat index.html

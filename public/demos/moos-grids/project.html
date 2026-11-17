@@ -1,0 +1,223 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Project — Grid Architecture Studio</title>
+  <meta name="description" content="A project by Grid Architecture Studio." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- ─────────────  LOADING SCREEN  ───────────── -->
+  <div class="loader" data-loader role="status" aria-live="polite">
+    <div class="loader__mark" aria-hidden="true">
+      <span class="sq sq--a is-outline"></span>
+      <span class="sq sq--b"></span>
+      <span class="sq sq--c"></span>
+      <span class="sq sq--d"></span>
+    </div>
+    <span class="u-visually-hidden">Loading Grid</span>
+  </div>
+
+
+  <!-- ─────────────  HEADER  ───────────── -->
+  <header class="header" data-header>
+    <div class="header__inner">
+      <a class="brand" href="index.html" aria-label="Grid Architects — home">
+        <span class="brand__word">GRID<sup class="brand__reg">®</sup></span>
+      </a>
+      <button class="menu-btn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="site-menu" data-menu-toggle>
+        <span class="grid-glyph" aria-hidden="true">
+          <span class="gg gg--1 is-outline"></span>
+          <span class="gg gg--2"></span>
+          <span class="gg gg--3"></span>
+          <span class="gg gg--4"></span>
+        </span>
+      </button>
+    </div>
+  </header>
+
+
+  <!-- ─────────────  MENU OVERLAY  ───────────── -->
+  <div class="menu" id="site-menu" data-menu hidden>
+    <div class="menu__bar">
+      <span class="brand__word menu__brand">GRID<sup class="brand__reg">®</sup></span>
+      <button class="menu__close" type="button" aria-label="Close menu" data-menu-toggle>
+        <span class="menu__close-x" aria-hidden="true"></span>
+      </button>
+    </div>
+    <nav class="menu__nav" aria-label="Menu">
+      <a class="menu__link is-active" href="index.html"><span class="menu__num">01</span><span class="menu__word">Work</span></a>
+      <a class="menu__link" href="about.html"><span class="menu__num">02</span><span class="menu__word">About</span></a>
+    </nav>
+    <div class="menu__foot">
+      <a class="menu__mail" href="mailto:hello@gridarchitects.studio">hello@gridarchitects.studio</a>
+      <div class="menu__social">
+        <a href="#">Instagram</a><a href="#">LinkedIn</a><a href="#">Journal</a>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ─────────────  PROJECT  ───────────── -->
+  <main class="page project">
+
+    <!-- hero plan — revealed on load as the pieces flip away -->
+    <section class="hero" data-hero data-cols="16" data-rows="9" aria-label="Project hero">
+      <img class="hero__base" data-hero-img src="" alt="" width="1672" height="941" loading="eager" decoding="async" />
+    </section>
+
+    <header class="project__head">
+      <div>
+        <h1 class="project__name" data-name>Project</h1>
+        <p class="project__meta" data-meta></p>
+      </div>
+      <div class="project__desc" data-desc></div>
+    </header>
+
+    <!-- gallery label -->
+    <div class="page-head" style="padding-top: clamp(26px, 5vw, 54px); padding-bottom: 0;">
+      <p class="page-head__label">Gallery</p>
+    </div>
+
+    <!-- gallery grid -->
+    <section class="pgallery" aria-label="Project gallery">
+      <figure class="pgallery__item pgallery__item--a"><img data-g="a" src="" alt="" loading="lazy" decoding="async" /></figure>
+      <figure class="pgallery__item pgallery__item--c"><img data-g="c" src="" alt="" loading="lazy" decoding="async" /></figure>
+      <figure class="pgallery__item pgallery__item--d"><img data-g="d" src="" alt="" loading="lazy" decoding="async" /></figure>
+      <figure class="pgallery__item pgallery__item--b"><img data-g="b" src="" alt="" loading="lazy" decoding="async" /></figure>
+    </section>
+
+    <!-- back to work -->
+    <section class="to-page">
+      <a class="to-page__link" href="index.html">
+        <span class="to-page__small">Index</span>
+        <span class="to-page__big">All work <span class="arw">&#8594;</span></span>
+      </a>
+    </section>
+
+  </main>
+
+
+  <!-- ─────────────  FOOTER  ───────────── -->
+  <footer class="footer">
+    <p class="footer__copy">© 2026 Grid Architects. All rights reserved.</p>
+  </footer>
+
+  <!-- project data → populates hero, text and gallery from ?p=<slug> -->
+  <script>
+    (function () {
+      var DATA = {
+        "01-pleated-museum": {
+          name: "Pleated Museum", meta: "Museum · Lisbon · 2024",
+          desc: [
+            "A civic museum wrapped in a pleated stone screen that folds daylight deep into the galleries.",
+            "At the centre the roof lifts away, drawing visitors up through a top-lit atrium toward the collection."
+          ]
+        },
+        "02-mall-atrium": {
+          name: "Helix Atrium", meta: "Retail · Osaka · 2023",
+          desc: [
+            "A retail and cultural hall organised around a timber helix that spirals beneath an oval skylight.",
+            "Circulation becomes the building's central spectacle — a warm, continuous ramp reading against the sky."
+          ]
+        },
+        "03-cable-bridge": {
+          name: "Tension Span", meta: "Infrastructure · Porto · 2022",
+          desc: [
+            "A 140-metre pedestrian crossing suspended from a single inclined mast, reduced to its essential forces.",
+            "A taut line of stays reads against the river like the strings of an instrument, the deck a shallow steel edge."
+          ]
+        },
+        "04-glass-tower": {
+          name: "Glass Monolith", meta: "Tower · Dubai · 2025",
+          desc: [
+            "A slender residential tower sheathed in a low-iron glass curtain wall.",
+            "The structure is detailed to disappear, so that the sky itself becomes the façade."
+          ]
+        },
+        "05-brutalist-center": {
+          name: "Civic Mass", meta: "Cultural · Bilbao · 2023",
+          desc: [
+            "A cultural centre in board-formed concrete, massed as a series of shifting volumes.",
+            "The building carves generous, top-lit public rooms out of what reads as a single solid material."
+          ]
+        },
+        "06-parametric-canopy": {
+          name: "Parametric Canopy", meta: "Pavilion · Seoul · 2024",
+          desc: [
+            "A demountable exhibition pavilion sheltered by a perforated aluminium canopy.",
+            "Its triangulated cells tune light, shade and structure within a single continuous surface."
+          ]
+        },
+        "07-rammed-earth-campus": {
+          name: "Earth Campus", meta: "Education · Marrakesh · 2022",
+          desc: [
+            "An education campus built from rammed earth quarried on site.",
+            "Warm, load-bearing walls temper the climate and root each building firmly in its ground."
+          ]
+        },
+        "08-terracotta-facade": {
+          name: "Terracotta Weave", meta: "Housing · Bologna · 2024",
+          desc: [
+            "An urban housing block screened by a woven terracotta façade of glazed baguettes.",
+            "The screen shades the apartments and shifts colour across the course of the day."
+          ]
+        },
+        "09-observation-tower": {
+          name: "Observation Spire", meta: "Tower · Oslo · 2023",
+          desc: [
+            "A coastal observation tower of stacked concrete rings spiralling upward.",
+            "It resolves in a single cantilevered platform that frames the horizon in one sweeping view."
+          ]
+        },
+        "10-performing-arts": {
+          name: "Metal Overture", meta: "Culture · Rotterdam · 2025",
+          desc: [
+            "A performing-arts centre clad in folded metal panels.",
+            "Its faceted skin catches the light like a curtain caught mid-movement."
+          ]
+        }
+      };
+
+      var slug = new URLSearchParams(location.search).get("p");
+      if (!DATA[slug]) slug = "01-pleated-museum";
+      var p = DATA[slug];
+      var base = "images/gallery/" + slug + "/";
+
+      document.title = p.name + " — Grid Architecture Studio";
+      var meta = document.querySelector('meta[name="description"]');
+      if (meta) meta.setAttribute("content", p.name + " — " + p.meta + ". A project by Grid Architecture Studio.");
+
+      var hero = document.querySelector("[data-hero-img]");
+      hero.src = base + "hero.jpg";
+      hero.alt = p.name + " — hero view";
+
+      document.querySelector("[data-name]").textContent = p.name;
+      document.querySelector("[data-meta]").textContent = p.meta;
+
+      var desc = document.querySelector("[data-desc]");
+      desc.textContent = "";
+      p.desc.forEach(function (t) {
+        var el = document.createElement("p");
+        el.textContent = t;
+        desc.appendChild(el);
+      });
+
+      Array.prototype.forEach.call(document.querySelectorAll(".pgallery img[data-g]"), function (img) {
+        img.src = base + img.getAttribute("data-g") + ".jpg";
+        img.alt = p.name + " — gallery view";
+      });
+    })();
+  </script>
+  <script src="script.js"></script>
+<link rel="stylesheet" href="/demos/_shared/izden-agency.css" />
+<script src="/demos/_shared/izden-agency.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>QAD MİMARLIK — Sessiz, kesin, mimari.</title>
+<meta name="description" content="QAD Mimarlık; dört temel ilke üzerinden sessiz ve kesin bir mimari dil kuran bir ofistir." />
+<meta name="theme-color" content="#1b2420" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Display&family=Work+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+<link rel="stylesheet" href="../_shared/boot.css" />
+<link rel="stylesheet" href="../_shared/izden-mark.css" />
+<link rel="stylesheet" href="../_shared/mobile-nav.css" />
+<script src="../_shared/boot-loader.js" defer></script>
+<script src="../_shared/mobile-nav.js" defer></script>
+<script src="../_shared/izden-mark.js" defer></script>
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body class="is-loading">
+
+  <!-- Loader -->
+  <div class="loader" id="loader" aria-hidden="true">
+    <div class="loader__inner">
+      <span class="loader__mark">QAD</span>
+      <div class="loader__bar"><i id="loaderBar"></i></div>
+      <p class="loader__text">Rota yükleniyor — <span id="loaderPct">0</span>%</p>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header class="site-head">
+    <a href="#/" class="brand" data-route-link="/">
+      <span class="brand__mark">Q</span>
+      <span class="brand__name">QAD<em>Mimarlık</em></span>
+    </a>
+    <nav class="iz-desktop-nav" id="desktopNav" aria-label="Rota menüsü">
+      <a href="#/" data-route-link="/">Ana Sayfa</a>
+      <a href="#/about" data-route-link="/about">Hakkımızda</a>
+      <a href="#/work" data-route-link="/work">İşler</a>
+      <a href="#/contact" data-route-link="/contact">İletişim</a>
+    </nav>
+  </header>
+
+  <!-- Router root -->
+  <main id="router" aria-live="polite">
+
+    <!-- #/ — Hero V1: silver / architect -->
+    <section class="slide slide--hero slide--v1" data-route="/" id="route-root">
+      <div class="slide__scroll">
+        <div class="slide__media" aria-hidden="true">
+          <img src="https://images.unsplash.com/photo-1493106641515-6b5631de4bb9?q=85&w=1920&auto=format&fit=crop" alt="" loading="eager" />
+        </div>
+        <div class="slide__scrim"></div>
+        <div class="slide__content">
+          <p class="eyebrow">QAD Mimarlık · V1</p>
+          <h1>Sessiz, kesin,<br /><em>mimari.</em></h1>
+          <p class="slide__lead">Dört temel ilke — malzeme, ışık, strüktür ve ölçek — her projede aynı disiplinle bir araya gelir.</p>
+          <div class="slide__row">
+            <a class="btn btn--accent" href="#/work" data-route-link="/work">İşlerimizi Gör</a>
+            <a class="btn btn--line" href="#/contact" data-route-link="/contact">İletişime Geç</a>
+          </div>
+          <a class="version-toggle" href="#/v2" data-route-link="/v2">
+            <span>V2 görünümünü dene</span>
+            <span aria-hidden="true">→</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- #/v2 — Hero V2: deep green + bone -->
+    <section class="slide slide--hero slide--v2" data-route="/v2" id="route-v2">
+      <div class="slide__scroll">
+        <div class="slide__media" aria-hidden="true">
+          <img src="https://images.unsplash.com/photo-1600210491892-03d54c0aaf87?q=85&w=1920&auto=format&fit=crop" alt="" loading="lazy" />
+        </div>
+        <div class="slide__scrim slide__scrim--v2"></div>
+        <div class="slide__content">
+          <p class="eyebrow">QAD Mimarlık · V2</p>
+          <h1>Aynı disiplin,<br /><em>yeni bir yüz.</em></h1>
+          <p class="slide__lead">Bu sayfanın ikinci versiyonu; derin yeşil ve kemik tonlarıyla aynı hikâyeyi farklı bir ritimde anlatıyor.</p>
+          <div class="slide__row">
+            <a class="btn btn--accent" href="#/work" data-route-link="/work">İşlerimizi Gör</a>
+            <a class="btn btn--line" href="#/contact" data-route-link="/contact">İletişime Geç</a>
+          </div>
+          <a class="version-toggle" href="#/" data-route-link="/">
+            <span>V1'e dön</span>
+            <span aria-hidden="true">→</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- #/about -->
+    <section class="slide" data-route="/about" id="route-about">
+      <div class="slide__scroll slide__scroll--panel">
+        <p class="eyebrow">Hakkımızda</p>
+        <h2>Dört ilke, tek bir disiplin.</h2>
+        <p class="panel__lead">QAD; malzeme (M), ışık (I), strüktür (S) ve ölçek (Ö) arasındaki dengeyi her projede yeniden kurar. İsim, bu dört eksenin kesiştiği noktayı işaret eder.</p>
+        <div class="about-grid">
+          <div class="about-media">
+            <img src="https://images.unsplash.com/photo-1545156521-77bd85671d30?q=80&w=900&auto=format&fit=crop" alt="QAD ofis çalışma alanı" loading="lazy" width="720" height="900" />
+          </div>
+          <div class="about-stats">
+            <div>
+              <strong>37</strong>
+              <span>Tamamlanan proje</span>
+            </div>
+            <div>
+              <strong>9</strong>
+              <span>Yıl deneyim</span>
+            </div>
+            <div>
+              <strong>14</strong>
+              <span>Kişilik ekip</span>
+            </div>
+            <div>
+              <strong>6</strong>
+              <span>Şehirde iş</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- #/work -->
+    <section class="slide" data-route="/work" id="route-work">
+      <div class="slide__scroll slide__scroll--panel">
+        <p class="eyebrow">İşler</p>
+        <h2>Seçili projeler.</h2>
+        <div class="work-grid">
+          <a class="work-card" href="#/work" data-route-link="/work">
+            <img src="https://images.unsplash.com/photo-1600121848594-d8644e57abab?q=80&w=800&auto=format&fit=crop" alt="Sessiz Blok projesi" loading="lazy" width="640" height="800" />
+            <div class="work-card__meta">
+              <span>Ofis · 1.450 m²</span>
+              <h3>Sessiz Blok</h3>
+            </div>
+          </a>
+          <a class="work-card" href="#/work" data-route-link="/work">
+            <img src="https://images.unsplash.com/photo-1618219908412-a29a1bb7b86e?q=80&w=800&auto=format&fit=crop" alt="Taş Eşik projesi" loading="lazy" width="640" height="800" />
+            <div class="work-card__meta">
+              <span>Konut · 480 m²</span>
+              <h3>Taş Eşik</h3>
+            </div>
+          </a>
+          <a class="work-card" href="#/work" data-route-link="/work">
+            <img src="https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?q=80&w=800&auto=format&fit=crop" alt="Dört Eksen projesi" loading="lazy" width="640" height="800" />
+            <div class="work-card__meta">
+              <span>Kültür · 2.100 m²</span>
+              <h3>Dört Eksen</h3>
+            </div>
+          </a>
+          <a class="work-card" href="#/work" data-route-link="/work">
+            <img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?q=80&w=800&auto=format&fit=crop" alt="Set Konut projesi" loading="lazy" width="640" height="800" />
+            <div class="work-card__meta">
+              <span>Konut · 610 m²</span>
+              <h3>Set Konut</h3>
+            </div>
+          </a>
+          <a class="work-card" href="#/work" data-route-link="/work">
+            <img src="https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?q=80&w=800&auto=format&fit=crop" alt="Terminal Hattı projesi" loading="lazy" width="640" height="800" />
+            <div class="work-card__meta">
+              <span>Ulaşım · 5.200 m²</span>
+              <h3>Terminal Hattı</h3>
+            </div>
+          </a>
+          <a class="work-card" href="#/work" data-route-link="/work">
+            <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?q=80&w=800&auto=format&fit=crop" alt="Avlu Kampüs projesi" loading="lazy" width="640" height="800" />
+            <div class="work-card__meta">
+              <span>Eğitim · 3.300 m²</span>
+              <h3>Avlu Kampüs</h3>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- #/contact -->
+    <section class="slide" data-route="/contact" id="route-contact">
+      <div class="slide__scroll slide__scroll--panel slide__scroll--center">
+        <p class="eyebrow">İletişim</p>
+        <h2>Elinizde bir rota mı var?</h2>
+        <p class="panel__lead">Fikir aşamasında da, ruhsat sonrasında da; birlikte doğru rotayı çizebiliriz.</p>
+        <form class="contact-form" id="contactForm">
+          <div class="contact-form__row">
+            <label>
+              <span>Ad Soyad</span>
+              <input type="text" name="name" placeholder="Adınız Soyadınız" required />
+            </label>
+            <label>
+              <span>E-posta</span>
+              <input type="email" name="email" placeholder="ornek@eposta.com" required />
+            </label>
+          </div>
+          <label>
+            <span>Proje notu</span>
+            <textarea name="note" rows="3" placeholder="Proje türü, ölçeği ve zaman çizelgesi."></textarea>
+          </label>
+          <button type="submit" class="btn btn--accent">Notu Gönder</button>
+          <p class="contact-form__status" id="contactStatus" role="status" aria-live="polite"></p>
+        </form>
+        <ul class="contact-info">
+          <li><a href="mailto:ofis@qadmimarlik.demo">ofis@qadmimarlik.demo</a></li>
+          <li><a href="tel:+902125550177">+90 212 555 01 77</a></li>
+          <li><span>Beşiktaş, İstanbul</span></li>
+        </ul>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="main.js" defer></script>
+</body>
+</h<link rel="stylesheet" href="/demos/_shared/izden-agency.css" />
+<script src="/demos/_shared/izden-agency.js" defer></script>
+tml>

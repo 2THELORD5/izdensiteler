@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>About — Grid Architecture Studio</title>
+  <meta name="description" content="Grid — an architecture studio building around a clear structural order. Concept to realisation." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <link rel="preload" as="image" href="images/hover-render.jpg" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- ─────────────  LOADING SCREEN  ───────────── -->
+  <div class="loader" data-loader role="status" aria-live="polite">
+    <div class="loader__mark" aria-hidden="true">
+      <span class="sq sq--a is-outline"></span>
+      <span class="sq sq--b"></span>
+      <span class="sq sq--c"></span>
+      <span class="sq sq--d"></span>
+    </div>
+    <span class="u-visually-hidden">Loading Grid</span>
+  </div>
+
+
+  <!-- ─────────────  HEADER  ───────────── -->
+  <header class="header" data-header>
+    <div class="header__inner">
+      <a class="brand" href="index.html" aria-label="Grid Architects — home">
+        <span class="brand__word">GRID<sup class="brand__reg">®</sup></span>
+      </a>
+      <button class="menu-btn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="site-menu" data-menu-toggle>
+        <span class="grid-glyph" aria-hidden="true">
+          <span class="gg gg--1 is-outline"></span>
+          <span class="gg gg--2"></span>
+          <span class="gg gg--3"></span>
+          <span class="gg gg--4"></span>
+        </span>
+      </button>
+    </div>
+  </header>
+
+
+  <!-- ─────────────  MENU OVERLAY  ───────────── -->
+  <div class="menu" id="site-menu" data-menu hidden>
+    <div class="menu__bar">
+      <span class="brand__word menu__brand">GRID<sup class="brand__reg">®</sup></span>
+      <button class="menu__close" type="button" aria-label="Close menu" data-menu-toggle>
+        <span class="menu__close-x" aria-hidden="true"></span>
+      </button>
+    </div>
+    <nav class="menu__nav" aria-label="Menu">
+      <a class="menu__link" href="index.html"><span class="menu__num">01</span><span class="menu__word">Work</span></a>
+      <a class="menu__link is-active" href="about.html"><span class="menu__num">02</span><span class="menu__word">About</span></a>
+    </nav>
+    <div class="menu__foot">
+      <a class="menu__mail" href="mailto:hello@gridarchitects.studio">hello@gridarchitects.studio</a>
+      <div class="menu__social">
+        <a href="#">Instagram</a><a href="#">LinkedIn</a><a href="#">Journal</a>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ─────────────  ABOUT  ───────────── -->
+  <main class="page">
+
+    <header class="page-head">
+      <p class="page-head__label">About</p>
+      <h1 class="page-head__title">About</h1>
+    </header>
+
+    <section class="about__intro">
+      <p class="about__lead">
+        We are Grid — an architecture studio shaping civic, cultural and residential
+        buildings around one idea: that a clear structural order is the most generous
+        foundation for architecture.
+      </p>
+      <div class="about__body">
+        <p>
+          Every project begins as a set of rules — a rhythm of columns, a module of stone,
+          a line of sight. From that grid we build outward, letting structure, light and
+          material settle into something quiet, durable and precise.
+        </p>
+        <p>
+          Founded in 2014, we are a small studio of architects and makers who work slowly
+          and stay close to the work — from the first pencil sketch to the last detail on site.
+        </p>
+      </div>
+    </section>
+
+    <!-- image hover reveal: sketch → render under the cursor -->
+    <div class="reveal-wrap">
+      <div class="reveal" data-reveal data-render="images/hover-render.jpg" data-cols="20" data-rows="11" style="--ar: 1672 / 941;">
+        <img class="reveal__base" src="images/hover-sketch.jpg" alt="Pencil sketch of a museum exterior with a butterfly roof" width="1672" height="941" loading="eager" decoding="async" />
+        <span class="reveal__hint">Move to reveal</span>
+      </div>
+    </div>
+    <div class="reveal__caption">
+      <span>Concept → Built</span>
+      <span>Pleated Museum · Lisbon</span>
+    </div>
+
+    <!-- to work -->
+    <section class="to-page">
+      <a class="to-page__link" href="index.html">
+        <span class="to-page__small">Next</span>
+        <span class="to-page__big">View work <span class="arw">&#8594;</span></span>
+      </a>
+    </section>
+
+  </main>
+
+
+  <!-- ─────────────  FOOTER  ───────────── -->
+  <footer class="footer">
+    <p class="footer__copy">© 2026 Grid Architects. All rights reserved.</p>
+  </footer>
+
+  <script src="script.js"></script>
+<link rel="stylesheet" href="/demos/_shared/izden-agency.css" />
+<script src="/demos/_shared/izden-agency.js" defer></script>
+</body>
+</html>
