@@ -313,8 +313,126 @@ function signatureHtml(d) {
   }
 }
 
+function heroHtml(d) {
+  const m = d.motion;
+  if (m === "snap") {
+    return `
+    <section class="hero hero--split" aria-labelledby="hero-title">
+      <div class="hero__split-media">
+        <img src="media/hero.jpg" alt="" width="1920" height="1280" fetchpriority="high" />
+      </div>
+      <div class="hero__split-copy">
+        <p class="hero__eyebrow iz-reveal">Coastal dossier</p>
+        <h1 class="hero__wordmark iz-reveal" id="hero-title">${d.title}</h1>
+        <p class="hero__tag iz-reveal" data-d="1">${d.tagline}</p>
+        <a class="hero__btn iz-reveal" data-d="2" href="#${d.sigId}">${d.cta}</a>
+      </div>
+    </section>`;
+  }
+  if (m === "velvet") {
+    return `
+    <section class="hero hero--center" aria-labelledby="hero-title">
+      <div class="hero__media">
+        <img src="media/hero.jpg" alt="" width="1920" height="1280" fetchpriority="high" />
+      </div>
+      <div class="hero__veil hero__veil--vignette"></div>
+      <div class="hero__inner hero__inner--center">
+        <p class="hero__eyebrow iz-reveal">Reserve evenings</p>
+        <h1 class="hero__wordmark iz-reveal" id="hero-title">${d.title}</h1>
+        <p class="hero__tag iz-reveal" data-d="1">${d.tagline}</p>
+        <a class="hero__btn iz-reveal" data-d="2" href="#${d.sigId}">${d.cta}</a>
+      </div>
+    </section>`;
+  }
+  if (m === "atlas") {
+    return `
+    <section class="hero hero--stack" aria-labelledby="hero-title">
+      <div class="hero__stack-band">
+        <p class="hero__eyebrow iz-reveal">Field systems</p>
+        <h1 class="hero__wordmark iz-reveal" id="hero-title">${d.title}</h1>
+        <p class="hero__tag iz-reveal" data-d="1">${d.tagline}</p>
+        <a class="hero__btn iz-reveal" data-d="2" href="#${d.sigId}">${d.cta}</a>
+      </div>
+      <div class="hero__stack-media">
+        <img src="media/hero.jpg" alt="" width="1920" height="1280" fetchpriority="high" />
+      </div>
+    </section>`;
+  }
+  if (m === "solace") {
+    return `
+    <section class="hero hero--float" aria-labelledby="hero-title">
+      <div class="hero__media">
+        <img src="media/hero.jpg" alt="" width="1920" height="1280" fetchpriority="high" />
+      </div>
+      <div class="hero__veil"></div>
+      <div class="hero__float-card iz-reveal">
+        <p class="hero__eyebrow">Breath-measured care</p>
+        <h1 class="hero__wordmark" id="hero-title">${d.title}</h1>
+        <p class="hero__tag">${d.tagline}</p>
+        <a class="hero__btn" href="#${d.sigId}">${d.cta}</a>
+      </div>
+    </section>`;
+  }
+  if (m === "forge") {
+    return `
+    <section class="hero hero--bottom ken" aria-labelledby="hero-title">
+      <div class="hero__media ken-burns">
+        <img src="media/hero.jpg" alt="" width="1920" height="1280" fetchpriority="high" />
+      </div>
+      <div class="hero__veil hero__veil--hard"></div>
+      <div class="hero__inner hero__inner--wide">
+        <p class="hero__eyebrow iz-reveal">Predawn roast</p>
+        <h1 class="hero__wordmark iz-reveal" id="hero-title">${d.title}</h1>
+        <p class="hero__tag iz-reveal" data-d="1">${d.tagline}</p>
+        <a class="hero__btn iz-reveal" data-d="2" href="#${d.sigId}">${d.cta}</a>
+      </div>
+    </section>`;
+  }
+  if (m === "rivet") {
+    return `
+    <section class="hero hero--rail" aria-labelledby="hero-title">
+      <div class="hero__rail-media">
+        <img src="media/hero.jpg" alt="" width="1920" height="1280" fetchpriority="high" />
+      </div>
+      <aside class="hero__rail-copy">
+        <p class="hero__eyebrow iz-reveal">Bay 03 · Gloss</p>
+        <h1 class="hero__wordmark iz-reveal" id="hero-title">${d.title}</h1>
+        <p class="hero__tag iz-reveal" data-d="1">${d.tagline}</p>
+        <a class="hero__btn iz-reveal" data-d="2" href="#${d.sigId}">${d.cta}</a>
+      </aside>
+    </section>`;
+  }
+  // amber default unique: magazine masthead
+  return `
+    <section class="hero hero--mast" aria-labelledby="hero-title">
+      <div class="hero__mast-top">
+        <p class="hero__eyebrow iz-reveal">Collectors edition</p>
+        <h1 class="hero__wordmark iz-reveal" id="hero-title">${d.title}</h1>
+        <p class="hero__tag iz-reveal" data-d="1">${d.tagline}</p>
+        <a class="hero__btn iz-reveal" data-d="2" href="#${d.sigId}">${d.cta}</a>
+      </div>
+      <div class="hero__mast-media">
+        <img src="media/hero.jpg" alt="" width="1920" height="1280" fetchpriority="high" />
+      </div>
+    </section>`;
+}
+
+function storyCopy(d) {
+  const map = {
+    snap: ["Horizon first", "Tide sets the grid — openings follow salt air, not spectacle."],
+    velvet: ["Cellar patience", "Years in limestone before a cork is pulled for guests."],
+    atlas: ["Route before gear", "Pin the altitude; pack only what the ridge demands."],
+    solace: ["Ritual over rush", "Each step is timed to breath — never to the clock."],
+    forge: ["Micron honesty", "Roast curves printed, not mythologized."],
+    rivet: ["Before / after truth", "One wipe reveals the ceramic film — no filter gloss."],
+    amber: ["Light as material", "Stones are graded under the same lamp collectors use."],
+  };
+  return map[d.motion] || ["Signature craft", d.tagline];
+}
+
 function html(d) {
   const [img4, img5, img6] = d.images.slice(3, 6);
+  const [storyTitle, storyLede] = storyCopy(d);
   const faq1 =
     d.locale === "tr"
       ? "Detay seansı nasıl ayırtılır?"
@@ -338,29 +456,18 @@ function html(d) {
   <link rel="stylesheet" href="/demos/_shared/izden-afterglow.css" />
   <link rel="stylesheet" href="/demos/_shared/izden-agency.css" />
 </head>
-<body>
+<body class="motion-${d.motion}">
 ${sharedNav(d)}
   <main id="top">
-    <section class="hero" aria-labelledby="hero-title">
-      <div class="hero__media${d.motion === "forge" ? " ken-burns" : ""}">
-        <img src="media/hero.jpg" alt="" width="1920" height="1280" fetchpriority="high" />
-      </div>
-      <div class="hero__veil"></div>
-      <div class="hero__inner">
-        <p class="hero__eyebrow iz-reveal">İzden Creative · Brand demo</p>
-        <h1 class="hero__wordmark iz-reveal" id="hero-title">${d.title}</h1>
-        <p class="hero__tag iz-reveal" data-d="1">${d.tagline}</p>
-        <a class="hero__btn iz-reveal" data-d="2" href="#${d.sigId}">${d.cta}</a>
-      </div>
-    </section>
+${heroHtml(d)}
 ${signatureHtml(d)}
-    <div class="marquee" aria-hidden="true"><div class="marquee__track"><span>${d.brand} · ${d.title} · Craft motion study · </span><span>${d.brand} · ${d.title} · Craft motion study · </span></div></div>
+    <div class="marquee" aria-hidden="true"><div class="marquee__track"><span>${d.brand} · ${d.title} · ${d.sigTitle} · </span><span>${d.brand} · ${d.title} · ${d.sigTitle} · </span></div></div>
     <section class="chapter" id="story">
       <div class="chapter__grid">
         <div class="chapter__copy">
           <p class="chapter__kicker iz-reveal">01 — Story</p>
-          <h2 class="chapter__title iz-reveal" data-d="1">Built for <em>believers</em></h2>
-          <p class="chapter__lede iz-reveal" data-d="2">${d.brand} is a fictional identity exercise — real photography, deliberate typography, motion that serves the trade instead of decorating it.</p>
+          <h2 class="chapter__title iz-reveal" data-d="1">${storyTitle}</h2>
+          <p class="chapter__lede iz-reveal" data-d="2">${storyLede}</p>
           <a class="chapter__link iz-reveal" href="#craft">See craft</a>
         </div>
         <figure class="chapter__frame iz-reveal"><img src="media/${img4}.jpg" alt="Brand story visual" loading="lazy" /></figure>
@@ -371,8 +478,8 @@ ${signatureHtml(d)}
         <figure class="chapter__frame iz-reveal"><img src="media/${img5}.jpg" alt="Craft detail" loading="lazy" /></figure>
         <div class="chapter__copy">
           <p class="chapter__kicker iz-reveal">02 — Craft</p>
-          <h2 class="chapter__title iz-reveal">Material <em>first</em></h2>
-          <p class="chapter__lede iz-reveal">Surfaces, joints, and finish lines are documented the way your team already speaks — no filler adjectives, no stock praise.</p>
+          <h2 class="chapter__title iz-reveal">${d.sigTitle}</h2>
+          <p class="chapter__lede iz-reveal">${d.sigLede}</p>
         </div>
       </div>
     </section>
@@ -474,16 +581,39 @@ a{color:inherit}
 .nav-drawer__links a{min-height:44px;display:flex;align-items:center;text-decoration:none;border-bottom:1px solid var(--line)}
 .hero{position:relative;min-height:100svh;display:flex;align-items:flex-end;padding:6rem 1.25rem max(2.5rem,env(safe-area-inset-bottom));overflow:hidden}
 .hero__media{position:absolute;inset:0}
-.hero__media img{width:100%;height:100%;object-fit:cover}
+.hero__media img,.hero__split-media img,.hero__stack-media img,.hero__rail-media img,.hero__mast-media img{width:100%;height:100%;object-fit:cover}
 .hero__media.ken-burns img{animation:ken-burns 18s ease-in-out infinite alternate}
 @keyframes ken-burns{from{transform:scale(1.02)}to{transform:scale(1.08) translateY(-1.5%)}}
 @media (prefers-reduced-motion:reduce){.hero__media.ken-burns img,.grind-steam.ken-burns img,.orbit-core img{animation:none}}
 .hero__veil{position:absolute;inset:0;background:linear-gradient(180deg,color-mix(in srgb,var(--ink) 55%,transparent),color-mix(in srgb,var(--ink) 92%,transparent) 85%)}
+.hero__veil--vignette{background:radial-gradient(ellipse at center,transparent 20%,color-mix(in srgb,var(--ink) 88%,transparent) 100%)}
+.hero__veil--hard{background:linear-gradient(90deg,color-mix(in srgb,var(--ink) 88%,transparent),transparent 55%),linear-gradient(0deg,color-mix(in srgb,var(--ink) 80%,transparent),transparent 50%)}
 .hero__inner{position:relative;max-width:40rem}
+.hero__inner--center{margin:0 auto;text-align:center}
+.hero__inner--wide{max-width:min(52rem,100%)}
 .hero__eyebrow{font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--text-dim);margin:0 0 .75rem}
 .hero__wordmark{font-family:var(--font-display);font-size:clamp(2.4rem,8vw,4.5rem);line-height:.95;margin:0}
 .hero__tag{margin:.85rem 0 1.5rem;max-width:32ch;color:var(--text-dim)}
 .hero__btn{display:inline-flex;align-items:center;min-height:44px;padding:0 1.35rem;border:1px solid var(--accent);text-decoration:none;font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;color:var(--text)}
+/* Distinct hero grammars */
+.hero--split{display:grid;grid-template-columns:1fr;padding:0;min-height:100svh}
+.hero--split .hero__split-media{min-height:52svh}
+.hero--split .hero__split-copy{padding:2.5rem 1.25rem max(2rem,env(safe-area-inset-bottom));display:flex;flex-direction:column;justify-content:center}
+@media (min-width:900px){.hero--split{grid-template-columns:1.15fr .85fr}.hero--split .hero__split-media{min-height:100svh}}
+.hero--center{align-items:center;justify-content:center;text-align:center}
+.hero--stack{display:flex;flex-direction:column;padding:0;min-height:100svh}
+.hero--stack .hero__stack-band{padding:max(5rem,env(safe-area-inset-top)) 1.25rem 1.5rem;background:var(--ink)}
+.hero--stack .hero__stack-media{flex:1;min-height:55svh}
+.hero--float{align-items:center;justify-content:flex-end}
+.hero--float .hero__float-card{position:relative;margin:0 1.25rem max(2rem,env(safe-area-inset-bottom));padding:1.5rem 1.35rem;background:color-mix(in srgb,var(--ink) 78%,transparent);border:1px solid var(--line);backdrop-filter:blur(10px);max-width:26rem}
+.hero--rail{display:grid;grid-template-columns:1fr;padding:0;min-height:100svh}
+.hero--rail .hero__rail-media{min-height:48svh}
+.hero--rail .hero__rail-copy{padding:2rem 1.25rem max(2rem,env(safe-area-inset-bottom));border-top:1px solid var(--line);background:color-mix(in srgb,var(--ink) 94%,#000)}
+@media (min-width:960px){.hero--rail{grid-template-columns:1.4fr .7fr}.hero--rail .hero__rail-media{min-height:100svh}.hero--rail .hero__rail-copy{border-top:0;border-left:1px solid var(--line);display:flex;flex-direction:column;justify-content:center}}
+.hero--mast{display:flex;flex-direction:column;padding:0;min-height:100svh;background:var(--ink)}
+.hero--mast .hero__mast-top{padding:max(5.5rem,env(safe-area-inset-top)) 1.25rem 1.25rem;border-bottom:1px solid var(--line)}
+.hero--mast .hero__mast-media{flex:1;min-height:58svh}
+.hero--mast .hero__wordmark{font-size:clamp(2.8rem,10vw,5.5rem);letter-spacing:-.04em}
 .marquee{border-block:1px solid var(--line);overflow:hidden;padding:.65rem 0}
 .marquee__track{display:flex;width:max-content;animation:marquee 22s linear infinite}
 .marquee__track span{padding-right:3rem;font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;opacity:.7}

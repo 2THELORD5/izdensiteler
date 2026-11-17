@@ -13,7 +13,7 @@
   <link rel="stylesheet" href="/demos/_shared/izden-afterglow.css" />
   <link rel="stylesheet" href="/demos/_shared/izden-agency.css" />
 </head>
-<body>
+<body class="motion-solace">
 
   <header class="site-nav" id="nav" data-open="false">
     <button type="button" class="site-nav__burger" id="navBurger" aria-label="Open menu" aria-expanded="false" aria-controls="navDrawer">
@@ -47,16 +47,17 @@
     </nav>
   </aside>
   <main id="top">
-    <section class="hero" aria-labelledby="hero-title">
+
+    <section class="hero hero--float" aria-labelledby="hero-title">
       <div class="hero__media">
         <img src="media/hero.jpg" alt="" width="1920" height="1280" fetchpriority="high" />
       </div>
       <div class="hero__veil"></div>
-      <div class="hero__inner">
-        <p class="hero__eyebrow iz-reveal">İzden Creative · Brand demo</p>
-        <h1 class="hero__wordmark iz-reveal" id="hero-title">SOLACE</h1>
-        <p class="hero__tag iz-reveal" data-d="1">Spa rituals measured in breath, not minutes.</p>
-        <a class="hero__btn iz-reveal" data-d="2" href="#ritual">Book a ritual</a>
+      <div class="hero__float-card iz-reveal">
+        <p class="hero__eyebrow">Breath-measured care</p>
+        <h1 class="hero__wordmark" id="hero-title">SOLACE</h1>
+        <p class="hero__tag">Spa rituals measured in breath, not minutes.</p>
+        <a class="hero__btn" href="#ritual">Book a ritual</a>
       </div>
     </section>
 
@@ -72,13 +73,13 @@
         <button type="button" data-go="2">03</button>
       </div>
     </section>
-    <div class="marquee" aria-hidden="true"><div class="marquee__track"><span>Solace Spa · SOLACE · Craft motion study · </span><span>Solace Spa · SOLACE · Craft motion study · </span></div></div>
+    <div class="marquee" aria-hidden="true"><div class="marquee__track"><span>Solace Spa · SOLACE · Ritual wipes · </span><span>Solace Spa · SOLACE · Ritual wipes · </span></div></div>
     <section class="chapter" id="story">
       <div class="chapter__grid">
         <div class="chapter__copy">
           <p class="chapter__kicker iz-reveal">01 — Story</p>
-          <h2 class="chapter__title iz-reveal" data-d="1">Built for <em>believers</em></h2>
-          <p class="chapter__lede iz-reveal" data-d="2">Solace Spa is a fictional identity exercise — real photography, deliberate typography, motion that serves the trade instead of decorating it.</p>
+          <h2 class="chapter__title iz-reveal" data-d="1">Ritual over rush</h2>
+          <p class="chapter__lede iz-reveal" data-d="2">Each step is timed to breath — never to the clock.</p>
           <a class="chapter__link iz-reveal" href="#craft">See craft</a>
         </div>
         <figure class="chapter__frame iz-reveal"><img src="media/ritual.jpg" alt="Brand story visual" loading="lazy" /></figure>
@@ -89,8 +90,8 @@
         <figure class="chapter__frame iz-reveal"><img src="media/mist.jpg" alt="Craft detail" loading="lazy" /></figure>
         <div class="chapter__copy">
           <p class="chapter__kicker iz-reveal">02 — Craft</p>
-          <h2 class="chapter__title iz-reveal">Material <em>first</em></h2>
-          <p class="chapter__lede iz-reveal">Surfaces, joints, and finish lines are documented the way your team already speaks — no filler adjectives, no stock praise.</p>
+          <h2 class="chapter__title iz-reveal">Ritual wipes</h2>
+          <p class="chapter__lede iz-reveal">Slow horizontal wipes reveal each treatment step — calm, sequential, tactile.</p>
         </div>
       </div>
     </section>
