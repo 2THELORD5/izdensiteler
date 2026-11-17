@@ -4,16 +4,15 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <title>NOIR — After dark eau de parfum</title>
-  <meta name="description" content="NOIR maison — after-dark eau de parfum. Velvet iris, smoked rose, iron midnight. Notes, ritual, limited flacons." />
+  <meta name="description" content="NOIR maison — after-dark eau de parfum. Velvet iris, smoked rose, iron midnight." />
   <meta name="theme-color" content="#050505" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=DM+Sans:opsz,wght@9..40,400;9..40,500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
   <link rel="stylesheet" href="/demos/_shared/izden-afterglow.css" />
   <link rel="stylesheet" href="/demos/_shared/izden-agency.css" />
   <link rel="stylesheet" href="/demos/_shared/izden-atelier-mobile.css" />
-  <link rel="stylesheet" href="/demos/_shared/izden-atelier-motion.css" />
 </head>
 <body>
   <header class="site-nav" id="nav" data-open="false">
@@ -22,12 +21,11 @@
     </button>
     <a class="site-nav__brand" href="#top">NOIR</a>
     <nav class="site-nav__links" aria-label="Primary">
+      <a href="#sillage">Sillage</a>
+      <a href="#bottle">Flacon</a>
       <a href="#notes">Notes</a>
-      <a href="#ritual">Ritual</a>
       <a href="#collection">Collection</a>
-      <a href="#boutique">Boutique</a>
-      <a href="#faq">FAQ</a>
-      <a href="#contact" class="site-nav__cta">Enquire</a>
+      <a href="#boutique" class="site-nav__cta">Enquire</a>
     </nav>
   </header>
   <div class="nav-drawer-backdrop" id="navBackdrop" hidden></div>
@@ -37,276 +35,269 @@
       <button type="button" class="nav-drawer__close" id="navClose" aria-label="Close">×</button>
     </div>
     <nav class="nav-drawer__links" aria-label="Mobile">
+      <a href="#sillage">Sillage</a>
+      <a href="#bottle">Flacon</a>
       <a href="#notes">Notes</a>
       <a href="#ritual">Ritual</a>
       <a href="#collection">Collection</a>
-      <a href="#ingredients">Ingredients</a>
-      <a href="#limited">Limited edition</a>
+      <a href="#limited">Limited</a>
       <a href="#boutique">Boutique</a>
-      <a href="#newsletter">Newsletter</a>
       <a href="#faq">FAQ</a>
       <a href="#contact">Enquire</a>
     </nav>
   </aside>
 
   <main id="top">
-  <section class="hero" aria-labelledby="hero-title">
-    <div class="hero__glow" aria-hidden="true"></div>
-    <div class="hero__glow hero__glow--alt" aria-hidden="true"></div>
-    <div class="hero__photo" aria-hidden="true">
-      <picture>
-        <source media="(max-width:900px)" srcset="media/hero-mob.jpg" />
-        <img src="media/hero.jpg" alt="" width="1920" height="1280" fetchpriority="high" decoding="async" />
-      </picture>
-    </div>
-    <div class="hero__veil"></div>
-    <div class="hero__copy">
-      <p class="hero__serif iz-reveal">Maison · Istanbul</p>
-      <h1 class="hero__title iz-reveal" id="hero-title" data-d="1"><span class="hero__italic">After</span> dark.</h1>
-      <p class="hero__sans iz-reveal" data-d="2">Eau de parfum for the hour the streetlights hum. Velvet iris, smoked rose, iron midnight.</p>
-      <div class="hero__actions iz-reveal" data-d="3">
-        <a class="hero__link" href="#bottle">Meet the flacon</a>
-        <a class="hero__link hero__link--ghost" href="#collection">Collection</a>
+    <!-- Hero: brand first, one composition -->
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero__photo" aria-hidden="true">
+        <picture>
+          <source media="(max-width:900px)" srcset="media/hero-mob.jpg" />
+          <img src="media/hero.jpg" alt="" width="1920" height="1080" fetchpriority="high" decoding="async" />
+        </picture>
+      </div>
+      <div class="hero__veil"></div>
+      <div class="hero__copy">
+        <h1 class="hero__wordmark" id="hero-title">NOIR</h1>
+        <p class="hero__line">After dark.</p>
+        <p class="hero__lede">Eau de parfum for the hour the streetlights hum.</p>
+        <a class="hero__cta" href="#bottle">Meet the flacon</a>
+      </div>
+    </section>
+
+    <div class="ticker" aria-hidden="true">
+      <div class="ticker__track">
+        <span>NOIR 01 · SMOKED ROSE · IRON MIDNIGHT · SILLAGE · OBSIDIAN GLASS · ISPARTA ROSE ·</span>
+        <span>NOIR 01 · SMOKED ROSE · IRON MIDNIGHT · SILLAGE · OBSIDIAN GLASS · ISPARTA ROSE ·</span>
       </div>
     </div>
-  </section>
 
-  <div class="marquee" aria-hidden="true">
-    <div class="marquee__track">
-      <span>NOIR 01 · EMBER VEIL · MIDNIGHT SUEDE · NOIR 02 · ASHEN ROSE · NOIR 03 · IRON PETAL ·</span>
-      <span>NOIR 01 · EMBER VEIL · MIDNIGHT SUEDE · NOIR 02 · ASHEN ROSE · NOIR 03 · IRON PETAL ·</span>
-    </div>
-  </div>
-
-  <section class="chapter-stack" id="chapters" aria-label="Maison chapters" data-chapter-stack>
-    <div class="chapter-stack__stage">
-      <article class="chapter-stack__panel is-active" data-chapter="0">
-        <p class="chapter-stack__kicker">Chapter I</p>
-        <h2 class="chapter-stack__title">The first breath</h2>
-        <p class="chapter-stack__text">Blackcurrant bud cracks open against pink pepper — a spark before the rose arrives.</p>
-      </article>
-      <article class="chapter-stack__panel" data-chapter="1">
-        <p class="chapter-stack__kicker">Chapter II</p>
-        <h2 class="chapter-stack__title">Heart of suede</h2>
-        <p class="chapter-stack__text">Turkish rose absolute, brushed suede, whisper of orris — worn close to the skin.</p>
-      </article>
-      <article class="chapter-stack__panel" data-chapter="2">
-        <p class="chapter-stack__kicker">Chapter III</p>
-        <h2 class="chapter-stack__title">Resin &amp; ash</h2>
-        <p class="chapter-stack__text">Incense resin, patchouli root, benzoin — the trail that follows you into the lift.</p>
-      </article>
-      <div class="chapter-stack__progress" aria-hidden="true">
-        <span data-dot="0" class="is-on"></span>
-        <span data-dot="1"></span>
-        <span data-dot="2"></span>
+    <!-- Signature: visual sillage chapters (not text-only) -->
+    <section class="sillage" id="sillage" aria-label="Sillage chapters" data-sillage>
+      <div class="sillage__pin">
+        <div class="sillage__media" aria-hidden="true">
+          <img class="is-on" src="media/mood.jpg" alt="" width="1200" height="1800" data-sillage-img="0" />
+          <img src="media/ritual.jpg" alt="" width="1200" height="1800" data-sillage-img="1" loading="lazy" />
+          <img src="media/notes.jpg" alt="" width="1200" height="1200" data-sillage-img="2" loading="lazy" />
+          <div class="sillage__mist"></div>
+        </div>
+        <div class="sillage__copy">
+          <article class="sillage__panel is-active" data-sillage-panel="0">
+            <p class="sillage__kicker">Chapter I · Top</p>
+            <h2>The first breath</h2>
+            <p>Blackcurrant bud cracks against pink pepper — a spark before the rose arrives.</p>
+          </article>
+          <article class="sillage__panel" data-sillage-panel="1">
+            <p class="sillage__kicker">Chapter II · Heart</p>
+            <h2>Heart of suede</h2>
+            <p>Turkish rose absolute, brushed suede, whisper of orris — worn close to the skin.</p>
+          </article>
+          <article class="sillage__panel" data-sillage-panel="2">
+            <p class="sillage__kicker">Chapter III · Base</p>
+            <h2>Resin &amp; ash</h2>
+            <p>Incense resin, patchouli root, benzoin — the trail that follows you into the lift.</p>
+          </article>
+          <div class="sillage__bar" aria-hidden="true">
+            <i data-bar="0" class="is-on"></i>
+            <i data-bar="1"></i>
+            <i data-bar="2"></i>
+          </div>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section class="bottle-stage" id="bottle" data-bottle-stage>
-    <div class="bottle-stage__rail">
-      <div class="bottle-stage__pin">
-        <figure class="bottle-stage__figure">
-          <img class="bottle-stage__img" src="media/bottle.jpg" alt="NOIR 01 flacon in obsidian glass" width="900" height="1200" loading="lazy" decoding="async" data-bottle-img />
+    <!-- Bottle reveal -->
+    <section class="bottle" id="bottle" data-bottle>
+      <div class="bottle__rail">
+        <div class="bottle__pin">
+          <figure class="bottle__figure">
+            <div class="bottle__halo" aria-hidden="true"></div>
+            <img class="bottle__img" src="media/bottle.jpg" alt="NOIR 01 flacon in obsidian glass" width="900" height="1200" loading="lazy" decoding="async" />
+          </figure>
+          <div class="bottle__copy">
+            <p class="eyebrow">Signature flacon</p>
+            <h2>Obsidian <em>glass</em></h2>
+            <p class="bottle__lede">Matte black vessel, magnetic cap, hand-numbered base. Weighted for the dressing table — silent in the clutch.</p>
+            <dl class="bottle__specs">
+              <div><dt>Vessel</dt><dd>Obsidian glass</dd></div>
+              <div><dt>Volume</dt><dd>50 ml EDP</dd></div>
+              <div><dt>Batch</dt><dd>Hand-numbered</dd></div>
+            </dl>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Notes pyramid -->
+    <section class="notes" id="notes" aria-labelledby="notes-title">
+      <div class="notes__intro">
+        <p class="eyebrow">Olfactive pyramid</p>
+        <h2 id="notes-title">Notes</h2>
+      </div>
+      <div class="notes__pyramid" data-pyramid>
+        <div class="notes__tier" data-tier="0" style="--w: 42%">
+          <h3>Top</h3>
+          <p>Blackcurrant bud · pink pepper · elemi</p>
+        </div>
+        <div class="notes__tier" data-tier="1" style="--w: 68%">
+          <h3>Heart</h3>
+          <p>Turkish rose absolute · iris butter · suede</p>
+        </div>
+        <div class="notes__tier" data-tier="2" style="--w: 100%">
+          <h3>Base</h3>
+          <p>Incense resin · patchouli · benzoin · cedar shadow</p>
+        </div>
+      </div>
+      <figure class="notes__visual">
+        <img src="media/notes.jpg" alt="Fragrance materials arranged for the pyramid" width="1200" height="1200" loading="lazy" decoding="async" />
+      </figure>
+    </section>
+
+    <!-- Ritual -->
+    <section class="ritual" id="ritual" aria-labelledby="ritual-title">
+      <div class="ritual__grid">
+        <div class="ritual__copy">
+          <p class="eyebrow">Application</p>
+          <h2 id="ritual-title">Ritual</h2>
+          <p class="ritual__lede">NOIR is the final coat. No layering — let the pulse points carry the story.</p>
+          <ol class="ritual__steps">
+            <li>
+              <span>01</span>
+              <div>
+                <h3>Prepare</h3>
+                <p>Clean skin, bare wrists. One slow breath before the first press.</p>
+              </div>
+            </li>
+            <li>
+              <span>02</span>
+              <div>
+                <h3>Pulse</h3>
+                <p>Two sprays to the inner wrist, one to the sternum — never rub, only press.</p>
+              </div>
+            </li>
+            <li>
+              <span>03</span>
+              <div>
+                <h3>Depart</h3>
+                <p>Wait ninety seconds. The base warms as the doors close.</p>
+              </div>
+            </li>
+          </ol>
+        </div>
+        <figure class="ritual__figure">
+          <img src="media/ritual.jpg" alt="Evening fragrance ritual on skin" width="900" height="1100" loading="lazy" decoding="async" />
         </figure>
-        <div class="bottle-stage__copy">
-          <p class="bottle-stage__label iz-reveal">Signature flacon</p>
-          <h2 class="bottle-stage__title iz-reveal" data-d="1">Obsidian<br /><em>glass</em></h2>
-          <p class="bottle-stage__lede iz-reveal" data-d="2">Matte black vessel, magnetic cap, hand-numbered base. Weighted for the dressing table, silent in the clutch.</p>
-        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section class="notes" id="notes" aria-labelledby="notes-title">
-    <div class="notes__grid">
-      <figure class="notes__visual iz-reveal">
-        <img src="media/notes.jpg" alt="Fragrance notes arranged in pyramid" width="900" height="1100" loading="lazy" decoding="async" />
-      </figure>
-      <div class="notes__body">
-        <p class="section-kicker iz-reveal">Olfactive pyramid</p>
-        <h2 class="section-title iz-reveal" id="notes-title" data-d="1">Notes</h2>
-        <div class="notes__pyramid">
-          <div class="notes__tier iz-reveal" data-d="1">
-            <h3>Top</h3>
-            <p>Blackcurrant bud, pink pepper, elemi</p>
-          </motion>
-          <div class="notes__tier iz-reveal" data-d="2">
-            <h3>Heart</h3>
-            <p>Turkish rose absolute, iris butter, suede accord</p>
-          </div>
-          <div class="notes__tier iz-reveal" data-d="3">
-            <h3>Base</h3>
-            <p>Incense resin, patchouli, benzoin, cedar shadow</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="ritual" id="ritual" aria-labelledby="ritual-title">
-    <div class="ritual__inner">
-      <div class="ritual__intro">
-        <p class="section-kicker iz-reveal">Application</p>
-        <h2 class="section-title iz-reveal" id="ritual-title" data-d="1">Ritual</h2>
-        <p class="ritual__lede iz-reveal" data-d="2">NOIR is the final coat. No layering — let the pulse points carry the story.</p>
-      </div>
-      <ol class="ritual__steps">
-        <li class="ritual__step iz-reveal">
-          <span class="ritual__num">01</span>
-          <div>
-            <h3>Prepare</h3>
-            <p>Clean skin, bare wrists. One slow breath before the first press.</p>
-          </div>
+    <!-- Collection — editorial rows, not cards -->
+    <section class="collection" id="collection" aria-labelledby="collection-title">
+      <header class="collection__head">
+        <p class="eyebrow">Eau de parfum · 50 ml</p>
+        <h2 id="collection-title">Collection</h2>
+      </header>
+      <ul class="collection__list">
+        <li>
+          <p class="collection__code">NOIR 01</p>
+          <h3>After dark</h3>
+          <p class="collection__note">Smoked rose, incense, iron midnight.</p>
+          <p class="collection__price">€240</p>
+          <a href="#boutique">Reserve</a>
         </li>
-        <li class="ritual__step iz-reveal" data-d="1">
-          <span class="ritual__num">02</span>
-          <div>
-            <h3>Pulse</h3>
-            <p>Two sprays to the inner wrist, one to the sternum — never rub, only press.</p>
-          </div>
+        <li>
+          <p class="collection__code">NOIR 02</p>
+          <h3>Ember veil</h3>
+          <p class="collection__note">Ambered woods, burnt vanilla, night jasmine.</p>
+          <p class="collection__price">€265</p>
+          <a href="#boutique">Reserve</a>
         </li>
-        <li class="ritual__step iz-reveal" data-d="2">
-          <span class="ritual__num">03</span>
-          <div>
-            <h3>Depart</h3>
-            <p>Wait ninety seconds. The base warms as the doors close.</p>
-          </div>
+        <li>
+          <p class="collection__code">NOIR 03</p>
+          <h3>Iron petal</h3>
+          <p class="collection__note">Metallic iris, wet stone, cold bergamot.</p>
+          <p class="collection__price">€255</p>
+          <a href="#boutique">Reserve</a>
         </li>
-      </ol>
-      <figure class="ritual__figure iz-reveal" data-d="1">
-        <img src="media/ritual.jpg" alt="Evening fragrance ritual on skin" width="900" height="1100" loading="lazy" decoding="async" />
-      </figure>
-    </div>
-  </section>
+      </ul>
+    </section>
 
-  <section class="collection" id="collection" aria-labelledby="collection-title">
-    <header class="collection__head">
-      <p class="section-kicker iz-reveal">Eau de parfum · 50 ml</p>
-      <h2 class="section-title iz-reveal" id="collection-title" data-d="1">Collection</h2>
-    </header>
-    <ul class="collection__skus">
-      <li class="sku iz-reveal">
-        <p class="sku__code">NOIR 01</p>
-        <h3 class="sku__name">After dark</h3>
-        <p class="sku__note">Flagship. Smoked rose, incense, iron midnight.</p>
-        <p class="sku__price">€240</p>
-        <a class="sku__link" href="#boutique">Reserve</a>
-      </li>
-      <li class="sku iz-reveal" data-d="1">
-        <p class="sku__code">NOIR 02</p>
-        <h3 class="sku__name">Ember veil</h3>
-        <p class="sku__note">Ambered woods, burnt vanilla, night-blooming jasmine.</p>
-        <p class="sku__price">€265</p>
-        <a class="sku__link" href="#boutique">Reserve</a>
-      </li>
-      <li class="sku iz-reveal" data-d="2">
-        <p class="sku__code">NOIR 03</p>
-        <h3 class="sku__name">Iron petal</h3>
-        <p class="sku__note">Metallic iris, wet stone, cold bergamot peel.</p>
-        <p class="sku__price">€255</p>
-        <a class="sku__link" href="#boutique">Reserve</a>
-      </li>
-    </ul>
-  </section>
-
-  <section class="ingredients" id="ingredients" aria-labelledby="ingredients-title">
-    <div class="ingredients__grid">
-      <div class="ingredients__copy">
-        <p class="section-kicker iz-reveal">Provenance</p>
-        <h2 class="section-title iz-reveal" id="ingredients-title" data-d="1">Ingredients story</h2>
-        <p class="ingredients__text iz-reveal" data-d="2">Rose absolute from Isparta valleys. Incense tears sorted by hand in Somaliland. Patchouli aged eighteen months in oak — never accelerated.</p>
-        <p class="ingredients__text iz-reveal" data-d="3">Alcohol of wheat origin. No animal musks. IFRA-compliant, cold-filtered in small batches of 120 litres.</p>
-      </div>
-      <figure class="ingredients__visual iz-reveal" data-d="1">
-        <img src="media/mood.jpg" alt="Raw materials and mood lighting in the atelier" width="900" height="1100" loading="lazy" decoding="async" />
-      </figure>
-    </div>
-  </section>
-
-  <section class="limited" id="limited" aria-labelledby="limited-title">
-    <div class="limited__grid">
-      <figure class="limited__visual iz-reveal">
-        <img src="media/pack.jpg" alt="Limited edition NOIR coffret" width="900" height="1100" loading="lazy" decoding="async" />
+    <!-- Limited -->
+    <section class="limited" id="limited" aria-labelledby="limited-title">
+      <figure class="limited__visual">
+        <img src="media/pack.jpg" alt="Limited edition NOIR coffret" width="1200" height="800" loading="lazy" decoding="async" />
       </figure>
       <div class="limited__copy">
-        <p class="section-kicker iz-reveal">400 flacons</p>
-        <h2 class="section-title iz-reveal" id="limited-title" data-d="1">Limited edition</h2>
-        <p class="limited__text iz-reveal" data-d="2">Winter coffret: 50 ml extrait, travel atomiser, leather sleeve stamped with your serial. Released in waves of fifty — when the batch closes, the number does not return.</p>
-        <p class="limited__serial iz-reveal" data-d="3">Current wave · <strong>214–263</strong> remaining</p>
-        <a class="limited__cta iz-reveal" data-d="4" href="#boutique">Join the waitlist</a>
+        <p class="eyebrow">400 flacons</p>
+        <h2 id="limited-title">Winter coffret</h2>
+        <p>50 ml extrait, travel atomiser, leather sleeve stamped with your serial. Waves of fifty — when the batch closes, the number does not return.</p>
+        <p class="limited__serial">Current wave · <strong>214–263</strong></p>
+        <a class="limited__cta" href="#boutique">Join the waitlist</a>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section class="boutique" id="boutique" aria-labelledby="boutique-title">
-    <div class="boutique__card iz-reveal">
-      <p class="section-kicker">Karaköy maison</p>
-      <h2 class="section-title" id="boutique-title">Visit the boutique</h2>
-      <p class="boutique__text">By appointment · Thursday–Saturday · Blind smelling bar, engraving, same-day wrap.</p>
-      <address class="boutique__address">
+    <!-- Boutique -->
+    <section class="boutique" id="boutique" aria-labelledby="boutique-title">
+      <p class="eyebrow">Karaköy maison</p>
+      <h2 id="boutique-title">Visit by appointment</h2>
+      <p class="boutique__text">Thursday–Saturday · Blind smelling bar, engraving, same-day wrap.</p>
+      <address>
         Kemankes Mah. Mumhane Cd. 12<br />
         34425 Beyoğlu · Istanbul
       </address>
       <p class="boutique__hours">13:00 — 19:00</p>
       <a class="boutique__map" href="https://maps.google.com" target="_blank" rel="noopener noreferrer">Open in maps</a>
-    </div>
-  </section>
+    </section>
 
-  <section class="newsletter" id="newsletter" aria-labelledby="newsletter-title">
-    <div class="newsletter__inner iz-reveal">
-      <h2 class="section-title" id="newsletter-title">Private list</h2>
-      <p class="newsletter__lede">Wave releases and atelier dinners — demo form, no backend.</p>
-      <form class="newsletter__form" id="newsletterForm" action="#" method="post" novalidate>
+    <!-- Newsletter -->
+    <section class="newsletter" id="newsletter" aria-labelledby="newsletter-title">
+      <h2 id="newsletter-title">Private list</h2>
+      <p>Wave releases and atelier dinners — demo only.</p>
+      <form id="newsletterForm" action="#" method="post" novalidate>
         <label class="visually-hidden" for="email">Email</label>
         <input type="email" id="email" name="email" placeholder="you@email.com" autocomplete="email" required />
         <button type="submit">Request access</button>
       </form>
       <p class="newsletter__status" id="newsletterStatus" role="status" aria-live="polite" hidden></p>
-    </div>
-  </section>
+    </section>
 
-  <section class="faq" id="faq" aria-labelledby="faq-title">
-    <div class="faq__inner">
-      <h2 class="section-title iz-reveal" id="faq-title">FAQ</h2>
+    <!-- FAQ -->
+    <section class="faq" id="faq" aria-labelledby="faq-title">
+      <h2 id="faq-title">FAQ</h2>
       <div class="faq__list">
-        <details class="faq__item iz-reveal">
+        <details>
           <summary>How long does NOIR 01 last on skin?</summary>
           <p>Eight to ten hours on moisturised skin; projection softens after the second hour — by design.</p>
         </details>
-        <details class="faq__item iz-reveal" data-d="1">
+        <details>
           <summary>Do you ship outside Turkey?</summary>
           <p>EU and UK via DHL Express. Duties calculated at checkout in the full boutique — this demo does not process orders.</p>
         </details>
-        <details class="faq__item iz-reveal" data-d="2">
+        <details>
           <summary>Can I layer with another scent?</summary>
-          <p>We do not recommend it. NOIR is composed as a closed arc — begin with the ritual, end with silence.</p>
+          <p>We do not recommend it. NOIR is composed as a closed arc.</p>
         </details>
-        <details class="faq__item iz-reveal" data-d="3">
+        <details>
           <summary>Is the limited coffret refillable?</summary>
           <p>Travel atomiser yes; main flacon is sealed batch — return to the maison for engraving and recycle.</p>
         </details>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section class="contact" id="contact">
-    <div class="contact__inner iz-reveal">
+    <section class="contact" id="contact">
       <h2>Maison enquiries</h2>
-      <p>NOIR demo maison — designed by İzden Creative.</p>
-      <ul class="contact__list">
+      <p>NOIR demo — designed by İzden Creative.</p>
+      <ul>
         <li><a href="mailto:info@izdencreative.com">info@izdencreative.com</a></li>
         <li><a href="tel:+902120000000">+90 212 000 00 00</a></li>
         <li><a href="https://www.izdencreative.com" target="_blank" rel="noopener noreferrer">izdencreative.com</a></li>
       </ul>
       <img class="contact__logo" src="/demos/_shared/izden-creative.jpg" alt="İzden Creative" width="180" height="61" loading="lazy" decoding="async" />
-    </div>
-  </section>
+    </section>
   </main>
 
   <script src="main.js" defer></script>
   <script src="/demos/_shared/izden-afterglow.js" defer></script>
   <script src="/demos/_shared/izden-agency.js" defer></script>
-<script src="/demos/_shared/izden-contact-rewrite.js" defer></script>
+  <script src="/demos/_shared/izden-contact-rewrite.js" defer></script>
 </body>
 </html>

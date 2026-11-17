@@ -25,95 +25,118 @@
     if (e.key === "Escape") setOpen(false);
   });
 
-  const chapterStack = document.querySelector("[data-chapter-stack]");
-  const panels = chapterStack?.querySelectorAll(".chapter-stack__panel");
-  const dots = chapterStack?.querySelectorAll(".chapter-stack__progress span");
+  const clamp01 = (n) => Math.min(1, Math.max(0, n));
 
-  const setChapter = (index) => {
-    if (!panels?.length) return;
-    const i = Math.max(0, Math.min(index, panels.length - 1));
-    panels.forEach((panel, idx) => {
-      panel.classList.toggle("is-active", idx === i);
-    });
-    dots?.forEach((dot, idx) => {
-      dot.classList.toggle("is-on", idx === i);
-    });
+  /* Signature: sillage chapters + mist */
+  const sillage = document.querySelector("[data-sillage]");
+  const sillageImgs = sillage ? [...sillage.querySelectorAll("[data-sillage-img]")] : [];
+  const sillagePanels = sillage ? [...sillage.querySelectorAll("[data-sillage-panel]")] : [];
+  const sillageBars = sillage ? [...sillage.querySelectorAll("[data-bar]")] : [];
+
+  const setSillage = (index) => {
+    const i = Math.max(0, Math.min(index, sillagePanels.length - 1));
+    sillagePanels.forEach((el, idx) => el.classList.toggle("is-active", idx === i));
+    sillageImgs.forEach((el, idx) => el.classList.toggle("is-on", idx === i));
+    sillageBars.forEach((el, idx) => el.classList.toggle("is-on", idx === i));
   };
 
-  const updateChapterFromScroll = () => {
-    if (!chapterStack || reduced) return;
-    const rect = chapterStack.getBoundingClientRect();
-    const scrollable = chapterStack.offsetHeight - window.innerHeight;
+  const updateSillage = () => {
+    if (!sillage || reduced) return;
+    const rect = sillage.getBoundingClientRect();
+    const scrollable = sillage.offsetHeight - window.innerHeight;
     if (scrollable <= 0) return;
-    const traveled = Math.min(Math.max(-rect.top, 0), scrollable);
-    const progress = traveled / scrollable;
-    const chapter = Math.min(2, Math.floor(progress * 3.001));
-    setChapter(chapter);
+    const p = clamp01(-rect.top / scrollable);
+    sillage.style.setProperty("--sillage-p", String(p));
+    setSillage(Math.min(2, Math.floor(p * 3.001)));
   };
 
-  if (chapterStack && !reduced) {
-    let chapterTicking = false;
-    const onChapterScroll = () => {
-      if (chapterTicking) return;
-      chapterTicking = true;
+  if (sillage && !reduced) {
+    let tick = false;
+    const onScroll = () => {
+      if (tick) return;
+      tick = true;
       requestAnimationFrame(() => {
-        updateChapterFromScroll();
-        chapterTicking = false;
+        updateSillage();
+        tick = false;
       });
     };
-    window.addEventListener("scroll", onChapterScroll, { passive: true });
-    updateChapterFromScroll();
-  } else if (panels?.length) {
-    setChapter(0);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll, { passive: true });
+    updateSillage();
+  } else {
+    setSillage(0);
   }
 
-  const bottleStage = document.querySelector("[data-bottle-stage]");
-  const bottleRail = bottleStage?.querySelector(".bottle-stage__rail");
+  /* Bottle reveal */
+  const bottle = document.querySelector("[data-bottle]");
+  const bottleRail = bottle?.querySelector(".bottle__rail");
 
-  const updateBottleReveal = () => {
-    if (!bottleStage || !bottleRail || reduced) return;
+  const updateBottle = () => {
+    if (!bottle || !bottleRail || reduced) return;
     const rect = bottleRail.getBoundingClientRect();
     const scrollable = bottleRail.offsetHeight - window.innerHeight;
     if (scrollable <= 0) return;
-    const traveled = Math.min(Math.max(-rect.top, 0), scrollable);
-    const progress = traveled / scrollable;
-    const eased = progress < 0.5 ? 2 * progress * progress : 1 - Math.pow(-2 * progress + 2, 2) / 2;
-    bottleStage.style.setProperty("--bottle-reveal", String(eased));
+    const raw = clamp01(-rect.top / scrollable);
+    const eased = raw < 0.5 ? 2 * raw * raw : 1 - Math.pow(-2 * raw + 2, 2) / 2;
+    bottle.style.setProperty("--bottle-reveal", String(eased));
   };
 
-  if (bottleStage && !reduced) {
-    let bottleTicking = false;
-    const onBottleScroll = () => {
-      if (bottleTicking) return;
-      bottleTicking = true;
+  if (bottle && !reduced) {
+    let tick = false;
+    const onScroll = () => {
+      if (tick) return;
+      tick = true;
       requestAnimationFrame(() => {
-        updateBottleReveal();
-        bottleTicking = false;
+        updateBottle();
+        tick = false;
       });
     };
-    window.addEventListener("scroll", onBottleScroll, { passive: true });
-    window.addEventListener("resize", updateBottleReveal, { passive: true });
-    updateBottleReveal();
-  } else if (bottleStage) {
-    bottleStage.style.setProperty("--bottle-reveal", "1");
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll, { passive: true });
+    updateBottle();
+  } else if (bottle) {
+    bottle.style.setProperty("--bottle-reveal", "1");
+  }
+
+  /* Notes pyramid cascade */
+  const pyramid = document.querySelector("[data-pyramid]");
+  const tiers = pyramid ? [...pyramid.querySelectorAll(".notes__tier")] : [];
+  if (tiers.length) {
+    if (reduced) {
+      tiers.forEach((t) => t.classList.add("is-on"));
+    } else if ("IntersectionObserver" in window) {
+      const io = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (!entry.isIntersecting) return;
+            tiers.forEach((tier, i) => {
+              window.setTimeout(() => tier.classList.add("is-on"), i * 160);
+            });
+            io.disconnect();
+          });
+        },
+        { threshold: 0.35 }
+      );
+      io.observe(pyramid);
+    } else {
+      tiers.forEach((t) => t.classList.add("is-on"));
+    }
   }
 
   const form = document.getElementById("newsletterForm");
   const status = document.getElementById("newsletterStatus");
-
   form?.addEventListener("submit", (e) => {
     e.preventDefault();
     const input = form.querySelector('input[type="email"]');
     const value = input?.value?.trim() ?? "";
-    if (status) {
-      status.hidden = false;
-      if (!value || !input?.validity.valid) {
-        status.textContent = "Enter a valid email to continue — demo only.";
-        return;
-      }
-      status.textContent = "Thank you. This demo does not store addresses — you're on the list in spirit.";
-      form.reset();
+    if (!status) return;
+    status.hidden = false;
+    if (!value || !input?.validity.valid) {
+      status.textContent = "Enter a valid email to continue — demo only.";
+      return;
     }
+    status.textContent = "Thank you. This demo does not store addresses.";
+    form.reset();
   });
 
   document.querySelectorAll('a[href^="#"]').forEach((link) => {
@@ -121,10 +144,9 @@
     if (!id) return;
     link.addEventListener("click", (e) => {
       const target = document.getElementById(id);
-      if (target) {
-        e.preventDefault();
-        target.scrollIntoView({ behavior: reduced ? "auto" : "smooth", block: "start" });
-      }
+      if (!target) return;
+      e.preventDefault();
+      target.scrollIntoView({ behavior: reduced ? "auto" : "smooth", block: "start" });
     });
   });
 })();
