@@ -1,9 +1,25 @@
-/* Lightweight sticky image-chapter scrub — uses existing site stills (no Kie) */
+/* Sticky scrub stage — film currentTime (preferred) or still chapters */
 .iz-scrub {
   position: relative;
-  height: 220vh;
+  height: 280vh;
   background: #0a0a0a;
   color: #f4f0ea;
+}
+.iz-scrub--film {
+  height: 320vh;
+}
+.iz-scrub video.iz-film {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  background: #0a0a0a;
+}
+.iz-scrub__hint.is-hide {
+  opacity: 0;
+  pointer-events: none;
 }
 .iz-scrub__pin {
   position: sticky;
@@ -82,7 +98,10 @@
 }
 @media (max-width: 720px) {
   .iz-scrub {
-    height: 170vh;
+    height: 220vh;
+  }
+  .iz-scrub--film {
+    height: 260vh;
   }
   .iz-scrub__ui {
     padding-bottom: 18svh;

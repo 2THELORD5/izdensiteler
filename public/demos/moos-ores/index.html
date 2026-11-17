@@ -93,13 +93,15 @@
 
 <main>
 
-<section class="iz-scrub iz-scrub--kie" data-iz-scrub data-iz-scrub-responsive="1" aria-label="Film chapter scrub">
+<section class="iz-scrub iz-scrub--film iz-scrub--kie" data-iz-film-scrub
+  data-film-pc="assets/kie-scrub/film-pc.mp4"
+  data-film-mob="assets/kie-scrub/film-mob.mp4"
+  data-poster="assets/kie-scrub/pc/01.jpg"
+  aria-label="Film chapter scrub">
   <div class="iz-scrub__pin">
-    <div class="iz-scrub__stage"><div class="iz-scrub__frame" data-act="01 Arrival" data-title="Light first." data-body="Oda ve sessizlik — giriş." data-src-pc="assets/kie-scrub/pc/01.jpg" data-src-mob="assets/kie-scrub/mob/01.jpg">
-<img src="assets/kie-scrub/pc/01.jpg" alt="" loading="eager" decoding="async" /></div><div class="iz-scrub__frame" data-act="02 Plan" data-title="Space composed." data-body="Her boşluk bir nefes." data-src-pc="assets/kie-scrub/pc/02.jpg" data-src-mob="assets/kie-scrub/mob/02.jpg">
-<img src="assets/kie-scrub/pc/02.jpg" alt="" loading="lazy" decoding="async" /></div><div class="iz-scrub__frame" data-act="03 Material" data-title="Hand & grain." data-body="Dokunulan yüzeyler." data-src-pc="assets/kie-scrub/pc/03.jpg" data-src-mob="assets/kie-scrub/mob/03.jpg">
-<img src="assets/kie-scrub/pc/03.jpg" alt="" loading="lazy" decoding="async" /></div><div class="iz-scrub__frame" data-act="04 Atmosphere" data-title="Evening hold." data-body="Akşam ışığında tamamlanır." data-src-pc="assets/kie-scrub/pc/04.jpg" data-src-mob="assets/kie-scrub/mob/04.jpg">
-<img src="assets/kie-scrub/pc/04.jpg" alt="" loading="lazy" decoding="async" /></div></div>
+    <div class="iz-scrub__stage">
+      <video class="iz-film" muted playsinline preload="auto" poster="assets/kie-scrub/pc/01.jpg" disablePictureInPicture></video>
+    </div>
     <div class="iz-scrub__veil" aria-hidden="true"></div>
     <div class="iz-scrub__ui">
       <p class="iz-scrub__act" data-iz-act></p>
@@ -108,6 +110,7 @@
     </div>
     <p class="iz-scrub__hint">Scroll</p>
   </div>
+  <script type="application/json" data-iz-chapters>[{"act":"01 Arrival","title":"Light first.","body":"Oda ve sessizlik — giriş."},{"act":"02 Plan","title":"Space composed.","body":"Her boşluk bir nefes."},{"act":"03 Material","title":"Hand & grain.","body":"Dokunulan yüzeyler."},{"act":"04 Atmosphere","title":"Evening hold.","body":"Akşam ışığında tamamlanır."}]</script>
 </section>
 
   <!-- ============================== HERO ============================== -->
@@ -417,8 +420,8 @@
   <script src="../_shared/izden-mark.js" defer></script>
 <script src="/demos/_shared/izden-agency.js" defer></script>
 
-<script src="/demos/_shared/izden-image-scrub.js" defer></script>
 <script src="/demos/_shared/izden-afterglow.js" defer></script>
 <script src="/demos/_shared/izden-contact-rewrite.js" defer></script>
+<script src="/demos/_shared/izden-film-scrub.js" defer></script>
 </body>
 </html>

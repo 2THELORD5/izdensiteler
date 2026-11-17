@@ -48,9 +48,15 @@
 
 <main>
 
-<section class="iz-scrub" data-iz-scrub aria-label="Scroll chapters">
+<section class="iz-scrub iz-scrub--film iz-scrub--kie" data-iz-film-scrub
+  data-film-pc="assets/kie-scrub/film-pc.mp4"
+  data-film-mob="assets/kie-scrub/film-mob.mp4"
+  data-poster="assets/kie-scrub/pc/01.jpg"
+  aria-label="Film chapter scrub">
   <div class="iz-scrub__pin">
-    <div class="iz-scrub__stage"><div class="iz-scrub__frame" data-act="01 Chapter" data-title="Editorial space." data-body="Sayfa gibi mekân."><img src="assets/01-cover-hero-building-ground.png" alt="" loading="eager" decoding="async" /></div><div class="iz-scrub__frame" data-act="02 Running" data-title="Head & margin." data-body="Tipografi ve boşluk."><img src="assets/01-cover-hero-sky.png" alt="" loading="lazy" decoding="async" /></div><div class="iz-scrub__frame" data-act="03 Spread" data-title="Project spread." data-body="İşler yayılır."><img src="assets/15-start-a-new-chapter.jpg" alt="" loading="lazy" decoding="async" /></div><div class="iz-scrub__frame" data-act="04 Close" data-title="Colophon." data-body="Kapanış notu."><img src="assets/extra-02-interior-mood.jpg" alt="" loading="lazy" decoding="async" /></div></div>
+    <div class="iz-scrub__stage">
+      <video class="iz-film" muted playsinline preload="auto" poster="assets/kie-scrub/pc/01.jpg" disablePictureInPicture></video>
+    </div>
     <div class="iz-scrub__veil" aria-hidden="true"></div>
     <div class="iz-scrub__ui">
       <p class="iz-scrub__act" data-iz-act></p>
@@ -59,6 +65,7 @@
     </div>
     <p class="iz-scrub__hint">Scroll</p>
   </div>
+  <script type="application/json" data-iz-chapters>[{"act":"01 Mark","title":"K opens.","body":"İşaret."},{"act":"02 Space","title":"Room holds.","body":"Mekân."},{"act":"03 Material","title":"Touch.","body":"Malzeme."},{"act":"04 Close","title":"Still frame.","body":"Kapanış."}]</script>
 </section>
 
 
@@ -493,8 +500,8 @@
   <script src="../_shared/izden-mark.js" defer></script>
 <script src="/demos/_shared/izden-agency.js" defer></script>
 
-<script src="/demos/_shared/izden-image-scrub.js" defer></script>
 <script src="/demos/_shared/izden-afterglow.js" defer></script>
 <script src="/demos/_shared/izden-contact-rewrite.js" defer></script>
+<script src="/demos/_shared/izden-film-scrub.js" defer></script>
 </body>
 </html>

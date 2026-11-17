@@ -18,13 +18,15 @@
 </head>
 <body id="top">
 
-<section class="iz-scrub iz-scrub--kie" data-iz-scrub data-iz-scrub-responsive="1" aria-label="Film chapter scrub">
+<section class="iz-scrub iz-scrub--film iz-scrub--kie" data-iz-film-scrub
+  data-film-pc="assets/kie-scrub/film-pc.mp4"
+  data-film-mob="assets/kie-scrub/film-mob.mp4"
+  data-poster="assets/kie-scrub/pc/01.jpg"
+  aria-label="Film chapter scrub">
   <div class="iz-scrub__pin">
-    <div class="iz-scrub__stage"><div class="iz-scrub__frame" data-act="01 Arrive" data-title="Residence." data-body="Residans eşiği." data-src-pc="assets/kie-scrub/pc/01.jpg" data-src-mob="assets/kie-scrub/mob/01.jpg">
-<img src="assets/kie-scrub/pc/01.jpg" alt="" loading="eager" decoding="async" /></div><div class="iz-scrub__frame" data-act="02 Lobby" data-title="Warm stone." data-body="Lobide karşılama." data-src-pc="assets/kie-scrub/pc/02.jpg" data-src-mob="assets/kie-scrub/mob/02.jpg">
-<img src="assets/kie-scrub/pc/02.jpg" alt="" loading="lazy" decoding="async" /></div><div class="iz-scrub__frame" data-act="03 Live" data-title="Terrace light." data-body="Teras ışığı." data-src-pc="assets/kie-scrub/pc/03.jpg" data-src-mob="assets/kie-scrub/mob/03.jpg">
-<img src="assets/kie-scrub/pc/03.jpg" alt="" loading="lazy" decoding="async" /></div><div class="iz-scrub__frame" data-act="04 Green" data-title="Community." data-body="Avlu." data-src-pc="assets/kie-scrub/pc/04.jpg" data-src-mob="assets/kie-scrub/mob/04.jpg">
-<img src="assets/kie-scrub/pc/04.jpg" alt="" loading="lazy" decoding="async" /></div></div>
+    <div class="iz-scrub__stage">
+      <video class="iz-film" muted playsinline preload="auto" poster="assets/kie-scrub/pc/01.jpg" disablePictureInPicture></video>
+    </div>
     <div class="iz-scrub__veil" aria-hidden="true"></div>
     <div class="iz-scrub__ui">
       <p class="iz-scrub__act" data-iz-act></p>
@@ -33,6 +35,7 @@
     </div>
     <p class="iz-scrub__hint">Scroll</p>
   </div>
+  <script type="application/json" data-iz-chapters>[{"act":"01 Arrive","title":"Residence.","body":"Residans eşiği."},{"act":"02 Lobby","title":"Warm stone.","body":"Lobide karşılama."},{"act":"03 Live","title":"Terrace light.","body":"Teras ışığı."},{"act":"04 Green","title":"Community.","body":"Avlu."}]</script>
 </section>
 
 
@@ -582,8 +585,8 @@
   <script src="../_shared/izden-mark.js" defer></script>
 <script src="/demos/_shared/izden-agency.js" defer></script>
 
-<script src="/demos/_shared/izden-image-scrub.js" defer></script>
 <script src="/demos/_shared/izden-afterglow.js" defer></script>
 <script src="/demos/_shared/izden-contact-rewrite.js" defer></script>
+<script src="/demos/_shared/izden-film-scrub.js" defer></script>
 </body>
 </html>

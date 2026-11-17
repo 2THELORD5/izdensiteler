@@ -41,11 +41,21 @@ const SKIP = new Set([
 function du(dir) {
   let n = 0;
   const walk = (d) => {
+    let st;
+    try {
+      st = statSync(d);
+    } catch {
+      return;
+    }
+    if (!st.isDirectory()) {
+      n += st.size;
+      return;
+    }
     for (const e of readdirSync(d)) {
       const p = join(d, e);
-      const st = statSync(p);
-      if (st.isDirectory()) walk(p);
-      else n += st.size;
+      const s = statSync(p);
+      if (s.isDirectory()) walk(p);
+      else n += s.size;
     }
   };
   walk(dir);

@@ -79,9 +79,15 @@
   <!-- ─────────────  WORK GRID (home)  ───────────── -->
   <main class="work" id="top">
 
-<section class="iz-scrub" data-iz-scrub aria-label="Scroll chapters">
+<section class="iz-scrub iz-scrub--film iz-scrub--kie" data-iz-film-scrub
+  data-film-pc="assets/kie-scrub/film-pc.mp4"
+  data-film-mob="assets/kie-scrub/film-mob.mp4"
+  data-poster="assets/kie-scrub/pc/01.jpg"
+  aria-label="Film chapter scrub">
   <div class="iz-scrub__pin">
-    <div class="iz-scrub__stage"><div class="iz-scrub__frame" data-act="01 Grid" data-title="Flip the work." data-body="İşler ızgarada."><img src="images/02-mall-atrium.jpg" alt="" loading="eager" decoding="async" /></div><div class="iz-scrub__frame" data-act="02 Overlay" data-title="Menu opens." data-body="Katmanlı navigasyon."><img src="images/08-terracotta-facade.jpg" alt="" loading="lazy" decoding="async" /></div><div class="iz-scrub__frame" data-act="03 Case" data-title="One plot." data-body="Tek arsa, net hikâye."><img src="images/07-rammed-earth-campus.jpg" alt="" loading="lazy" decoding="async" /></div><div class="iz-scrub__frame" data-act="04 Build" data-title="Built logic." data-body="Yapısal netlik."><img src="images/06-parametric-canopy.jpg" alt="" loading="lazy" decoding="async" /></div></div>
+    <div class="iz-scrub__stage">
+      <video class="iz-film" muted playsinline preload="auto" poster="assets/kie-scrub/pc/01.jpg" disablePictureInPicture></video>
+    </div>
     <div class="iz-scrub__veil" aria-hidden="true"></div>
     <div class="iz-scrub__ui">
       <p class="iz-scrub__act" data-iz-act></p>
@@ -90,6 +96,7 @@
     </div>
     <p class="iz-scrub__hint">Scroll</p>
   </div>
+  <script type="application/json" data-iz-chapters>[{"act":"01 Grid","title":"Structure.","body":"Izgara kurulur."},{"act":"02 Volume","title":"Filled air.","body":"Hacim."},{"act":"03 Facade","title":"Skin on.","body":"Cephe."},{"act":"04 Life","title":"Occupied.","body":"Yaşam."}]</script>
 </section>
 
     <section class="grid" aria-label="Selected works">
@@ -278,8 +285,8 @@
   <script src="../_shared/izden-mark.js" defer></script>
 <script src="/demos/_shared/izden-agency.js" defer></script>
 
-<script src="/demos/_shared/izden-image-scrub.js" defer></script>
 <script src="/demos/_shared/izden-afterglow.js" defer></script>
 <script src="/demos/_shared/izden-contact-rewrite.js" defer></script>
+<script src="/demos/_shared/izden-film-scrub.js" defer></script>
 </body>
 </html>
