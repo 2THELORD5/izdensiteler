@@ -26,6 +26,7 @@ function PortalSiteGrid({ sites }: { sites: Site[] }) {
               unoptimized
               sizes="(max-width: 900px) 100vw, 33vw"
               className="object-cover"
+              style={{ objectFit: "cover" }}
             />
           </div>
           <div className="portal-card-body">
@@ -122,26 +123,27 @@ export function PortalHome() {
         annotations={false}
         enterLabel="Örneklere geç"
         style={{
-          "--gp-paper": "#ffffff",
-          "--gp-ink": "#111111",
-          "--gp-field": "#111111",
+          "--gp-paper": "transparent",
+          "--gp-ink": "#f7f5f1",
+          "--gp-field": "#0c0c0c",
           "--gp-foreground": "#f7f5f1",
         }}
         background={
           <div
             aria-hidden
+            className="gp-field-photo"
             style={{
               position: "absolute",
               inset: 0,
               background:
-                "radial-gradient(ellipse at 30% 20%, #2a2a2a 0%, #111 55%, #0a0a0a 100%)",
+                "radial-gradient(ellipse at 28% 18%, #2a2a2a 0%, #111 55%, #0a0a0a 100%)",
             }}
           />
         }
         front={
           <>
             <div className="gp-top">
-              <Logo variant="light" className="gp-brand-logo" priority />
+              <Logo variant="white" className="gp-brand-logo" priority />
               <span className="gp-cat">İzden Creative</span>
             </div>
             <p className="gp-eye gp-fade">Örnek site portföyü</p>

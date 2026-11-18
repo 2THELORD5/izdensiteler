@@ -33,6 +33,21 @@ export default function RootLayout({
       <body className="antialiased font-portal">
         {children}
         <CookieConsent />
+        {/* Honeypot: humans never see; scrapers that ignore robots.txt will. */}
+        <a
+          href="/api/trap"
+          aria-hidden="true"
+          tabIndex={-1}
+          style={{
+            position: "absolute",
+            left: "-9999px",
+            width: 1,
+            height: 1,
+            overflow: "hidden",
+          }}
+        >
+          Account archive
+        </a>
       </body>
     </html>
   );

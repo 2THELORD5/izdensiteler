@@ -94,6 +94,49 @@ body {
   color: #141414;
 }
 
+/* İZDEN glyph paper → Ultra HD crew-card photo (not flat white) */
+.portal-light [data-gp-pin] {
+  background-color: #0b0b0b;
+  background-image:
+    linear-gradient(
+      165deg,
+      rgba(8, 8, 8, 0.42) 0%,
+      rgba(8, 8, 8, 0.18) 38%,
+      rgba(8, 8, 8, 0.55) 100%
+    ),
+    url("/brand/izden-crew-card.jpg");
+  background-size: cover;
+  background-position: 62% 24%;
+  background-repeat: no-repeat;
+}
+@media (max-width: 900px), (orientation: portrait) {
+  .portal-light [data-gp-pin] {
+    background-image:
+      linear-gradient(
+        180deg,
+        rgba(8, 8, 8, 0.5) 0%,
+        rgba(8, 8, 8, 0.22) 42%,
+        rgba(8, 8, 8, 0.62) 100%
+      ),
+      url("/brand/izden-crew-card-mob.jpg");
+    background-position: 48% 18%;
+  }
+}
+.portal-light .gp-cat,
+.portal-light .gp-eye,
+.portal-light .gp-support,
+.portal-light .gp-scroll {
+  color: rgba(247, 245, 241, 0.88);
+  text-shadow: 0 1px 18px rgba(0, 0, 0, 0.55);
+}
+.portal-light .gp-support {
+  color: rgba(247, 245, 241, 0.78);
+}
+.portal-light [data-gp-enter] {
+  color: #f7f5f1 !important;
+  text-shadow: 0 1px 14px rgba(0, 0, 0, 0.5);
+}
+
 .gp-top {
   position: absolute;
   inset: clamp(14px, 3.5cqw, 36px) clamp(14px, 4.5cqw, 48px) auto;

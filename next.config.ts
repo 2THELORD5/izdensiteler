@@ -116,6 +116,19 @@ const nextConfig: NextConfig = {
             key: "Cache-Control",
             value: "public, max-age=86400, stale-while-revalidate=604800",
           },
+          // Avoid Safari broken-image edge cases with CORP on static thumbs
+          { key: "Cross-Origin-Resource-Policy", value: "cross-origin" },
+          { key: "X-Content-Type-Options", value: "nosniff" },
+        ],
+      },
+      {
+        source: "/brand/:path*",
+        headers: [
+          {
+            key: "Cache-Control",
+            value: "public, max-age=604800, stale-while-revalidate=2592000",
+          },
+          { key: "Cross-Origin-Resource-Policy", value: "cross-origin" },
         ],
       },
       {
