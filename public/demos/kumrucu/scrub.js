@@ -3,16 +3,14 @@
  * PC: variety-scrub-pc.mp4 (16:9). Mobile: variety-scrub-mobile.mp4 (9:16).
  * House film removed from the primary path (was 720p + desynced chapters).
  */
-/* Fiş 02 (köz) çıkarıldı — un → somun bağlandı; sakızlı kurabiye en sonda. */
+/* Film rebuild: köz (eski Fiş 02) klipten kesildi; 6 dilim; kurabiye en sonda. */
 const ACTS = [
-  { at: 0.0, act: "Fiş 01", title: "Un henüz soğuk", body: "Sabahın ilk tezgâhı. Alaçatı uyanmadan hamur yoğrulur.", idx: "01 / 08", rail: "Tezgâh" },
-  { at: 0.12, act: "Fiş 02", title: "Somun kabarır", body: "Kumrunun sırrı ekmekte — oval, susamlı, çıtır.", idx: "02 / 08", rail: "Somun" },
-  { at: 0.26, act: "Fiş 03", title: "Meşhur Çeşme", body: "Kaşar, biber, domates — susamlı ekmekte klasik kumru.", idx: "03 / 08", rail: "Klasik" },
-  { at: 0.4, act: "Fiş 04", title: "Klasik tezgâh", body: "Aynı masa, aynı ışık — klasik kumru bekler.", idx: "04 / 08", rail: "Klasik" },
-  { at: 0.54, act: "Fiş 05", title: "Sucuklu Domatesli", body: "Izgara sucuk, domates, eriyen kaşar — tok tezgâh hali.", idx: "05 / 08", rail: "Sucuklu" },
-  { at: 0.66, act: "Fiş 06", title: "Sucuklu bekler", body: "Buhar dağılır; tezgâh sucukluya döner.", idx: "06 / 08", rail: "Sucuklu" },
-  { at: 0.78, act: "Fiş 07", title: "Yengen Kumru", body: "İzmir’in kurusu — Kale tezgâhında tanıdık lezzet.", idx: "07 / 08", rail: "Yengen" },
-  { at: 0.9, act: "Fiş 08", title: "Sakızlı Alaçatı", body: "%100 doğal damla sakız — kurabiye fişi, en son tezgâh.", idx: "08 / 08", rail: "Kurabiye" },
+  { at: 0.0, act: "Fiş 01", title: "Un henüz soğuk", body: "Sabahın ilk tezgâhı. Alaçatı uyanmadan hamur yoğrulur.", idx: "01 / 06", rail: "Tezgâh" },
+  { at: 0.167, act: "Fiş 02", title: "Somun kabarır", body: "Kumrunun sırrı ekmekte — oval, susamlı, çıtır.", idx: "02 / 06", rail: "Somun" },
+  { at: 0.333, act: "Fiş 03", title: "Meşhur Çeşme", body: "Kaşar, biber, domates — susamlı ekmekte klasik kumru.", idx: "03 / 06", rail: "Klasik" },
+  { at: 0.5, act: "Fiş 04", title: "Sucuklu Domatesli", body: "Izgara sucuk, domates, eriyen kaşar — tok tezgâh hali.", idx: "04 / 06", rail: "Sucuklu" },
+  { at: 0.667, act: "Fiş 05", title: "Alaçatı ışığı", body: "Çarşı sokağı, fırın penceresi — Kale’nin akşam hali.", idx: "05 / 06", rail: "Alaçatı" },
+  { at: 0.833, act: "Fiş 06", title: "Sakızlı Alaçatı", body: "%100 doğal damla sakız — kurabiye fişi, en son tezgâh.", idx: "06 / 06", rail: "Kurabiye" },
 ];
 
 const BOOT_STILLS = [

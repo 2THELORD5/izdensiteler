@@ -160,7 +160,7 @@ body.is-loading {
   reads as a figure through İZDEN (negative inset was wrongly zooming IN).
 */
 .portal-light .gp-field-photo {
-  --gp-photo-scale: 0.44;
+  --gp-photo-scale: 0.92;
   --gp-photo-x: 66%;
   --gp-photo-y: 30%;
   /* Solid only — a full-bleed photo backdrop would re-introduce the macro crop. */
@@ -207,14 +207,14 @@ body.is-loading {
 }
 @media (max-width: 1100px) {
   .portal-light .gp-field-photo {
-    --gp-photo-scale: 0.46;
+    --gp-photo-scale: 0.94;
     --gp-photo-x: 64%;
     --gp-photo-y: 28%;
   }
 }
 @media (max-width: 900px), (orientation: portrait) {
   .portal-light .gp-field-photo {
-    --gp-photo-scale: 0.48;
+    --gp-photo-scale: 0.96;
     --gp-photo-x: 50%;
     --gp-photo-y: 24%;
   }
@@ -229,7 +229,7 @@ body.is-loading {
 }
 @media (max-width: 560px) {
   .portal-light .gp-field-photo {
-    --gp-photo-scale: 0.5;
+    --gp-photo-scale: 0.98;
     --gp-photo-x: 48%;
     --gp-photo-y: 22%;
   }
