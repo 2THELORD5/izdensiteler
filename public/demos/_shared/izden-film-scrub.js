@@ -121,8 +121,8 @@
   let inView = true;
   let last = 0;
   /* Stiffer follow on desktop, softer on touch (momentum scroll already smooth) */
-  const SEEK_EPS = () => (mobileMq.matches ? 0.028 : 0.014);
-  const STIFF = () => (mobileMq.matches ? 14 : 20);
+  const SEEK_EPS = () => (mobileMq.matches ? 0.024 : 0.014);
+  const STIFF = () => (mobileMq.matches ? 18 : 22);
 
   const applyChapter = (p) => {
     if (!chapters.length) return;
@@ -243,7 +243,7 @@
   };
 
   const wake = () => {
-    if (raf || !inView) return;
+    if (raf) return;
     last = performance.now();
     raf = requestAnimationFrame(tick);
   };
@@ -251,6 +251,9 @@
   const onScroll = () => {
     targetP = readP();
     if (hintEl) hintEl.classList.toggle("is-hide", targetP > 0.04);
+    // Always wake on scroll — IO can briefly mark offscreen during sticky pin
+    // and leave the scrub frozen mid-section on mobile.
+    inView = true;
     wake();
   };
 
@@ -330,9 +333,11 @@
         if (inView) {
           targetP = readP();
           wake();
-        } else stop();
+        } else if (Math.abs(targetP - currentP) < 0.002 && !seeking && pending == null) {
+          stop();
+        }
       },
-      { rootMargin: "20% 0px 20% 0px" }
+      { rootMargin: "40% 0px 40% 0px" }
     ).observe(root);
   }
 
