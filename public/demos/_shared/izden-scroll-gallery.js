@@ -15,23 +15,40 @@
   function bindScroll(root, count, apply) {
     if (count < 2) return;
     if (reduced) {
-      apply(0);
+      // static: first item, no pin, no tall section (CSS collapses .iz-sg in reduced motion)
+      apply(0, 0, 0);
       return;
     }
     let tick = false;
+    let lastIndex = -1;
+    const run = () => {
+      tick = false;
+      const p = progress(root);
+      const raw = p * count;
+      const i = Math.min(count - 1, Math.floor(raw));
+      const local = Math.min(1, Math.max(0, raw - i));
+      root.style.setProperty("--iz-sg-p", p.toFixed(4));
+      root.style.setProperty("--iz-sg-local", local.toFixed(4));
+      // apply() only when the active index changes — avoids layout thrash per wheel tick
+      if (i !== lastIndex) {
+        lastIndex = i;
+        apply(i, p, local);
+      }
+      root.dispatchEvent(
+        new CustomEvent("iz-sg", { detail: { index: i, p, local, count } })
+      );
+    };
     const on = () => {
-      if (tick) return;
+      if (tick) return; // rAF-coalesce scroll / resize bursts
       tick = true;
-      requestAnimationFrame(() => {
-        const p = progress(root);
-        const i = Math.min(count - 1, Math.floor(p * count));
-        apply(i, p);
-        tick = false;
-      });
+      requestAnimationFrame(run);
     };
     window.addEventListener("scroll", on, { passive: true });
-    window.addEventListener("resize", on, { passive: true });
-    on();
+    window.addEventListener("resize", () => {
+      lastIndex = -1;
+      on();
+    }, { passive: true });
+    run();
   }
 
   /* ——— SAPA-style .gallery-section / .gallery-track ——— */
@@ -179,22 +196,104 @@
     bindScroll(hero, figs.length, apply);
   });
 
-  /* ——— Generic [data-iz-scroll-gallery] ——— */
+  /* ——— Leaft / Greenit project rail (prev/next → scroll) ——— */
+  document.querySelectorAll("#projects, .projects-rail, [data-projects-rail]").forEach((section) => {
+    if (section.hasAttribute("data-iz-scroll-gallery")) return; // generic mode owns it
+    const list =
+      section.querySelector("#rail, .rail-track, .proj-track, ul.rail, ul.projects, .projects__list, .rail__list") ||
+      section.querySelector("ul");
+    if (!list) return;
+    const items = [...list.children].filter((el) => el.tagName === "LI" || el.classList.contains("proj"));
+    if (items.length < 2) return;
+    section.classList.add("iz-sg");
+    section.style.minHeight = `${Math.max(240, items.length * 70)}vh`;
+    const pin =
+      section.querySelector(".wrap") ||
+      (() => {
+        const w = document.createElement("div");
+        section.insertBefore(w, section.firstChild);
+        while (section.children.length > 1) w.appendChild(section.children[1]);
+        return w;
+      })();
+    pin.style.position = "sticky";
+    pin.style.top = "0";
+    pin.style.minHeight = "100svh";
+    pin.style.display = "flex";
+    pin.style.flexDirection = "column";
+    pin.style.justifyContent = "center";
+    section.querySelectorAll("#railPrev, #railNext, .rail-ctrl__btns").forEach((b) => {
+      b.style.pointerEvents = "none";
+      b.style.opacity = "0.35";
+    });
+    const now = section.querySelector("#railNow");
+    const apply = (index) => {
+      items.forEach((el, i) => {
+        el.classList.toggle("is-on", i === index);
+        el.classList.toggle("is-active", i === index);
+        el.style.opacity = i === index ? "1" : "0.22";
+        el.style.transform = i === index ? "none" : "scale(0.96)";
+      });
+      if (now) now.textContent = String(index + 1).padStart(2, "0");
+      // horizontal translate if track is a row
+      const gap = parseFloat(getComputedStyle(list).gap) || 24;
+      const item = items[index];
+      if (item && getComputedStyle(list).display.includes("flex")) {
+        const x = pin.clientWidth / 2 - item.offsetWidth / 2 - index * (item.offsetWidth + gap);
+        list.style.transform = `translateX(${x}px)`;
+        list.style.transition = reduced ? "none" : "transform 0.45s cubic-bezier(.22,1,.36,1)";
+      }
+    };
+    items.forEach((el) => {
+      el.style.transition = "opacity 0.45s ease, transform 0.45s ease";
+    });
+    bindScroll(section, items.length, apply);
+  });
+
+  /* ——— Generic [data-iz-scroll-gallery] ———
+     data-iz-scroll-gallery="<slide selector>"   (default [data-iz-slide])
+     data-iz-sg-pin       child that sticks (default first child)
+     data-iz-sg-track     selector: row translated so active slide is centred
+     data-iz-sg-counter   selector: element whose text becomes "01"
+     data-iz-sg-vh        height per slide in vh (default 80)
+     sets --iz-sg-p / --iz-sg-local on root, toggles .is-on, fires "iz-sg". */
   document.querySelectorAll("[data-iz-scroll-gallery]").forEach((root) => {
     const sel = root.dataset.izScrollGallery || "[data-iz-slide]";
     const slides = [...root.querySelectorAll(sel)];
     if (slides.length < 2) return;
-    root.classList.add("iz-sg");
-    root.style.minHeight = `${Math.max(220, slides.length * 75)}vh`;
+    root.classList.add("iz-sg", "iz-sg--generic");
+    const perSlide = parseFloat(root.dataset.izSgVh) || 80;
+    root.style.setProperty("--iz-sg-n", String(slides.length));
+    root.style.setProperty("--iz-sg-vh", `${Math.max(220, slides.length * perSlide)}vh`);
     const pin = root.querySelector("[data-iz-sg-pin]") || root.firstElementChild;
-    if (pin) {
-      pin.style.position = "sticky";
-      pin.style.top = "0";
-      pin.style.minHeight = "100svh";
-    }
+    if (pin) pin.classList.add("iz-sg__pin");
+    const track = root.dataset.izSgTrack ? root.querySelector(root.dataset.izSgTrack) : null;
+    const counter = root.dataset.izSgCounter ? root.querySelector(root.dataset.izSgCounter) : null;
     const apply = (index) => {
-      slides.forEach((el, i) => el.classList.toggle("is-on", i === index));
+      slides.forEach((el, i) => {
+        const on = i === index;
+        el.classList.toggle("is-on", on);
+        el.classList.toggle("is-past", i < index);
+        el.setAttribute("aria-hidden", on || track ? "false" : "true");
+      });
+      if (counter) counter.textContent = String(index + 1).padStart(2, "0");
+      if (track) {
+        // offset of the item inside the track is invariant under the track's own
+        // translate (both rects are read at the same instant) → safe mid-transition
+        const item = slides[index];
+        const host = track.parentElement;
+        const tr = track.getBoundingClientRect();
+        const ir = item.getBoundingClientRect();
+        const x = host.clientWidth / 2 - (ir.left - tr.left) - ir.width / 2;
+        track.style.transform = `translate3d(${x}px,0,0)`;
+      }
+      const dots = root.querySelectorAll("[data-iz-sg-dot]");
+      dots.forEach((d, i) => d.classList.toggle("is-on", i === index));
     };
+    if (track) {
+      track.style.overflow = "visible";
+      track.style.scrollSnapType = "none";
+      track.style.willChange = "transform";
+    }
     bindScroll(root, slides.length, apply);
   });
 })();

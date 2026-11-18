@@ -1,10 +1,9 @@
 /**
- * Kumrucu Kale — continuous film scrub (tezgâh film → variety film).
+ * Kumrucu Kale — continuous film scrub.
+ * Primary: HQ variety film (1080p / 9:16). House film only as short warm-in on desktop.
  * No still opacity crossfade.
  */
-const FILM_END = 0.28;
-const FILM_V_END = 0.3;
-
+const HOUSE_END = 0.1; /* desktop only micro-intro; mobile skips to variety */
 const ACTS = [
   { at: 0.0, act: "Fiş 01", title: "Un henüz soğuk", body: "Sabahın ilk tezgâhı. Alaçatı uyanmadan hamur yoğrulur.", idx: "01 / 08", rail: "Tezgâh" },
   { at: 0.1, act: "Fiş 02", title: "Köz tutar", body: "Taş fırın ısınır. Susam kabuğu kızarır.", idx: "02 / 08", rail: "Köz" },
@@ -26,11 +25,13 @@ const clamp = (v, a = 0, b = 1) => Math.min(b, Math.max(a, v));
 const isMobile =
   typeof matchMedia === "function" &&
   matchMedia("(max-width: 820px), (hover: none) and (pointer: coarse)").matches;
+const reduced =
+  typeof matchMedia === "function" && matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 const video = document.getElementById("v");
 const variety = document.getElementById("vVariety");
 const canvas = document.getElementById("c");
-const ctx = canvas.getContext("2d", { alpha: false });
+const ctx = canvas.getContext("2d", { alpha: false, desynchronized: true });
 const track = document.getElementById("track");
 const loader = document.getElementById("loader");
 const loaderBar = document.getElementById("loaderBar");
@@ -57,14 +58,20 @@ let targetP = 0;
 let currentP = 0;
 let velocity = 0;
 let activeAct = -1;
-const SEEK_EPS = isMobile ? 0.035 : 0.02;
-const SEEK_EPS_VAR = isMobile ? 0.045 : 0.025;
+const SEEK_EPS = isMobile ? 0.028 : 0.016;
+const SEEK_EPS_VAR = isMobile ? 0.032 : 0.018;
+/** Mobile: variety-only. Desktop: tiny house warm-in then variety. */
+const useHouse = !isMobile && !reduced;
 
-video.preload = "auto";
-video.muted = true;
-video.playsInline = true;
-video.src = isMobile ? "./public/film-house-v1.mp4" : "./public/film-house-v2.mp4";
-try { video.load(); } catch {}
+if (video) {
+  video.preload = useHouse ? "auto" : "none";
+  video.muted = true;
+  video.playsInline = true;
+  if (useHouse) {
+    video.src = "./public/film-house-v2.mp4";
+    try { video.load(); } catch {}
+  }
+}
 
 if (variety) {
   variety.preload = "auto";
@@ -84,7 +91,7 @@ const bootImgs = BOOT_STILLS.map((src) => {
 });
 
 function resize() {
-  const dpr = Math.min(devicePixelRatio || 1, isMobile ? 1.15 : 2);
+  const dpr = Math.min(devicePixelRatio || 1, isMobile ? 1.75 : 2.25);
   const r = canvas.getBoundingClientRect();
   const w = Math.max(1, Math.round(r.width * dpr));
   const h = Math.max(1, Math.round(r.height * dpr));
@@ -104,7 +111,7 @@ function coverDraw(srcW, srcH, draw) {
 }
 
 function paintBoot(p) {
-  const i = Math.min(2, Math.floor((p / FILM_END) * 2.99));
+  const i = Math.min(2, Math.floor(p * 2.99));
   const im = bootImgs[i];
   if (!im?.complete || !im.naturalWidth) {
     ctx.fillStyle = "#1a100c";
@@ -114,9 +121,17 @@ function paintBoot(p) {
   coverDraw(im.naturalWidth, im.naturalHeight, (x, y, w, h) => ctx.drawImage(im, x, y, w, h));
 }
 
+function inHouse(p) {
+  return useHouse && p < HOUSE_END;
+}
+
 function paint() {
   resize();
-  if (currentP < FILM_END) {
+  if (reduced) {
+    paintBoot(0);
+    return;
+  }
+  if (inHouse(currentP)) {
     if (ready && video.readyState >= 1 && video.videoWidth) {
       coverDraw(video.videoWidth, video.videoHeight, (x, y, w, h) => ctx.drawImage(video, x, y, w, h));
     } else paintBoot(currentP);
@@ -128,7 +143,7 @@ function paint() {
     );
     return;
   }
-  paintBoot(Math.min(currentP, FILM_END - 0.001));
+  paintBoot(Math.min(currentP, 0.35));
 }
 
 function actFromP(p) {
@@ -168,7 +183,7 @@ function flushPending() {
 }
 
 function seekFilm(t) {
-  if (!ready || !Number.isFinite(t) || duration <= 0) return;
+  if (!useHouse || !ready || !Number.isFinite(t) || duration <= 0) return;
   const next = clamp(t, 0, Math.max(0, duration - 0.04));
   if (Math.abs(next - lastApplied) < SEEK_EPS && Math.abs(next - video.currentTime) < SEEK_EPS * 1.5) {
     paint();
@@ -187,7 +202,7 @@ function seekFilm(t) {
     seeking = false;
     paint();
     flushPending();
-  }, 120);
+  }, 100);
 }
 
 function flushVariety() {
@@ -215,10 +230,10 @@ function seekVariety(t) {
     if (!varietySeeking) return;
     varietySeeking = false;
     flushVariety();
-  }, isMobile ? 130 : 90);
+  }, isMobile ? 110 : 75);
 }
 
-video.addEventListener("seeked", () => {
+video?.addEventListener("seeked", () => {
   seeking = false;
   clearTimeout(seekFilm.timer);
   paint();
@@ -242,12 +257,12 @@ function syncUI(p) {
 }
 
 function smoothFollow(cur, target, vel, dt) {
-  const stiffness = isMobile ? 11 : 14;
+  const stiffness = isMobile ? 13 : 16;
   const damping = 2 * Math.sqrt(stiffness);
   const accel = (target - cur) * stiffness - vel * damping;
   vel += accel * dt;
   cur += vel * dt;
-  if (Math.abs(target - cur) < 0.00015 && Math.abs(vel) < 0.00015) return [target, 0];
+  if (Math.abs(target - cur) < 0.00012 && Math.abs(vel) < 0.00012) return [target, 0];
   return [cur, vel];
 }
 
@@ -274,33 +289,34 @@ document.getElementById("chapterNav")?.addEventListener("click", (e) => {
 async function boot() {
   resize();
   try {
-    await new Promise((resolve) => {
-      let settled = false;
-      const done = () => {
-        if (settled) return;
-        settled = true;
-        duration = Number.isFinite(video?.duration) && video.duration > 0 ? video.duration : 0;
-        resolve();
-      };
-      if (!video) return done();
-      if (video.readyState >= 1 && Number.isFinite(video.duration) && video.duration > 0) done();
-      else {
-        video.addEventListener("loadedmetadata", done, { once: true });
-        video.addEventListener("error", () => done(), { once: true });
-        setTimeout(done, isMobile ? 2800 : 9000);
-      }
-      try { video.load(); } catch { done(); }
-    });
-
-    kickDecode(video);
-    try {
+    if (useHouse && video) {
       await new Promise((resolve) => {
-        const finish = () => resolve();
-        video.addEventListener("seeked", finish, { once: true });
-        try { video.currentTime = 0.001; } catch { finish(); }
-        setTimeout(finish, 700);
+        let settled = false;
+        const done = () => {
+          if (settled) return;
+          settled = true;
+          duration = Number.isFinite(video?.duration) && video.duration > 0 ? video.duration : 0;
+          resolve();
+        };
+        if (video.readyState >= 1 && Number.isFinite(video.duration) && video.duration > 0) done();
+        else {
+          video.addEventListener("loadedmetadata", done, { once: true });
+          video.addEventListener("error", () => done(), { once: true });
+          setTimeout(done, 4000);
+        }
+        try { video.load(); } catch { done(); }
       });
-    } catch {}
+      kickDecode(video);
+      try {
+        await new Promise((resolve) => {
+          const finish = () => resolve();
+          video.addEventListener("seeked", finish, { once: true });
+          try { video.currentTime = 0.001; } catch { finish(); }
+          setTimeout(finish, 500);
+        });
+      } catch {}
+      ready = duration > 0;
+    }
 
     if (variety) {
       await new Promise((resolve) => {
@@ -315,19 +331,19 @@ async function boot() {
           variety.addEventListener("loadedmetadata", done, { once: true });
           variety.addEventListener("error", () => resolve(), { once: true });
           try { variety.load(); } catch { resolve(); }
-          setTimeout(done, isMobile ? 3500 : 7000);
+          setTimeout(done, isMobile ? 4500 : 8000);
         }
       });
       if (varietyReady) {
         kickDecode(variety);
-        try { variety.currentTime = 0.05; } catch {}
+        try { variety.currentTime = 0.04; } catch {}
       }
     }
 
     const t0 = performance.now();
     await new Promise((resolve) => {
       const step = () => {
-        const t = clamp((performance.now() - t0) / 650);
+        const t = clamp((performance.now() - t0) / 520);
         if (loaderBar) loaderBar.style.width = `${Math.round(t * 100)}%`;
         if (t < 1) requestAnimationFrame(step);
         else resolve();
@@ -335,9 +351,8 @@ async function boot() {
       requestAnimationFrame(step);
     });
 
-    ready = duration > 0;
     paint();
-    if (!ready) {
+    if (useHouse && !ready) {
       document.body.classList.add("no-film");
       const late = () => {
         if (!(video.duration > 0)) return;
@@ -358,7 +373,7 @@ async function boot() {
   const unlock = () => {
     kickDecode(video);
     kickDecode(variety);
-    if (!ready && video.duration > 0) {
+    if (useHouse && !ready && video?.duration > 0) {
       duration = video.duration;
       ready = true;
       document.body.classList.remove("no-film");
@@ -379,11 +394,21 @@ async function boot() {
     const dt = Math.min(0.05, (time - last) / 1000);
     last = time;
     [currentP, velocity] = smoothFollow(currentP, targetP, velocity, dt);
-    if (currentP < FILM_END) {
-      if (ready && duration > 0) seekFilm((currentP / FILM_END) * FILM_V_END * duration);
+
+    if (reduced) {
+      paint();
+      syncUI(currentP);
+      requestAnimationFrame(raf);
+      return;
+    }
+
+    if (inHouse(currentP) && ready && duration > 0) {
+      /* Map micro-intro across first ~35% of house film for sharpness */
+      seekFilm((currentP / HOUSE_END) * 0.35 * duration);
     } else if (varietyReady && varietyDuration > 0) {
-      const local = (currentP - FILM_END) / Math.max(0.001, 1 - FILM_END);
-      seekVariety(local * Math.max(0.05, varietyDuration - 0.06));
+      const start = useHouse ? HOUSE_END : 0;
+      const local = (currentP - start) / Math.max(0.001, 1 - start);
+      seekVariety(clamp(local) * Math.max(0.05, varietyDuration - 0.06));
     }
     paint();
     syncUI(currentP);

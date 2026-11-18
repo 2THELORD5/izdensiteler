@@ -62,8 +62,15 @@
     } else {
       const wrap = document.createElement("div");
       wrap.className = "izden-sv-media";
+      // Next/Image `fill` renders position:absolute — a static wrapper would
+      // collapse to 0px height and the picture disappears.
+      const abs = getComputedStyle(node).position === "absolute";
       node.parentNode.insertBefore(wrap, node);
       wrap.appendChild(node);
+      if (abs) {
+        wrap.style.position = "absolute";
+        wrap.style.inset = "0";
+      }
       host = wrap;
     }
     host.classList.add("izden-sv-media");

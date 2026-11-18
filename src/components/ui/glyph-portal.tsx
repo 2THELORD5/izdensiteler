@@ -221,7 +221,9 @@ export default function GlyphPortal({
       // Drop the clip only after the camera has already filled the viewport with ink.
       // Re-clip on scroll-back so the field never remains as a full-bleed leftover.
       field.style.clipPath = t >= 1 ? "none" : `url(#${clipId})`;
-      pin.style.background = p < 0.02 ? "var(--gp-paper)" : "transparent";
+      // Never paint solid paper on the pin — photo lives on ::before / CSS.
+      // (Setting --gp-paper white here caused the “all white” portal break.)
+      pin.style.backgroundColor = "transparent";
       // Round caption opacity — avoids subpixel opacity thrash on first mobile scrolls.
       const caption = Math.round((1 - smooth(0.01, 0.18, p)) * 100) / 100;
       const reveal = Math.round((isStatic ? 1 : smooth(0.78, 0.9, p)) * 100) / 100;

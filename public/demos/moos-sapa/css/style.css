@@ -113,7 +113,7 @@ section{position:relative}
   border:1px solid var(--line-2);
 }
 .btn-pill.glass:hover{background:#fff;color:var(--ink)}
-.hero .btn-pill{
+.hero .btn-pill,.sapa-film .btn-pill{
   color:#fff;border-color:rgba(255,255,255,.36);
   background:linear-gradient(155deg,rgba(255,255,255,.2),rgba(255,255,255,.08));
   box-shadow:inset 0 1px 0 rgba(255,255,255,.42),0 14px 34px -16px rgba(0,0,0,.38);
@@ -178,6 +178,37 @@ section{position:relative}
   animation:drip 2.4s var(--ease) infinite;
 }
 @keyframes drip{0%{transform:scaleY(0);transform-origin:top}55%{transform:scaleY(1);transform-origin:top}56%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+
+
+/* ============================================================
+   1 · HERO — live film scrub (izden-film-scrub.js)
+   ============================================================ */
+.sapa-film.iz-scrub{height:360vh;background:#1c150c}
+.sapa-film .iz-scrub__veil{
+  background:linear-gradient(180deg,rgba(20,15,8,.34) 0%,rgba(20,15,8,.02) 34%,rgba(20,15,8,.18) 60%,rgba(20,15,8,.72) 100%)!important;
+}
+.sapa-film .iz-scrub__hero{padding:0}
+.sapa-film .hero-card{animation:heroIn .9s var(--ease) .35s both}
+@keyframes heroIn{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+.sapa-film .btn-pill,.sapa-film .btn-glass-white{min-height:48px}
+.sapa-film .iz-scrub__ui,.sapa-film .iz-scrub__title,.sapa-film .iz-scrub__body,
+.sapa-film .iz-scrub__act,.sapa-film .iz-scrub__hint{color:#fff;text-shadow:0 2px 24px rgba(20,15,8,.55)}
+.sapa-film .iz-scrub__title{font-family:var(--serif);font-weight:500;letter-spacing:.005em}
+.sapa-film .iz-scrub__ui{margin-left:60px;padding-bottom:clamp(2.5rem,10svh,6rem)}
+@media (max-width:980px){
+  .sapa-film .iz-scrub__ui{margin-left:20px}
+}
+@media (max-width:720px){
+  .sapa-film.iz-scrub{height:300vh}
+  .sapa-film .hero-card{padding:1.3rem 1.4rem}
+  .sapa-film .hero-card h1{font-size:clamp(2rem,9vw,2.6rem)}
+  .sapa-film .hero-card p{font-size:.88rem}
+}
+@media (prefers-reduced-motion:reduce){
+  .sapa-film.iz-scrub{height:auto;min-height:100svh}
+  .sapa-film .hero-card{animation:none;position:relative;left:auto;bottom:auto;margin:0 20px 32px}
+  .sapa-film .iz-scrub__hero{justify-content:flex-end}
+}
 
 /* ============================================================
    2 · DOWNLOADS
@@ -583,7 +614,7 @@ section{position:relative}
   .g-cap{background:rgba(20,15,8,.74)}
   .enq-form,.dl-card,.amen-card,.pay-card,.faq-item,.map-panel{background:rgba(255,255,255,.94)}
   .btn-pill{background:rgba(255,255,255,.92)}
-  .hero .btn-pill{background:rgba(28,21,12,.62)}
+  .hero .btn-pill,.sapa-film .btn-pill{background:rgba(28,21,12,.62)}
   .btn-glass-white{background:rgba(28,21,12,.5)}
 }
 @media (prefers-reduced-motion: reduce){
@@ -602,10 +633,8 @@ section{position:relative}
 }
 @media (max-width:980px){
   .wrap{padding:5rem 20px}
-  .hero{height:90vh;height:90svh}
   .footer-grid{grid-template-columns:1fr 1fr;gap:2.4rem}
   .hero-card{left:20px;right:20px;bottom:32px}
-  .hero-scroll{display:none}
   .about-grid,.split-grid,.loc-grid{grid-template-columns:1fr;gap:2.8rem}
   .split-grid .split-copy{order:2}
   .amen-grid{grid-template-columns:repeat(3,1fr)}

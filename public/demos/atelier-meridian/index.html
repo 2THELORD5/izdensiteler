@@ -3,196 +3,246 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <title>MERIDIAN — Meridian Atelier</title>
-  <meta name="description" content="Coastal architecture shaped by tide and light." />
-  <meta name="theme-color" content="#082f49" />
+  <title>MERIDIAN — Houses drawn by tide, light and salt air</title>
+  <meta name="description" content="Meridian is a coastal architecture atelier. Houses set back from the surge line, opened to the sun path and finished for salt air." />
+  <meta name="theme-color" content="#061923" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,500&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,300..800&family=Hanken+Grotesk:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/demos/_shared/izden-atelier-core.css" />
   <link rel="stylesheet" href="styles.css" />
-  <link rel="stylesheet" href="/demos/_shared/izden-afterglow.css" />
   <link rel="stylesheet" href="/demos/_shared/izden-agency.css" />
-  <link rel="stylesheet" href="/demos/_shared/izden-atelier-mobile.css" />
-  <link rel="stylesheet" href="/demos/_shared/izden-atelier-motion.css" />
-  <link rel="stylesheet" href="/demos/_shared/izden-atelier-enrich.css" />
+  <link rel="preload" as="image" href="media/hero.jpg" media="(min-width:901px)" />
+  <link rel="preload" as="image" href="media/hero-mob.jpg" media="(max-width:900px)" />
 </head>
-<body class="motion-snap" data-enrich="rail">
+<body data-site="meridian">
+  <a class="skip" href="#plot">Skip to content</a>
 
   <header class="site-nav" id="nav" data-open="false">
-    <button type="button" class="site-nav__burger" id="navBurger" aria-label="Open menu" aria-expanded="false" aria-controls="navDrawer">
-      <span></span><span></span><span></span>
-    </button>
-    <a class="site-nav__brand" href="#top">MERIDIAN</a>
+    <a class="site-nav__brand" href="#top" aria-label="Meridian — top">
+      <span class="mark" aria-hidden="true"></span><span class="word">MERIDIAN</span>
+    </a>
     <nav class="site-nav__links" aria-label="Primary">
-      <a href="#coast">Signature</a>
-      <a href="#story">Story</a>
-      <a href="#craft">Craft</a>
-      <a href="#gallery">Gallery</a>
-      <a href="#journal">Journal</a>
-      <a href="#contact" class="site-nav__cta">Request dossier</a>
+      <a href="#plot">Plot to dusk</a>
+      <a href="#index">Index of works</a>
+      <a href="#sun">Sun path</a>
+      <a href="#palette">Palette</a>
+      <a href="#enquire" class="site-nav__cta">Request dossier</a>
     </nav>
+    <button type="button" class="site-nav__burger" id="navBurger" aria-label="Open menu" aria-expanded="false" aria-controls="navDrawer"><span></span><span></span></button>
   </header>
   <div class="nav-drawer-backdrop" id="navBackdrop" hidden></div>
-  <aside class="nav-drawer" id="navDrawer" aria-hidden="true" data-open="false">
-    <div class="nav-drawer__head">
-      <strong>MERIDIAN</strong>
-      <button type="button" class="nav-drawer__close" id="navClose" aria-label="Close menu">×</button>
-    </div>
+  <aside class="nav-drawer" id="navDrawer" aria-hidden="true" data-open="false" aria-label="Menu">
+    <div class="nav-drawer__head"><strong class="word">MERIDIAN</strong><button type="button" class="nav-drawer__close" id="navClose" aria-label="Close menu">×</button></div>
     <nav class="nav-drawer__links" aria-label="Mobile">
-      <a href="#catalogue">Catalogue</a>
-      <a href="#coast">Signature</a>
-      <a href="#story">Story</a>
-      <a href="#craft">Craft</a>
-      <a href="#process">Process</a>
-      <a href="#gallery">Gallery</a>
-      <a href="#journal">Journal</a>
-      <a href="#faq">FAQ</a>
-      <a href="#contact">Request dossier</a>
+      <a href="#plot"><i>01</i>Plot to dusk</a>
+      <a href="#index"><i>02</i>Index of works</a>
+      <a href="#sun"><i>03</i>Sun path</a>
+      <a href="#palette"><i>04</i>Palette</a>
+      <a href="#practice"><i>05</i>Practice</a>
+      <a href="#enquire"><i>06</i>Request dossier</a>
     </nav>
+    <p class="nav-drawer__foot">36°12′N 29°38′E<br />Kaş coast, Türkiye</p>
   </aside>
+
+  <div class="ruler" aria-hidden="true">
+    <span class="ruler__lat" id="rulerLat">36.20°N</span>
+    <span class="ruler__track"><i class="ruler__mark" id="rulerMark"></i></span>
+  </div>
+  <div class="progress" aria-hidden="true"><i id="progressBar"></i></div>
+
   <main id="top">
 
-    <section class="hero hero--split" aria-labelledby="hero-title">
-      <div class="hero__split-media">
-        <picture>
-          <source media="(max-width:900px)" srcset="media/hero-mob.jpg" />
-          <img src="media/hero.jpg" alt="" width="1920" height="1280" fetchpriority="high" />
-        </picture>
-      </div>
-      <div class="hero__split-copy">
-        <p class="hero__eyebrow iz-reveal">Coastal dossier</p>
-        <h1 class="hero__wordmark iz-reveal" id="hero-title">MERIDIAN</h1>
-        <p class="hero__tag iz-reveal" data-d="1">Coastal architecture shaped by tide and light.</p>
-        <a class="hero__btn iz-reveal" data-d="2" href="#coast">Request dossier</a>
+    <!-- 01 — HERO -->
+    <section class="hero" data-hero aria-labelledby="hero-title">
+      <picture class="hero__pic">
+        <source media="(max-width:900px)" srcset="media/hero-mob.jpg" />
+        <img src="media/hero.jpg" alt="Glass house at dusk, its lit rooms mirrored in a still pool at the water's edge" width="2200" height="1238" fetchpriority="high" />
+      </picture>
+      <div class="hero__shade" aria-hidden="true"></div>
+      <div class="hero__waterline" aria-hidden="true"><span>0.00 m — mean sea level</span></div>
+      <p class="hero__coords"><span>36°12′N 29°38′E</span><span>Kaş coast, Türkiye</span></p>
+      <div class="hero__body">
+        <p class="eyebrow">Coastal architecture atelier</p>
+        <h1 class="hero__word" id="hero-title">MERIDIAN</h1>
+        <div class="hero__row">
+          <p class="hero__tag">Houses drawn by tide, light and salt air.</p>
+          <div class="hero__cta">
+            <a class="btn btn--solid" href="#enquire">Request the dossier</a>
+            <a class="btn btn--ghost" href="#plot">Watch a house rise</a>
+          </div>
+        </div>
+        <dl class="hero__spec">
+          <div><dt>Set-back</dt><dd>38 m from surge line</dd></div>
+          <div><dt>Openings face</dt><dd>196° south-south-west</dd></div>
+          <div><dt>Finish</dt><dd>316 stainless · limestone · lime</dd></div>
+        </dl>
       </div>
     </section>
 
-    <section class="sig sig--snap" id="coast" aria-label="Horizon panels">
-      <div class="sig__head iz-reveal">
-        <p class="sig__kicker">Horizon panels</p>
-        <h2 class="sig__title">Scroll snaps through coastal studies — each panel draws its seam line as it lands.</h2>
-      </div>
-      <div class="snap-rail" id="snapRail">
-        <div class="snap-rail__track" id="snapTrack">
-          <article class="snap-panel" data-panel="0">
-            <figure><img src="media/facade.jpg" alt="Coastal facade study" loading="lazy" /><svg class="line-draw" viewBox="0 0 400 120" aria-hidden="true"><path d="M8 100 L120 40 L220 72 L392 28" /></svg></figure>
-            <h3>Tide line</h3>
-            <p>Concrete set back from surge — openings sized for salt air, not spectacle.</p>
-          </article>
-          <article class="snap-panel" data-panel="1">
-            <figure><img src="media/silos.jpg" alt="Silhouette against horizon" loading="lazy" /><svg class="line-draw" viewBox="0 0 400 120" aria-hidden="true"><path d="M20 90 L180 50 L260 88 L380 20" /></svg></figure>
-            <h3>Meridian cut</h3>
-            <p>Roof angles track sun path; shadows become the secondary elevation.</p>
-          </article>
-          <article class="snap-panel" data-panel="2">
-            <figure><img src="media/cliff.jpg" alt="Cliffside deck" loading="lazy" /><svg class="line-draw" viewBox="0 0 400 120" aria-hidden="true"><path d="M4 70 L140 30 L300 60 L396 44" /></svg></figure>
-            <h3>Lantern deck</h3>
-            <p>Glass decks float above stone — privacy without losing the horizon.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-    <div class="marquee" aria-hidden="true"><div class="marquee__track"><span>Meridian Atelier · MERIDIAN · Horizon panels · </span><span>Meridian Atelier · MERIDIAN · Horizon panels · </span></div></div>
-    <section class="chapter" id="story">
-      <div class="chapter__grid">
-        <div class="chapter__copy">
-          <p class="chapter__kicker iz-reveal">01 — Story</p>
-          <h2 class="chapter__title iz-reveal" data-d="1">Horizon first</h2>
-          <p class="chapter__lede iz-reveal" data-d="2">Tide sets the grid — openings follow salt air, not spectacle.</p>
-          <a class="chapter__link iz-reveal" href="#craft">See craft</a>
-        </div>
-        <figure class="chapter__frame iz-reveal"><img src="media/cliff.jpg" alt="Brand story visual" loading="lazy" /></figure>
-      </div>
-    </section>
-    <section class="chapter chapter--flip" id="craft">
-      <div class="chapter__grid">
-        <figure class="chapter__frame iz-reveal"><img src="media/deck.jpg" alt="Craft detail" loading="lazy" /></figure>
-        <div class="chapter__copy">
-          <p class="chapter__kicker iz-reveal">02 — Craft</p>
-          <h2 class="chapter__title iz-reveal">Horizon panels</h2>
-          <p class="chapter__lede iz-reveal">Scroll snaps through coastal studies — each panel draws its seam line as it lands.</p>
-        </div>
-      </div>
-    </section>
-    <section class="process" id="process">
-      <header class="section-head"><p class="section-head__kicker iz-reveal">03 — Process</p><h2 class="section-head__title iz-reveal">How we ship</h2></header>
-      <ol class="process__list">
-        <li class="iz-reveal"><strong>Listen</strong><span>Stakeholder interviews, site walk, constraint map.</span></li>
-        <li class="iz-reveal" data-d="1"><strong>Compose</strong><span>One viewport, one idea — type and photo in tension.</span></li>
-        <li class="iz-reveal" data-d="2"><strong>Motion</strong><span>Single signature interaction, reduced-motion safe.</span></li>
-        <li class="iz-reveal" data-d="3"><strong>Handoff</strong><span>Static HTML demo + media kit for your engineers.</span></li>
+    <!-- 02 — MANIFESTO -->
+    <section class="manifesto" aria-labelledby="manifesto-title">
+      <p class="eyebrow">Position</p>
+      <h2 class="sr-only" id="manifesto-title">Position</h2>
+      <p class="manifesto__text" id="manifestoText" data-scrub="view">We do not build on the coast. We build <mark>with it</mark> — the <mark>surge line</mark> sets the floor, the <mark>sun</mark> sets the openings, and the <mark>salt</mark> sets the palette.</p>
+      <ol class="manifesto__notes">
+        <li><b>01</b><span>Surge</span><em>Floor level and set-back come from a winter storm line, not a planning minimum.</em></li>
+        <li><b>02</b><span>Sun</span><em>Every opening is placed on the sun path before it is placed on a facade.</em></li>
+        <li><b>03</b><span>Salt</span><em>Materials are chosen for how they weather in sea air, not how they photograph new.</em></li>
       </ol>
     </section>
-    <section class="gallery" id="gallery">
-      <header class="section-head"><p class="section-head__kicker iz-reveal">04 — Gallery</p><h2 class="section-head__title iz-reveal">Field notes</h2></header>
-      <div class="gallery__grid">
-        <figure class="iz-reveal"><img src="media/facade.jpg" alt="Gallery 1" loading="lazy" /></figure>
-        <figure class="iz-reveal" data-d="1"><img src="media/silos.jpg" alt="Gallery 2" loading="lazy" /></figure>
-        <figure class="iz-reveal" data-d="2"><img src="media/plan.jpg" alt="Gallery 3" loading="lazy" /></figure>
+
+    <!-- 03 — SIGNATURE: PLOT TO DUSK -->
+    <section class="scrub tide" id="plot" aria-label="Plot to dusk — a house rising with the tide line">
+      <div class="scrub__pin tide__pin">
+        <div class="tide__stage" id="tideStage">
+          <figure class="tide__frame is-on" data-i="0"><picture><source media="(max-width:900px)" srcset="media/seq-01-mob.jpg" /><img src="media/seq-01.jpg" alt="Cleared coastal plot at sunrise with survey pegs and a staked slab outline" loading="eager" width="1920" height="1080" /></picture></figure>
+          <figure class="tide__frame" data-i="1"><picture><source media="(max-width:900px)" srcset="media/seq-02-mob.jpg" /><img src="media/seq-02.jpg" alt="Steel frame of the house standing on its concrete base" loading="lazy" width="1920" height="1080" /></picture></figure>
+          <figure class="tide__frame" data-i="2"><picture><source media="(max-width:900px)" srcset="media/seq-03-mob.jpg" /><img src="media/seq-03.jpg" alt="House clad in local stone and low-iron glass beyond a slate path" loading="lazy" width="1920" height="1080" /></picture></figure>
+          <figure class="tide__frame" data-i="3"><picture><source media="(max-width:900px)" srcset="media/seq-04-mob.jpg" /><img src="media/seq-04.jpg" alt="Open threshold where a curtain moves between interior and terrace" loading="lazy" width="1920" height="1080" /></picture></figure>
+          <figure class="tide__frame" data-i="4"><picture><source media="(max-width:900px)" srcset="media/seq-05-mob.jpg" /><img src="media/seq-05.jpg" alt="Finished house lit from inside at dusk, reflected in its pool" loading="lazy" width="1920" height="1080" /></picture></figure>
+          <i class="tide__edge" id="tideEdge" aria-hidden="true"></i>
+          <div class="tide__veil" aria-hidden="true"></div>
+        </div>
+
+        <header class="tide__head"><p class="eyebrow">Signature · Plot to dusk</p></header>
+
+        <div class="tide__copy" aria-live="polite">
+          <p class="tide__no"><b id="tideNo">01</b> / 05</p>
+          <h2 class="tide__title" id="tideTitle">Plot</h2>
+          <p class="tide__body" id="tideBody">Sunrise on the cleared plot. Survey pegs, no assumptions — we read the surge line before we draw one.</p>
+        </div>
+
+        <aside class="gauge" aria-hidden="true">
+          <div class="gauge__read"><span>Level</span><b id="gaugeLevel">+0.0 m</b></div>
+          <div class="gauge__scale"><i id="gaugeFill"></i></div>
+          <div class="gauge__read"><span>Light</span><b id="gaugeTime">05:48</b></div>
+        </aside>
+        <p class="tide__hint" id="tideHint" aria-hidden="true">Scroll — the tide line lifts the next stage</p>
       </div>
     </section>
-    <section class="journal" id="journal">
-      <header class="section-head"><p class="section-head__kicker iz-reveal">05 — Journal</p><h2 class="section-head__title iz-reveal">Release notes</h2></header>
-      <article class="journal__card iz-reveal">
-        <time datetime="2026-03-01">Mar 2026</time>
-        <h3>Motion pass</h3>
-        <p>Signature interaction tuned for thumb scroll on mobile — hamburger nav, 44px targets, prefers-reduced-motion fallbacks.</p>
+
+    <!-- 04 — INDEX OF WORKS -->
+    <section class="index" id="index" aria-labelledby="index-title">
+      <header class="head">
+        <p class="eyebrow">02 — Index of works</p>
+        <h2 id="index-title">Six houses, six shorelines.</h2>
+        <p class="head__sub">Studies and built-concept work. Each row carries its coordinates; hover, focus or scroll to open the plate.</p>
+      </header>
+      <div class="index__grid">
+        <figure class="index__plate" id="plate" aria-hidden="true">
+          <img class="is-on" src="media/hero.jpg" alt="" loading="lazy" />
+          <img src="media/saltgate.jpg" alt="" loading="lazy" />
+          <img src="media/catalog-02.jpg" alt="" loading="lazy" />
+          <img src="media/facade.jpg" alt="" loading="lazy" />
+          <img src="media/cliff.jpg" alt="" loading="lazy" />
+          <img src="media/kestrel.jpg" alt="" loading="lazy" />
+          <figcaption id="plateCap">Tidewater House — 36.20°N 29.64°E</figcaption>
+        </figure>
+        <ol class="index__list" id="indexList">
+          <li data-i="0" class="is-on"><a href="#enquire"><span class="n">01</span><span class="t">Tidewater House</span><span class="c">36.20°N 29.64°E</span><span class="k">Residence · pool court</span><span class="y">2025</span></a></li>
+          <li data-i="1"><a href="#enquire"><span class="n">02</span><span class="t">Salt Gate Residence</span><span class="c">36.78°N 28.25°E</span><span class="k">Stone house · chimney spine</span><span class="y">2024</span></a></li>
+          <li data-i="2"><a href="#enquire"><span class="n">03</span><span class="t">Lantern Deck</span><span class="c">36.52°N 30.54°E</span><span class="k">Cliff terrace · timber deck</span><span class="y">2024</span></a></li>
+          <li data-i="3"><a href="#enquire"><span class="n">04</span><span class="t">Low Tide Pavilion</span><span class="c">37.03°N 27.43°E</span><span class="k">Glass balcony house</span><span class="y">2023</span></a></li>
+          <li data-i="4"><a href="#enquire"><span class="n">05</span><span class="t">Reef Quay Villas</span><span class="c">36.86°N 28.27°E</span><span class="k">Over-water cluster</span><span class="y">2023</span></a></li>
+          <li data-i="5"><a href="#enquire"><span class="n">06</span><span class="t">Kestrel Terrace</span><span class="c">36.30°N 29.38°E</span><span class="k">Evening terrace · plunge pool</span><span class="y">2022</span></a></li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- 05 — SUN PATH -->
+    <section class="scrub sun" id="sun" aria-label="Sun path through the house" data-rest="0.5">
+      <div class="scrub__pin sun__pin" id="sunPin">
+        <div class="sun__rooms" aria-hidden="true">
+          <img class="is-on" src="media/bedroom.jpg" alt="" loading="lazy" />
+          <img src="media/living.jpg" alt="" loading="lazy" />
+          <img src="media/kestrel.jpg" alt="" loading="lazy" />
+        </div>
+        <div class="sun__tint" aria-hidden="true"></div>
+        <header class="sun__head"><p class="eyebrow">03 — Sun path</p><h2>Light is the first structural member.</h2></header>
+
+        <svg class="sun__chart" viewBox="0 0 800 420" role="img" aria-label="Sun arc from east to west across a house section">
+          <line x1="20" y1="360" x2="780" y2="360" class="sun__ground" />
+          <path id="sunArcBg" d="M 60 360 A 340 300 0 0 1 740 360" class="sun__arc sun__arc--bg" />
+          <path id="sunArc" d="M 60 360 A 340 300 0 0 1 740 360" class="sun__arc" pathLength="1" />
+          <g class="sun__house"><path d="M 300 360 V 300 H 350 V 276 H 500 V 300 H 520 V 360" /><path d="M 350 276 H 540" class="sun__roof" /></g>
+          <g class="sun__ticks"><text x="60" y="388">E</text><text x="400" y="388">S</text><text x="740" y="388">W</text></g>
+          <circle id="sunDot" r="11" cx="60" cy="360" class="sun__dot" />
+        </svg>
+
+        <div class="sun__read">
+          <p class="sun__time"><b id="sunTime">06:12</b><span id="sunAz">AZ 076°</span><span id="sunAlt">ALT 00°</span></p>
+          <h3 id="sunRoom">Bedroom</h3>
+          <p id="sunNote">East light arrives at the pillow, low and warm. No blinds drawn at dawn — the eave only starts working at 10:00.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 06 — PALETTE -->
+    <section class="palette" id="palette" aria-labelledby="palette-title">
+      <header class="head">
+        <p class="eyebrow">04 — Palette</p>
+        <h2 id="palette-title">Five materials. All tested in salt air.</h2>
+      </header>
+      <ul class="swatches" id="swatches">
+        <li tabindex="0" style="--c:#c9d9d8;--t:#0a1e26"><b>01</b><h3>Low-iron glass</h3><p>Clear, not green — the sea is the only colour in the room.</p><em>8 + 8 mm laminated</em></li>
+        <li tabindex="0" style="--c:#cfc7b6;--t:#0a1e26"><b>02</b><h3>Honed limestone</h3><p>Quarried within 60 km; honed so salt rinses off.</p><em>Floors · walls · steps</em></li>
+        <li tabindex="0" style="--c:#7f8c92;--t:#fff"><b>03</b><h3>316 stainless</h3><p>The only metal we leave exposed at the water side.</p><em>Marine grade · brushed</em></li>
+        <li tabindex="0" style="--c:#6e4a33;--t:#fff"><b>04</b><h3>Thermo-ash</h3><p>Heat-treated timber for soffits and decks; greys evenly.</p><em>Oil-free · silvers</em></li>
+        <li tabindex="0" style="--c:#ff5b2e;--t:#190904"><b>05</b><h3>Signal line</h3><p>One vermilion datum on every project: the surge line, painted.</p><em>Mineral paint</em></li>
+      </ul>
+    </section>
+
+    <!-- 07 — PRACTICE -->
+    <section class="practice" id="practice" aria-labelledby="practice-title">
+      <header class="head">
+        <p class="eyebrow">05 — Practice</p>
+        <h2 id="practice-title">A commission, tide by tide.</h2>
+      </header>
+      <ol class="steps">
+        <li><span class="d">Weeks 1–2</span><h3>Walk the shore</h3><p>Site visit at low and high water. We mark the storm line, the view cone and where the wind comes from.</p></li>
+        <li><span class="d">Weeks 3–6</span><h3>Set the line</h3><p>Floor level, set-back and orientation are fixed first and signed off before any form is drawn.</p></li>
+        <li><span class="d">Weeks 7–20</span><h3>Draw the house</h3><p>Plans, sections and a sun-path model. You see the light in the rooms before the walls exist.</p></li>
+        <li><span class="d">Through handover</span><h3>Stay on site</h3><p>We visit at every pour and every glazing day, and return after the first winter to inspect salt wear.</p></li>
+      </ol>
+    </section>
+
+    <!-- 08 — FAQ + ENQUIRE -->
+    <section class="faq" aria-labelledby="faq-title">
+      <h2 class="sr-only" id="faq-title">Questions</h2>
+      <article>
+        <button type="button" class="faq__q" aria-expanded="false" aria-controls="fa1">Do you work outside the Aegean and Mediterranean?<span class="faq__icon" aria-hidden="true"></span></button>
+        <div class="faq__a" id="fa1" hidden><p>Yes — the method (surge line, sun path, salt palette) travels. We study each new coast for a full tidal cycle before quoting.</p></div>
       </article>
-      <article class="journal__card iz-reveal" data-d="1">
-        <time datetime="2026-02-10">Feb 2026</time>
-        <h3>Photography</h3>
-        <p>Licensed Pexels stills, cropped per viewport — no remote hotlinking in production build.</p>
+      <article>
+        <button type="button" class="faq__q" aria-expanded="false" aria-controls="fa2">What does the dossier contain?<span class="faq__icon" aria-hidden="true"></span></button>
+        <div class="faq__a" id="fa2" hidden><p>A 24-page PDF: three worked shorelines, our material palette with weathering notes, and a commission timeline with fee bands.</p></div>
+      </article>
+      <article>
+        <button type="button" class="faq__q" aria-expanded="false" aria-controls="fa3">Is this a real studio?<span class="faq__icon" aria-hidden="true"></span></button>
+        <div class="faq__a" id="fa3" hidden><p>Meridian is a fictional atelier created as a design demonstration by İzden Creative; the projects are concept studies.</p></div>
       </article>
     </section>
 
-    <section class="enrich-rail" id="catalogue" aria-label="Project catalogue">
-      <div class="enrich-rail__head">
-        <p class="section-kicker eyebrow" style="margin:0 0 0.4rem">Coast studies</p>
-        <h2 class="section-title" style="margin:0">Project catalogue</h2>
-      </div>
-      <div class="enrich-rail__track">
-        <figure class="enrich-rail__card">
-          <img src="media/catalog-01.jpg" alt="" width="800" height="1100" loading="lazy" />
-          <figcaption>01 · Blue hour facade</figcaption>
-        </figure>
-        <figure class="enrich-rail__card">
-          <img src="media/catalog-02.jpg" alt="" width="800" height="1100" loading="lazy" />
-          <figcaption>02 · Cliff terrace</figcaption>
-        </figure>
-        <figure class="enrich-rail__card">
-          <img src="media/deck.jpg" alt="" width="800" height="1100" loading="lazy" />
-          <figcaption>03 · Deck study</figcaption>
-        </figure>
-      </div>
-    </section>
-<section class="faq" id="faq">
-      <header class="section-head"><p class="section-head__kicker iz-reveal">06 — FAQ</p><h2 class="section-head__title iz-reveal">Before you write</h2></header>
-      <article class="faq__item iz-reveal">
-        <button type="button" class="faq__q" aria-expanded="false">How do I book the signature experience?<span class="faq__icon" aria-hidden="true"></span></button>
-        <div class="faq__a" hidden><p>Email or call — we confirm studio slots within one business day.</p></div>
-      </article>
-      <article class="faq__item iz-reveal" data-d="1">
-        <button type="button" class="faq__q" aria-expanded="false">Is this a live product?<span class="faq__icon" aria-hidden="true"></span></button>
-        <div class="faq__a" hidden><p>No — this is a fictional brand demo by İzden Creative.</p></div>
-      </article>
-    </section>
-    <section class="contact" id="contact">
-      <div class="contact__inner iz-reveal">
-        <h2>Studio</h2>
-        <p class="contact__brand">Meridian Atelier — demo by İzden Creative.</p>
-        <ul class="contact__list">
-          <li><a href="mailto:info@izdencreative.com">info@izdencreative.com</a></li>
-          <li><a href="tel:+902120000000">+90 212 000 00 00</a></li>
-          <li><a href="https://www.izdencreative.com" target="_blank" rel="noopener noreferrer">izdencreative.com</a></li>
-        </ul>
-        <img class="contact__logo" src="/demos/_shared/izden-creative.jpg" alt="İzden Creative" width="180" height="61" loading="lazy" />
+    <section class="enquire" id="enquire" aria-labelledby="enquire-title">
+      <div class="enquire__in">
+        <p class="eyebrow">06 — Enquire</p>
+        <h2 id="enquire-title">Where is your shoreline?</h2>
+        <form class="form" action="mailto:info@izdencreative.com" method="post" enctype="text/plain">
+          <label><span>Email</span><input type="email" name="email" autocomplete="email" required placeholder="you@studio.com" /></label>
+          <label><span>Plot location</span><input type="text" name="plot" placeholder="Village, coast, coordinates" /></label>
+          <label><span>When would you like to build?</span>
+            <select name="timeline"><option>Within 12 months</option><option>1–2 years</option><option>Still exploring</option></select>
+          </label>
+          <button class="btn btn--solid" type="submit">Request the dossier</button>
+        </form>
+        <p class="enquire__fine">Studio · Kaş coast, Türkiye &nbsp;·&nbsp; <a href="mailto:info@izdencreative.com">info@izdencreative.com</a></p>
       </div>
     </section>
   </main>
-  <script src="/demos/_shared/izden-afterglow.js"></script>
-  <script src="/demos/_shared/izden-agency.js"></script>
-  <script src="main.js"></script>
-  <script src="/demos/_shared/izden-contact-rewrite.js" defer></script>
-  <script src="/demos/_shared/izden-atelier-enrich.js" defer></script>
+
+  <script src="/demos/_shared/izden-atelier-core.js" defer></script>
+  <script src="main.js" defer></script>
+  <script src="/demos/_shared/izden-agency.js" defer></script>
 </body>
 </html>

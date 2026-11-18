@@ -123,7 +123,7 @@ export function PortalHome() {
         annotations={false}
         enterLabel="Örneklere geç"
         style={{
-          "--gp-paper": "transparent",
+          "--gp-paper": "#0b0b0b",
           "--gp-ink": "#f7f5f1",
           "--gp-field": "#0c0c0c",
           "--gp-foreground": "#f7f5f1",

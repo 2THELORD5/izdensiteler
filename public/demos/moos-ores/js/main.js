@@ -31,16 +31,7 @@
   if (!hasGSAP) {
     window.addEventListener('DOMContentLoaded', function () {
       revealEverything();
-      // still give the hero its footage as an ambient loop
-      const v = document.querySelector('.hero__video');
-      if (v && v.dataset.src) {
-        v.src = v.dataset.src;
-        v.loop = true;
-        v.muted = true;
-        v.setAttribute('autoplay', '');
-        const p = v.play();
-        if (p && p.catch) p.catch(function () {});
-      }
+      // hero film is driven by izden-film-scrub.js (poster stays if it can't run)
     });
     initNav(); // nav still works without GSAP
     return;
@@ -66,13 +57,12 @@
   }
 
   const EASE = 'power3.out';
-  const heroVideo = document.querySelector('.hero__video');
   const loader = document.getElementById('loader');
   const loaderNum = document.getElementById('loaderNum');
   const loaderBar = document.getElementById('loaderBar');
 
   // Hero content revealed by the intro (kept out of the scroll batch)
-  const heroReveals = gsap.utils.toArray('.hero [data-reveal]');
+  const heroReveals = gsap.utils.toArray('#home [data-reveal]');
 
   /* ------------------------------------------------------------------ *
    * INTRO — counter → circular iris reveal → hero content              *
@@ -97,26 +87,18 @@
     tl.to('.loader__inner', { autoAlpha: 0, y: -14, duration: 0.5, ease: EASE }, '+=0.15');
     tl.to(loader, { autoAlpha: 0, duration: 0.6, ease: EASE, onComplete: () => loader && loader.remove() }, '-=0.15');
 
-    // 3 · iris: the hero footage opens outward from the centre
-    tl.fromTo(
-      heroVideo,
-      { clipPath: 'circle(0% at 50% 50%)', scale: 1.16 },
-      { clipPath: 'circle(75% at 50% 50%)', scale: 1, duration: 1.5, ease: 'power2.inOut' },
-      '-=0.5'
-    );
-
     // 4 · hero content rises in, staggered
     tl.to(
       heroReveals,
       { opacity: 1, y: 0, duration: 1, ease: EASE, stagger: 0.13 },
-      '-=0.85'
+      '-=0.1'
     );
 
     // 5 · release scroll
     tl.add(() => {
       doc.classList.remove('is-locked');
       ScrollTrigger.refresh();
-    }, '-=0.7');
+    }, '-=0.4');
 
     return tl;
   }
@@ -130,7 +112,7 @@
    * stagger naturally by their position in the flow.                     *
    * ------------------------------------------------------------------ */
   function initReveals() {
-    const items = gsap.utils.toArray('[data-reveal]').filter((el) => !el.closest('.hero'));
+    const items = gsap.utils.toArray('[data-reveal]').filter((el) => !el.closest('#home'));
     items.forEach((el) => {
       gsap.fromTo(
         el,
@@ -210,8 +192,6 @@
             scrub: 0.6,
             anticipatePin: 1,
             invalidateOnRefresh: true,
-            // lower than the hero pin so it refreshes AFTER (see note there)
-            refreshPriority: 5,
             onUpdate: (self) => {
               if (meter) meter.style.transform = 'scaleX(' + self.progress.toFixed(4) + ')';
             },
@@ -318,70 +298,6 @@
         }
       );
     }
-  }
-
-  /* ------------------------------------------------------------------ *
-   * HERO VIDEO — full-screen, scrubbed frame-by-frame while pinned      *
-   * (falls back to an ambient loop on touch, and a static poster        *
-   *  under reduced-motion, where currentTime scrubbing is unreliable)   *
-   * ------------------------------------------------------------------ */
-  function initHeroVideo(mode) {
-    const v = heroVideo;
-    if (!v) return;
-    const src = v.dataset.src;
-
-    if (mode === 'reduced') return; // poster only — never downloads the video
-
-    if (src && !v.src) { v.src = src; v.load(); }
-
-    if (mode === 'ambient') {
-      v.loop = true;
-      v.muted = true;
-      v.setAttribute('autoplay', '');
-      const p = v.play();
-      if (p && p.catch) p.catch(function () {});
-      return;
-    }
-
-    // mode === 'scrub'
-    function setup() {
-      // warm the decoder so the very first seeks actually paint a frame
-      try {
-        const pp = v.play();
-        if (pp && pp.then) pp.then(function () { v.pause(); v.currentTime = 0; }).catch(function () {});
-        else { v.pause(); v.currentTime = 0; }
-      } catch (e) {}
-
-      const dur = v.duration || 10;
-
-      // ONE pinned, scrubbed timeline drives everything that happens during the
-      // hero pin — the frame-by-frame video scrub AND the copy fade. Keeping the
-      // pin ON the scrubbed timeline (not a separate trigger) is what keeps the
-      // video locked to the pinned range; a separate pin trigger offsets every
-      // other hero animation by the pin's spacer height and desyncs the scrub.
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: '.hero',
-          start: 'top top',
-          end: '+=180%',
-          pin: true,
-          scrub: 0.6,
-          anticipatePin: 1,
-          invalidateOnRefresh: true,
-          // topmost pin — must refresh before the portfolio pin (see note in
-          // initPortfolio) so the portfolio doesn't pin a screen early.
-          refreshPriority: 10,
-        },
-      });
-      tl.to(v, { currentTime: dur - 0.05, ease: 'none', duration: 1 }, 0);
-      tl.to('.hero__inner', { autoAlpha: 0, y: -40, ease: 'none', duration: 0.5 }, 0);
-      tl.to('.hero__scroll', { autoAlpha: 0, ease: 'none', duration: 0.14 }, 0);
-
-      ScrollTrigger.refresh();
-    }
-
-    if (v.readyState >= 1) setup();
-    else v.addEventListener('loadedmetadata', setup, { once: true });
   }
 
   /* ------------------------------------------------------------------ *
@@ -503,10 +419,6 @@
     initNav();
     initActiveLinks();
     initAnchors();
-
-    // Scroll-scrub the hero on precise pointers; ambient loop on touch/small screens
-    const coarse = window.matchMedia('(hover: none) and (pointer: coarse)').matches;
-    initHeroVideo(coarse || window.innerWidth < 900 ? 'ambient' : 'scrub');
 
     const introTL = playIntro();
     // Safety net: if the clock stalls (e.g. the tab loads in the background),

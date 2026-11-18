@@ -124,3 +124,69 @@
     opacity: 1;
   }
 }
+
+/* ───────── hero-as-film variant ─────────
+   Brand hero copy sits on the pinned film and fades out with --iz-p
+   (set by izden-film-scrub.js); chapter copy fades in after it. */
+.iz-scrub__hero {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding-bottom: clamp(2.5rem, 9svh, 6rem);
+  pointer-events: none;
+  opacity: calc(1 - var(--iz-p, 0) * 10);
+  transform: translate3d(0, calc(var(--iz-p, 0) * -140px), 0);
+  will-change: opacity, transform;
+}
+.iz-scrub__hero a,
+.iz-scrub__hero button {
+  pointer-events: auto;
+}
+.iz-scrub.is-past-hero .iz-scrub__hero {
+  visibility: hidden;
+}
+.iz-scrub--has-hero .iz-scrub__ui {
+  opacity: calc((var(--iz-p, 0) - 0.1) * 12);
+}
+/* still-based films: slow continuous push-in so even hold frames keep moving */
+.iz-scrub--drift video.iz-film {
+  transform: scale(calc(1 + var(--iz-p, 0) * 0.07));
+  transform-origin: 50% 55%;
+  will-change: transform;
+}
+.iz-scrub__veil {
+  z-index: 1;
+}
+@media (max-width: 720px) {
+  .iz-scrub__hero {
+    padding-bottom: clamp(5.5rem, 16svh, 8rem);
+  }
+}
+/* reduced motion / no-JS: poster + readable hero copy, chapter strip hidden */
+@media (prefers-reduced-motion: reduce) {
+  .iz-scrub--has-hero {
+    height: auto;
+    min-height: 100svh;
+  }
+  .iz-scrub--has-hero .iz-scrub__pin {
+    position: relative;
+    min-height: 100svh;
+  }
+  .iz-scrub--has-hero .iz-scrub__hero {
+    opacity: 1;
+    transform: none;
+    visibility: visible;
+    position: relative;
+    min-height: 100svh;
+  }
+  .iz-scrub--has-hero .iz-scrub__ui,
+  .iz-scrub--has-hero .iz-scrub__hint {
+    display: none;
+  }
+  .iz-scrub--drift video.iz-film {
+    transform: none;
+  }
+}

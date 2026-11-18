@@ -1,0 +1,60 @@
+/*
+ * İZDEN atelier core — mechanics only (nav/drawer, pin helpers, faq, a11y).
+ * Look & feel lives in each atelier's own styles.css; this file never sets
+ * colour, type or layout grammar beyond what the variables below provide.
+ *
+ * Variables a site may set on :root:
+ *   --bg --fg --accent --line --nav-h --font-display --font-body --font-mono
+ */
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--font-body);-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+img,video,svg{max-width:100%;display:block}
+img{height:auto}
+a{color:inherit}
+button{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.skip{position:absolute;left:-999px;top:0;z-index:200;background:var(--accent);color:var(--bg);padding:.75rem 1rem}
+.skip:focus{left:0}
+
+/* ───── nav bar + drawer (structure) ───── */
+.site-nav{position:fixed;inset:0 0 auto;z-index:50;display:flex;align-items:center;gap:1rem;min-height:var(--nav-h,64px);padding:max(.5rem,env(safe-area-inset-top)) clamp(1rem,3vw,2rem) .5rem}
+.site-nav__brand{text-decoration:none;min-height:44px;display:inline-flex;align-items:center}
+.site-nav__links{display:none;margin-left:auto;align-items:center;gap:clamp(.75rem,2vw,1.75rem)}
+.site-nav__links a{text-decoration:none;min-height:44px;display:inline-flex;align-items:center}
+.site-nav__burger{margin-left:auto;width:44px;height:44px;border:0;background:transparent;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:6px;padding:0;cursor:pointer}
+.site-nav__burger span{display:block;height:2px;width:24px;background:currentColor;transition:transform .3s ease,opacity .3s ease}
+@media (min-width:960px){.site-nav__burger{display:none}.site-nav__links{display:flex}}
+.nav-drawer-backdrop{position:fixed;inset:0;z-index:60;background:rgba(0,0,0,.6)}
+.nav-drawer-backdrop[hidden]{display:none}
+.nav-drawer{position:fixed;inset:0 0 0 auto;z-index:70;width:min(22rem,100vw);display:flex;flex-direction:column;padding:max(1rem,env(safe-area-inset-top)) 1.5rem max(1.5rem,env(safe-area-inset-bottom));transform:translateX(100%);visibility:hidden;transition:transform .4s cubic-bezier(.22,1,.36,1),visibility 0s .4s}
+.nav-drawer[data-open="true"]{transform:none;visibility:visible;transition:transform .4s cubic-bezier(.22,1,.36,1)}
+.nav-drawer__head{display:flex;justify-content:space-between;align-items:center;margin-bottom:1.25rem}
+.nav-drawer__close{width:44px;height:44px;border:0;background:transparent;cursor:pointer;font-size:1.9rem;line-height:1}
+.nav-drawer__links{display:flex;flex-direction:column}
+.nav-drawer__links a{min-height:56px;display:flex;align-items:center;text-decoration:none}
+
+/* ───── pin / scrub helpers ───── */
+.scrub{position:relative;height:var(--scrub-h,300vh)}
+.scrub__pin{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden}
+@media (max-width:900px){.scrub{height:var(--scrub-h-m,var(--scrub-h,260vh))}.scrub__pin{height:100dvh}}
+
+/* ───── buttons ───── */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.6rem;min-height:48px;padding:0 1.5rem;text-decoration:none;cursor:pointer;border:1px solid currentColor;background:transparent}
+
+/* ───── faq ───── */
+.faq__q{width:100%;min-height:56px;border:0;background:transparent;text-align:left;display:flex;justify-content:space-between;align-items:center;gap:1rem;cursor:pointer;padding:.9rem 0}
+.faq__icon{flex:none;width:14px;height:14px;position:relative}
+.faq__icon::before,.faq__icon::after{content:"";position:absolute;left:0;right:0;top:50%;height:2px;background:currentColor;transition:transform .3s ease}
+.faq__icon::after{transform:rotate(90deg)}
+.faq__q[aria-expanded="true"] .faq__icon::after{transform:rotate(0)}
+.faq__a[hidden]{display:none}
+
+/* ───── global motion safety ───── */
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important}
+  .scrub{height:auto}
+  .scrub__pin{position:relative;height:auto;min-height:100svh}
+}

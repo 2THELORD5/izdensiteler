@@ -44,5 +44,51 @@
 @media (prefers-reduced-motion: reduce) {
   .iz-sg .gallery-track {
     transition: none !important;
+    transform: none !important;
+  }
+  /* no pin / no tall section: the row is natively swipeable instead */
+  .gallery-section.iz-sg {
+    min-height: 0 !important;
+  }
+  .gallery-section.iz-sg .iz-sg__shell {
+    position: relative !important;
+    height: auto !important;
+    display: block !important;
+    overflow-x: auto !important;
+  }
+  .gallery-section.iz-sg .gallery-head {
+    position: static;
+  }
+}
+
+/* Generic [data-iz-scroll-gallery] */
+.iz-sg--generic {
+  position: relative;
+  height: var(--iz-sg-vh, 320vh);
+}
+.iz-sg--generic > .iz-sg__pin {
+  position: sticky;
+  top: 0;
+  height: 100svh;
+  height: 100dvh;
+  overflow: hidden;
+}
+.iz-sg--generic [data-iz-track-host] {
+  overflow: hidden;
+}
+@media (max-width: 700px) {
+  .iz-sg--generic {
+    height: calc(var(--iz-sg-vh, 320vh) * 0.75);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .iz-sg--generic {
+    height: auto;
+  }
+  .iz-sg--generic > .iz-sg__pin {
+    position: relative;
+    height: auto;
+    min-height: 0;
+    overflow: visible;
   }
 }

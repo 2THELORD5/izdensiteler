@@ -18,6 +18,8 @@
 <link rel="alternate icon" href="favicon.ico" sizes="32x32">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 
+<link rel="preload" as="image" href="assets/kie-scrub/pc/01.jpg" media="(min-width: 821px)">
+<link rel="preload" as="image" href="assets/kie-scrub/mob/01.jpg" media="(max-width: 820px)">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,75..125,300..700;1,75..125,300..700&family=Newsreader:ital,opsz,wght@0,6..72,300..500;1,6..72,300..500&display=swap" rel="stylesheet">
@@ -26,6 +28,7 @@
 
 <link rel="stylesheet" href="/demos/_shared/izden-image-scrub.css" />
 <link rel="stylesheet" href="/demos/_shared/izden-afterglow.css" />
+<link rel="stylesheet" href="/demos/_shared/izden-scroll-gallery.css" />
 </head>
 <body>
 
@@ -70,16 +73,39 @@
 
 <main id="main">
 
-<section class="iz-scrub iz-scrub--film iz-scrub--kie" data-iz-film-scrub
+<!-- ─────────────────────────  hero = live film scrub  ─────────────────────────
+     film-pc (16:9) / film-mob (9:16) are seeked by scroll position (izden-film-scrub.js). -->
+<section class="iz-scrub iz-scrub--film iz-scrub--kie iz-scrub--has-hero iz-scrub--drift leaft-film" id="top" data-iz-film-scrub
   data-film-pc="assets/kie-scrub/film-pc.mp4"
   data-film-mob="assets/kie-scrub/film-mob.mp4"
   data-poster="assets/kie-scrub/pc/01.jpg"
-  aria-label="Film chapter scrub">
+  data-poster-mob="assets/kie-scrub/mob/01.jpg"
+  aria-label="Leaft — garden film from day into night">
   <div class="iz-scrub__pin">
     <div class="iz-scrub__stage">
-      <video class="iz-film" muted playsinline preload="auto" poster="assets/kie-scrub/pc/01.jpg" disablePictureInPicture></video>
+      <video class="iz-film" muted playsinline preload="auto" poster="assets/kie-scrub/pc/01.jpg" disablePictureInPicture
+        aria-label="A Dubai garden path from daylight through dusk, a building site, and a still water feature"></video>
     </div>
     <div class="iz-scrub__veil" aria-hidden="true"></div>
+
+    <div class="iz-scrub__hero">
+      <div class="hero__in">
+        <p class="label hero__eyebrow">Landscape design <span class="sep">/</span> Dubai</p>
+
+        <h1 class="hero__title">
+          <span class="line"><span>Landscapes made</span></span>
+          <span class="line"><span><em>for life</em> in Dubai.</span></span>
+        </h1>
+
+        <p class="hero__lede">Leaft designs calm, climate-conscious gardens where architecture, water and planting belong together.</p>
+
+        <div class="hero__actions">
+          <a class="pill pill--solid" href="#projects">Explore projects</a>
+          <a class="pill" href="#contact">Start a conversation</a>
+        </div>
+      </div>
+    </div>
+
     <div class="iz-scrub__ui">
       <p class="iz-scrub__act" data-iz-act></p>
       <h2 class="iz-scrub__title" data-iz-title></h2>
@@ -87,39 +113,7 @@
     </div>
     <p class="iz-scrub__hint">Scroll</p>
   </div>
-  <script type="application/json" data-iz-chapters>[{"act":"01 Day","title":"Path open.","body":"Bahçe yolu."},{"act":"02 Dusk","title":"Blue hour.","body":"Alacakaranlık."},{"act":"03 Build","title":"Soil & line.","body":"Şantiye yeşili."},{"act":"04 Settle","title":"Water hold.","body":"Su öğesi."}]</script>
-</section>
-
-
-<!-- ─────────────────────────  hero  ───────────────────────── -->
-<section class="hero" id="top">
-  <div class="hero__media">
-    <img src="assets/img/hero.jpg" alt="A limestone terrace at night with uplit olive trees beside a turquoise pool in Al Barari, Dubai." fetchpriority="high">
-  </div>
-
-  <div class="hero__in">
-    <p class="label hero__eyebrow reveal">Landscape design <span class="sep">/</span> Dubai</p>
-
-    <h1 class="hero__title">
-      <span class="line"><span>Landscapes made</span></span>
-      <span class="line"><span><em>for life</em> in Dubai.</span></span>
-    </h1>
-
-    <p class="hero__lede reveal">Leaft designs calm, climate-conscious gardens where architecture, water and planting belong together.</p>
-
-    <div class="hero__actions reveal">
-      <a class="pill pill--solid" href="#projects">Explore projects</a>
-      <a class="pill" href="#contact">Start a conversation</a>
-    </div>
-  </div>
-
-  <div class="hero__foot">
-    <p class="label">Dubai, United Arab Emirates</p>
-    <figcaption class="hero__credit">
-      <span class="hero__credit-time">21:40</span>
-      Wadi House <span class="sep">/</span> Al Barari
-    </figcaption>
-  </div>
+  <script type="application/json" data-iz-chapters>[{"act":"01 Day","title":"Path open.","body":"Stone, shade and a long line of planting."},{"act":"02 Dusk","title":"Blue hour.","body":"The garden is lit for the evening."},{"act":"03 Build","title":"Soil & line.","body":"Levels, edges and drainage set out first."},{"act":"04 Settle","title":"Water hold.","body":"Still water to close the composition."}]</script>
 </section>
 
 <!-- ─────────────────────────  01 studio  ───────────────────────── -->
@@ -150,31 +144,20 @@
   supplied garden images. Replace with verified portfolio information before
   publishing. studio@leaft.ae is a placeholder address.
 -->
-<section class="band projects" id="projects">
-  <div class="wrap">
+<section class="band projects" id="projects" data-iz-scroll-gallery=".proj" data-iz-sg-track="#rail" data-iz-sg-counter="#railNow" data-iz-sg-vh="62">
+  <div class="wrap projects__pin" data-iz-sg-pin>
     <div class="sec-head">
-      <p class="label sec-head__num reveal"><span class="num">02</span> <span class="sep">/</span> Projects</p>
-      <h2 class="sec-head__title reveal">Nine garden directions</h2>
-      <p class="sec-head__lede reveal">A concept portfolio for Dubai — each landscape shown from daylight into night.</p>
-    </div>
-
-    <div class="dusk reveal">
-      <button class="dusk__switch" id="duskSwitch" role="switch" aria-checked="false">
-        <span class="dusk__label dusk__label--day">Daylight</span>
-        <span class="dusk__track" aria-hidden="true">
-          <span class="dusk__dot"></span>
-        </span>
-        <span class="dusk__label dusk__label--night">Night</span>
-      </button>
-      <p class="dusk__hint" id="duskHint">Move the whole portfolio into evening light</p>
+      <p class="label sec-head__num"><span class="num">02</span> <span class="sep">/</span> Projects</p>
+      <h2 class="sec-head__title">Nine garden directions</h2>
+      <p class="sec-head__lede">Scroll through the portfolio — each landscape moves from daylight into night.</p>
     </div>
 
     <div class="rail-shell">
-      <ul class="rail" id="rail" tabindex="0" aria-label="Featured projects">
+      <ul class="rail" id="rail" aria-label="Featured projects">
 
         <li class="proj" style="--i:0">
           <figure class="proj__frame">
-            <img class="proj__img" src="assets/img/p01-day.jpg" alt="Wadi House: a limestone garden with mature olive trees and a rectangular pool." loading="lazy">
+            <img class="proj__img" src="assets/img/p01-day.jpg" alt="Wadi House: a limestone garden with mature olive trees and a rectangular pool." loading="eager" decoding="async">
             <img class="proj__img proj__img--night" src="assets/img/p01-night.jpg" alt="" aria-hidden="true" loading="lazy">
             <figcaption class="proj__tag">Courtyard and pool</figcaption>
           </figure>
@@ -187,7 +170,7 @@
 
         <li class="proj" style="--i:1">
           <figure class="proj__frame">
-            <img class="proj__img" src="assets/img/p02-day.jpg" alt="Ember Court: dark basalt paving with corten planters and a linear water channel." loading="lazy">
+            <img class="proj__img" src="assets/img/p02-day.jpg" alt="Ember Court: dark basalt paving with corten planters and a linear water channel." loading="eager" decoding="async">
             <img class="proj__img proj__img--night" src="assets/img/p02-night.jpg" alt="" aria-hidden="true" loading="lazy">
             <figcaption class="proj__tag">Basalt courtyard</figcaption>
           </figure>
@@ -200,7 +183,7 @@
 
         <li class="proj" style="--i:2">
           <figure class="proj__frame">
-            <img class="proj__img" src="assets/img/p03-day.jpg" alt="Sienna Dunes: a xeriscape garden of pale sandstone, succulents and gravel." loading="lazy">
+            <img class="proj__img" src="assets/img/p03-day.jpg" alt="Sienna Dunes: a xeriscape garden of pale sandstone, succulents and gravel." loading="eager" decoding="async">
             <img class="proj__img proj__img--night" src="assets/img/p03-night.jpg" alt="" aria-hidden="true" loading="lazy">
             <figcaption class="proj__tag">Xeriscape garden</figcaption>
           </figure>
@@ -213,7 +196,7 @@
 
         <li class="proj" style="--i:3">
           <figure class="proj__frame">
-            <img class="proj__img" src="assets/img/p04-day.jpg" alt="Palm Veil: palms and textured concrete around a slim turquoise pool." loading="lazy">
+            <img class="proj__img" src="assets/img/p04-day.jpg" alt="Palm Veil: palms and textured concrete around a slim turquoise pool." loading="eager" decoding="async">
             <img class="proj__img proj__img--night" src="assets/img/p04-night.jpg" alt="" aria-hidden="true" loading="lazy">
             <figcaption class="proj__tag">Pool garden</figcaption>
           </figure>
@@ -226,7 +209,7 @@
 
         <li class="proj" style="--i:4">
           <figure class="proj__frame">
-            <img class="proj__img" src="assets/img/p05-day.jpg" alt="Kanso Court: still water, granite, timber and Japanese maples in a quiet courtyard." loading="lazy">
+            <img class="proj__img" src="assets/img/p05-day.jpg" alt="Kanso Court: still water, granite, timber and Japanese maples in a quiet courtyard." loading="eager" decoding="async">
             <img class="proj__img proj__img--night" src="assets/img/p05-night.jpg" alt="" aria-hidden="true" loading="lazy">
             <figcaption class="proj__tag">Contemplative courtyard</figcaption>
           </figure>
@@ -239,7 +222,7 @@
 
         <li class="proj" style="--i:5">
           <figure class="proj__frame">
-            <img class="proj__img" src="assets/img/p06-day.jpg" alt="Cypress Line: reflecting pools, clipped hedges and cypress trees on a central axis." loading="lazy">
+            <img class="proj__img" src="assets/img/p06-day.jpg" alt="Cypress Line: reflecting pools, clipped hedges and cypress trees on a central axis." loading="eager" decoding="async">
             <img class="proj__img proj__img--night" src="assets/img/p06-night.jpg" alt="" aria-hidden="true" loading="lazy">
             <figcaption class="proj__tag">Formal garden</figcaption>
           </figure>
@@ -252,7 +235,7 @@
 
         <li class="proj" style="--i:6">
           <figure class="proj__frame">
-            <img class="proj__img" src="assets/img/p07-day.jpg" alt="Sky Grove: a rooftop garden with multi-stem trees and a shallow pool above the Dubai skyline." loading="lazy">
+            <img class="proj__img" src="assets/img/p07-day.jpg" alt="Sky Grove: a rooftop garden with multi-stem trees and a shallow pool above the Dubai skyline." loading="eager" decoding="async">
             <img class="proj__img proj__img--night" src="assets/img/p07-night.jpg" alt="" aria-hidden="true" loading="lazy">
             <figcaption class="proj__tag">Rooftop landscape</figcaption>
           </figure>
@@ -265,7 +248,7 @@
 
         <li class="proj" style="--i:7">
           <figure class="proj__frame">
-            <img class="proj__img" src="assets/img/p08-day.jpg" alt="Azure Edge: pale stone, silver-green planting and an infinity pool facing the sea." loading="lazy">
+            <img class="proj__img" src="assets/img/p08-day.jpg" alt="Azure Edge: pale stone, silver-green planting and an infinity pool facing the sea." loading="eager" decoding="async">
             <img class="proj__img proj__img--night" src="assets/img/p08-night.jpg" alt="" aria-hidden="true" loading="lazy">
             <figcaption class="proj__tag">Coastal garden</figcaption>
           </figure>
@@ -278,7 +261,7 @@
 
         <li class="proj" style="--i:8">
           <figure class="proj__frame">
-            <img class="proj__img" src="assets/img/p09-day.jpg" alt="Birch House: dark stone terraces, reflective water, birch trees and mossy boulders." loading="lazy">
+            <img class="proj__img" src="assets/img/p09-day.jpg" alt="Birch House: dark stone terraces, reflective water, birch trees and mossy boulders." loading="eager" decoding="async">
             <img class="proj__img proj__img--night" src="assets/img/p09-night.jpg" alt="" aria-hidden="true" loading="lazy">
             <figcaption class="proj__tag">Woodland retreat</figcaption>
           </figure>
@@ -293,15 +276,12 @@
     </div>
 
     <div class="rail-ctrl">
-      <div class="rail-ctrl__btns">
-        <button class="circ" id="railPrev" aria-label="Previous project">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>
-        </button>
-        <button class="circ" id="railNext" aria-label="Next project">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg>
-        </button>
+      <div class="dusk" aria-hidden="true">
+        <span class="dusk__label dusk__label--day">Daylight</span>
+        <span class="dusk__track"><span class="dusk__dot"></span></span>
+        <span class="dusk__label dusk__label--night">Night</span>
       </div>
-      <p class="rail-ctrl__count" aria-live="polite"><span id="railNow">01</span> <span class="sep">/</span> 09</p>
+      <p class="rail-ctrl__count"><span id="railNow">01</span> <span class="sep">/</span> 09</p>
     </div>
   </div>
 </section>
@@ -390,33 +370,59 @@
 </section>
 
 <!-- ─────────────────────────  05 approach  ───────────────────────── -->
-<section class="band approach" id="approach">
-  <div class="wrap">
+<section class="band approach" id="approach" data-iz-scroll-gallery=".step" data-iz-sg-vh="70">
+  <div class="wrap approach__pin" data-iz-sg-pin>
     <div class="sec-head">
-      <p class="label sec-head__num reveal"><span class="num">05</span> <span class="sep">/</span> Approach</p>
-      <h2 class="sec-head__title reveal">A clear path from idea to garden</h2>
-      <p class="sec-head__lede reveal">Collaborative when it matters. Precise where it counts.</p>
+      <p class="label sec-head__num"><span class="num">05</span> <span class="sep">/</span> Approach</p>
+      <h2 class="sec-head__title">A clear path from idea to garden</h2>
+      <p class="sec-head__lede">Collaborative when it matters. Precise where it counts.</p>
     </div>
 
-    <div class="steps reveal" role="tablist" aria-label="Project stages">
-      <button class="chip is-on" role="tab" aria-selected="true"  aria-controls="stepPanel" id="step-1" data-step="1">Listen and map</button>
-      <span class="steps__sep" aria-hidden="true">›</span>
-      <button class="chip"       role="tab" aria-selected="false" aria-controls="stepPanel" id="step-2" data-step="2" tabindex="-1">Compose</button>
-      <span class="steps__sep" aria-hidden="true">›</span>
-      <button class="chip"       role="tab" aria-selected="false" aria-controls="stepPanel" id="step-3" data-step="3" tabindex="-1">Detail</button>
-      <span class="steps__sep" aria-hidden="true">›</span>
-      <button class="chip"       role="tab" aria-selected="false" aria-controls="stepPanel" id="step-4" data-step="4" tabindex="-1">Grow in</button>
-    </div>
+    <ol class="steps" aria-label="Project stages">
+      <li class="chip is-on" data-iz-sg-dot>Listen and map</li><li class="steps__sep" aria-hidden="true">›</li><li class="chip" data-iz-sg-dot>Compose</li><li class="steps__sep" aria-hidden="true">›</li><li class="chip" data-iz-sg-dot>Detail</li><li class="steps__sep" aria-hidden="true">›</li><li class="chip" data-iz-sg-dot>Grow in</li>
+    </ol>
 
-    <div class="step-panel reveal" id="stepPanel" role="tabpanel" aria-labelledby="step-1">
-      <figure class="step-panel__fig">
-        <img id="stepImg" src="assets/img/step-1.jpg" alt="An overhead plan view of a courtyard garden with stone terraces and a square water basin." loading="lazy">
-      </figure>
-      <div class="step-panel__copy">
-        <p class="label"><span class="num" id="stepNum">01</span> <span class="sep">/</span> 04</p>
-        <h3 id="stepTitle">Listen and map</h3>
-        <p id="stepText">We learn the site, architecture and the way you want to live outdoors.</p>
-      </div>
+    <div class="step-stack">
+        <article class="step step-panel is-on" aria-label="Step 1 of 4: Listen and map">
+          <figure class="step-panel__fig">
+            <img src="assets/img/step-1.jpg" alt="An overhead plan view of a courtyard garden with stone terraces and a square water basin." loading="lazy" decoding="async">
+          </figure>
+          <div class="step-panel__copy">
+            <p class="label"><span class="num">01</span> <span class="sep">/</span> 04</p>
+            <h3>Listen and map</h3>
+            <p>We learn the site, architecture and the way you want to live outdoors.</p>
+          </div>
+        </article>
+        <article class="step step-panel" aria-label="Step 2 of 4: Compose">
+          <figure class="step-panel__fig">
+            <img src="assets/img/p06-day.jpg" alt="A formal garden with reflecting pools, clipped hedges and cypress trees on a central axis." loading="lazy" decoding="async">
+          </figure>
+          <div class="step-panel__copy">
+            <p class="label"><span class="num">02</span> <span class="sep">/</span> 04</p>
+            <h3>Compose</h3>
+            <p>Space, shade, water, material and planting become one coherent concept.</p>
+          </div>
+        </article>
+        <article class="step step-panel" aria-label="Step 3 of 4: Detail">
+          <figure class="step-panel__fig">
+            <img src="assets/img/p02-day.jpg" alt="Dark basalt paving meeting corten planters and a linear water channel." loading="lazy" decoding="async">
+          </figure>
+          <div class="step-panel__copy">
+            <p class="label"><span class="num">03</span> <span class="sep">/</span> 04</p>
+            <h3>Detail</h3>
+            <p>Every edge, level, light and species is resolved for confident delivery.</p>
+          </div>
+        </article>
+        <article class="step step-panel" aria-label="Step 4 of 4: Grow in">
+          <figure class="step-panel__fig">
+            <img src="assets/img/p01-day.jpg" alt="Mature olive trees in a limestone garden beside a rectangular pool." loading="lazy" decoding="async">
+          </figure>
+          <div class="step-panel__copy">
+            <p class="label"><span class="num">04</span> <span class="sep">/</span> 04</p>
+            <h3>Grow in</h3>
+            <p>We help the finished landscape establish, mature and become truly yours.</p>
+          </div>
+        </article>
     </div>
   </div>
 </section>

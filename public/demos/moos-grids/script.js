@@ -152,9 +152,15 @@
 
   /* ---------- header scroll state ---------- */
   var header = document.querySelector("[data-header]");
+  var film = document.querySelector("[data-iz-film-scrub]");
   function onScroll() {
     if (!header) return;
     header.classList.toggle("is-scrolled", window.scrollY > 8);
+    /* white header while the pinned film owns the top of the viewport */
+    if (film) {
+      var r = film.getBoundingClientRect();
+      header.classList.toggle("on-film", r.bottom > 64 && !document.body.classList.contains("is-locked"));
+    }
   }
   onScroll();
   window.addEventListener("scroll", onScroll, { passive: true });
@@ -172,6 +178,7 @@
     if (!menu) return;
     menu.classList.toggle("is-open", open);
     document.body.classList.toggle("is-locked", open);
+    onScroll();
     if (menuBtn) menuBtn.setAttribute("aria-expanded", open ? "true" : "false");
     if (open) {
       var first = menu.querySelector(".menu__link");

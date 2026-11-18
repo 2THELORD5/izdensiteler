@@ -94,19 +94,12 @@
   }
 
   /* ---------- parallax (direct on scroll) ---------- */
-  const heroImg = document.getElementById('heroImg');
   const caseSection = document.getElementById('case-study');
   const caseImg = document.getElementById('caseImg');
   const parallaxEls = [...document.querySelectorAll('[data-parallax]')];
 
   const applyParallax = () => {
     const vh = viewH();
-    const y = window.scrollY;
-
-    if (y < vh * 1.2) {
-      heroImg.style.transform = `scale(1.12) translateY(${y * 0.22}px)`;
-    }
-
     const cr = caseSection.getBoundingClientRect();
     if (cr.top < vh && cr.bottom > 0) {
       const progress = (vh - cr.top) / (vh + cr.height); // 0..1
@@ -128,8 +121,15 @@
     revealCheck();
     if (!reducedMotion) applyParallax();
   };
-  window.addEventListener('scroll', onScroll, { passive: true });
-  window.addEventListener('resize', onScroll);
+  // coalesce scroll bursts into one rAF pass (no per-wheel-tick layout reads)
+  let scrollQueued = false;
+  const onScrollRaf = () => {
+    if (scrollQueued) return;
+    scrollQueued = true;
+    requestAnimationFrame(() => { scrollQueued = false; onScroll(); });
+  };
+  window.addEventListener('scroll', onScrollRaf, { passive: true });
+  window.addEventListener('resize', onScrollRaf);
   onScroll();
   // late layout shifts (fonts/images) can leave first-screen items unrevealed
   window.addEventListener('load', onScroll);
@@ -171,62 +171,28 @@
     });
   }
 
-  /* ---------- projects: cursor-following image reveal ---------- */
-  const index = document.getElementById('workIndex');
-  const flare = document.getElementById('workFlare');
-  const flareImg = flare ? flare.querySelector('img') : null;
-
-  if (index && flare && finePointer && !reducedMotion) {
-    index.querySelectorAll('.work').forEach((row) => {
-      const img = new Image();
-      img.src = row.dataset.img;
+  /* ---------- projects: scroll advances the active project ----------
+     izden-scroll-gallery.js sets .is-on on .work and fires "iz-sg" on #projects.
+     We only swap the stage image here (no click-to-fade, no hover dependency). */
+  const projects = document.getElementById('projects');
+  const stageImgs = [...document.querySelectorAll('#workStage .work-stage__img')];
+  const rows = [...document.querySelectorAll('#workIndex .work')];
+  if (projects && stageImgs.length) {
+    projects.addEventListener('iz-sg', (e) => {
+      const i = e.detail.index;
+      stageImgs.forEach((img, k) => img.classList.toggle('is-on', k === i));
     });
-
-    const host = index.closest('.projects');
-    let fx = 0, fy = 0, gx = 0, gy = 0;
-    let flaring = false;
-    let lastFollow = 0;
-
-    const placeFlare = () => {
-      flare.style.left = gx + 'px';
-      flare.style.top = gy + 'px';
+    // tap / Enter on a row jumps the scroll to that project's slot
+    const jump = (i) => {
+      const scrollable = projects.offsetHeight - window.innerHeight;
+      const top = projects.getBoundingClientRect().top + window.scrollY;
+      const y = top + scrollable * ((i + 0.5) / rows.length);
+      window.scrollTo({ top: y, behavior: reducedMotion ? 'auto' : 'smooth' });
     };
-
-    const follow = (now) => {
-      lastFollow = now;
-      gx += (fx - gx) * 0.16;
-      gy += (fy - gy) * 0.16;
-      placeFlare();
-      if (flaring) requestAnimationFrame(follow);
-    };
-
-    index.addEventListener('mousemove', (e) => {
-      const hostRect = host.getBoundingClientRect();
-      fx = e.clientX - hostRect.left;
-      fy = e.clientY - hostRect.top;
-      if (performance.now() - lastFollow > 150) {
-        gx = fx; gy = fy;
-        placeFlare();
-      }
-    }, { passive: true });
-
-    index.addEventListener('mouseenter', (e) => {
-      const hostRect = host.getBoundingClientRect();
-      gx = fx = e.clientX - hostRect.left;
-      gy = fy = e.clientY - hostRect.top;
-      flaring = true;
-      placeFlare();
-      requestAnimationFrame(follow);
-    });
-    index.addEventListener('mouseleave', () => {
-      flaring = false;
-      flare.classList.remove('on');
-    });
-
-    index.querySelectorAll('.work').forEach((row) => {
-      row.addEventListener('mouseenter', () => {
-        flareImg.src = row.dataset.img;
-        flare.classList.add('on');
+    rows.forEach((row, i) => {
+      row.addEventListener('click', () => jump(i));
+      row.addEventListener('keydown', (ev) => {
+        if (ev.key === 'Enter' || ev.key === ' ') { ev.preventDefault(); jump(i); }
       });
     });
   }

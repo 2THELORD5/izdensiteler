@@ -9,25 +9,44 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,500&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
-<link rel="preload" as="image" href="assets/Exterior/02-low-angle-hero.png">
+<link rel="preload" as="image" href="assets/kie-scrub/pc/01.jpg" media="(min-width: 721px)">
+<link rel="preload" as="image" href="assets/kie-scrub/mob/01.jpg" media="(max-width: 720px)">
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="/demos/_shared/izden-agency.css" />
 
 <link rel="stylesheet" href="/demos/_shared/izden-image-scrub.css" />
 <link rel="stylesheet" href="/demos/_shared/izden-afterglow.css" />
+<link rel="stylesheet" href="/demos/_shared/izden-scroll-gallery.css" />
 </head>
 <body id="top">
 
-<section class="iz-scrub iz-scrub--film iz-scrub--kie" data-iz-film-scrub
+<!-- ═══════════ 1 · HERO = LIVE FILM SCRUB ═══════════
+     Sticky pin, 360vh: film-pc (16:9) / film-mob (9:16) seeked by scroll position. -->
+<header class="iz-scrub iz-scrub--film iz-scrub--kie iz-scrub--has-hero iz-scrub--drift sapa-film" id="hero" data-iz-film-scrub
   data-film-pc="assets/kie-scrub/film-pc.mp4"
   data-film-mob="assets/kie-scrub/film-mob.mp4"
   data-poster="assets/kie-scrub/pc/01.jpg"
-  aria-label="Film chapter scrub">
+  data-poster-mob="assets/kie-scrub/mob/01.jpg"
+  aria-label="Sapa Residences — film">
   <div class="iz-scrub__pin">
     <div class="iz-scrub__stage">
-      <video class="iz-film" muted playsinline preload="auto" poster="assets/kie-scrub/pc/01.jpg" disablePictureInPicture></video>
+      <video class="iz-film" muted playsinline preload="auto" poster="assets/kie-scrub/pc/01.jpg" disablePictureInPicture
+        aria-label="Sapa Residences from the arrival, through the lobby and terrace, to the community gardens"></video>
     </div>
     <div class="iz-scrub__veil" aria-hidden="true"></div>
+
+    <div class="iz-scrub__hero">
+      <div class="hero-card">
+        <div class="hc-label">Dubai Creek Harbour</div>
+        <h1>Sapa <i>Residences.</i></h1>
+        <p>Waterfront living on the banks of Dubai Creek — where the skyline meets the sanctuary.</p>
+        <div class="hero-cta">
+          <a class="btn-pill accent" href="#contact">Register Interest</a>
+          <a class="btn-glass-white" href="#about">Discover</a>
+        </div>
+      </div>
+    </div>
+
     <div class="iz-scrub__ui">
       <p class="iz-scrub__act" data-iz-act></p>
       <h2 class="iz-scrub__title" data-iz-title></h2>
@@ -35,9 +54,8 @@
     </div>
     <p class="iz-scrub__hint">Scroll</p>
   </div>
-  <script type="application/json" data-iz-chapters>[{"act":"01 Arrive","title":"Residence.","body":"Residans eşiği."},{"act":"02 Lobby","title":"Warm stone.","body":"Lobide karşılama."},{"act":"03 Live","title":"Terrace light.","body":"Teras ışığı."},{"act":"04 Green","title":"Community.","body":"Avlu."}]</script>
-</section>
-
+  <script type="application/json" data-iz-chapters>[{"act":"01 Arrive","title":"Residence.","body":"The tower rises from the creek edge."},{"act":"02 Lobby","title":"Warm stone.","body":"A quiet welcome in pale timber and stone."},{"act":"03 Live","title":"Terrace light.","body":"Deep terraces turned to the water."},{"act":"04 Green","title":"Community.","body":"Gardens and pools at the foot of the tower."}]</script>
+</header>
 
 <div class="ambient" aria-hidden="true"></div>
 
@@ -80,21 +98,6 @@
     <path d="M5 17.5h14M6.5 17.5a5.5 5.5 0 0 1 11 0M12 9.5V8"/><circle cx="12" cy="7" r="1"/>
   </symbol>
 </svg>
-
-<!-- ═══════════ 1 · HERO ═══════════ -->
-<header class="hero">
-  <img class="hero-bg" src="assets/Exterior/02-low-angle-hero.png" alt="Sapa Residences tower rising above Dubai Creek Harbour at golden hour" fetchpriority="high">
-  <div class="hero-card reveal">
-    <div class="hc-label">Dubai Creek Harbour</div>
-    <h1>Sapa <i>Residences.</i></h1>
-    <p>Waterfront living on the banks of Dubai Creek — where the skyline meets the sanctuary.</p>
-    <div class="hero-cta">
-      <a class="btn-pill accent" href="#contact">Register Interest</a>
-      <a class="btn-glass-white" href="#about">Discover</a>
-    </div>
-  </div>
-  <div class="hero-scroll" aria-hidden="true">Scroll</div>
-</header>
 
 <!-- ═══════════ 2 · DOWNLOADS ═══════════ -->
 <section class="downloads">

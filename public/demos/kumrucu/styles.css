@@ -90,18 +90,25 @@ main, .nav, .loader, .progress, .foot, .ticker { position: relative; z-index: 1;
 .nav__brand span {
   font-family: var(--serif); font-size: 1.05rem; font-weight: 560;
   letter-spacing: -.01em; line-height: 1.1;
+  color: var(--paper);
+  text-shadow: 0 1px 14px rgba(0,0,0,.55);
 }
 .nav__brand small {
   display: block; font-family: var(--mono); font-size: .58rem;
-  letter-spacing: .16em; text-transform: uppercase; color: var(--ink-soft); font-weight: 400;
+  letter-spacing: .16em; text-transform: uppercase; color: rgba(246,238,227,.72); font-weight: 400;
 }
+.nav.is-solid .nav__brand span { color: var(--ink); text-shadow: none; }
+.nav.is-solid .nav__brand small { color: var(--ink-soft); }
 .nav__links { display: none; gap: .15rem; flex: 1; justify-content: center; }
 .nav__links button {
   background: none; border: 0; cursor: pointer; padding: .5rem .7rem;
   font-family: var(--mono); font-size: .68rem; letter-spacing: .12em; text-transform: uppercase;
-  color: var(--ink-soft);
+  color: rgba(246,238,227,.78);
 }
-.nav__links button.is-on, .nav__links button:hover { color: var(--crust-deep); }
+.nav__links button.is-on, .nav__links button:hover { color: var(--toast); }
+.nav.is-solid .nav__links button { color: var(--ink-soft); }
+.nav.is-solid .nav__links button.is-on,
+.nav.is-solid .nav__links button:hover { color: var(--crust-deep); }
 .nav__actions { display: flex; align-items: center; gap: .4rem; }
 .nav__ghost {
   display: none; font-family: var(--mono); font-size: .65rem; letter-spacing: .12em;
@@ -119,8 +126,8 @@ main, .nav, .loader, .progress, .foot, .ticker { position: relative; z-index: 1;
   .nav__ghost { display: inline-flex; }
 }
 
-.stage-wrap { position: relative; background: var(--ember); }
-.stage-track { height: 1280vh; }
+.stage-wrap { position: relative; background: #1a100c; }
+.stage-track { height: 1480vh; }
 .stage-pin {
   position: sticky; top: 0; height: 100vh; width: 100%; overflow: hidden; background: #1a100c;
 }
@@ -502,7 +509,7 @@ body.no-film .hint { display: none; }
   }
   .nav__links::-webkit-scrollbar { display: none; }
   .nav__links button { white-space: nowrap; font-size: .6rem; padding: .4rem .5rem; }
-  .stage-track { height: 1040vh; }
+  .stage-track { height: 1180vh; }
   .stage-pin { height: 100dvh; height: 100svh; }
   .stage-ui {
     left: 1rem; right: 1rem; max-width: none;

@@ -94,29 +94,44 @@ body {
   color: #141414;
 }
 
-/* İZDEN glyph paper → Ultra HD crew-card photo (not flat white) */
+/* İZDEN glyph: crew-card on ::before so JS never wipes it */
 .portal-light [data-gp-pin] {
+  background-color: #0b0b0b !important;
+  background-image: none !important;
+  isolation: isolate;
+}
+.portal-light [data-gp-pin]::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 1;
   background-color: #0b0b0b;
   background-image:
     linear-gradient(
       165deg,
-      rgba(8, 8, 8, 0.42) 0%,
-      rgba(8, 8, 8, 0.18) 38%,
-      rgba(8, 8, 8, 0.55) 100%
+      rgba(8, 8, 8, 0.38) 0%,
+      rgba(8, 8, 8, 0.14) 42%,
+      rgba(8, 8, 8, 0.52) 100%
     ),
     url("/brand/izden-crew-card.jpg");
   background-size: cover;
-  background-position: 62% 24%;
+  background-position: 58% 22%;
   background-repeat: no-repeat;
 }
+.portal-light [data-gp-pin] > * {
+  position: relative;
+  z-index: 1;
+}
 @media (max-width: 900px), (orientation: portrait) {
-  .portal-light [data-gp-pin] {
+  .portal-light [data-gp-pin]::before {
     background-image:
       linear-gradient(
         180deg,
-        rgba(8, 8, 8, 0.5) 0%,
-        rgba(8, 8, 8, 0.22) 42%,
-        rgba(8, 8, 8, 0.62) 100%
+        rgba(8, 8, 8, 0.52) 0%,
+        rgba(8, 8, 8, 0.24) 42%,
+        rgba(8, 8, 8, 0.64) 100%
       ),
       url("/brand/izden-crew-card-mob.jpg");
     background-position: 48% 18%;
@@ -125,16 +140,22 @@ body {
 .portal-light .gp-cat,
 .portal-light .gp-eye,
 .portal-light .gp-support,
-.portal-light .gp-scroll {
-  color: rgba(247, 245, 241, 0.88);
-  text-shadow: 0 1px 18px rgba(0, 0, 0, 0.55);
+.portal-light .gp-scroll,
+.portal-light .gp-top .gp-cat {
+  color: rgba(247, 245, 241, 0.92) !important;
+  text-shadow: 0 1px 18px rgba(0, 0, 0, 0.65);
 }
 .portal-light .gp-support {
-  color: rgba(247, 245, 241, 0.78);
+  color: rgba(247, 245, 241, 0.82) !important;
 }
 .portal-light [data-gp-enter] {
   color: #f7f5f1 !important;
-  text-shadow: 0 1px 14px rgba(0, 0, 0, 0.5);
+  text-shadow: 0 1px 14px rgba(0, 0, 0, 0.55);
+}
+/* Letter windows stay cinematic dark; ink marks light for contrast on photo */
+.portal-light {
+  --gp-ink: #f7f5f1;
+  --gp-field: #0c0c0c;
 }
 
 .gp-top {

@@ -53,13 +53,13 @@
       </button>
     </div>
     <nav class="menu__nav" aria-label="Menu">
-      <a class="menu__link is-active" href="index.html"><span class="menu__num">01</span><span class="menu__word">Work</span></a>
+      <a class="menu__link is-active" href="index.html#works"><span class="menu__num">01</span><span class="menu__word">Work</span></a>
       <a class="menu__link" href="about.html"><span class="menu__num">02</span><span class="menu__word">About</span></a>
     </nav>
     <div class="menu__foot">
       <a class="menu__mail" href="mailto:hello@gridarchitects.studio">hello@gridarchitects.studio</a>
       <div class="menu__social">
-        <a href="#">Instagram</a><a href="#">LinkedIn</a><a href="#">Journal</a>
+        <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer">Instagram</a><a href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer">LinkedIn</a><a href="about.html">Studio</a>
       </div>
     </div>
   </div>
@@ -83,7 +83,7 @@
 
     <!-- gallery label -->
     <div class="page-head" style="padding-top: clamp(26px, 5vw, 54px); padding-bottom: 0;">
-      <p class="page-head__label">Gallery</p>
+      <p class="page-head__label">More from the studio</p>
     </div>
 
     <!-- gallery grid -->
@@ -96,7 +96,7 @@
 
     <!-- back to work -->
     <section class="to-page">
-      <a class="to-page__link" href="index.html">
+      <a class="to-page__link" href="index.html#works">
         <span class="to-page__small">Index</span>
         <span class="to-page__big">All work <span class="arw">&#8594;</span></span>
       </a>
@@ -189,14 +189,19 @@
       var slug = new URLSearchParams(location.search).get("p");
       if (!DATA[slug]) slug = "01-pleated-museum";
       var p = DATA[slug];
-      var base = "images/gallery/" + slug + "/";
+      /* Real files only: the hero is this project's own plate; the gallery draws
+         on the studio's other projects so no image path can 404. */
+      var order = Object.keys(DATA);
+      var at = order.indexOf(slug);
+      var pick = function (n) { return order[(at + n) % order.length]; };
+      var galleryKey = { a: pick(1), c: pick(2), d: pick(3), b: pick(4) };
 
       document.title = p.name + " — Grid Architecture Studio";
       var meta = document.querySelector('meta[name="description"]');
       if (meta) meta.setAttribute("content", p.name + " — " + p.meta + ". A project by Grid Architecture Studio.");
 
       var hero = document.querySelector("[data-hero-img]");
-      hero.src = base + "hero.jpg";
+      hero.src = "images/" + slug + ".jpg";
       hero.alt = p.name + " — hero view";
 
       document.querySelector("[data-name]").textContent = p.name;
@@ -211,8 +216,9 @@
       });
 
       Array.prototype.forEach.call(document.querySelectorAll(".pgallery img[data-g]"), function (img) {
-        img.src = base + img.getAttribute("data-g") + ".jpg";
-        img.alt = p.name + " — gallery view";
+        var other = galleryKey[img.getAttribute("data-g")];
+        img.src = "images/" + other + ".jpg";
+        img.alt = DATA[other].name + " — " + DATA[other].meta;
       });
     })();
   </script>

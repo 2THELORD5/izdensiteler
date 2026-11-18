@@ -8,12 +8,14 @@
   <link rel="preconnect" href="https://api.fontshare.com" crossorigin>
   <link href="https://api.fontshare.com/v2/css?f[]=clash-display@400,500,600&f[]=general-sans@400,500,600&display=swap" rel="stylesheet">
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23060606'/%3E%3Ctext x='32' y='44' font-family='Arial Black, Arial' font-size='36' font-weight='900' fill='%23f5f5f3' text-anchor='middle'%3EB%3C/text%3E%3C/svg%3E">
-  <link rel="preload" as="image" href="assets/bold-website-images/hero-bold-landmark.jpg">
+  <link rel="preload" as="image" href="assets/kie-scrub/pc/01.jpg" media="(min-width: 721px)">
+  <link rel="preload" as="image" href="assets/kie-scrub/mob/01.jpg" media="(max-width: 720px)">
   <link rel="stylesheet" href="styles.css">
 <link rel="stylesheet" href="/demos/_shared/izden-agency.css" />
 
 <link rel="stylesheet" href="/demos/_shared/izden-image-scrub.css" />
 <link rel="stylesheet" href="/demos/_shared/izden-afterglow.css" />
+<link rel="stylesheet" href="/demos/_shared/izden-scroll-gallery.css" />
 </head>
 <body id="top">
 
@@ -48,47 +50,43 @@
 
   <main>
 
-<section class="iz-scrub iz-scrub--film iz-scrub--kie" data-iz-film-scrub
-  data-film-pc="assets/kie-scrub/film-pc.mp4"
-  data-film-mob="assets/kie-scrub/film-mob.mp4"
-  data-poster="assets/kie-scrub/pc/01.jpg"
-  aria-label="Film chapter scrub">
-  <div class="iz-scrub__pin">
-    <div class="iz-scrub__stage">
-      <video class="iz-film" muted playsinline preload="auto" poster="assets/kie-scrub/pc/01.jpg" disablePictureInPicture></video>
-    </div>
-    <div class="iz-scrub__veil" aria-hidden="true"></div>
-    <div class="iz-scrub__ui">
-      <p class="iz-scrub__act" data-iz-act></p>
-      <h2 class="iz-scrub__title" data-iz-title></h2>
-      <p class="iz-scrub__body" data-iz-body></p>
-    </div>
-    <p class="iz-scrub__hint">Scroll</p>
-  </div>
-  <script type="application/json" data-iz-chapters>[{"act":"01 Landmark","title":"Nothing less.","body":"İkonik siluet."},{"act":"02 Mass","title":"Gravity drawn.","body":"Kütle ve yansıma."},{"act":"03 Night","title":"Skyline edge.","body":"Gece hattı."},{"act":"04 Plaza","title":"Public heart.","body":"Kamusal alan."}]</script>
-</section>
-
-
-    <!-- ======================= HERO ======================= -->
-    <section class="hero">
-      <div class="hero-media">
-        <img src="assets/bold-website-images/hero-bold-landmark.jpg" alt="A sweeping futuristic landmark building mirrored in still water at dusk" class="bw" id="heroImg">
-      </div>
-      <div class="hero-veil" aria-hidden="true"></div>
-
-      <div class="hero-content">
-        <h1 class="hero-title">
-          <span class="line"><span class="line-inner">Landmarks.</span></span>
-          <span class="line"><span class="line-inner outline">Nothing less.</span></span>
-        </h1>
-        <p class="hero-sub">A studio for futuristic icons — by commission only.</p>
-        <div class="hero-cta">
-          <a href="#projects" class="btn" data-cursor>Selected works</a>
-          <a href="#contact" class="link-plain" data-cursor>Start a commission</a>
+<!-- ======================= HERO = LIVE FILM SCRUB =======================
+         film-pc (16:9) / film-mob (9:16) seeked by scroll through izden-film-scrub.js -->
+    <section class="iz-scrub iz-scrub--film iz-scrub--kie iz-scrub--has-hero iz-scrub--drift bold-film" id="hero" data-iz-film-scrub
+      data-film-pc="assets/kie-scrub/film-pc.mp4"
+      data-film-mob="assets/kie-scrub/film-mob.mp4"
+      data-poster="assets/kie-scrub/pc/01.jpg"
+      data-poster-mob="assets/kie-scrub/mob/01.jpg"
+      aria-label="BOLD Architects — landmark film">
+      <div class="iz-scrub__pin">
+        <div class="iz-scrub__stage">
+          <video class="iz-film" muted playsinline preload="auto" poster="assets/kie-scrub/pc/01.jpg" disablePictureInPicture
+            aria-label="A sweeping futuristic landmark building seen by day, at dusk and at night"></video>
         </div>
-      </div>
+        <div class="iz-scrub__veil" aria-hidden="true"></div>
 
-      <div class="hero-scroll" aria-hidden="true"><span class="hero-scroll-line"></span>Scroll</div>
+        <div class="iz-scrub__hero">
+          <div class="hero-content">
+            <h1 class="hero-title">
+              <span class="line"><span class="line-inner">Landmarks.</span></span>
+              <span class="line"><span class="line-inner outline">Nothing less.</span></span>
+            </h1>
+            <p class="hero-sub">A studio for futuristic icons — by commission only.</p>
+            <div class="hero-cta">
+              <a href="#projects" class="btn" data-cursor>Selected works</a>
+              <a href="#contact" class="link-plain" data-cursor>Start a commission</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="iz-scrub__ui">
+          <p class="iz-scrub__act" data-iz-act></p>
+          <h2 class="iz-scrub__title" data-iz-title></h2>
+          <p class="iz-scrub__body" data-iz-body></p>
+        </div>
+        <p class="iz-scrub__hint">Scroll</p>
+      </div>
+      <script type="application/json" data-iz-chapters>[{"act":"01 Landmark","title":"Nothing less.","body":"One silhouette a city remembers."},{"act":"02 Mass","title":"Gravity drawn.","body":"Mass, reflection, a single curve."},{"act":"03 Night","title":"Skyline edge.","body":"Designed for its darkest hour."},{"act":"04 Plaza","title":"Public heart.","body":"The ground floor belongs to the city."}]</script>
     </section>
 
     <!-- ======================= ABOUT ======================= -->
@@ -126,53 +124,69 @@
     </section>
 
     <!-- ======================= PROJECTS ======================= -->
-    <section class="section section--paper projects" id="projects">
-      <h2 class="display display--dark reveal">Selected works</h2>
-      <ul class="work-index" id="workIndex">
-        <li class="work reveal" data-img="assets/bold-website-images/project-waterfront-performing-arts.jpg" data-cursor>
-          <h3 class="work-name">Tidal Hall</h3>
-          <p class="work-place">Oslo</p>
-          <p class="work-year">2025</p>
-          <img class="work-thumb bw" src="assets/bold-website-images/project-waterfront-performing-arts.jpg" alt="Waterfront performing arts hall with a winged roof at dusk" loading="lazy">
-        </li>
-        <li class="work reveal" style="--d:.05s" data-img="assets/bold-website-images/project-desert-art-foundation.jpg" data-cursor>
-          <h3 class="work-name">Dune Monolith</h3>
-          <p class="work-place">AlUla</p>
-          <p class="work-year">2024</p>
-          <img class="work-thumb bw" src="assets/bold-website-images/project-desert-art-foundation.jpg" alt="Sail-like art foundation rising from the desert" loading="lazy">
-        </li>
-        <li class="work reveal" style="--d:.1s" data-img="assets/bold-website-images/project-riverfront-innovation-campus.jpg" data-cursor>
-          <h3 class="work-name">Delta Campus</h3>
-          <p class="work-place">Singapore</p>
-          <p class="work-year">2024</p>
-          <img class="work-thumb bw" src="assets/bold-website-images/project-riverfront-innovation-campus.jpg" alt="Flowing riverfront innovation campus at night" loading="lazy">
-        </li>
-        <li class="work reveal" style="--d:.15s" data-img="assets/bold-website-images/project-urban-observatory-club.jpg" data-cursor>
-          <h3 class="work-name">Observatory Club</h3>
-          <p class="work-place">Shanghai</p>
-          <p class="work-year">2023</p>
-          <img class="work-thumb bw" src="assets/bold-website-images/project-urban-observatory-club.jpg" alt="Cylindrical observatory tower glowing at night" loading="lazy">
-        </li>
-        <li class="work reveal" style="--d:.2s" data-img="assets/bold-website-images/project-coastal-private-pavilion.jpg" data-cursor>
-          <h3 class="work-name">Cliff Pavilion</h3>
-          <p class="work-place">Big Sur</p>
-          <p class="work-year">2023</p>
-          <img class="work-thumb bw" src="assets/bold-website-images/project-coastal-private-pavilion.jpg" alt="Private pavilion cantilevered over a coastal cliff" loading="lazy">
-        </li>
-        <li class="work reveal" style="--d:.25s" data-img="assets/bold-website-images/project-private-wellness-sanctuary.jpg" data-cursor>
-          <h3 class="work-name">Oculus Baths</h3>
-          <p class="work-place">Kyoto</p>
-          <p class="work-year">2022</p>
-          <img class="work-thumb bw" src="assets/bold-website-images/project-private-wellness-sanctuary.jpg" alt="Wellness sanctuary interior lit by a single oculus" loading="lazy">
-        </li>
-        <li class="work reveal" style="--d:.3s" data-img="assets/bold-website-images/project-urban-design-gallery.jpg" data-cursor>
-          <h3 class="work-name">Prism Gallery</h3>
-          <p class="work-place">Rotterdam</p>
-          <p class="work-year">2022</p>
-          <img class="work-thumb bw" src="assets/bold-website-images/project-urban-design-gallery.jpg" alt="Angular glass design gallery reflected in wet paving" loading="lazy">
-        </li>
-      </ul>
-      <div class="work-flare" id="workFlare" aria-hidden="true"><img src="assets/bold-website-images/project-waterfront-performing-arts.jpg" alt="" class="bw"></div>
+    <!-- ======================= PROJECTS (scroll-driven: scroll advances the active project) ======================= -->
+    <section class="section--paper projects" id="projects" data-iz-scroll-gallery=".work" data-iz-sg-vh="58" data-iz-sg-counter="#workNow">
+      <div class="projects-pin" data-iz-sg-pin>
+        <div class="projects-head">
+          <h2 class="display display--dark">Selected works</h2>
+          <p class="projects-count" aria-hidden="true"><b id="workNow">01</b> / 07</p>
+        </div>
+        <div class="projects-body">
+          <ul class="work-index" id="workIndex">
+          <li class="work" data-work="0" tabindex="0" data-cursor>
+            <span class="work-num">01</span>
+            <h3 class="work-name">Tidal Hall</h3>
+            <p class="work-place">Oslo</p>
+            <p class="work-year">2025</p>
+          </li>
+          <li class="work" data-work="1" tabindex="0" data-cursor>
+            <span class="work-num">02</span>
+            <h3 class="work-name">Dune Monolith</h3>
+            <p class="work-place">AlUla</p>
+            <p class="work-year">2024</p>
+          </li>
+          <li class="work" data-work="2" tabindex="0" data-cursor>
+            <span class="work-num">03</span>
+            <h3 class="work-name">Delta Campus</h3>
+            <p class="work-place">Singapore</p>
+            <p class="work-year">2024</p>
+          </li>
+          <li class="work" data-work="3" tabindex="0" data-cursor>
+            <span class="work-num">04</span>
+            <h3 class="work-name">Observatory Club</h3>
+            <p class="work-place">Shanghai</p>
+            <p class="work-year">2023</p>
+          </li>
+          <li class="work" data-work="4" tabindex="0" data-cursor>
+            <span class="work-num">05</span>
+            <h3 class="work-name">Cliff Pavilion</h3>
+            <p class="work-place">Big Sur</p>
+            <p class="work-year">2023</p>
+          </li>
+          <li class="work" data-work="5" tabindex="0" data-cursor>
+            <span class="work-num">06</span>
+            <h3 class="work-name">Oculus Baths</h3>
+            <p class="work-place">Kyoto</p>
+            <p class="work-year">2022</p>
+          </li>
+          <li class="work" data-work="6" tabindex="0" data-cursor>
+            <span class="work-num">07</span>
+            <h3 class="work-name">Prism Gallery</h3>
+            <p class="work-place">Rotterdam</p>
+            <p class="work-year">2022</p>
+          </li>
+          </ul>
+          <figure class="work-stage" id="workStage">
+          <img class="work-stage__img is-on" src="assets/bold-website-images/project-waterfront-performing-arts.jpg" alt="Waterfront performing arts hall with a winged roof at dusk" loading="eager" decoding="async">
+          <img class="work-stage__img" src="assets/bold-website-images/project-desert-art-foundation.jpg" alt="Sail-like art foundation rising from the desert" loading="eager" decoding="async">
+          <img class="work-stage__img" src="assets/bold-website-images/project-riverfront-innovation-campus.jpg" alt="Flowing riverfront innovation campus at night" loading="lazy" decoding="async">
+          <img class="work-stage__img" src="assets/bold-website-images/project-urban-observatory-club.jpg" alt="Cylindrical observatory tower glowing at night" loading="lazy" decoding="async">
+          <img class="work-stage__img" src="assets/bold-website-images/project-coastal-private-pavilion.jpg" alt="Private pavilion cantilevered over a coastal cliff" loading="lazy" decoding="async">
+          <img class="work-stage__img" src="assets/bold-website-images/project-private-wellness-sanctuary.jpg" alt="Wellness sanctuary interior lit by a single oculus" loading="lazy" decoding="async">
+          <img class="work-stage__img" src="assets/bold-website-images/project-urban-design-gallery.jpg" alt="Angular glass design gallery reflected in wet paving" loading="lazy" decoding="async">
+          </figure>
+        </div>
+      </div>
     </section>
 
     <!-- ======================= CASE STUDY ======================= -->
@@ -298,8 +312,8 @@
     <p class="footer-brand">BOLD<sup>®</sup></p>
     <p class="footer-meta">Dubai&ensp;·&ensp;Rotterdam</p>
     <div class="footer-links">
-      <a href="#" data-cursor>Instagram</a>
-      <a href="#" data-cursor>LinkedIn</a>
+      <a href="#contact" data-cursor>Instagram</a>
+      <a href="#contact" data-cursor>LinkedIn</a>
     </div>
     <p class="footer-copy">© 2026 BOLD Architects</p>
   </footer>

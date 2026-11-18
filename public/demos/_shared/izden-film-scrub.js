@@ -1,18 +1,34 @@
 (() => {
   /**
    * Continuous film scrub — currentTime seek, NOT still opacity crossfade.
+   *
    * Markup:
-   * <section data-iz-film-scrub data-film-pc="…" data-film-mob="…" data-poster="…">
+   * <section class="iz-scrub iz-scrub--film" data-iz-film-scrub
+   *          data-film-pc="…" data-film-mob="…" data-poster="…" data-poster-mob="…">
    *   <div class="iz-scrub__pin">
-   *     <video class="iz-film" muted playsinline preload="auto"></video>
+   *     <div class="iz-scrub__stage"><video class="iz-film" muted playsinline preload="auto"></video></div>
+   *     <div class="iz-scrub__veil"></div>
+   *     optional: <div class="iz-scrub__hero">…brand hero copy, fades out by p≈0.1…</div>
    *     <div class="iz-scrub__ui">… data-iz-act/title/body …</div>
    *   </div>
    *   optional: <script type="application/json" data-iz-chapters>[…]</script>
    * </section>
+   *
+   * Exposes on the section:
+   *   --iz-p            0..1 scroll progress (CSS can fade hero / drift video)
+   *   .is-past-hero     added once p > HERO_END (hero overlay no longer interactive)
+   *   data-iz-chapter   current chapter index
+   *
+   * Jank rules:
+   *   - scroll handler only stores a target (no seeking per wheel tick)
+   *   - all seeks happen inside one rAF loop, one in flight at a time (coalesced)
+   *   - rAF loop sleeps when settled / section offscreen
+   *   - prefers-reduced-motion → poster only, video is never downloaded
    */
   const root = document.querySelector("[data-iz-film-scrub]");
   if (!root) return;
 
+  const HERO_END = 0.1;
   const pin = root.querySelector(".iz-scrub__pin") || root;
   const video =
     root.querySelector("video.iz-film") ||
@@ -29,6 +45,11 @@
       stage.prepend(v);
       return v;
     })();
+  video.muted = true;
+  video.defaultMuted = true;
+  video.playsInline = true;
+  video.removeAttribute("loop");
+  video.removeAttribute("autoplay");
 
   const actEl = root.querySelector("[data-iz-act]");
   const titleEl = root.querySelector("[data-iz-title]");
@@ -68,11 +89,23 @@
     );
   };
 
-  const poster =
-    root.dataset.poster ||
-    root.querySelector(".iz-scrub__frame img")?.getAttribute("src") ||
-    "";
-  if (poster) video.setAttribute("poster", poster);
+  const pickPoster = () => {
+    const mob = mobileMq.matches;
+    return (
+      (mob && root.dataset.posterMob) ||
+      root.dataset.poster ||
+      root.querySelector(".iz-scrub__frame img")?.getAttribute("src") ||
+      video.getAttribute("poster") ||
+      ""
+    );
+  };
+  const applyPoster = () => {
+    const p = pickPoster();
+    if (p && video.getAttribute("poster") !== p) video.setAttribute("poster", p);
+  };
+  applyPoster();
+
+  const clamp = (v, a = 0, b = 1) => Math.min(b, Math.max(a, v));
 
   let duration = 0;
   let ready = false;
@@ -80,20 +113,20 @@
   let pending = null;
   let lastApplied = -1;
   let lastChapter = -1;
+  let lastPublished = -1;
+  let pastHero = null;
   let targetP = 0;
   let currentP = 0;
   let raf = 0;
-  const SEEK_EPS = mobileMq.matches ? 0.04 : 0.022;
-  const STIFF = mobileMq.matches ? 10 : 14;
-
-  const clamp = (v, a = 0, b = 1) => Math.min(b, Math.max(a, v));
+  let inView = true;
+  let last = 0;
+  /* Stiffer follow on desktop, softer on touch (momentum scroll already smooth) */
+  const SEEK_EPS = () => (mobileMq.matches ? 0.028 : 0.014);
+  const STIFF = () => (mobileMq.matches ? 14 : 20);
 
   const applyChapter = (p) => {
     if (!chapters.length) return;
-    const i = Math.min(
-      chapters.length - 1,
-      Math.floor(p * chapters.length)
-    );
+    const i = Math.min(chapters.length - 1, Math.floor(p * chapters.length));
     if (i === lastChapter) return;
     lastChapter = i;
     const c = chapters[i];
@@ -103,24 +136,28 @@
     root.dataset.izChapter = String(i);
   };
 
-  const flush = () => {
-    if (pending == null) return;
-    const t = pending;
-    pending = null;
-    seek(t);
+  const publish = (p) => {
+    if (Math.abs(p - lastPublished) < 0.0006 && lastPublished >= 0) return;
+    lastPublished = p;
+    root.style.setProperty("--iz-p", p.toFixed(4));
+    const past = p > HERO_END;
+    if (past !== pastHero) {
+      pastHero = past;
+      root.classList.toggle("is-past-hero", past);
+    }
   };
 
   const seek = (t) => {
     if (!ready || duration <= 0) return;
     const next = clamp(t, 0, Math.max(0, duration - 0.04));
     if (
-      Math.abs(next - lastApplied) < SEEK_EPS &&
-      Math.abs(next - video.currentTime) < SEEK_EPS * 1.5
+      Math.abs(next - lastApplied) < SEEK_EPS() &&
+      Math.abs(next - video.currentTime) < SEEK_EPS() * 1.5
     ) {
       return;
     }
     if (seeking) {
-      pending = next;
+      pending = next; // coalesce: only the latest wanted time survives
       return;
     }
     seeking = true;
@@ -132,9 +169,20 @@
     }
   };
 
+  const flush = () => {
+    if (pending == null) return;
+    const t = pending;
+    pending = null;
+    seek(t);
+  };
+
   video.addEventListener("seeked", () => {
     seeking = false;
     flush();
+  });
+  // never let a stalled seek freeze the scrub forever
+  video.addEventListener("error", () => {
+    seeking = false;
   });
 
   const readP = () => {
@@ -143,116 +191,161 @@
     return clamp(-top / total);
   };
 
+  const markReady = () => {
+    const d = video.duration;
+    if (Number.isFinite(d) && d > 0) {
+      duration = d;
+      ready = true;
+    }
+  };
+
   const loadSrc = () => {
     const src = pickSrc();
+    applyPoster();
     if (!src) return;
-    if (video.getAttribute("src") === src && ready) return;
+    if (video.getAttribute("src") === src) {
+      markReady();
+      return;
+    }
     ready = false;
     duration = 0;
     lastApplied = -1;
+    seeking = false;
+    pending = null;
     video.src = src;
     video.load();
   };
 
-  const warm = () =>
-    new Promise((resolve) => {
-      const done = () => {
-        duration =
-          Number.isFinite(video.duration) && video.duration > 0
-            ? video.duration
-            : 0;
-        ready = duration > 0;
-        resolve();
-      };
-      if (video.readyState >= 1 && video.duration > 0) done();
-      else {
-        video.addEventListener("loadedmetadata", done, { once: true });
-        video.addEventListener("error", () => resolve(), { once: true });
-        setTimeout(done, mobileMq.matches ? 3500 : 8000);
-      }
-      try {
-        video.load();
-      } catch {
-        resolve();
-      }
-    }).then(async () => {
-      if (!ready) return;
-      try {
-        video.pause();
-        const p = video.play();
-        if (p && typeof p.then === "function") await p.catch(() => {});
-        video.pause();
-      } catch {
-        /* ignore */
-      }
-      try {
-        video.currentTime = 0.02;
-      } catch {
-        /* ignore */
-      }
+  const stop = () => {
+    if (raf) cancelAnimationFrame(raf);
+    raf = 0;
+  };
+
+  const tick = (now) => {
+    raf = 0;
+    const dt = Math.min(0.05, Math.max(0.001, (now - last) / 1000));
+    last = now;
+    const k = 1 - Math.exp(-STIFF() * dt);
+    currentP += (targetP - currentP) * k;
+    const settled = Math.abs(targetP - currentP) < 0.00035;
+    if (settled) currentP = targetP;
+    if (ready && duration > 0) {
+      seek(currentP * Math.max(0.05, duration - 0.05));
+      /* Chapters follow decoded frame time — avoids text racing ahead of video */
+      const played = duration > 0 ? clamp(video.currentTime / duration) : currentP;
+      applyChapter(played);
+    } else {
+      applyChapter(currentP);
+    }
+    publish(currentP);
+    // keep looping while moving; sleep once settled (wake() on next scroll)
+    if (!settled || seeking || pending != null) raf = requestAnimationFrame(tick);
+  };
+
+  const wake = () => {
+    if (raf || !inView) return;
+    last = performance.now();
+    raf = requestAnimationFrame(tick);
+  };
+
+  const onScroll = () => {
+    targetP = readP();
+    if (hintEl) hintEl.classList.toggle("is-hide", targetP > 0.04);
+    wake();
+  };
+
+  /* ——— reduced motion: poster only, hero copy readable, no video download ——— */
+  if (reduced) {
+    root.classList.add("iz-scrub--static");
+    applyPoster();
+    video.removeAttribute("src");
+    video.preload = "none";
+    applyChapter(0);
+    publish(0);
+    if (hintEl) hintEl.style.display = "none";
+    return;
+  }
+
+  /* ——— warm the decoder so the first seeks paint a frame ——— */
+  const warm = async () => {
+    await new Promise((resolve) => {
+      if (video.readyState >= 1 && video.duration > 0) return resolve();
+      video.addEventListener("loadedmetadata", resolve, { once: true });
+      video.addEventListener("error", resolve, { once: true });
+      setTimeout(resolve, mobileMq.matches ? 3500 : 8000);
     });
+    markReady();
+    if (!ready) return;
+    try {
+      video.pause();
+      const p = video.play();
+      if (p && typeof p.then === "function") await p.catch(() => {});
+      video.pause();
+    } catch {
+      /* autoplay blocked — unlock() on first touch handles it */
+    }
+    try {
+      video.currentTime = Math.max(0.02, readP() * duration);
+    } catch {
+      /* ignore */
+    }
+    targetP = readP();
+    currentP = targetP;
+    applyChapter(currentP);
+    publish(currentP);
+    wake();
+  };
+
+  video.addEventListener("loadedmetadata", () => {
+    markReady();
+    wake();
+  });
+  video.addEventListener("durationchange", markReady);
 
   const unlock = () => {
     try {
       const p = video.play();
       if (p && typeof p.then === "function") {
-        p.then(() => {
-          try {
-            video.pause();
-          } catch {
-            /* ignore */
-          }
-        }).catch(() => {});
+        p.then(() => video.pause()).catch(() => {});
       } else video.pause();
     } catch {
       /* ignore */
     }
-    if (!ready && video.duration > 0) {
-      duration = video.duration;
-      ready = true;
-    }
+    markReady();
   };
 
-  if (reduced) {
-    loadSrc();
-    applyChapter(0);
-    if (hintEl) hintEl.style.display = "none";
-    return;
-  }
-
   loadSrc();
-  warm().then(() => {
-    targetP = readP();
-    currentP = targetP;
-    applyChapter(currentP);
-  });
+  warm();
 
   mobileMq.addEventListener?.("change", () => {
     loadSrc();
     warm();
   });
 
-  window.addEventListener("scroll", () => {
-    targetP = readP();
-    if (hintEl) hintEl.classList.toggle("is-hide", targetP > 0.04);
-  }, { passive: true });
+  // only run the loop while the section is on / near screen
+  if ("IntersectionObserver" in window) {
+    new IntersectionObserver(
+      (entries) => {
+        inView = entries.some((e) => e.isIntersecting);
+        if (inView) {
+          targetP = readP();
+          wake();
+        } else stop();
+      },
+      { rootMargin: "20% 0px 20% 0px" }
+    ).observe(root);
+  }
 
+  window.addEventListener("scroll", onScroll, { passive: true });
+  window.addEventListener("resize", onScroll, { passive: true });
   window.addEventListener("touchstart", unlock, { once: true, passive: true });
   window.addEventListener("pointerdown", unlock, { once: true });
+  window.addEventListener("load", onScroll, { once: true });
 
-  let last = performance.now();
-  const tick = (now) => {
-    raf = requestAnimationFrame(tick);
-    const dt = Math.min(0.05, (now - last) / 1000);
-    last = now;
-    const k = 1 - Math.exp(-STIFF * dt);
-    currentP += (targetP - currentP) * k;
-    if (ready && duration > 0) {
-      seek(currentP * Math.max(0.05, duration - 0.05));
-    }
-    applyChapter(currentP);
-  };
-  raf = requestAnimationFrame(tick);
+  targetP = readP();
+  currentP = targetP;
+  applyChapter(currentP);
+  publish(currentP);
 
   // Hide legacy still frames — film owns the stage
   root.querySelectorAll(".iz-scrub__frame").forEach((f) => {

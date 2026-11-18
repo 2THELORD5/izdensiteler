@@ -62,6 +62,7 @@ export const SITES: Site[] = [
     accent: "#8B5E3C",
     preview: "/previews/kumrucu.jpg?v=20261118",
     externalUrl: "https://kumrucu-kale.vercel.app",
+    localPath: "/demos/kumrucu/index.html",
     order: 1,
     metric: "Film scrub",
     lane: "film",

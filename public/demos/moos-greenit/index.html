@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" class="is-intro">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -26,13 +26,13 @@
    ============================================================ */
 
 :root{
-  --canvas:#F2EFE5;
-  --ink:#15382D;
-  --muted:#68736A;
-  --leaf:#34634D;
-  --lime:#C9DB7D;
-  --cream:#FBF8EF;
-  --sand:#D7C09B;
+  --canvas:#E8EDE6;
+  --ink:#0E241C;
+  --muted:#3D5248;
+  --leaf:#1F4A38;
+  --lime:#B7D45E;
+  --cream:#F4F7F1;
+  --sand:#C4B089;
   --line:rgba(21,56,45,.16);
   --hair:rgba(21,56,45,.09);
 
@@ -49,11 +49,12 @@
 
 [hidden]{display:none !important}
 
-html,body{height:100%;margin:0}
+html,body{margin:0}
+html{scroll-behavior:smooth}
 
 body{
-  height:100svh;
-  overflow:hidden;
+  min-height:100svh;
+  overflow-x:clip;
   background-color:var(--canvas);
   background-image:
     linear-gradient(90deg,rgba(21,56,45,.028) 1px,transparent 1px),
@@ -88,7 +89,7 @@ p{margin:0}
 
 /* ---------------------------------------------------- sheet frame ---- */
 .sheet{
-  position:fixed;
+  position:absolute;
   inset:var(--frame);
   z-index:1;
   border:1px solid var(--hair);
@@ -137,7 +138,7 @@ p{margin:0}
 .burger[aria-expanded="true"] span:last-child{transform:translateY(-3px) rotate(-45deg)}
 
 /* ---------------------------------------------------------- stage ---- */
-.stage{position:fixed;inset:0;z-index:2}
+.stage{position:absolute;inset:0;z-index:2}
 
 .panel{
   position:absolute;
@@ -170,6 +171,7 @@ p{margin:0}
 }
 h1{font-size:clamp(58px,6.2vw,104px);line-height:.92;letter-spacing:-.055em;max-width:11ch}
 h2{font-size:clamp(46px,5.2vw,82px);line-height:.94;letter-spacing:-.05em;max-width:14ch}
+h2.h1-style{font-size:clamp(58px,6.2vw,104px);line-height:.92;letter-spacing:-.055em;max-width:11ch}
 h1:focus,h2:focus{outline:none}
 
 .tally{
@@ -637,7 +639,7 @@ h1:focus,h2:focus{outline:none}
 
 /* ----------------------------------------------- title block rail ---- */
 .rail{
-  position:fixed;
+  position:absolute;
   inset:auto 0 0 0;
   z-index:30;
   height:clamp(62px,8.4vh,84px);
@@ -715,12 +717,12 @@ h1:focus,h2:focus{outline:none}
   min-height:48px;
   padding:12px 0;
   border-bottom:1px solid rgba(251,248,239,.13);
-  color:rgba(251,248,239,.55);
+  color:rgba(251,248,239,.8);
   font-size:19px;letter-spacing:-.03em;
   text-align:left;
   transition:color .45s ease,padding-left .6s var(--ease);
 }
-.drawer-nav button i{font-style:normal;font-size:11px;letter-spacing:.1em;color:rgba(251,248,239,.3)}
+.drawer-nav button i{font-style:normal;font-size:11px;letter-spacing:.1em;color:rgba(251,248,239,.62)}
 .drawer-nav button em{
   font-style:normal;font-size:12px;letter-spacing:-.005em;
   color:var(--lime);opacity:.85;
@@ -834,6 +836,7 @@ h1:focus,h2:focus{outline:none}
 
   h1{font-size:clamp(44px,13vw,64px);max-width:none}
   h2{font-size:clamp(34px,9.4vw,50px);max-width:none}
+  h2.h1-style{font-size:clamp(44px,13vw,64px);max-width:none}
   .say>p{font-size:15px;margin-top:10px}
   .act{min-height:52px;font-size:14px;gap:20px}
 
@@ -901,6 +904,7 @@ h1:focus,h2:focus{outline:none}
   .panel{padding-top:84px;padding-bottom:74px}
   h1{font-size:clamp(48px,5vw,74px)}
   h2{font-size:clamp(38px,4.3vw,60px)}
+  h2.h1-style{font-size:clamp(48px,5vw,74px)}
   .say>p{margin-top:14px;font-size:15px}
   .opt{min-height:62px}
   .schedule div{padding:4px 0}
@@ -930,6 +934,7 @@ h1:focus,h2:focus{outline:none}
 @media (max-height:620px) and (max-width:720px){
   h1{font-size:clamp(36px,10vw,46px)}
   h2{font-size:clamp(28px,7.6vw,38px)}
+  h2.h1-style{font-size:clamp(36px,10vw,46px)}
   .say>p{font-size:14px}
   .tile{aspect-ratio:1.9}
 }
@@ -996,6 +1001,15 @@ h1:focus,h2:focus{outline:none}
   .panel{transform:none !important}
   .panel[data-side="before"]{transform:none !important}
 }
+
+/* gi-hero contrast on film */
+.gi-hero,.gi-hero h1,.gi-eyebrow,.gi-lede,.gi-cta .act,.gi-link{
+  color:#F4F7F1!important;
+  text-shadow:0 1px 18px rgba(0,0,0,.55);
+}
+.gi-hero h1{font-size:clamp(2rem,5.5vw,3.6rem);line-height:1.05;max-width:14ch}
+.gi-lede{color:rgba(244,247,241,.86)!important;max-width:42ch}
+
 </style>
 <noscript><style>
   .is-intro .portal-frame{
@@ -1020,11 +1034,94 @@ h1:focus,h2:focus{outline:none}
 
 <link rel="stylesheet" href="/demos/_shared/izden-image-scrub.css" />
 <link rel="stylesheet" href="/demos/_shared/izden-afterglow.css" />
+<style id="iz-greenit-film">
+/* ============ Green It — film opening, garden index, readable type ============ */
+.masthead{transition:color .45s ease}
+.masthead .brand img{transition:filter .45s ease,transform .8s var(--ease)}
+.masthead.on-film{color:#F4F7F1}
+.masthead.on-film .burger{border-color:rgba(244,247,241,.55)}
+.masthead.on-film .brand img{filter:brightness(0) invert(1)}
+.masthead.on-film .brand{text-shadow:0 1px 14px rgba(0,0,0,.45)}
+
+/* film: darkest where the type sits */
+.iz-scrub__veil{background:linear-gradient(180deg,rgba(6,18,12,.55) 0,rgba(6,18,12,.3) 32%,rgba(6,18,12,.58) 60%,rgba(6,18,12,.9) 100%)!important}
+.iz-scrub__ui{margin-left:var(--pad-x)!important;width:min(760px,calc(100% - var(--pad-x)*2))!important;padding-bottom:clamp(64px,13svh,140px)!important}
+.iz-scrub__act{color:#DDEB9F!important;text-shadow:0 1px 14px rgba(0,0,0,.7);opacity:1!important;font-family:"Geist",ui-monospace,monospace!important;font-size:12px!important;letter-spacing:.16em!important}
+.iz-scrub__title{color:#F4F7F1!important;font-weight:500!important;letter-spacing:-.045em!important;font-size:clamp(2.4rem,6.4vw,5.6rem)!important;line-height:.94!important;max-width:14ch!important;text-shadow:0 2px 30px rgba(0,0,0,.5)}
+.iz-scrub__body{color:#EEF3EA!important;opacity:1!important;max-width:34rem!important;font-size:clamp(1rem,1.5vw,1.2rem)!important;line-height:1.5!important;text-shadow:0 1px 18px rgba(0,0,0,.6)}
+.iz-scrub__hint{color:#F4F7F1!important;opacity:.85!important;letter-spacing:.2em}
+
+.gi-hero{align-items:flex-start;padding-left:var(--pad-x);padding-right:var(--pad-x);color:#F4F7F1}
+.gi-eyebrow{display:flex;align-items:center;gap:10px;font-size:12px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:#F4F7F1;margin:0 0 clamp(14px,2.2vh,22px);text-shadow:0 1px 14px rgba(0,0,0,.7)}
+.gi-eyebrow::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--lime);flex:none}
+.gi-hero h1{color:#F4F7F1;font-size:clamp(46px,7.6vw,124px);line-height:.9;letter-spacing:-.055em;max-width:11ch;margin:0;text-shadow:0 2px 36px rgba(0,0,0,.45)}
+.gi-lede{max-width:46ch;margin-top:clamp(16px,2.6vh,28px);color:#EEF3EA;font-size:clamp(16px,1.3vw,20px);line-height:1.5;text-shadow:0 1px 18px rgba(0,0,0,.6)}
+.gi-cta{display:flex;align-items:center;gap:14px 30px;flex-wrap:wrap;margin-top:clamp(22px,3.6vh,38px)}
+.act--lime{background:var(--lime);color:var(--ink)}
+.act--lime:hover:not(:disabled){background:var(--cream);color:var(--ink)}
+.gi-hero .gi-cta .act.act--lime{color:#0E241C!important;text-shadow:none!important}
+.gi-hero .gi-cta .act.act--lime:hover{color:#0E241C!important}
+.gi-link{display:inline-flex;align-items:center;min-height:48px;color:#F4F7F1;font-size:15px;font-weight:500;text-decoration:none;border-bottom:1px solid rgba(244,247,241,.6)}
+.gi-link:hover{border-color:var(--lime);color:var(--lime)}
+.iz-scrub--film .iz-scrub__hero{padding-bottom:clamp(48px,10svh,110px)}
+
+/* garden index: sticky arched plate swaps as the rows pass */
+.gi-work{position:relative;z-index:1;background:var(--canvas);color:var(--ink);padding:clamp(72px,11vw,168px) var(--pad-x) clamp(64px,9vw,128px);border-top:1px solid var(--line)}
+.gi-work__head{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(20px,5vw,90px);align-items:end}
+.gi-kicker{margin:0 0 18px;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.gi-work h2{max-width:13ch}
+.gi-work__lede{max-width:46ch;color:var(--muted);font-size:clamp(16px,1.25vw,19px);line-height:1.55}
+.gi-sheet{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1fr);gap:clamp(28px,6vw,110px);margin-top:clamp(40px,6vw,96px);align-items:start}
+.gi-plate{position:sticky;top:calc(50svh - min(30svh,260px));aspect-ratio:5/6;max-height:60svh;width:100%;justify-self:start;border-radius:50% 50% 3px 3px / 38% 38% 3px 3px;overflow:hidden;background:#cfd6c9}
+.gi-plate img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transform:scale(1.06);transition:opacity .9s var(--ease),transform 1.6s var(--ease)}
+.gi-plate img.is-on{opacity:1;transform:scale(1)}
+.gi-rows{list-style:none;margin:0;padding:0}
+.gi-row{min-height:46svh;display:flex;flex-direction:column;justify-content:center;gap:12px;padding:clamp(24px,4vh,44px) 0;border-top:1px solid var(--line);opacity:.66;transition:opacity .7s ease}
+.gi-row:last-child{border-bottom:1px solid var(--line)}
+.gi-row.is-on{opacity:1}
+.gi-row__i{font-size:12px;letter-spacing:.14em;color:var(--muted)}
+.gi-row h3{margin:0;font-weight:500;font-size:clamp(30px,3.6vw,56px);line-height:.98;letter-spacing:-.045em;max-width:14ch}
+.gi-row p{margin:0;max-width:40ch;color:var(--muted);font-size:clamp(15px,1.1vw,18px);line-height:1.55}
+.gi-row__fig{display:none;margin:12px 0 0;aspect-ratio:4/3;overflow:hidden;border-radius:44px 3px 3px 3px;background:#cfd6c9}
+.gi-row__fig img{width:100%;height:100%;object-fit:cover;display:block}
+.gi-steps{list-style:none;margin:clamp(56px,8vw,120px) 0 0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:1px solid var(--ink)}
+.gi-steps li{padding:20px 22px 0 0}
+.gi-steps b{display:block;font-weight:500;font-size:clamp(18px,1.6vw,24px);letter-spacing:-.03em;margin-bottom:8px}
+.gi-steps span{display:block;color:var(--muted);font-size:15px;line-height:1.5;max-width:30ch}
+.gi-steps i{display:block;font-style:normal;font-size:12px;letter-spacing:.14em;color:var(--muted);margin-bottom:16px}
+.gi-jump{margin-top:clamp(40px,6vw,80px);display:flex;justify-content:flex-start}
+
+/* the brief becomes the last chapter of the scroll */
+.brief-app{position:relative;height:100svh;min-height:680px;overflow:hidden;background:var(--canvas);border-top:1px solid var(--line);
+  background-image:linear-gradient(90deg,rgba(21,56,45,.035) 1px,transparent 1px),linear-gradient(rgba(21,56,45,.035) 1px,transparent 1px);background-size:7.6vmin 7.6vmin}
+.brief-app .masthead-spacer{display:none}
+
+@media (max-width:1040px){
+  .gi-work__head,.gi-sheet{grid-template-columns:minmax(0,1fr)}
+  .gi-steps{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:28px}
+}
+@media (max-width:820px){
+  .gi-plate{display:none}
+  .gi-row{min-height:0;opacity:1;padding:28px 0 32px}
+  .gi-row__fig{display:block}
+  .gi-sheet{margin-top:36px}
+}
+@media (max-width:720px){
+  .gi-hero h1{font-size:clamp(42px,12.6vw,64px)}
+  .gi-lede{font-size:16px}
+  .iz-scrub__title{font-size:clamp(2.1rem,10vw,3rem)!important}
+  .iz-scrub--film .iz-scrub__hero{padding-bottom:clamp(88px,15svh,130px)}
+  .gi-steps{grid-template-columns:minmax(0,1fr)}
+  .brief-app{min-height:640px}
+}
+@media (prefers-reduced-motion:reduce){
+  .gi-plate img,.gi-row{transition:none}
+  html{scroll-behavior:auto}
+}
+</style>
+
 </head>
 <body>
-
-<!-- drawing-sheet frame -->
-<div class="sheet" aria-hidden="true"></div>
 
 <header class="masthead">
   <button class="brand" type="button" data-go="0" aria-label="Green It, return to the start">
@@ -1038,18 +1135,28 @@ h1:focus,h2:focus{outline:none}
 
 <p class="sr" role="status" aria-live="polite" id="status"></p>
 
-<main class="stage" id="stage">
+<main id="main">
 
-<section class="iz-scrub iz-scrub--film iz-scrub--kie" data-iz-film-scrub
+<section class="iz-scrub iz-scrub--film iz-scrub--kie iz-scrub--has-hero" data-iz-film-scrub
   data-film-pc="assets/kie-scrub/film-pc.mp4"
   data-film-mob="assets/kie-scrub/film-mob.mp4"
   data-poster="assets/kie-scrub/pc/01.jpg"
-  aria-label="Film chapter scrub">
+  data-poster-mob="assets/kie-scrub/mob/01.jpg"
+  aria-label="Green It — a garden growing in, scroll to play">
   <div class="iz-scrub__pin">
     <div class="iz-scrub__stage">
       <video class="iz-film" muted playsinline preload="auto" poster="assets/kie-scrub/pc/01.jpg" disablePictureInPicture></video>
     </div>
     <div class="iz-scrub__veil" aria-hidden="true"></div>
+    <div class="iz-scrub__hero gi-hero">
+      <p class="gi-eyebrow">Garden &amp; landscape studio &middot; Dubai</p>
+      <h1>Gardens that feel grown-in from day one.</h1>
+      <p class="gi-lede">Green It designs, plants and builds private gardens across Dubai &mdash; pools, pergolas, outdoor kitchens and the planting that holds them together.</p>
+      <div class="gi-cta">
+        <a class="act act--lime" href="#brief">Start your garden brief <span aria-hidden="true">&rarr;</span></a>
+        <a class="gi-link" href="#work">See what we build</a>
+      </div>
+    </div>
     <div class="iz-scrub__ui">
       <p class="iz-scrub__act" data-iz-act></p>
       <h2 class="iz-scrub__title" data-iz-title></h2>
@@ -1057,13 +1164,77 @@ h1:focus,h2:focus{outline:none}
     </div>
     <p class="iz-scrub__hint">Scroll</p>
   </div>
-  <script type="application/json" data-iz-chapters>[{"act":"01 Path","title":"Walk in.","body":"Yürüyüş."},{"act":"02 Plant","title":"Species set.","body":"Tür seçimi."},{"act":"03 Build","title":"Soil work.","body":"Toprak."},{"act":"04 Settle","title":"Grown in.","body":"Olgun bahçe."}]</script>
+  <script type="application/json" data-iz-chapters>[{"act":"01 Walk the site","title":"Read the plot first.","body":"Sun path, soil, wind and the way you cross the garden decide the layout before anything is drawn."},{"act":"02 Plant palette","title":"Species that earn their place.","body":"Olive, ghaf, grasses and hardy perennials chosen for Dubai heat and low water use."},{"act":"03 Build","title":"Soil, stone, water.","body":"Levels, paving, irrigation and structures are built by one crew to one drawing set."},{"act":"04 Grown in","title":"Settled by the first season.","body":"Planting goes in at size, so the garden reads finished on the day it is handed over."}]</script>
 </section>
 
+<section class="gi-work" id="work" aria-labelledby="gi-work-t">
+  <div class="gi-work__head">
+    <div>
+      <p class="gi-kicker">What Green It builds</p>
+      <h2 id="gi-work-t">One garden, drawn and built as a single piece.</h2>
+    </div>
+    <p class="gi-work__lede">Most outdoor spaces are assembled from separate trades. We keep landscape, water, shade and cooking under one designer, so levels line up, planting has room to mature and nothing is bolted on afterwards.</p>
+  </div>
+
+  <div class="gi-sheet">
+    <div class="gi-plate" aria-hidden="true" id="gi-plate">
+      <img class="is-on" src="images/water-garden.jpg" alt="" width="1448" height="1086" data-i="0">
+      <img src="images/pool-lap.jpg" alt="" width="1448" height="1086" loading="lazy" data-i="1">
+      <img src="images/pergola-timber.jpg" alt="" width="1448" height="1086" loading="lazy" data-i="2">
+      <img src="images/bbq-stone.jpg" alt="" width="1448" height="1086" loading="lazy" data-i="3">
+      <img src="images/feature-fire.jpg" alt="" width="1448" height="1086" loading="lazy" data-i="4">
+    </div>
+    <ol class="gi-rows" id="gi-rows">
+      <li class="gi-row is-on" data-i="0">
+        <span class="gi-row__i">01</span>
+        <h3>Garden design</h3>
+        <p>Layout, levels and planting drawn as one scheme, tuned to sun path, soil and how you move through the plot.</p>
+        <figure class="gi-row__fig"><img src="images/water-garden.jpg" alt="Olive trees, a stone stair and a narrow rill under a steel pergola" width="1448" height="1086" loading="lazy"></figure>
+      </li>
+      <li class="gi-row" data-i="1">
+        <span class="gi-row__i">02</span>
+        <h3>Pools &amp; water</h3>
+        <p>Lap pools, plunge pools and rills set into the terrace, with hidden plant rooms and clean stone edges.</p>
+        <figure class="gi-row__fig"><img src="images/pool-lap.jpg" alt="A long lap pool between olive trees and tall grasses" width="1448" height="1086" loading="lazy"></figure>
+      </li>
+      <li class="gi-row" data-i="2">
+        <span class="gi-row__i">03</span>
+        <h3>Pergolas &amp; shade</h3>
+        <p>Timber and steel structures sized for Dubai sun, with louvres and canopies that keep the garden usable at noon.</p>
+        <figure class="gi-row__fig"><img src="images/pergola-timber.jpg" alt="A timber pergola over a lounge on a stone terrace" width="1448" height="1086" loading="lazy"></figure>
+      </li>
+      <li class="gi-row" data-i="3">
+        <span class="gi-row__i">04</span>
+        <h3>Outdoor kitchens</h3>
+        <p>Built-in BBQ counters, from a minimal grill wall to a full stone kitchen, plumbed and wired to the house.</p>
+        <figure class="gi-row__fig"><img src="images/bbq-stone.jpg" alt="A stone outdoor kitchen with built-in grill" width="1448" height="1086" loading="lazy"></figure>
+      </li>
+      <li class="gi-row" data-i="4">
+        <span class="gi-row__i">05</span>
+        <h3>Fire &amp; features</h3>
+        <p>Fire pits, sunken seating, play areas and specimen trees, placed where the garden is meant to pause.</p>
+        <figure class="gi-row__fig"><img src="images/feature-fire.jpg" alt="A fire feature set into a garden terrace" width="1448" height="1086" loading="lazy"></figure>
+      </li>
+    </ol>
+  </div>
+
+  <ol class="gi-steps" aria-label="How a Green It project runs">
+    <li><i>01</i><b>Site walk</b><span>We measure, read the light and agree what you want to do outside.</span></li>
+    <li><i>02</i><b>Concept &amp; palette</b><span>Plans, levels and a planting list you can approve before any work starts.</span></li>
+    <li><i>03</i><b>Build</b><span>Groundworks, water, structures and irrigation under one site team.</span></li>
+    <li><i>04</i><b>Plant &amp; hand over</b><span>Planting at size, a care plan and a walkthrough of the finished garden.</span></li>
+  </ol>
+
+  <div class="gi-jump"><a class="act" href="#brief">Start with your space <span aria-hidden="true">&rarr;</span></a></div>
+</section>
+
+<section class="brief-app" id="brief" aria-label="Garden brief">
+  <div class="sheet" aria-hidden="true"></div>
+  <div class="stage" id="stage">
 
   <section class="panel p-welcome is-active" data-step="0" aria-labelledby="t0">
     <div class="say">
-      <h1 id="t0" tabindex="-1">Let&rsquo;s shape your garden</h1>
+      <h2 id="t0" class="h1-style" tabindex="-1">Let&rsquo;s shape your garden</h2>
       <p>A few simple choices become a clear starting brief for your designer</p>
       <button class="act magnet" type="button" data-next>Start with your space <span aria-hidden="true">&rarr;</span></button>
     </div>
@@ -1465,7 +1636,7 @@ h1:focus,h2:focus{outline:none}
     </div>
   </section>
 
-</main>
+  </div>
 
 <!-- title block -->
 <div class="rail">
@@ -1482,6 +1653,8 @@ h1:focus,h2:focus{outline:none}
     <button type="button" id="next" data-next>Next <span aria-hidden="true">&rarr;</span></button>
   </nav>
 </div>
+</section>
+</main>
 
 <aside class="drawer" id="drawer" aria-label="Consultation index" inert>
   <div class="drawer-in">
@@ -1495,7 +1668,7 @@ h1:focus,h2:focus{outline:none}
 <script>
 /* ============================================================
    Green It — guided garden brief, thirteen screens
-   Horizontal step state, no page scrolling.
+   Horizontal step state inside the last chapter of a natively scrolling page.
    ============================================================ */
 (function () {
   "use strict";
@@ -1542,6 +1715,7 @@ h1:focus,h2:focus{outline:none}
 
   var panels    = $$(".panel");
   var stage     = $("#stage");
+  var briefApp  = $("#brief");
   var status    = $("#status");
   var numNow    = $("#num-now");
   var trackFill = $("#track-fill");
@@ -1658,7 +1832,12 @@ h1:focus,h2:focus{outline:none}
     if (hit.hasAttribute("data-back")) { back(); return; }
     if (hit.hasAttribute("data-go")) {
       if (drawer.classList.contains("is-open")) closeDrawer();
+      if (hit.classList.contains("brand")) {
+        window.scrollTo({ top: 0, behavior: calm.matches ? "auto" : "smooth" });
+        return;
+      }
       goTo(Number(hit.dataset.go));
+      showBrief();
       return;
     }
 
@@ -1684,16 +1863,16 @@ h1:focus,h2:focus{outline:none}
 
   /* ======================================= wheel, keys and swipes ==== */
 
-  var wheelLocked = false;
-  window.addEventListener("wheel", function (event) {
-    if (drawer.classList.contains("is-open")) return;
-    if (onDial(event.target)) return;
-    var force = Math.abs(event.deltaX) > Math.abs(event.deltaY) ? event.deltaX : event.deltaY;
-    if (Math.abs(force) < 16 || wheelLocked) return;
-    wheelLocked = true;
-    if (force > 0) next(); else back();
-    window.setTimeout(function () { wheelLocked = false; }, 820);
-  }, { passive: true });
+  /* Native scroll owns the wheel — the brief only listens to keys and swipes
+     once it is on screen. */
+  function briefInView() {
+    var r = briefApp.getBoundingClientRect();
+    return r.top < window.innerHeight * 0.5 && r.bottom > window.innerHeight * 0.5;
+  }
+  function showBrief() {
+    var r = briefApp.getBoundingClientRect();
+    if (Math.abs(r.top) > 4) briefApp.scrollIntoView({ behavior: calm.matches ? "auto" : "smooth", block: "start" });
+  }
 
   window.addEventListener("keydown", function (event) {
     if (event.key === "Escape" && drawer.classList.contains("is-open")) { closeDrawer(); return; }
@@ -1704,6 +1883,7 @@ h1:focus,h2:focus{outline:none}
     var tag = (event.target.tagName || "").toUpperCase();
     if (tag === "INPUT" || tag === "TEXTAREA" || tag === "SELECT") return;
     if (event.metaKey || event.ctrlKey || event.altKey) return;
+    if (!briefInView()) return;
     if (event.key === "ArrowRight") { event.preventDefault(); next(); }
     if (event.key === "ArrowLeft")  { event.preventDefault(); back(); }
   });
@@ -1792,7 +1972,7 @@ h1:focus,h2:focus{outline:none}
     item.type = "button";
     item.innerHTML = "<i>" + pad(i + 1) + "</i><span></span><em></em>";
     item.querySelector("span").textContent = step.label;
-    item.addEventListener("click", function () { closeDrawer(); goTo(i); });
+    item.addEventListener("click", function () { closeDrawer(); goTo(i); showBrief(); });
     drawerNav.appendChild(item);
   });
 
@@ -1887,99 +2067,34 @@ h1:focus,h2:focus{outline:none}
     goTo(1);
   });
 
-  /* =================================================== the opening === */
-  /* The plate is already full-viewport in CSS, so the first paint is right
-     with or without this script. All we do is contract its own box into the
-     arch — one element, one image, object-fit re-cropping as it goes — and
-     only hand the copy its reveal once the plate has landed. */
+  /* ================================= film masthead + garden index === */
 
-  var root = document.documentElement;
-  var portal = $(".portal");
-  var frame = $(".portal-frame");
-  var hero = $(".portal-frame img");
+  var masthead = $(".masthead");
+  var film = $("[data-iz-film-scrub]");
+  var plateImgs = $$("#gi-plate img");
+  var rows = $$("#gi-rows .gi-row");
 
-  var HOLD = 500;    // full-screen beat before anything moves
-  var MOVE = 1400;   // full-screen -> arch
-  var OPEN = "cubic-bezier(0.76, 0, 0.24, 1)";
-  var ARCH = "50% 50% 3px 3px / 44% 44% 3px 3px";
-
-  var plate = null;
-  var introTimer = null;
-  var introStarted = false;
-  var introPlaying = true;
-
-  function land() {
-    if (!introPlaying) return;
-    introPlaying = false;
-    window.clearTimeout(introTimer);
-    // cancel and unpin in one go: the animation ends on the very rect the
-    // resting CSS gives the frame, so the hand-off is pixel-identical
-    if (plate) { try { plate.cancel(); } catch (e) {} plate = null; }
-    root.classList.remove("is-intro");
-    if (document.hidden) {
-      // nothing would animate anyway; hand over the finished page
-      root.classList.remove("is-revealing");
-    } else {
-      root.classList.add("is-revealing");
-      window.setTimeout(function () { root.classList.remove("is-revealing"); }, 1800);
-    }
-    ["pointerdown", "keydown", "wheel"].forEach(function (type) {
-      window.removeEventListener(type, land, true);
-    });
+  function toneMasthead() {
+    var over = film ? film.getBoundingClientRect().bottom > 56 : false;
+    masthead.classList.toggle("on-film", over);
   }
+  window.addEventListener("scroll", toneMasthead, { passive: true });
+  window.addEventListener("resize", toneMasthead);
+  toneMasthead();
 
-  function whenVisible(run) {
-    if (!document.hidden) { run(); return; }
-    var onShow = function () {
-      if (document.hidden) return;
-      document.removeEventListener("visibilitychange", onShow);
-      run();
-    };
-    document.addEventListener("visibilitychange", onShow);
+  function showRow(i) {
+    rows.forEach(function (row, n) { row.classList.toggle("is-on", n === i); });
+    plateImgs.forEach(function (img, n) { img.classList.toggle("is-on", n === i); });
   }
-
-  function startIntro() {
-    if (introStarted || !introPlaying) return;
-    introStarted = true;
-
-    var rest = portal.getBoundingClientRect();
-    if (!rest.width || !frame.animate) { land(); return; }
-
-    plate = frame.animate([
-      { left: "0px", top: "0px", width: "100vw", height: "100vh", borderRadius: "0px" },
-      { left: rest.left + "px", top: rest.top + "px",
-        width: rest.width + "px", height: rest.height + "px", borderRadius: ARCH }
-    ], { duration: MOVE, delay: HOLD, easing: OPEN, fill: "both" });
-
-    plate.finished.then(land, function () {});
-    introTimer = window.setTimeout(land, HOLD + MOVE + 600); // safety net
-    ["pointerdown", "keydown", "wheel"].forEach(function (type) {
-      window.addEventListener(type, land, true);
-    });
-  }
-
-  /* wait for the picture and for webfont metrics, so the frame cannot
-     shift underneath the animation once it is running */
-  function whenReady() {
-    var waited = false;
-    var go = function () { if (!waited) { waited = true; whenVisible(startIntro); } };
-    var pending = [];
-    if (hero && !hero.complete) {
-      pending.push(new Promise(function (done) {
-        hero.addEventListener("load", done, { once: true });
-        hero.addEventListener("error", done, { once: true });
-      }));
-    }
-    if (document.fonts && document.fonts.status !== "loaded") pending.push(document.fonts.ready);
-    if (pending.length) Promise.all(pending).then(go, go); else go();
-    window.setTimeout(go, 2000); // never hold the page on a slow asset
-  }
-
-  if (calm.matches) {
-    root.classList.remove("is-intro");
-    introPlaying = false;
+  if ("IntersectionObserver" in window && rows.length && !calm.matches) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) showRow(Number(entry.target.dataset.i));
+      });
+    }, { rootMargin: "-42% 0px -42% 0px", threshold: 0 });
+    rows.forEach(function (row) { io.observe(row); });
   } else {
-    whenReady();
+    rows.forEach(function (row) { row.classList.add("is-on"); });
   }
 
   /* ========================================================= start === */
