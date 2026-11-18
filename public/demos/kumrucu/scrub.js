@@ -66,8 +66,8 @@ if (variety) {
   variety.setAttribute("playsinline", "");
   variety.setAttribute("webkit-playsinline", "");
   variety.src = isMobile
-    ? "./public/kie/scroll-v2/variety-scrub-mobile.mp4?v=k9"
-    : "./public/kie/scroll-v2/variety-scrub-pc.mp4?v=k9";
+    ? "./public/kie/scroll-v2/variety-scrub-mobile.mp4?v=k10"
+    : "./public/kie/scroll-v2/variety-scrub-pc.mp4?v=k10";
   try { variety.load(); } catch {}
 }
 
@@ -259,10 +259,35 @@ async function boot() {
       }
     }
 
+    // Hold the gate until the variety film can actually scrub (not just metadata).
+    if (variety && varietyReady) {
+      await new Promise((resolve) => {
+        let done = false;
+        const end = () => {
+          if (done) return;
+          done = true;
+          resolve();
+        };
+        if (variety.readyState >= 3) end();
+        else {
+          variety.addEventListener("canplaythrough", end, { once: true });
+          variety.addEventListener("canplay", end, { once: true });
+          variety.addEventListener("error", end, { once: true });
+          setTimeout(end, isMobile ? 6000 : 10000);
+        }
+      });
+      try { variety.currentTime = 0.04; } catch {}
+      await new Promise((r) => {
+        const fin = () => r();
+        variety.addEventListener("seeked", fin, { once: true });
+        setTimeout(fin, 500);
+      });
+    }
+
     const t0 = performance.now();
     await new Promise((resolve) => {
       const step = () => {
-        const t = clamp((performance.now() - t0) / 520);
+        const t = clamp((performance.now() - t0) / 420);
         if (loaderBar) loaderBar.style.width = `${Math.round(t * 100)}%`;
         if (t < 1) requestAnimationFrame(step);
         else resolve();
@@ -274,7 +299,10 @@ async function boot() {
   } catch (err) {
     console.warn("Kumru boot:", err);
   } finally {
+    // Only unlock after paint attempt — page content stays gated.
     loader?.classList.add("is-done");
+    document.documentElement.classList.remove("is-loading");
+    document.body?.classList.remove("is-loading");
   }
 
   const unlock = () => {

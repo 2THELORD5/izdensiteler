@@ -14,7 +14,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,560;9..144,600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="./styles.css?v=k9" />
+  <link rel="stylesheet" href="./styles.css?v=k10" />
   <link rel="stylesheet" href="../_shared/mobile-nav.css" />
 </head>
 <body class="brand-kumru">
@@ -51,7 +51,7 @@
         <div class="stage-pin">
           <canvas id="c" aria-hidden="true"></canvas>
           <video id="v" muted playsinline preload="auto" disablepictureinpicture ></video>
-          <video id="vVariety" class="kk-morph-vid" muted playsinline preload="auto" disablepictureinpicture src="./public/kie/scroll-v2/variety-scrub-pc.mp4?v=k9"></video>
+          <video id="vVariety" class="kk-morph-vid" muted playsinline preload="auto" disablepictureinpicture src="./public/kie/scroll-v2/variety-scrub-pc.mp4?v=k10"></video>
           <div class="vignette" aria-hidden="true"></div>
           <div class="stage-ui">
             <p class="act" id="act">Fiş 01</p>
@@ -98,6 +98,33 @@
       <div class="manifesto__stamp" aria-hidden="true">
         <b>KK</b>
         <span>fırın mühürü</span>
+      </div>
+    </section>
+
+    <section class="orbit" id="orbit" aria-label="Kumru dolgusu — scroll">
+      <div class="orbit-intro reveal">
+        <p class="eyebrow">Kumru dolgusu</p>
+        <h2>Aynı ekmek,<br /><em>iç malzemeler değişir.</em></h2>
+        <p>Aşağı kaydır — menüdeki gerçek kumrular: klasik, sucuklu, yengen, sıcak, soğuk.</p>
+      </div>
+      <div class="orbit-track">
+        <div class="orbit-pin">
+          <img class="orbit-bg" src="./public/kie/scroll-v2/boot/02-oven.jpg" alt="" aria-hidden="true" />
+          <div class="orbit-wash" aria-hidden="true"></div>
+          <div class="orbit-stage">
+            <div class="orbit-plates" aria-hidden="true">
+              <div class="orbit-plate orbit-plate--a"><img alt="" width="480" height="480" /></div>
+              <div class="orbit-plate orbit-plate--b"><img alt="" width="480" height="480" /></div>
+            </div>
+            <div class="orbit-copy">
+              <p class="orbit-eye" data-orbit-eye>İç malzeme 01</p>
+              <h3 class="orbit-title"><span data-orbit-title>Klasik</span> <em data-orbit-sub>Çeşme</em></h3>
+              <p class="orbit-body" data-orbit-body>Susamlı ekmek, kaşar, biber — meşhur Çeşme hali.</p>
+              <div class="orbit-dots" role="tablist" aria-label="Çeşitler"></div>
+            </div>
+          </div>
+          <div class="orbit-thumbs" aria-label="Çeşit seç"></div>
+        </div>
       </div>
     </section>
 
@@ -235,6 +262,7 @@
       </div>
     </div>
     <nav class="foot__links">
+      <a href="#orbit">Kumru</a>
       <a href="#menu">Ürünler</a>
       <a href="#visit">Şubeler</a>
       <a href="#wholesale">Toptan</a>
@@ -243,8 +271,11 @@
     <p class="foot__copy">© 2026 Kumrucu Kale. Görseller temsilidir.</p>
   </footer>
 
+  <script src="../_shared/vendor/gsap.min.js" defer></script>
+  <script src="../_shared/vendor/ScrollTrigger.min.js" defer></script>
   <script src="../_shared/mobile-nav.js" defer></script>
-  <script src="./scrub.js?v=k9" defer></script>
+  <script src="./scrub.js?v=k10" defer></script>
+  <script src="./orbit.js?v=k10" defer></script>
   <script src="./site.js?v=k5" defer></script>
   <script>
     document.addEventListener("DOMContentLoaded", () => {
@@ -254,6 +285,7 @@
         header: "#nav",
         links: [
           { href: "#top", label: "Tezgâh" },
+          { href: "#orbit", label: "Kumru" },
           { href: "#menu", label: "Ürünler" },
           { href: "#visit", label: "Şubeler" },
           { href: "#wholesale", label: "Toptan" },

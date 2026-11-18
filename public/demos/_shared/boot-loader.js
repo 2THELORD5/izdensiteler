@@ -91,7 +91,8 @@
   const waitVideo = (video) =>
     new Promise((resolve) => {
       if (!video) return resolve();
-      if (video.readyState >= 2 && Number.isFinite(video.duration) && video.duration > 0) {
+      // readyState >= 3 (HAVE_FUTURE_DATA) — enough buffered to scrub without a blank first frame.
+      if (video.readyState >= 3 && Number.isFinite(video.duration) && video.duration > 0) {
         return resolve();
       }
       let done = false;
@@ -100,10 +101,12 @@
         done = true;
         resolve();
       };
-      video.addEventListener("loadeddata", end, { once: true });
+      video.addEventListener("canplaythrough", end, { once: true });
       video.addEventListener("canplay", end, { once: true });
+      video.addEventListener("loadeddata", end, { once: true });
       video.addEventListener("error", end, { once: true });
-      setTimeout(end, Math.min(maxMs, 7000));
+      try { video.preload = "auto"; video.load?.(); } catch {}
+      setTimeout(end, Math.min(maxMs, 9000));
     });
 
   const heroVideo = () =>
