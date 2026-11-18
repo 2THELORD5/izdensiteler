@@ -69,6 +69,8 @@ let targetP = 0;
 let currentP = 0;
 let velocity = 0;
 let activeAct = -1;
+/* Repaint only when something changed (new frame, resize) — not 60x/s. */
+let dirty = true;
 const SEEK_EPS_VAR = isMobile ? 0.022 : 0.012;
 
 if (video) {
@@ -82,10 +84,53 @@ if (variety) {
   variety.playsInline = true;
   variety.setAttribute("playsinline", "");
   variety.setAttribute("webkit-playsinline", "");
-  variety.src = isMobile
-    ? "./public/kie/scroll-v2/variety-scrub-mobile-v2.mp4?v=k11"
-    : "./public/kie/scroll-v2/variety-scrub-pc.mp4?v=k10";
-  try { variety.load(); } catch {}
+  /* src is assigned in boot(): the whole film is downloaded into memory first,
+     so scrubbing never waits on the network (that was the stutter). */
+}
+
+const FILM_URL = isMobile
+  ? "./public/kie/scroll-v2/variety-scrub-mobile-v3.mp4"
+  : "./public/kie/scroll-v2/variety-scrub-pc-v3.mp4";
+const FILM_BYTES = isMobile ? 16819422 : 33452026;
+const loaderPct = document.getElementById("loaderPct");
+
+function showLoad(frac) {
+  const f = clamp(frac);
+  if (loaderBar) loaderBar.style.width = `${(f * 100).toFixed(1)}%`;
+  if (loaderPct) loaderPct.textContent = `%${Math.round(f * 100)}`;
+}
+
+/* Download the scrub film completely, with real progress. Resolves to a blob:
+   URL; rejects on error or when the connection stalls (caller falls back to
+   the plain URL so the page is never trapped). */
+async function fetchFilm(url, onProgress) {
+  const ctrl = new AbortController();
+  let stallTimer = 0;
+  const arm = () => {
+    clearTimeout(stallTimer);
+    stallTimer = setTimeout(() => ctrl.abort(), 25000);
+  };
+  arm();
+  try {
+    const res = await fetch(url, { signal: ctrl.signal, cache: "force-cache" });
+    if (!res.ok || !res.body) throw new Error(`film ${res.status}`);
+    const total = Number(res.headers.get("content-length")) || FILM_BYTES;
+    const reader = res.body.getReader();
+    const chunks = [];
+    let got = 0;
+    for (;;) {
+      const { done, value } = await reader.read();
+      if (done) break;
+      chunks.push(value);
+      got += value.byteLength;
+      arm();
+      onProgress(Math.min(0.99, got / total));
+    }
+    onProgress(1);
+    return URL.createObjectURL(new Blob(chunks, { type: "video/mp4" }));
+  } finally {
+    clearTimeout(stallTimer);
+  }
 }
 
 const bootImgs = BOOT_STILLS.map((src) => {
@@ -166,6 +211,7 @@ function paintBoot(p) {
 }
 
 function paint() {
+  dirty = false;
   resize();
   if (reduced) {
     paintBoot(0);
@@ -250,6 +296,7 @@ variety?.addEventListener("seeked", () => {
   varietySeeking = false;
   clearTimeout(seekVariety.timer);
   paint();
+  dirty = true; // one more pass on the next frame, once the decoder has presented it
   flushVariety();
 });
 
@@ -298,6 +345,14 @@ async function boot() {
   resize();
   try {
     if (variety) {
+      let src = FILM_URL;
+      try {
+        src = await fetchFilm(FILM_URL, (f) => showLoad(f * 0.97));
+      } catch (err) {
+        console.warn("Kumru film (stream fallback):", err);
+      }
+      variety.src = src;
+      try { variety.load(); } catch {}
       await new Promise((resolve) => {
         const done = () => {
           varietyDuration =
@@ -344,16 +399,8 @@ async function boot() {
       });
     }
 
-    const t0 = performance.now();
-    await new Promise((resolve) => {
-      const step = () => {
-        const t = clamp((performance.now() - t0) / 420);
-        if (loaderBar) loaderBar.style.width = `${Math.round(t * 100)}%`;
-        if (t < 1) requestAnimationFrame(step);
-        else resolve();
-      };
-      requestAnimationFrame(step);
-    });
+    showLoad(1);
+    await new Promise((r) => setTimeout(r, 220));
 
     paint();
   } catch (err) {
@@ -394,13 +441,14 @@ async function boot() {
     if (varietyReady && varietyDuration > 0) {
       seekVariety(clamp(currentP) * Math.max(0.05, varietyDuration - 0.06));
     }
-    paint();
+    if (dirty || !varietyReady) paint();
     syncUI(currentP);
     requestAnimationFrame(raf);
   }
   requestAnimationFrame(raf);
 
   addEventListener("resize", () => {
+    dirty = true;
     paint();
     targetP = readProgress();
   });
