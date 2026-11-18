@@ -115,7 +115,6 @@
           { act: "01 Era", title: "Start with the sunken room.", body: "Plaster arches, a low amber lamp and a conversation pit: the late-sixties plan, kept intact." },
           { act: "02 Craft", title: "Velvet, lacquer, walnut.", body: "Hand-finished surfaces chosen to survive daily life, not just a photo shoot." },
           { act: "03 Light", title: "Linen filters the afternoon.", body: "Sheer layers and warm bulbs soften the palette so loud colour stays livable." },
-          { act: "04 Detail", title: "Brass down to the last screw.", body: "Every handle, switch and hem is specified before install day." },
         ],
       },
       gallery: false,
@@ -145,9 +144,8 @@
           '<ul class="pk-strip__list"><li>Al Wasl</li><li>Palm Jumeirah</li><li>Dubai Creek</li><li>Downtown</li><li>Jumeirah</li></ul></div></div>',
         chapters: [
           { act: "01 Horizon", title: "Start with the view.", body: "In a high-rise the skyline is the first material. Plans begin from it." },
-          { act: "02 Material", title: "Stone, oak, linen.", body: "A sample board is built before a room is drawn, so texture and tone agree from day one." },
-          { act: "03 Rest", title: "A calm bedroom.", body: "Warm timber, limestone and soft layers keep the quietest rooms balanced." },
-          { act: "04 Handover", title: "Resolved to the detail.", body: "Joinery, lighting and finishes are coordinated so the space feels complete on handover." },
+          { act: "02 Light", title: "Layers of linen.", body: "Sheer curtains filter the skyline so the room stays calm after dark." },
+          { act: "03 Handover", title: "Resolved to the detail.", body: "Joinery, lighting and finishes are coordinated so the space feels complete on handover." },
         ],
       },
       gallery: false,
@@ -251,8 +249,10 @@
     });
     document.documentElement.style.setProperty("overflow", "auto", "important");
     document.documentElement.style.setProperty("overflow-y", "auto", "important");
-    document.body.style.setProperty("overflow", "auto", "important");
-    document.body.style.setProperty("overflow-y", "auto", "important");
+    // body must NOT be a scroll container (overflow:auto here silently breaks every position:sticky film pin);
+    // the viewport (html) scrolls, body only clips x.
+    document.body.style.setProperty("overflow-y", "visible", "important");
+    document.body.style.setProperty("overflow-x", "clip", "important");
     document.body.style.setProperty("height", "auto", "important");
     document.body.classList.remove("is-locked", "loading", "overflow-hidden");
     document.documentElement.classList.remove("is-locked", "loading");
@@ -439,8 +439,8 @@
     sec.className = "iz-scrub iz-scrub--film iz-scrub--kie";
     sec.setAttribute("data-iz-film-scrub", "");
     sec.setAttribute("aria-label", "Film chapter scrub");
-    sec.dataset.filmPc = `${BASE}assets/kie-scrub/film-pc.mp4`;
-    sec.dataset.filmMob = `${BASE}assets/kie-scrub/film-mob.mp4`;
+    sec.dataset.filmPc = `${BASE}assets/kie-scrub/film-pc.mp4?v=story1`;
+    sec.dataset.filmMob = `${BASE}assets/kie-scrub/film-mob.mp4?v=story1`;
     sec.dataset.poster = poster;
     sec.dataset.posterMob = `${BASE}assets/kie-scrub/mob/01.jpg`;
     if (f.hero) sec.classList.add("iz-scrub--has-hero");

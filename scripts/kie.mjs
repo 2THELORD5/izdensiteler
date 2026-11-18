@@ -68,7 +68,7 @@ async function uploadLocal(file) {
   const dataUrl = `data:${mime};base64,${fs.readFileSync(abs).toString("base64")}`;
   const res = await fetch(UPLOAD, {
     method: "POST", headers: H,
-    body: JSON.stringify({ base64Data: dataUrl, uploadPath: "scrollcraft", fileName: path.basename(abs) }),
+    body: JSON.stringify({ base64Data: dataUrl, uploadPath: "scrollcraft", fileName: `${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 8)}-${path.basename(abs)}` }),
   });
   const j = await res.json();
   const url = j?.data?.downloadUrl || j?.data?.fileUrl || j?.data?.url;
@@ -85,6 +85,9 @@ async function createTask(model, input) {
   });
   const j = await res.json();
   if (j.code !== 200 || !j?.data?.taskId) throw new Error(`createTask ${model}: ${JSON.stringify(j)}`);
+  // Persist every paid task id so a killed process never orphans credits (see `resume`).
+  try { fs.appendFileSync("/tmp/kie-tasks.log", `${new Date().toISOString()} ${j.data.taskId} ${model} ${process.argv.slice(2).join(" ").slice(-160)}\n`); } catch {}
+  process.stderr.write(`  task ${j.data.taskId}\n`);
   return j.data.taskId;
 }
 
@@ -184,6 +187,13 @@ try {
     if (tail) input.tail_image_url = await asUrl(tail);
     const id = await createTask(MODELS.shot, input);
     const urls = await waitTask(id, { label: path.basename(out), timeoutMs: 20 * 60 * 1000 });
+    await download(urls[0], out);
+    console.log(out);
+
+  } else if (cmd === "resume") {
+    const [taskId, out] = rest;
+    if (!taskId || !out) throw new Error("usage: kie.mjs resume <taskId> <out.mp4>");
+    const urls = await waitTask(taskId, { label: path.basename(out) });
     await download(urls[0], out);
     console.log(out);
 
