@@ -3,193 +3,129 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <title>AMBER JEWELS — Amber Jewels</title>
-  <meta name="description" content="Macro gold for collectors who read light." />
-  <meta name="theme-color" content="#1c1917" />
+  <title>AMBER — Fine jewellery in fossil resin and 18-carat gold</title>
+  <meta name="description" content="Amber is a small jewellery atelier. Baltic resin, 18-carat gold and a bench where every setting is cut by hand." />
+  <meta name="theme-color" content="#0b0908" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,500&family=Karla:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/demos/_shared/izden-atelier-core.css" />
   <link rel="stylesheet" href="styles.css" />
-  <link rel="stylesheet" href="/demos/_shared/izden-afterglow.css" />
   <link rel="stylesheet" href="/demos/_shared/izden-agency.css" />
-  <link rel="stylesheet" href="/demos/_shared/izden-atelier-mobile.css" />
-  <link rel="stylesheet" href="/demos/_shared/izden-atelier-motion.css" />
-  <link rel="stylesheet" href="/demos/_shared/izden-atelier-enrich.css" />
+  <link rel="preload" as="image" href="media/hero.jpg" media="(min-width:901px)" />
+  <link rel="preload" as="image" href="media/hero-mob.jpg" media="(max-width:900px)" />
 </head>
-<body class="motion-amber" data-enrich="spotlight">
+<body data-site="amber">
+  <a class="skip" href="#pieces">Skip to content</a>
 
   <header class="site-nav" id="nav" data-open="false">
-    <button type="button" class="site-nav__burger" id="navBurger" aria-label="Open menu" aria-expanded="false" aria-controls="navDrawer">
-      <span></span><span></span><span></span>
-    </button>
-    <a class="site-nav__brand" href="#top">AMBER</a>
+    <a class="site-nav__brand" href="#top" aria-label="Amber — top"><svg class="gem" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 22 10 12 22 2 10Z"/><path d="M2 10h20M8 10l4-8 4 8-4 12-4-12"/></svg><span class="word">Amber</span></a>
     <nav class="site-nav__links" aria-label="Primary">
-      <a href="#orbit">Signature</a>
-      <a href="#story">Story</a>
-      <a href="#craft">Craft</a>
-      <a href="#gallery">Gallery</a>
-      <a href="#journal">Journal</a>
-      <a href="#contact" class="site-nav__cta">Private viewing</a>
+      <a href="#pieces">Pieces</a>
+      <a href="#loupe">Under the loupe</a>
+      <a href="#bench">The bench</a>
+      <a href="#visit" class="site-nav__cta">Book a viewing</a>
     </nav>
+    <button type="button" class="site-nav__burger" id="navBurger" aria-label="Open menu" aria-expanded="false" aria-controls="navDrawer"><span></span><span></span></button>
   </header>
   <div class="nav-drawer-backdrop" id="navBackdrop" hidden></div>
-  <aside class="nav-drawer" id="navDrawer" aria-hidden="true" data-open="false">
-    <div class="nav-drawer__head">
-      <strong>AMBER</strong>
-      <button type="button" class="nav-drawer__close" id="navClose" aria-label="Close menu">×</button>
-    </div>
+  <aside class="nav-drawer" id="navDrawer" aria-hidden="true" data-open="false" aria-label="Menu">
+    <div class="nav-drawer__head"><strong class="word">Amber</strong><button type="button" class="nav-drawer__close" id="navClose" aria-label="Close menu">×</button></div>
     <nav class="nav-drawer__links" aria-label="Mobile">
-      <a href="#catalogue">Catalogue</a>
-      <a href="#orbit">Signature</a>
-      <a href="#story">Story</a>
-      <a href="#craft">Craft</a>
-      <a href="#process">Process</a>
-      <a href="#gallery">Gallery</a>
-      <a href="#journal">Journal</a>
-      <a href="#faq">FAQ</a>
-      <a href="#contact">Private viewing</a>
+      <a href="#pieces">Pieces</a>
+      <a href="#loupe">Under the loupe</a>
+      <a href="#bench">The bench</a>
+      <a href="#visit">Book a viewing</a>
     </nav>
+    <p class="nav-drawer__foot">Nuruosmaniye 14, İstanbul<br />By appointment, Tue – Sat</p>
   </aside>
+
   <main id="top">
-
-    <section class="hero hero--mast" aria-labelledby="hero-title">
-      <div class="hero__mast-top">
-        <p class="hero__eyebrow iz-reveal">Collectors edition</p>
-        <h1 class="hero__wordmark iz-reveal" id="hero-title">AMBER JEWELS</h1>
-        <p class="hero__tag iz-reveal" data-d="1">Macro gold for collectors who read light.</p>
-        <a class="hero__btn iz-reveal" data-d="2" href="#orbit">Private viewing</a>
-      </div>
-      <div class="hero__mast-media">
-        <picture>
-          <source media="(max-width:900px)" srcset="media/hero-mob.jpg" />
-          <img src="media/hero.jpg" alt="" width="1920" height="1280" fetchpriority="high" />
-        </picture>
-      </div>
-    </section>
-
-    <section class="sig sig--amber" id="orbit" aria-label="Orbit vitrine">
-      <div class="orbit-stage">
-        <div class="orbit-core" aria-hidden="true">
-          <img src="media/macro.jpg" alt="Macro amber stone" />
-        </div>
-        <ul class="vitrine" id="vitrine">
-          <li class="is-visible"><img src="media/vitrine.jpg" alt="Vitrine piece one" loading="lazy" /></li>
-          <li><img src="media/gold.jpg" alt="Gold band" loading="lazy" /></li>
-          <li><img src="media/craft.jpg" alt="Craft bench" loading="lazy" /></li>
-        </ul>
-      </div>
-    </section>
-    <div class="marquee" aria-hidden="true"><div class="marquee__track"><span>Amber Jewels · AMBER JEWELS · Orbit vitrine · </span><span>Amber Jewels · AMBER JEWELS · Orbit vitrine · </span></div></div>
-    <section class="chapter" id="story">
-      <div class="chapter__grid">
-        <div class="chapter__copy">
-          <p class="chapter__kicker iz-reveal">01 — Story</p>
-          <h2 class="chapter__title iz-reveal" data-d="1">Light as material</h2>
-          <p class="chapter__lede iz-reveal" data-d="2">Stones are graded under the same lamp collectors use.</p>
-          <a class="chapter__link iz-reveal" href="#craft">See craft</a>
-        </div>
-        <figure class="chapter__frame iz-reveal"><img src="media/gold.jpg" alt="Brand story visual" loading="lazy" /></figure>
-      </div>
-    </section>
-    <section class="chapter chapter--flip" id="craft">
-      <div class="chapter__grid">
-        <figure class="chapter__frame iz-reveal"><img src="media/craft.jpg" alt="Craft detail" loading="lazy" /></figure>
-        <div class="chapter__copy">
-          <p class="chapter__kicker iz-reveal">02 — Craft</p>
-          <h2 class="chapter__title iz-reveal">Orbit vitrine</h2>
-          <p class="chapter__lede iz-reveal">Pieces orbit on a subtle axis while vitrine slots fade in sequence.</p>
+    <!-- HERO — the vitrine -->
+    <section class="hero" data-hero aria-labelledby="hero-title">
+      <picture class="hero__pic">
+        <source media="(max-width:900px)" srcset="media/hero-mob.jpg" />
+        <img src="media/hero.jpg" alt="Two twisted 18-carat gold hoop earrings reflected on black glass" width="1920" height="1920" fetchpriority="high" />
+      </picture>
+      <div class="hero__shade" aria-hidden="true"></div>
+      <div class="hero__copy">
+        <p class="eyebrow">Atelier · İstanbul · est. 2011</p>
+        <h1 id="hero-title" class="hero__word"><span>Amber</span></h1>
+        <p class="hero__tag">Fossil resin set in <em>eighteen-carat gold</em>, by hand, one piece at a time.</p>
+        <div class="hero__cta">
+          <a class="btn btn--gold" href="#visit">Book a viewing</a>
+          <a class="btn btn--line" href="#pieces">See the pieces</a>
         </div>
       </div>
-    </section>
-    <section class="process" id="process">
-      <header class="section-head"><p class="section-head__kicker iz-reveal">03 — Process</p><h2 class="section-head__title iz-reveal">How we ship</h2></header>
-      <ol class="process__list">
-        <li class="iz-reveal"><strong>Listen</strong><span>Stakeholder interviews, site walk, constraint map.</span></li>
-        <li class="iz-reveal" data-d="1"><strong>Compose</strong><span>One viewport, one idea — type and photo in tension.</span></li>
-        <li class="iz-reveal" data-d="2"><strong>Motion</strong><span>Single signature interaction, reduced-motion safe.</span></li>
-        <li class="iz-reveal" data-d="3"><strong>Handoff</strong><span>Static HTML demo + media kit for your engineers.</span></li>
-      </ol>
-    </section>
-    <section class="gallery" id="gallery">
-      <header class="section-head"><p class="section-head__kicker iz-reveal">04 — Gallery</p><h2 class="section-head__title iz-reveal">Field notes</h2></header>
-      <div class="gallery__grid">
-        <figure class="iz-reveal"><img src="media/macro.jpg" alt="Gallery 1" loading="lazy" /></figure>
-        <figure class="iz-reveal" data-d="1"><img src="media/vitrine.jpg" alt="Gallery 2" loading="lazy" /></figure>
-        <figure class="iz-reveal" data-d="2"><img src="media/studio.jpg" alt="Gallery 3" loading="lazy" /></figure>
-      </div>
-    </section>
-    <section class="journal" id="journal">
-      <header class="section-head"><p class="section-head__kicker iz-reveal">05 — Journal</p><h2 class="section-head__title iz-reveal">Release notes</h2></header>
-      <article class="journal__card iz-reveal">
-        <time datetime="2026-03-01">Mar 2026</time>
-        <h3>Motion pass</h3>
-        <p>Signature interaction tuned for thumb scroll on mobile — hamburger nav, 44px targets, prefers-reduced-motion fallbacks.</p>
-      </article>
-      <article class="journal__card iz-reveal" data-d="1">
-        <time datetime="2026-02-10">Feb 2026</time>
-        <h3>Photography</h3>
-        <p>Licensed Pexels stills, cropped per viewport — no remote hotlinking in production build.</p>
-      </article>
+      <p class="hero__plate" aria-hidden="true"><b>No. 07</b> Torsion hoops · 18k · 11 g</p>
     </section>
 
-    <section class="enrich-catalog" id="catalogue" aria-label="Vitrine catalogue">
-      <div class="enrich-catalog__pin">
-        <div class="enrich-catalog__stage" aria-hidden="true">
-          <img src="media/catalog-01.jpg" alt="" class="is-on" data-enrich-img="0" />
-          <img src="media/catalog-02.jpg" alt="" loading="lazy" data-enrich-img="1" />
-          <img src="media/studio.jpg" alt="" loading="lazy" data-enrich-img="2" />
-        </div>
-        <div class="enrich-catalog__meta">
-          <p class="section-kicker eyebrow" style="margin:0">Pieces in orbit</p>
-          <h2 class="section-title" style="margin:0 0 0.5rem">Vitrine catalogue</h2>
-          <div class="enrich-catalog__items">
-          <article class="enrich-catalog__item is-on" data-enrich-item="0">
-            <p class="enrich-catalog__index">01</p>
-            <h3>Amber necklace</h3>
-            <p>Warm gold light.</p>
-          </article>
-          <article class="enrich-catalog__item" data-enrich-item="1">
-            <p class="enrich-catalog__index">02</p>
-            <h3>Inclusion macro</h3>
-            <p>Trapped light.</p>
-          </article>
-          <article class="enrich-catalog__item" data-enrich-item="2">
-            <p class="enrich-catalog__index">03</p>
-            <h3>Studio tray</h3>
-            <p>Hand-set pieces.</p>
-          </article>
-          </div>
-        </div>
+    <!-- PIECES — plate rail -->
+    <section class="pieces" id="pieces" aria-labelledby="pieces-title">
+      <header class="head">
+        <p class="eyebrow">The current case</p>
+        <h2 id="pieces-title">Four pieces,<br /><em>none repeated.</em></h2>
+      </header>
+      <div class="rail" id="rail" tabindex="0" aria-label="Pieces — scroll horizontally">
+        <figure class="plate"><img src="media/catalog-01.jpg" alt="Amber pendant on a gold chain lying on black silk" loading="lazy" width="1050" height="1400" /><figcaption><b>No. 03</b><span>Cabochon pendant</span><em>Baltic amber · 18k chain</em></figcaption></figure>
+        <figure class="plate plate--drop"><img src="media/catalog-02.jpg" alt="A raw piece of honey amber on a jeweller's bench" loading="lazy" width="1050" height="1400" /><figcaption><b>No. 05</b><span>Raw stone, unset</span><em>Awaiting its mount</em></figcaption></figure>
+        <figure class="plate"><img src="media/hero.jpg" alt="Gold torsion hoops" loading="lazy" width="1920" height="1920" class="plate__sq" /><figcaption><b>No. 07</b><span>Torsion hoops</span><em>18k gold · hand-twisted</em></figcaption></figure>
+        <figure class="plate plate--drop"><img src="media/vitrine-mob.jpg" alt="Stacked eternity bands set with fine pavé" loading="lazy" width="900" height="1125" /><figcaption><b>No. 09</b><span>Pavé stack</span><em>Three bands · 0.9 mm stones</em></figcaption></figure>
+      </div>
+      <div class="rail__ctrl"><button type="button" id="railPrev" aria-label="Previous piece">←</button><button type="button" id="railNext" aria-label="Next piece">→</button></div>
+    </section>
+
+    <!-- SIGNATURE — under the loupe -->
+    <section class="scrub loupe" id="loupe" aria-label="Under the loupe" data-rest="0.45">
+      <div class="scrub__pin loupe__pin">
+        <header class="loupe__head"><p class="eyebrow">Signature · Under the loupe</p><h2>Look closer.<br /><em>It gets better.</em></h2></header>
+        <figure class="loupe__stage" id="loupeStage">
+          <picture><source media="(max-width:900px)" srcset="media/vitrine-mob.jpg" /><img src="media/vitrine.jpg" alt="Silver eternity bands set with pavé stones, photographed in monochrome" id="loupeImg" width="1920" height="1094" /></picture>
+          <span class="loupe__lens" id="lens" aria-hidden="true"><i></i></span>
+        </figure>
+        <ol class="loupe__notes" id="loupeNotes" aria-live="polite">
+          <li class="is-on"><b>01</b><span>Pavé, 0.9 mm</span><p>Each stone sits in its own seat, cut with a graver under the glass — no two beads alike.</p></li>
+          <li><b>02</b><span>Milgrain edge</span><p>A ring of beads rolled by hand along the rim, so the light breaks before it reaches the stone.</p></li>
+          <li><b>03</b><span>Underside</span><p>Finished where nobody looks: open galleries, so the metal touches skin and the stone touches light.</p></li>
+        </ol>
+        <p class="loupe__hint" aria-hidden="true">Scroll to move the glass · hover to take it</p>
       </div>
     </section>
-<section class="faq" id="faq">
-      <header class="section-head"><p class="section-head__kicker iz-reveal">06 — FAQ</p><h2 class="section-head__title iz-reveal">Before you write</h2></header>
-      <article class="faq__item iz-reveal">
-        <button type="button" class="faq__q" aria-expanded="false">How do I book the signature experience?<span class="faq__icon" aria-hidden="true"></span></button>
-        <div class="faq__a" hidden><p>Email or call — we confirm studio slots within one business day.</p></div>
-      </article>
-      <article class="faq__item iz-reveal" data-d="1">
-        <button type="button" class="faq__q" aria-expanded="false">Is this a live product?<span class="faq__icon" aria-hidden="true"></span></button>
-        <div class="faq__a" hidden><p>No — this is a fictional brand demo by İzden Creative.</p></div>
-      </article>
+
+    <!-- BENCH -->
+    <section class="bench" id="bench" aria-labelledby="bench-title">
+      <figure class="bench__fig"><img src="media/studio.jpg" alt="A jeweller's hands holding a torch to a small setting under a loupe" loading="lazy" width="1920" height="2880" /></figure>
+      <div class="bench__txt">
+        <p class="eyebrow">The bench</p>
+        <h2 id="bench-title">One maker.<br /><em>One piece at a time.</em></h2>
+        <ol class="bench__steps">
+          <li><b>I</b><h3>Select</h3><p>Raw amber is graded under daylight for clarity, inclusions and warmth. Most of it is sent back.</p></li>
+          <li><b>II</b><h3>Set</h3><p>The mount is made around the stone, never the other way round. Wax, cast, then finished by hand.</p></li>
+          <li><b>III</b><h3>Wear</h3><p>Every piece leaves with a card that records its maker, its gold and the day it was finished.</p></li>
+        </ol>
+      </div>
     </section>
-    <section class="contact" id="contact">
-      <div class="contact__inner iz-reveal">
-        <h2>Studio</h2>
-        <p class="contact__brand">Amber Jewels — demo by İzden Creative.</p>
-        <ul class="contact__list">
-          <li><a href="mailto:info@izdencreative.com">info@izdencreative.com</a></li>
-          <li><a href="tel:+902120000000">+90 212 000 00 00</a></li>
-          <li><a href="https://www.izdencreative.com" target="_blank" rel="noopener noreferrer">izdencreative.com</a></li>
-        </ul>
-        <img class="contact__logo" src="/demos/_shared/izden-creative.jpg" alt="İzden Creative" width="180" height="61" loading="lazy" />
+
+    <!-- VISIT -->
+    <section class="visit" id="visit" aria-labelledby="visit-title">
+      <div class="visit__in">
+        <p class="eyebrow">By appointment</p>
+        <h2 id="visit-title">Come and hold<br /><em>one.</em></h2>
+        <form class="form" action="mailto:info@izdencreative.com" method="post" enctype="text/plain">
+          <label><span>Name</span><input type="text" name="name" autocomplete="name" required /></label>
+          <label><span>Email</span><input type="email" name="email" autocomplete="email" required /></label>
+          <label><span>Piece you would like to see</span>
+            <select name="piece"><option>No. 03 — Cabochon pendant</option><option>No. 05 — Raw stone</option><option>No. 07 — Torsion hoops</option><option>No. 09 — Pavé stack</option><option>A commission</option></select>
+          </label>
+          <button class="btn btn--gold" type="submit">Request a viewing</button>
+        </form>
+        <p class="visit__fine">Nuruosmaniye 14, İstanbul · Tue – Sat, by appointment · <a href="mailto:info@izdencreative.com">info@izdencreative.com</a><br />Amber is a fictional atelier created as a design demonstration by İzden Creative.</p>
       </div>
     </section>
   </main>
-  <script src="/demos/_shared/izden-afterglow.js"></script>
-  <script src="/demos/_shared/izden-agency.js"></script>
-  <script src="main.js"></script>
-  <script src="/demos/_shared/izden-contact-rewrite.js" defer></script>
-  <script src="/demos/_shared/izden-atelier-enrich.js" defer></script>
+
+  <script src="/demos/_shared/izden-atelier-core.js" defer></script>
+  <script src="main.js" defer></script>
+  <script src="/demos/_shared/izden-agency.js" defer></script>
 </body>
 </html>

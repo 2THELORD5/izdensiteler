@@ -1,184 +1,136 @@
 <!DOCTYPE html>
-<html lang="tr">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <title>RIVET DETAIL — Rivet Detail</title>
-  <meta name="description" content="Auto finishing studio for gloss that holds." />
-  <meta name="theme-color" content="#0f172a" />
+  <title>RIVET — Paint correction and ceramic coating</title>
+  <meta name="description" content="Rivet is a paint-correction studio. Measured, machine-polished and sealed under lights that show every swirl." />
+  <meta name="theme-color" content="#121315" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Teko:wght@400;500;600&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/demos/_shared/izden-atelier-core.css" />
   <link rel="stylesheet" href="styles.css" />
-  <link rel="stylesheet" href="/demos/_shared/izden-afterglow.css" />
   <link rel="stylesheet" href="/demos/_shared/izden-agency.css" />
-  <link rel="stylesheet" href="/demos/_shared/izden-atelier-mobile.css" />
-  <link rel="stylesheet" href="/demos/_shared/izden-atelier-motion.css" />
-  <link rel="stylesheet" href="/demos/_shared/izden-atelier-enrich.css" />
+  <link rel="preload" as="image" href="media/hero.jpg" media="(min-width:901px)" />
+  <link rel="preload" as="image" href="media/hero-mob.jpg" media="(max-width:900px)" />
 </head>
-<body class="motion-rivet" data-enrich="rail">
+<body data-site="rivet">
+  <a class="skip" href="#polish">Skip to content</a>
 
   <header class="site-nav" id="nav" data-open="false">
-    <button type="button" class="site-nav__burger" id="navBurger" aria-label="Open menu" aria-expanded="false" aria-controls="navDrawer">
-      <span></span><span></span><span></span>
-    </button>
-    <a class="site-nav__brand" href="#top">RIVET</a>
+    <a class="site-nav__brand" href="#top" aria-label="Rivet — top"><svg class="rv" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3.2"/><path d="M12 1v5M12 18v5M1 12h5M18 12h5"/></svg><span class="word">RIVET</span></a>
     <nav class="site-nav__links" aria-label="Primary">
-      <a href="#gloss">Signature</a>
-      <a href="#story">Story</a>
-      <a href="#craft">Craft</a>
-      <a href="#gallery">Gallery</a>
-      <a href="#journal">Journal</a>
-      <a href="#contact" class="site-nav__cta">Book bay time</a>
+      <a href="#polish">Polish pass</a>
+      <a href="#lift">On the lift</a>
+      <a href="#stages">Stages</a>
+      <a href="#book" class="site-nav__cta">Book a slot</a>
     </nav>
+    <button type="button" class="site-nav__burger" id="navBurger" aria-label="Open menu" aria-expanded="false" aria-controls="navDrawer"><span></span><span></span></button>
   </header>
   <div class="nav-drawer-backdrop" id="navBackdrop" hidden></div>
-  <aside class="nav-drawer" id="navDrawer" aria-hidden="true" data-open="false">
-    <div class="nav-drawer__head">
-      <strong>RIVET</strong>
-      <button type="button" class="nav-drawer__close" id="navClose" aria-label="Close menu">×</button>
-    </div>
+  <aside class="nav-drawer" id="navDrawer" aria-hidden="true" data-open="false" aria-label="Menu">
+    <div class="nav-drawer__head"><strong class="word">RIVET</strong><button type="button" class="nav-drawer__close" id="navClose" aria-label="Close menu">×</button></div>
     <nav class="nav-drawer__links" aria-label="Mobile">
-      <a href="#catalogue">Catalogue</a>
-      <a href="#gloss">Signature</a>
-      <a href="#story">Story</a>
-      <a href="#craft">Craft</a>
-      <a href="#process">Process</a>
-      <a href="#gallery">Gallery</a>
-      <a href="#journal">Journal</a>
-      <a href="#faq">FAQ</a>
-      <a href="#contact">Book bay time</a>
+      <a href="#polish"><i>01</i>Polish pass</a>
+      <a href="#lift"><i>02</i>On the lift</a>
+      <a href="#stages"><i>03</i>Stages</a>
+      <a href="#book"><i>04</i>Book a slot</a>
     </nav>
+    <p class="nav-drawer__foot">Studio 4 · Ostim, Ankara<br />Mon – Sat · 08:30 – 19:00</p>
   </aside>
+
   <main id="top">
-
-    <section class="hero hero--rail" aria-labelledby="hero-title">
-      <div class="hero__rail-media">
-        <picture>
-          <source media="(max-width:900px)" srcset="media/hero-mob.jpg" />
-          <img src="media/hero.jpg" alt="" width="1920" height="1280" fetchpriority="high" />
-        </picture>
-      </div>
-      <aside class="hero__rail-copy">
-        <p class="hero__eyebrow iz-reveal">Bay 03 · Gloss</p>
-        <h1 class="hero__wordmark iz-reveal" id="hero-title">RIVET DETAIL</h1>
-        <p class="hero__tag iz-reveal" data-d="1">Auto finishing studio for gloss that holds.</p>
-        <a class="hero__btn iz-reveal" data-d="2" href="#gloss">Book bay time</a>
-      </aside>
-    </section>
-
-    <section class="sig sig--rivet" id="gloss" aria-label="Gloss wipe">
-      <div class="gloss-compare" id="glossCompare">
-        <img class="gloss-before" src="media/before.jpg" alt="Before finish" />
-        <div class="gloss-after-wrap">
-          <img class="gloss-after" src="media/after.jpg" alt="After gloss" />
-        </div>
-        <input type="range" class="gloss-slider" id="glossSlider" min="0" max="100" value="42" aria-label="Before after gloss wipe" />
-        <span class="gloss-handle" id="glossHandle" aria-hidden="true"></span>
-      </div>
-      <p class="gloss-caption iz-reveal">Drag the divider — before oxidation meets after ceramic gloss in one gesture.</p>
-    </section>
-    <div class="marquee" aria-hidden="true"><div class="marquee__track"><span>Rivet Detail · RIVET DETAIL · Gloss wipe · </span><span>Rivet Detail · RIVET DETAIL · Gloss wipe · </span></div></div>
-    <section class="chapter" id="story">
-      <div class="chapter__grid">
-        <div class="chapter__copy">
-          <p class="chapter__kicker iz-reveal">01 — Story</p>
-          <h2 class="chapter__title iz-reveal" data-d="1">Before / after truth</h2>
-          <p class="chapter__lede iz-reveal" data-d="2">One wipe reveals the ceramic film — no filter gloss.</p>
-          <a class="chapter__link iz-reveal" href="#craft">See craft</a>
-        </div>
-        <figure class="chapter__frame iz-reveal"><img src="media/gloss.jpg" alt="Brand story visual" loading="lazy" /></figure>
-      </div>
-    </section>
-    <section class="chapter chapter--flip" id="craft">
-      <div class="chapter__grid">
-        <figure class="chapter__frame iz-reveal"><img src="media/detail.jpg" alt="Craft detail" loading="lazy" /></figure>
-        <div class="chapter__copy">
-          <p class="chapter__kicker iz-reveal">02 — Craft</p>
-          <h2 class="chapter__title iz-reveal">Gloss wipe</h2>
-          <p class="chapter__lede iz-reveal">Drag the divider — before oxidation meets after ceramic gloss in one gesture.</p>
+    <!-- HERO -->
+    <section class="hero" data-hero aria-labelledby="hero-title">
+      <picture class="hero__pic">
+        <source media="(max-width:900px)" srcset="media/hero-mob.jpg" />
+        <img src="media/hero.jpg" alt="Grey sports car with red wheels in a bright studio" width="1920" height="1536" fetchpriority="high" />
+      </picture>
+      <div class="hero__shade" aria-hidden="true"></div>
+      <div class="hud" aria-hidden="true"><span class="hud__c hud__c--tl"></span><span class="hud__c hud__c--tr"></span><span class="hud__c hud__c--bl"></span><span class="hud__c hud__c--br"></span>
+        <span class="hud__tag hud__tag--a">Clear coat · 52 µm</span><span class="hud__tag hud__tag--b">Gloss · 60° reading</span></div>
+      <div class="hero__body">
+        <p class="eyebrow">Paint correction · Ankara</p>
+        <h1 class="hero__word" id="hero-title">RIVET</h1>
+        <p class="hero__tag">Measured, polished and sealed under lights that show every swirl.</p>
+        <div class="hero__cta">
+          <a class="btn btn--blue" href="#polish">Watch a polish pass</a>
+          <a class="btn btn--line" href="#book">Book a slot</a>
         </div>
       </div>
     </section>
-    <section class="process" id="process">
-      <header class="section-head"><p class="section-head__kicker iz-reveal">03 — Process</p><h2 class="section-head__title iz-reveal">How we ship</h2></header>
-      <ol class="process__list">
-        <li class="iz-reveal"><strong>Listen</strong><span>Stakeholder interviews, site walk, constraint map.</span></li>
-        <li class="iz-reveal" data-d="1"><strong>Compose</strong><span>One viewport, one idea — type and photo in tension.</span></li>
-        <li class="iz-reveal" data-d="2"><strong>Motion</strong><span>Single signature interaction, reduced-motion safe.</span></li>
-        <li class="iz-reveal" data-d="3"><strong>Handoff</strong><span>Static HTML demo + media kit for your engineers.</span></li>
-      </ol>
-    </section>
-    <section class="gallery" id="gallery">
-      <header class="section-head"><p class="section-head__kicker iz-reveal">04 — Gallery</p><h2 class="section-head__title iz-reveal">Field notes</h2></header>
-      <div class="gallery__grid">
-        <figure class="iz-reveal"><img src="media/before.jpg" alt="Gallery 1" loading="lazy" /></figure>
-        <figure class="iz-reveal" data-d="1"><img src="media/after.jpg" alt="Gallery 2" loading="lazy" /></figure>
-        <figure class="iz-reveal" data-d="2"><img src="media/studio.jpg" alt="Gallery 3" loading="lazy" /></figure>
+
+    <!-- SIGNATURE — polish pass -->
+    <section class="scrub polish" id="polish" aria-label="Polish pass — the same panel, before and after" data-rest="0.5">
+      <div class="scrub__pin polish__pin">
+        <div class="polish__stage" id="pStage">
+          <picture class="polish__after"><source media="(max-width:900px)" srcset="media/after.jpg" /><img src="media/after.jpg" alt="Blue sedan with a deep, clean gloss after correction" width="1920" height="1080" /></picture>
+          <div class="polish__before" id="pBefore"><picture><source media="(max-width:900px)" srcset="media/after.jpg" /><img src="media/after.jpg" alt="" width="1920" height="1080" /></picture><i class="swirl" aria-hidden="true"></i></div>
+          <div class="polish__line" id="pLine" aria-hidden="true"><span class="polish__pad"><b>DA 125 mm</b></span></div>
+          <span class="tag tag--l">After · corrected</span><span class="tag tag--r">Before · as received</span>
+        </div>
+        <div class="polish__panel">
+          <p class="eyebrow">Signature · One panel, one pass</p>
+          <h2>See the<br />difference.</h2>
+          <dl class="polish__read">
+            <div><dt>Gloss · 60°</dt><dd><b id="gloss">58</b><small>GU</small></dd></div>
+            <div><dt>Swirl depth</dt><dd><b id="swirl">High</b></dd></div>
+            <div><dt>Pass</dt><dd><b id="pass">0</b><small>/ 100 %</small></dd></div>
+          </dl>
+          <p class="polish__note">Readings are illustrative — each car is measured with a paint gauge before we choose pad, polish and speed.</p>
+        </div>
       </div>
-    </section>
-    <section class="journal" id="journal">
-      <header class="section-head"><p class="section-head__kicker iz-reveal">05 — Journal</p><h2 class="section-head__title iz-reveal">Release notes</h2></header>
-      <article class="journal__card iz-reveal">
-        <time datetime="2026-03-01">Mar 2026</time>
-        <h3>Motion pass</h3>
-        <p>Signature interaction tuned for thumb scroll on mobile — hamburger nav, 44px targets, prefers-reduced-motion fallbacks.</p>
-      </article>
-      <article class="journal__card iz-reveal" data-d="1">
-        <time datetime="2026-02-10">Feb 2026</time>
-        <h3>Photography</h3>
-        <p>Licensed Pexels stills, cropped per viewport — no remote hotlinking in production build.</p>
-      </article>
     </section>
 
-    <section class="enrich-rail" id="catalogue" aria-label="Finish catalogue">
-      <div class="enrich-rail__head">
-        <p class="section-kicker eyebrow" style="margin:0 0 0.4rem">Before / after truth</p>
-        <h2 class="section-title" style="margin:0">Finish catalogue</h2>
-      </div>
-      <div class="enrich-rail__track">
-        <figure class="enrich-rail__card">
-          <img src="media/catalog-01.jpg" alt="" width="800" height="1100" loading="lazy" />
-          <figcaption>01 · Ceramic gloss</figcaption>
-        </figure>
-        <figure class="enrich-rail__card">
-          <img src="media/catalog-02.jpg" alt="" width="800" height="1100" loading="lazy" />
-          <figcaption>02 · Wheel detail</figcaption>
-        </figure>
-        <figure class="enrich-rail__card">
-          <img src="media/studio.jpg" alt="" width="800" height="1100" loading="lazy" />
-          <figcaption>03 · Studio bay</figcaption>
-        </figure>
+    <!-- ON THE LIFT -->
+    <section class="lift" id="lift" aria-labelledby="lift-title">
+      <header class="head"><p class="eyebrow">On the lift</p><h2 id="lift-title">Four cars.<br />Four different paints.</h2></header>
+      <div class="mosaic">
+        <figure class="m m--a"><img src="media/gloss.jpg" alt="White compact SUV parked on tarmac" loading="lazy" width="1920" height="1080" /><figcaption><b>01</b>White crossover · soft clear · one-stage polish</figcaption></figure>
+        <figure class="m m--b"><img src="media/catalog-02.jpg" alt="Alloy wheel with red brake caliper, close up" loading="lazy" width="1050" height="1400" /><figcaption><b>02</b>Wheels off · iron fallout removed</figcaption></figure>
+        <figure class="m m--c"><img src="media/detail.jpg" alt="Black coupé on cobblestones in front of a brick building" loading="lazy" width="1920" height="1440" /><figcaption><b>03</b>Black solid · hardest to hide a swirl</figcaption></figure>
+        <figure class="m m--d"><img src="media/studio.jpg" alt="Blue sedan parked on grass in autumn light" loading="lazy" width="1920" height="1079" /><figcaption><b>04</b>Metallic blue · flake preserved, depth restored</figcaption></figure>
       </div>
     </section>
-<section class="faq" id="faq">
-      <header class="section-head"><p class="section-head__kicker iz-reveal">06 — FAQ</p><h2 class="section-head__title iz-reveal">Before you write</h2></header>
-      <article class="faq__item iz-reveal">
-        <button type="button" class="faq__q" aria-expanded="false">Detay seansı nasıl ayırtılır?<span class="faq__icon" aria-hidden="true"></span></button>
-        <div class="faq__a" hidden><p>Bize yazın veya arayın; İstanbul stüdyosunda demo randevusu onaylarız.</p></div>
-      </article>
-      <article class="faq__item iz-reveal" data-d="1">
-        <button type="button" class="faq__q" aria-expanded="false">Bu site canlı mı?<span class="faq__icon" aria-hidden="true"></span></button>
-        <div class="faq__a" hidden><p>Hayır — İzden Creative marka demolarıdır.</p></div>
-      </article>
+
+    <!-- STAGES -->
+    <section class="stages" id="stages" aria-labelledby="stages-title">
+      <header class="head"><p class="eyebrow">Stages</p><h2 id="stages-title">Pick a stage.<br />Not a package.</h2></header>
+      <div class="tablewrap">
+        <table class="matrix">
+          <caption class="sr-only">What each stage includes</caption>
+          <thead><tr><th scope="col">Included</th><th scope="col"><span>Stage 1</span>Refresh</th><th scope="col"><span>Stage 2</span>Correct</th><th scope="col"><span>Stage 3</span>Protect</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">Hand wash + iron / tar removal</th><td><i class="y" aria-label="Included"></i></td><td><i class="y" aria-label="Included"></i></td><td><i class="y" aria-label="Included"></i></td></tr>
+            <tr><th scope="row">Paint-depth measurement</th><td><i class="y" aria-label="Included"></i></td><td><i class="y" aria-label="Included"></i></td><td><i class="y" aria-label="Included"></i></td></tr>
+            <tr><th scope="row">One-stage machine polish</th><td><i class="y" aria-label="Included"></i></td><td><i class="y" aria-label="Included"></i></td><td><i class="y" aria-label="Included"></i></td></tr>
+            <tr><th scope="row">Multi-stage swirl and scratch correction</th><td><i class="n" aria-label="Not included"></i></td><td><i class="y" aria-label="Included"></i></td><td><i class="y" aria-label="Included"></i></td></tr>
+            <tr><th scope="row">Ceramic coating, cured under lamps</th><td><i class="n" aria-label="Not included"></i></td><td><i class="n" aria-label="Not included"></i></td><td><i class="y" aria-label="Included"></i></td></tr>
+            <tr><th scope="row">Wheels off, barrels and calipers coated</th><td><i class="n" aria-label="Not included"></i></td><td><i class="n" aria-label="Not included"></i></td><td><i class="y" aria-label="Included"></i></td></tr>
+          </tbody>
+        </table>
+      </div>
     </section>
-    <section class="contact" id="contact">
-      <div class="contact__inner iz-reveal">
-        <h2>Studio</h2>
-        <p class="contact__brand">Rivet Detail — demo by İzden Creative.</p>
-        <ul class="contact__list">
-          <li><a href="mailto:info@izdencreative.com">info@izdencreative.com</a></li>
-          <li><a href="tel:+902120000000">+90 212 000 00 00</a></li>
-          <li><a href="https://www.izdencreative.com" target="_blank" rel="noopener noreferrer">izdencreative.com</a></li>
-        </ul>
-        <img class="contact__logo" src="/demos/_shared/izden-creative.jpg" alt="İzden Creative" width="180" height="61" loading="lazy" />
+
+    <!-- BOOK -->
+    <section class="book" id="book" aria-labelledby="book-title">
+      <div class="book__in">
+        <p class="eyebrow">Book a slot</p>
+        <h2 id="book-title">Bring the car.<br />We bring the lights.</h2>
+        <form class="form" action="mailto:info@izdencreative.com" method="post" enctype="text/plain">
+          <label><span>Email</span><input type="email" name="email" autocomplete="email" required placeholder="you@garage.com" /></label>
+          <label><span>Car + colour</span><input type="text" name="car" placeholder="e.g. BMW 3 Series, metallic blue" /></label>
+          <label><span>Stage</span><select name="stage"><option>Stage 1 — Refresh</option><option>Stage 2 — Correct</option><option>Stage 3 — Protect</option><option>Not sure yet</option></select></label>
+          <button class="btn btn--blue" type="submit">Request a slot</button>
+        </form>
+        <p class="book__fine">Studio 4 · Ostim, Ankara · Mon – Sat 08:30 – 19:00<br />Rivet is a fictional studio created as a design demonstration by İzden Creative · <a href="mailto:info@izdencreative.com">info@izdencreative.com</a></p>
       </div>
     </section>
   </main>
-  <script src="/demos/_shared/izden-afterglow.js"></script>
-  <script src="/demos/_shared/izden-agency.js"></script>
-  <script src="main.js"></script>
-  <script src="/demos/_shared/izden-contact-rewrite.js" defer></script>
-  <script src="/demos/_shared/izden-atelier-enrich.js" defer></script>
+
+  <script src="/demos/_shared/izden-atelier-core.js" defer></script>
+  <script src="main.js" defer></script>
+  <script src="/demos/_shared/izden-agency.js" defer></script>
 </body>
 </html>

@@ -7,6 +7,10 @@
   const isHome = /^\/demos\/moos-peak\/(index\.html)?$/.test(location.pathname);
   if (!isHome) return;
   root.classList.add("pk-home", "pk-on-film");
+  const menuBtn = document.querySelector(".menu-button");
+  if (menuBtn && !menuBtn.getAttribute("aria-label")) {
+    menuBtn.setAttribute("aria-label", "Menu");
+  }
 
   function tone() {
     const film = document.querySelector("[data-iz-film-scrub]");

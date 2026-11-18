@@ -3,184 +3,123 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <title>SOLACE — Solace Spa</title>
-  <meta name="description" content="Spa rituals measured in breath, not minutes." />
-  <meta name="theme-color" content="#042f2e" />
+  <title>SOLACE — A quiet house of warm water and stone</title>
+  <meta name="description" content="Solace is a small bathhouse and massage room. Warm stone, slow water, one hour with the phone off." />
+  <meta name="theme-color" content="#dde9e7" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Infant:ital,wght@0,400;0,600;1,400&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Manrope:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/demos/_shared/izden-atelier-core.css" />
   <link rel="stylesheet" href="styles.css" />
-  <link rel="stylesheet" href="/demos/_shared/izden-afterglow.css" />
   <link rel="stylesheet" href="/demos/_shared/izden-agency.css" />
-  <link rel="stylesheet" href="/demos/_shared/izden-atelier-mobile.css" />
-  <link rel="stylesheet" href="/demos/_shared/izden-atelier-motion.css" />
-  <link rel="stylesheet" href="/demos/_shared/izden-atelier-enrich.css" />
+  <link rel="preload" as="image" href="media/hero.jpg" media="(min-width:901px)" />
+  <link rel="preload" as="image" href="media/hero-mob.jpg" media="(max-width:900px)" />
 </head>
-<body class="motion-solace" data-enrich="stack">
+<body data-site="solace">
+  <a class="skip" href="#iris">Skip to content</a>
 
   <header class="site-nav" id="nav" data-open="false">
-    <button type="button" class="site-nav__burger" id="navBurger" aria-label="Open menu" aria-expanded="false" aria-controls="navDrawer">
-      <span></span><span></span><span></span>
-    </button>
-    <a class="site-nav__brand" href="#top">SOLACE</a>
+    <a class="site-nav__brand" href="#top" aria-label="Solace — top"><svg class="ring" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9.5"/><circle cx="12" cy="12" r="4.5"/></svg><span class="word">Solace</span></a>
     <nav class="site-nav__links" aria-label="Primary">
-      <a href="#ritual">Signature</a>
-      <a href="#story">Story</a>
-      <a href="#craft">Craft</a>
-      <a href="#gallery">Gallery</a>
-      <a href="#journal">Journal</a>
-      <a href="#contact" class="site-nav__cta">Book a ritual</a>
+      <a href="#iris">The hour</a>
+      <a href="#rituals">Rituals</a>
+      <a href="#day">A visit</a>
+      <a href="#book" class="site-nav__cta">Reserve</a>
     </nav>
+    <button type="button" class="site-nav__burger" id="navBurger" aria-label="Open menu" aria-expanded="false" aria-controls="navDrawer"><span></span><span></span></button>
   </header>
   <div class="nav-drawer-backdrop" id="navBackdrop" hidden></div>
-  <aside class="nav-drawer" id="navDrawer" aria-hidden="true" data-open="false">
-    <div class="nav-drawer__head">
-      <strong>SOLACE</strong>
-      <button type="button" class="nav-drawer__close" id="navClose" aria-label="Close menu">×</button>
-    </div>
+  <aside class="nav-drawer" id="navDrawer" aria-hidden="true" data-open="false" aria-label="Menu">
+    <div class="nav-drawer__head"><strong class="word">Solace</strong><button type="button" class="nav-drawer__close" id="navClose" aria-label="Close menu">×</button></div>
     <nav class="nav-drawer__links" aria-label="Mobile">
-      <a href="#catalogue">Catalogue</a>
-      <a href="#ritual">Signature</a>
-      <a href="#story">Story</a>
-      <a href="#craft">Craft</a>
-      <a href="#process">Process</a>
-      <a href="#gallery">Gallery</a>
-      <a href="#journal">Journal</a>
-      <a href="#faq">FAQ</a>
-      <a href="#contact">Book a ritual</a>
+      <a href="#iris">The hour</a>
+      <a href="#rituals">Rituals</a>
+      <a href="#day">A visit</a>
+      <a href="#book">Reserve</a>
     </nav>
+    <p class="nav-drawer__foot">Bebek, İstanbul<br />Daily 10:00 – 21:00 · phones stay in the locker</p>
   </aside>
-  <main id="top">
 
-    <section class="hero hero--float" aria-labelledby="hero-title">
-      <div class="hero__media">
+  <main id="top">
+    <!-- HERO — the still circle -->
+    <section class="hero" data-hero aria-labelledby="hero-title">
+      <div class="hero__rings" aria-hidden="true"><i></i><i></i><i></i></div>
+      <figure class="hero__disc">
         <picture>
           <source media="(max-width:900px)" srcset="media/hero-mob.jpg" />
-          <img src="media/hero.jpg" alt="" width="1920" height="1280" fetchpriority="high" />
+          <img src="media/hero.jpg" alt="A woman resting with closed eyes during a back massage, red petals beside her" width="1920" height="1280" fetchpriority="high" />
         </picture>
-      </div>
-      <div class="hero__veil"></div>
-      <div class="hero__float-card iz-reveal">
-        <p class="hero__eyebrow">Breath-measured care</p>
-        <h1 class="hero__wordmark" id="hero-title">SOLACE</h1>
-        <p class="hero__tag">Spa rituals measured in breath, not minutes.</p>
-        <a class="hero__btn" href="#ritual">Book a ritual</a>
+      </figure>
+      <div class="hero__body">
+        <p class="eyebrow">Bathhouse · massage · Bebek</p>
+        <h1 class="hero__word" id="hero-title">Solace</h1>
+        <p class="hero__tag">One hour of warm water and stone. <em>Phones stay in the locker.</em></p>
+        <div class="hero__cta">
+          <a class="btn btn--ink" href="#book">Reserve an hour</a>
+          <a class="btn btn--ghost" href="#iris">Take a breath</a>
+        </div>
       </div>
     </section>
 
-    <section class="sig sig--solace" id="ritual" aria-label="Ritual wipes">
-      <div class="ritual-steps" id="ritualSteps">
-        <article class="ritual-step is-active" data-step="0"><div class="ritual-wipe"></div><img src="media/pool.jpg" alt="Stone pool" /><h2>Arrive</h2><p>Foot bath, mineral warm — phones stay in the locker.</p></article>
-        <article class="ritual-step" data-step="1"><div class="ritual-wipe"></div><img src="media/stone.jpg" alt="Stone chamber" /><h2>Steam</h2><p>Eucalyptus veil — seven slow breaths at the rail.</p></article>
-        <article class="ritual-step" data-step="2"><div class="ritual-wipe"></div><img src="media/ritual.jpg" alt="Treatment room" /><h2>Restore</h2><p>Oils pressed in house; pressure mapped to fascia map.</p></article>
-      </div>
-      <div class="ritual-dots" role="tablist" aria-label="Ritual steps">
-        <button type="button" class="is-active" data-go="0">01</button>
-        <button type="button" data-go="1">02</button>
-        <button type="button" data-go="2">03</button>
-      </div>
-    </section>
-    <div class="marquee" aria-hidden="true"><div class="marquee__track"><span>Solace Spa · SOLACE · Ritual wipes · </span><span>Solace Spa · SOLACE · Ritual wipes · </span></div></div>
-    <section class="chapter" id="story">
-      <div class="chapter__grid">
-        <div class="chapter__copy">
-          <p class="chapter__kicker iz-reveal">01 — Story</p>
-          <h2 class="chapter__title iz-reveal" data-d="1">Ritual over rush</h2>
-          <p class="chapter__lede iz-reveal" data-d="2">Each step is timed to breath — never to the clock.</p>
-          <a class="chapter__link iz-reveal" href="#craft">See craft</a>
+    <!-- SIGNATURE — iris -->
+    <section class="scrub iris" id="iris" aria-label="One hour — arrive, soak, rest" data-rest="0.5">
+      <div class="scrub__pin iris__pin">
+        <div class="iris__layers" aria-hidden="true">
+          <figure class="iris__l" data-i="0"><img src="media/calm.jpg" alt="" width="1920" height="2880" loading="eager" /></figure>
+          <figure class="iris__l" data-i="1"><img src="media/catalog-01.jpg" alt="" width="1050" height="1400" loading="lazy" /></figure>
+          <figure class="iris__l" data-i="2"><img src="media/catalog-02.jpg" alt="" width="1050" height="1400" loading="lazy" /></figure>
+          <i class="iris__edge" id="irisEdge"></i>
         </div>
-        <figure class="chapter__frame iz-reveal"><img src="media/ritual.jpg" alt="Brand story visual" loading="lazy" /></figure>
-      </div>
-    </section>
-    <section class="chapter chapter--flip" id="craft">
-      <div class="chapter__grid">
-        <figure class="chapter__frame iz-reveal"><img src="media/mist.jpg" alt="Craft detail" loading="lazy" /></figure>
-        <div class="chapter__copy">
-          <p class="chapter__kicker iz-reveal">02 — Craft</p>
-          <h2 class="chapter__title iz-reveal">Ritual wipes</h2>
-          <p class="chapter__lede iz-reveal">Slow horizontal wipes reveal each treatment step — calm, sequential, tactile.</p>
+        <div class="iris__veil" aria-hidden="true"></div>
+        <header class="iris__head"><p class="eyebrow">Signature · One hour, three rooms</p></header>
+        <div class="iris__copy" aria-live="polite">
+          <p class="iris__no"><span id="irisNo">I</span></p>
+          <h2 id="irisTitle">Arrive</h2>
+          <p id="irisNote">Cold spring water over the hands, then slippers. Nothing is asked of you yet.</p>
         </div>
+        <p class="iris__breath" aria-hidden="true"><span id="irisBreath">Breathe in</span></p>
       </div>
     </section>
-    <section class="process" id="process">
-      <header class="section-head"><p class="section-head__kicker iz-reveal">03 — Process</p><h2 class="section-head__title iz-reveal">How we ship</h2></header>
-      <ol class="process__list">
-        <li class="iz-reveal"><strong>Listen</strong><span>Stakeholder interviews, site walk, constraint map.</span></li>
-        <li class="iz-reveal" data-d="1"><strong>Compose</strong><span>One viewport, one idea — type and photo in tension.</span></li>
-        <li class="iz-reveal" data-d="2"><strong>Motion</strong><span>Single signature interaction, reduced-motion safe.</span></li>
-        <li class="iz-reveal" data-d="3"><strong>Handoff</strong><span>Static HTML demo + media kit for your engineers.</span></li>
+
+    <!-- RITUALS -->
+    <section class="rituals" id="rituals" aria-labelledby="rituals-title">
+      <header class="head"><p class="eyebrow">Rituals</p><h2 id="rituals-title">Three ways to <em>slow down.</em></h2></header>
+      <ol class="rl">
+        <li><figure><img src="media/calm.jpg" alt="Spring water running over cupped hands" loading="lazy" width="1920" height="2880" /></figure><div><h3>Spring wash</h3><p>Hands, face and feet in cold spring water, then a pot of barley tea.</p></div><span>30 min</span></li>
+        <li><figure><img src="media/catalog-01.jpg" alt="A stone bath with steam rising in a wooden room" loading="lazy" width="1050" height="1400" /></figure><div><h3>Stone bath</h3><p>A private stone bath at 39 °C, lit by a single window. Salt and cedar on request.</p></div><span>50 min</span></li>
+        <li><figure><img src="media/catalog-02.jpg" alt="Smooth black stones, oil bottles and linen on a tray" loading="lazy" width="1050" height="1400" /></figure><div><h3>Warm-stone massage</h3><p>Basalt stones warmed in water, oil pressed along the back in long, slow lines.</p></div><span>80 min</span></li>
       </ol>
     </section>
-    <section class="gallery" id="gallery">
-      <header class="section-head"><p class="section-head__kicker iz-reveal">04 — Gallery</p><h2 class="section-head__title iz-reveal">Field notes</h2></header>
-      <div class="gallery__grid">
-        <figure class="iz-reveal"><img src="media/pool.jpg" alt="Gallery 1" loading="lazy" /></figure>
-        <figure class="iz-reveal" data-d="1"><img src="media/stone.jpg" alt="Gallery 2" loading="lazy" /></figure>
-        <figure class="iz-reveal" data-d="2"><img src="media/calm.jpg" alt="Gallery 3" loading="lazy" /></figure>
-      </div>
-    </section>
-    <section class="journal" id="journal">
-      <header class="section-head"><p class="section-head__kicker iz-reveal">05 — Journal</p><h2 class="section-head__title iz-reveal">Release notes</h2></header>
-      <article class="journal__card iz-reveal">
-        <time datetime="2026-03-01">Mar 2026</time>
-        <h3>Motion pass</h3>
-        <p>Signature interaction tuned for thumb scroll on mobile — hamburger nav, 44px targets, prefers-reduced-motion fallbacks.</p>
-      </article>
-      <article class="journal__card iz-reveal" data-d="1">
-        <time datetime="2026-02-10">Feb 2026</time>
-        <h3>Photography</h3>
-        <p>Licensed Pexels stills, cropped per viewport — no remote hotlinking in production build.</p>
-      </article>
+
+    <!-- A VISIT -->
+    <section class="day" id="day" aria-labelledby="day-title">
+      <header class="head"><p class="eyebrow">A visit</p><h2 id="day-title">Two hours,<br /><em>start to finish.</em></h2></header>
+      <ol class="tl">
+        <li><i></i><b>10:00</b><h3>Arrive</h3><p>Phone into the locker. Slippers, a robe, a glass of water.</p></li>
+        <li><i></i><b>10:20</b><h3>Soak</h3><p>Your own stone bath, door closed, window open a hand's width.</p></li>
+        <li><i></i><b>11:10</b><h3>Rest</h3><p>Massage in a warm room with the lights almost off.</p></li>
+        <li><i></i><b>12:10</b><h3>Tea</h3><p>Barley tea by the window. Nobody will ask how it was.</p></li>
+      </ol>
     </section>
 
-    <section class="enrich-stack-wrap" id="catalogue" aria-label="Ritual catalogue">
-      <div style="max-width:72rem;margin:0 auto;padding:clamp(2rem,6vw,3rem) clamp(1.25rem,4vw,2.75rem) 0">
-        <p class="section-kicker eyebrow" style="margin:0 0 0.4rem">Treatments</p>
-        <h2 class="section-title" style="margin:0 0 1rem">Ritual catalogue</h2>
-      </div>
-      <div class="enrich-stack">
-        <figure>
-          <img src="media/catalog-01.jpg" alt="Stone pool" width="900" height="1200" loading="lazy" />
-          <figcaption>01 · Stone pool</figcaption>
-        </figure>
-        <figure>
-          <img src="media/catalog-02.jpg" alt="Oil & linen" width="900" height="1200" loading="lazy" />
-          <figcaption>02 · Oil & linen</figcaption>
-        </figure>
-        <figure>
-          <img src="media/mist.jpg" alt="Mist room" width="900" height="1200" loading="lazy" />
-          <figcaption>03 · Mist room</figcaption>
-        </figure>
-      </div>
-    </section>
-<section class="faq" id="faq">
-      <header class="section-head"><p class="section-head__kicker iz-reveal">06 — FAQ</p><h2 class="section-head__title iz-reveal">Before you write</h2></header>
-      <article class="faq__item iz-reveal">
-        <button type="button" class="faq__q" aria-expanded="false">How do I book the signature experience?<span class="faq__icon" aria-hidden="true"></span></button>
-        <div class="faq__a" hidden><p>Email or call — we confirm studio slots within one business day.</p></div>
-      </article>
-      <article class="faq__item iz-reveal" data-d="1">
-        <button type="button" class="faq__q" aria-expanded="false">Is this a live product?<span class="faq__icon" aria-hidden="true"></span></button>
-        <div class="faq__a" hidden><p>No — this is a fictional brand demo by İzden Creative.</p></div>
-      </article>
-    </section>
-    <section class="contact" id="contact">
-      <div class="contact__inner iz-reveal">
-        <h2>Studio</h2>
-        <p class="contact__brand">Solace Spa — demo by İzden Creative.</p>
-        <ul class="contact__list">
-          <li><a href="mailto:info@izdencreative.com">info@izdencreative.com</a></li>
-          <li><a href="tel:+902120000000">+90 212 000 00 00</a></li>
-          <li><a href="https://www.izdencreative.com" target="_blank" rel="noopener noreferrer">izdencreative.com</a></li>
-        </ul>
-        <img class="contact__logo" src="/demos/_shared/izden-creative.jpg" alt="İzden Creative" width="180" height="61" loading="lazy" />
+    <!-- BOOK -->
+    <section class="book" id="book" aria-labelledby="book-title">
+      <div class="book__in">
+        <p class="eyebrow">Reserve</p>
+        <h2 id="book-title">Reserve <em>an hour.</em></h2>
+        <form class="form" action="mailto:info@izdencreative.com" method="post" enctype="text/plain">
+          <label><span>Name</span><input type="text" name="name" autocomplete="name" required /></label>
+          <label><span>Email</span><input type="email" name="email" autocomplete="email" required /></label>
+          <label><span>Ritual</span><select name="ritual"><option>Spring wash — 30 min</option><option>Stone bath — 50 min</option><option>Warm-stone massage — 80 min</option><option>The two hours — all three</option></select></label>
+          <button class="btn btn--ink" type="submit">Request this hour</button>
+        </form>
+        <p class="book__fine">Bebek, İstanbul · Daily 10:00 – 21:00 · <a href="mailto:info@izdencreative.com">info@izdencreative.com</a><br />Solace is a fictional bathhouse created as a design demonstration by İzden Creative.</p>
       </div>
     </section>
   </main>
-  <script src="/demos/_shared/izden-afterglow.js"></script>
-  <script src="/demos/_shared/izden-agency.js"></script>
-  <script src="main.js"></script>
-  <script src="/demos/_shared/izden-contact-rewrite.js" defer></script>
-  <script src="/demos/_shared/izden-atelier-enrich.js" defer></script>
+
+  <script src="/demos/_shared/izden-atelier-core.js" defer></script>
+  <script src="main.js" defer></script>
+  <script src="/demos/_shared/izden-agency.js" defer></script>
 </body>
 </html>

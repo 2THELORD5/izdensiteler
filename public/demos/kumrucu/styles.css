@@ -127,7 +127,7 @@ main, .nav, .loader, .progress, .foot, .ticker { position: relative; z-index: 1;
 }
 
 .stage-wrap { position: relative; background: #1a100c; }
-.stage-track { height: 1480vh; }
+.stage-track { height: 720vh; }
 .stage-pin {
   position: sticky; top: 0; height: 100vh; width: 100%; overflow: hidden; background: #1a100c;
 }
@@ -505,11 +505,16 @@ body.no-film .hint { display: none; }
     display: flex !important; position: absolute; left: .5rem; right: .5rem;
     top: calc(3.4rem + env(safe-area-inset-top));
     overflow-x: auto; scrollbar-width: none; justify-content: flex-start; gap: .1rem;
-    background: rgba(246,238,227,.95); padding: .2rem; border: 1px solid var(--line);
+    background: rgba(246,238,227,.97); padding: .25rem; border: 1px solid var(--line);
   }
   .nav__links::-webkit-scrollbar { display: none; }
-  .nav__links button { white-space: nowrap; font-size: .6rem; padding: .4rem .5rem; }
-  .stage-track { height: 1180vh; }
+  .nav__links button {
+    white-space: nowrap; font-size: .62rem; padding: .45rem .55rem;
+    color: var(--ink-soft) !important;
+  }
+  .nav__links button.is-on,
+  .nav__links button:hover { color: var(--crust-deep) !important; }
+  .stage-track { height: 560vh; }
   .stage-pin { height: 100dvh; height: 100svh; }
   .stage-ui {
     left: 1rem; right: 1rem; max-width: none;

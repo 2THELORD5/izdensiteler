@@ -41,18 +41,16 @@ export function CookieConsent() {
             Çerezler
           </p>
           <p>
-            Site deneyimini iyileştirmek ve tercihlerinizi hatırlamak için zorunlu çerezler
-            ile isteğe bağlı analitik çerezler kullanabiliriz. Detaylar için{" "}
-            <Link href="/yasal/cerez-politikasi">Çerez Politikası</Link> ve{" "}
-            <Link href="/yasal/aydinlatma">Aydınlatma Metni</Link>’ne bakın.
+            Analitik çerezler (isteğe bağlı).{" "}
+            <Link href="/yasal/cerez-politikasi">Politika</Link>
           </p>
         </div>
         <div className="cookie-bar__actions">
           <button type="button" className="btn-ghost compact" onClick={() => choose("essential")}>
-            Yalnızca zorunlu
+            Zorunlu
           </button>
           <button type="button" className="btn-primary compact" onClick={() => choose("accepted")}>
-            Kabul et
+            Kabul
           </button>
         </div>
       </div>

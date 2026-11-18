@@ -3,194 +3,144 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <title>FORGE — Forge Coffee</title>
-  <meta name="description" content="Coffee roasted for predawn crews." />
-  <meta name="theme-color" content="#1c1917" />
+  <title>FORGE — Coffee roasted to a curve, not a colour</title>
+  <meta name="description" content="Forge is a small-batch coffee roastery. Every lot gets its own roast curve — charge, turn, first crack, drop." />
+  <meta name="theme-color" content="#eeeeea" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Anton&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/demos/_shared/izden-atelier-core.css" />
   <link rel="stylesheet" href="styles.css" />
-  <link rel="stylesheet" href="/demos/_shared/izden-afterglow.css" />
   <link rel="stylesheet" href="/demos/_shared/izden-agency.css" />
-  <link rel="stylesheet" href="/demos/_shared/izden-atelier-mobile.css" />
-  <link rel="stylesheet" href="/demos/_shared/izden-atelier-motion.css" />
-  <link rel="stylesheet" href="/demos/_shared/izden-atelier-enrich.css" />
+  <link rel="preload" as="image" href="media/hero.jpg" media="(min-width:901px)" />
+  <link rel="preload" as="image" href="media/hero-mob.jpg" media="(max-width:900px)" />
 </head>
-<body class="motion-forge" data-enrich="spotlight">
+<body data-site="forge">
+  <a class="skip" href="#curve">Skip to content</a>
 
   <header class="site-nav" id="nav" data-open="false">
-    <button type="button" class="site-nav__burger" id="navBurger" aria-label="Open menu" aria-expanded="false" aria-controls="navDrawer">
-      <span></span><span></span><span></span>
-    </button>
-    <a class="site-nav__brand" href="#top">FORGE</a>
+    <a class="site-nav__brand" href="#top" aria-label="Forge — top"><svg class="bean" viewBox="0 0 24 24" aria-hidden="true"><ellipse cx="12" cy="12" rx="7" ry="10" transform="rotate(28 12 12)"/><path d="M8 4c4 4 0 12 8 16" fill="none"/></svg><span class="word">FORGE</span></a>
     <nav class="site-nav__links" aria-label="Primary">
-      <a href="#grind">Signature</a>
-      <a href="#story">Story</a>
-      <a href="#craft">Craft</a>
-      <a href="#gallery">Gallery</a>
-      <a href="#journal">Journal</a>
-      <a href="#contact" class="site-nav__cta">Subscribe roast</a>
+      <a href="#curve">Roast curve</a>
+      <a href="#board">Today's board</a>
+      <a href="#visit">Visit</a>
+      <a href="#post" class="site-nav__cta">Beans by post</a>
     </nav>
+    <button type="button" class="site-nav__burger" id="navBurger" aria-label="Open menu" aria-expanded="false" aria-controls="navDrawer"><span></span><span></span></button>
   </header>
   <div class="nav-drawer-backdrop" id="navBackdrop" hidden></div>
-  <aside class="nav-drawer" id="navDrawer" aria-hidden="true" data-open="false">
-    <div class="nav-drawer__head">
-      <strong>FORGE</strong>
-      <button type="button" class="nav-drawer__close" id="navClose" aria-label="Close menu">×</button>
-    </div>
+  <aside class="nav-drawer" id="navDrawer" aria-hidden="true" data-open="false" aria-label="Menu">
+    <div class="nav-drawer__head"><strong class="word">FORGE</strong><button type="button" class="nav-drawer__close" id="navClose" aria-label="Close menu">×</button></div>
     <nav class="nav-drawer__links" aria-label="Mobile">
-      <a href="#catalogue">Catalogue</a>
-      <a href="#grind">Signature</a>
-      <a href="#story">Story</a>
-      <a href="#craft">Craft</a>
-      <a href="#process">Process</a>
-      <a href="#gallery">Gallery</a>
-      <a href="#journal">Journal</a>
-      <a href="#faq">FAQ</a>
-      <a href="#contact">Subscribe roast</a>
+      <a href="#curve">Roast curve</a>
+      <a href="#board">Today's board</a>
+      <a href="#visit">Visit</a>
+      <a href="#post">Beans by post</a>
     </nav>
+    <p class="nav-drawer__foot">Roastery + bar<br />Kadıköy, İstanbul · 07:30 – 18:00</p>
   </aside>
+
   <main id="top">
-
-    <section class="hero hero--bottom ken" aria-labelledby="hero-title">
-      <div class="hero__media ken-burns">
-        <picture>
-          <source media="(max-width:900px)" srcset="media/hero-mob.jpg" />
-          <img src="media/hero.jpg" alt="" width="1920" height="1280" fetchpriority="high" />
-        </picture>
-      </div>
-      <div class="hero__veil hero__veil--hard"></div>
-      <div class="hero__inner hero__inner--wide">
-        <p class="hero__eyebrow iz-reveal">Predawn roast</p>
-        <h1 class="hero__wordmark iz-reveal" id="hero-title">FORGE</h1>
-        <p class="hero__tag iz-reveal" data-d="1">Coffee roasted for predawn crews.</p>
-        <a class="hero__btn iz-reveal" data-d="2" href="#grind">Subscribe roast</a>
-      </div>
-    </section>
-
-    <section class="sig sig--forge" id="grind" aria-label="Grind & steam">
-      <div class="grind-stage">
-        <div class="grind-steam ken-burns" aria-hidden="true">
-          <img src="media/steam.jpg" alt="Steam rising" />
-        </div>
-        <div class="grind-data">
-          <p class="grind-label">Micron target</p>
-          <p class="grind-num" id="grindNum" data-target="420">000</p>
-          <p class="grind-note iz-reveal">Micron counter ticks up while steam drifts in a soft ken-burns loop.</p>
+    <!-- HERO -->
+    <section class="hero" data-hero aria-labelledby="hero-title">
+      <div class="hero__left">
+        <p class="eyebrow">Small-batch roastery · İstanbul</p>
+        <h1 class="hero__word" id="hero-title">FORGE</h1>
+        <p class="hero__tag">Coffee roasted to a <mark>curve</mark>, not a colour.</p>
+        <div class="hero__cta">
+          <a class="btn btn--red" href="#curve">Watch a roast</a>
+          <a class="btn btn--ink" href="#board">Today's board</a>
         </div>
       </div>
-    </section>
-    <div class="marquee" aria-hidden="true"><div class="marquee__track"><span>Forge Coffee · FORGE · Grind & steam · </span><span>Forge Coffee · FORGE · Grind & steam · </span></div></div>
-    <section class="chapter" id="story">
-      <div class="chapter__grid">
-        <div class="chapter__copy">
-          <p class="chapter__kicker iz-reveal">01 — Story</p>
-          <h2 class="chapter__title iz-reveal" data-d="1">Micron honesty</h2>
-          <p class="chapter__lede iz-reveal" data-d="2">Roast curves printed, not mythologized.</p>
-          <a class="chapter__link iz-reveal" href="#craft">See craft</a>
-        </div>
-        <figure class="chapter__frame iz-reveal"><img src="media/roast.jpg" alt="Brand story visual" loading="lazy" /></figure>
+      <picture class="hero__pic">
+        <source media="(max-width:900px)" srcset="media/hero-mob.jpg" />
+        <img src="media/hero.jpg" alt="Freshly roasted coffee beans, close up" width="1920" height="1280" fetchpriority="high" />
+      </picture>
+      <div class="sticker" aria-hidden="true">
+        <svg viewBox="0 0 200 200"><defs><path id="circ" d="M100 100m-78 0a78 78 0 1 1 156 0a78 78 0 1 1 -156 0"/></defs><text><textPath href="#circ" startOffset="0">ROASTED THIS MORNING · ROASTED THIS MORNING · </textPath></text></svg>
+        <b>Batch<br />0412</b>
       </div>
-    </section>
-    <section class="chapter chapter--flip" id="craft">
-      <div class="chapter__grid">
-        <figure class="chapter__frame iz-reveal"><img src="media/pour.jpg" alt="Craft detail" loading="lazy" /></figure>
-        <div class="chapter__copy">
-          <p class="chapter__kicker iz-reveal">02 — Craft</p>
-          <h2 class="chapter__title iz-reveal">Grind & steam</h2>
-          <p class="chapter__lede iz-reveal">Micron counter ticks up while steam drifts in a soft ken-burns loop.</p>
-        </div>
-      </div>
-    </section>
-    <section class="process" id="process">
-      <header class="section-head"><p class="section-head__kicker iz-reveal">03 — Process</p><h2 class="section-head__title iz-reveal">How we ship</h2></header>
-      <ol class="process__list">
-        <li class="iz-reveal"><strong>Listen</strong><span>Stakeholder interviews, site walk, constraint map.</span></li>
-        <li class="iz-reveal" data-d="1"><strong>Compose</strong><span>One viewport, one idea — type and photo in tension.</span></li>
-        <li class="iz-reveal" data-d="2"><strong>Motion</strong><span>Single signature interaction, reduced-motion safe.</span></li>
-        <li class="iz-reveal" data-d="3"><strong>Handoff</strong><span>Static HTML demo + media kit for your engineers.</span></li>
-      </ol>
-    </section>
-    <section class="gallery" id="gallery">
-      <header class="section-head"><p class="section-head__kicker iz-reveal">04 — Gallery</p><h2 class="section-head__title iz-reveal">Field notes</h2></header>
-      <div class="gallery__grid">
-        <figure class="iz-reveal"><img src="media/beans.jpg" alt="Gallery 1" loading="lazy" /></figure>
-        <figure class="iz-reveal" data-d="1"><img src="media/steam.jpg" alt="Gallery 2" loading="lazy" /></figure>
-        <figure class="iz-reveal" data-d="2"><img src="media/cafe.jpg" alt="Gallery 3" loading="lazy" /></figure>
-      </div>
-    </section>
-    <section class="journal" id="journal">
-      <header class="section-head"><p class="section-head__kicker iz-reveal">05 — Journal</p><h2 class="section-head__title iz-reveal">Release notes</h2></header>
-      <article class="journal__card iz-reveal">
-        <time datetime="2026-03-01">Mar 2026</time>
-        <h3>Motion pass</h3>
-        <p>Signature interaction tuned for thumb scroll on mobile — hamburger nav, 44px targets, prefers-reduced-motion fallbacks.</p>
-      </article>
-      <article class="journal__card iz-reveal" data-d="1">
-        <time datetime="2026-02-10">Feb 2026</time>
-        <h3>Photography</h3>
-        <p>Licensed Pexels stills, cropped per viewport — no remote hotlinking in production build.</p>
-      </article>
     </section>
 
-    <section class="enrich-catalog" id="catalogue" aria-label="Roast catalogue">
-      <div class="enrich-catalog__pin">
-        <div class="enrich-catalog__stage" aria-hidden="true">
-          <img src="media/catalog-01.jpg" alt="" class="is-on" data-enrich-img="0" />
-          <img src="media/catalog-02.jpg" alt="" loading="lazy" data-enrich-img="1" />
-          <img src="media/steam.jpg" alt="" loading="lazy" data-enrich-img="2" />
+    <!-- SIGNATURE — the roast curve -->
+    <section class="scrub curve" id="curve" aria-label="A roast, minute by minute" data-rest="0.5">
+      <div class="scrub__pin curve__pin">
+        <div class="curve__stage" aria-hidden="true">
+          <img class="is-on" src="media/steam.jpg" alt="" width="1920" height="1280" loading="eager" />
+          <img src="media/hero.jpg" alt="" width="1920" height="1280" loading="lazy" />
+          <img src="media/catalog-01.jpg" alt="" width="1050" height="1400" loading="lazy" />
+          <img src="media/catalog-02.jpg" alt="" width="1050" height="1400" loading="lazy" />
+          <span class="curve__beanwrap"><i class="curve__bean" id="bean"></i></span>
         </div>
-        <div class="enrich-catalog__meta">
-          <p class="section-kicker eyebrow" style="margin:0">Micron honesty</p>
-          <h2 class="section-title" style="margin:0 0 0.5rem">Roast catalogue</h2>
-          <div class="enrich-catalog__items">
-          <article class="enrich-catalog__item is-on" data-enrich-item="0">
-            <p class="enrich-catalog__index">01</p>
-            <h3>Drum roast</h3>
-            <p>Curves printed, not myth.</p>
-          </article>
-          <article class="enrich-catalog__item" data-enrich-item="1">
-            <p class="enrich-catalog__index">02</p>
-            <h3>Crema pour</h3>
-            <p>Predawn cup.</p>
-          </article>
-          <article class="enrich-catalog__item" data-enrich-item="2">
-            <p class="enrich-catalog__index">03</p>
-            <h3>Steam bar</h3>
-            <p>Crew shift fuel.</p>
-          </article>
+        <div class="curve__panel">
+          <p class="eyebrow">Signature · One roast, minute by minute</p>
+          <div class="curve__copy" aria-live="polite">
+            <h2 id="stageTitle">Charge</h2>
+            <p id="stageNote">Green beans drop into a drum already at 200 °C. The temperature falls fast — that is the beans taking the heat.</p>
           </div>
+          <div class="curve__read">
+            <div><span>Bean temp</span><b id="tTemp">200<small>°C</small></b></div>
+            <div><span>Time</span><b id="tTime">0:00</b></div>
+            <div><span>Stage</span><b id="tLevel">Green</b></div>
+          </div>
+          <svg class="chart" viewBox="0 0 800 340" role="img" aria-label="Roast curve: temperature against time, from charge at 200 degrees to drop at 208 degrees">
+            <g class="chart__grid"><path d="M20 20H780M20 100H780M20 180H780M20 260H780M20 320H780"/></g>
+            <g class="chart__labels"><text x="20" y="14">220°</text><text x="20" y="338">0:00</text><text x="400" y="338" text-anchor="middle">5:30</text><text x="780" y="338" text-anchor="end">11:00</text></g>
+            <path id="curveBg" class="chart__bg" d=""/>
+            <path id="curveLine" class="chart__line" d=""/>
+            <g id="marks" class="chart__marks"></g>
+            <circle id="curveDot" r="9" class="chart__dot" cx="20" cy="20"/>
+          </svg>
         </div>
       </div>
     </section>
-<section class="faq" id="faq">
-      <header class="section-head"><p class="section-head__kicker iz-reveal">06 — FAQ</p><h2 class="section-head__title iz-reveal">Before you write</h2></header>
-      <article class="faq__item iz-reveal">
-        <button type="button" class="faq__q" aria-expanded="false">How do I book the signature experience?<span class="faq__icon" aria-hidden="true"></span></button>
-        <div class="faq__a" hidden><p>Email or call — we confirm studio slots within one business day.</p></div>
-      </article>
-      <article class="faq__item iz-reveal" data-d="1">
-        <button type="button" class="faq__q" aria-expanded="false">Is this a live product?<span class="faq__icon" aria-hidden="true"></span></button>
-        <div class="faq__a" hidden><p>No — this is a fictional brand demo by İzden Creative.</p></div>
-      </article>
-    </section>
-    <section class="contact" id="contact">
-      <div class="contact__inner iz-reveal">
-        <h2>Studio</h2>
-        <p class="contact__brand">Forge Coffee — demo by İzden Creative.</p>
-        <ul class="contact__list">
-          <li><a href="mailto:info@izdencreative.com">info@izdencreative.com</a></li>
-          <li><a href="tel:+902120000000">+90 212 000 00 00</a></li>
-          <li><a href="https://www.izdencreative.com" target="_blank" rel="noopener noreferrer">izdencreative.com</a></li>
+
+    <!-- BOARD -->
+    <section class="board" id="board" aria-labelledby="board-title">
+      <div class="board__txt">
+        <p class="eyebrow">Today's board</p>
+        <h2 id="board-title">Three lots.<br />Three curves.</h2>
+        <ul class="lots">
+          <li><b>01</b><div><h3>Ethiopia · Guji</h3><p>Washed. Jasmine, bergamot, peach skin.</p></div><span class="lvl" style="--l:.34" aria-label="Light roast"><i></i>Light</span></li>
+          <li><b>02</b><div><h3>Colombia · Huila</h3><p>Honey process. Red apple, panela, cacao nib.</p></div><span class="lvl" style="--l:.58" aria-label="Medium roast"><i></i>Medium</span></li>
+          <li><b>03</b><div><h3>Brazil · Cerrado</h3><p>Natural. Hazelnut, dark chocolate, long finish.</p></div><span class="lvl" style="--l:.82" aria-label="Dark roast"><i></i>Dark</span></li>
         </ul>
-        <img class="contact__logo" src="/demos/_shared/izden-creative.jpg" alt="İzden Creative" width="180" height="61" loading="lazy" />
+      </div>
+      <figure class="board__fig"><img src="media/cafe.jpg" alt="Inside the roastery bar: espresso machines, scales and a chalkboard menu" loading="lazy" width="1920" height="2880" /><figcaption>The bar, Kadıköy</figcaption></figure>
+    </section>
+
+    <!-- VISIT -->
+    <section class="visit" id="visit" aria-labelledby="visit-title">
+      <div class="visit__a">
+        <h2 id="visit-title">Come for<br />the smell.</h2>
+      </div>
+      <div class="visit__b">
+        <img src="media/beans.jpg" alt="A barista pouring milk into a flat white held in two hands" loading="lazy" width="1920" height="1282" />
+        <dl class="visit__info">
+          <div><dt>Where</dt><dd>Moda Cd. 21, Kadıköy</dd></div>
+          <div><dt>Open</dt><dd>07:30 – 18:00, daily</dd></div>
+          <div><dt>Roasting</dt><dd>Tue + Fri, 09:00</dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <!-- POST -->
+    <section class="post" id="post" aria-labelledby="post-title">
+      <div class="post__in">
+        <h2 id="post-title">Beans, by post.</h2>
+        <p class="post__lead">Roasted on Tuesday or Friday, in your letterbox within two days.</p>
+        <form class="form" action="mailto:info@izdencreative.com" method="post" enctype="text/plain">
+          <label><span>Email</span><input type="email" name="email" autocomplete="email" required placeholder="you@home.com" /></label>
+          <label><span>Which lot?</span><select name="lot"><option>01 · Ethiopia Guji — light</option><option>02 · Colombia Huila — medium</option><option>03 · Brazil Cerrado — dark</option></select></label>
+          <button class="btn btn--ink" type="submit">Send me a bag</button>
+        </form>
+        <p class="post__fine">Forge is a fictional roastery created as a design demonstration by İzden Creative · <a href="mailto:info@izdencreative.com">info@izdencreative.com</a></p>
       </div>
     </section>
   </main>
-  <script src="/demos/_shared/izden-afterglow.js"></script>
-  <script src="/demos/_shared/izden-agency.js"></script>
-  <script src="main.js"></script>
-  <script src="/demos/_shared/izden-contact-rewrite.js" defer></script>
-  <script src="/demos/_shared/izden-atelier-enrich.js" defer></script>
+
+  <script src="/demos/_shared/izden-atelier-core.js" defer></script>
+  <script src="main.js" defer></script>
+  <script src="/demos/_shared/izden-agency.js" defer></script>
 </body>
 </html>

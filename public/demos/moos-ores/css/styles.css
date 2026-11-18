@@ -423,40 +423,37 @@ section[id], footer[id] { scroll-margin-top: 68px; }
 .nav__drawer-phone { color: var(--accent-deep) !important; font-family: 'Manrope', sans-serif !important; font-size: 1rem !important; letter-spacing: 0.04em; border-bottom: 0 !important; padding-top: 1.2rem; }
 
 /* =====================================================================
-   HERO — live film scrub (shared izden-film-scrub.js drives video.currentTime)
+   HERO
    ===================================================================== */
-.ores-film.iz-scrub { height: 340vh; background: var(--ink); }
-.ores-film .iz-scrub__hero {
-  align-items: center;
+.hero {
+  position: relative;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
   text-align: center;
   padding: var(--nav-h) var(--gutter) clamp(3rem, 8vh, 7rem);
+  overflow: hidden;
 }
-.ores-film .iz-scrub__veil {
+.hero__media { position: absolute; inset: 0; z-index: 0; overflow: hidden; }
+.hero__video {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  object-position: center;
+  background: var(--sand);
+  /* iris reveal start-state (overridden by JS) */
+  clip-path: circle(0% at 50% 50%);
+  transform: scale(1.16);
+  will-change: clip-path, transform;
+}
+html:not(.js) .hero__video { clip-path: none; transform: none; }
+.hero__scrim {
+  position: absolute; inset: 0;
   background:
-    radial-gradient(120% 92% at 50% 50%, rgba(33, 30, 25, 0.34) 0%, rgba(33, 30, 25, 0.12) 46%, rgba(33, 30, 25, 0) 70%),
-    linear-gradient(to bottom, rgba(33, 30, 25, 0.22) 0%, rgba(33, 30, 25, 0) 24%),
-    linear-gradient(to top, rgba(33, 30, 25, 0.5) 0%, rgba(33, 30, 25, 0) 48%) !important;
-}
-.ores-film .iz-scrub__ui {
-  align-self: end;
-  justify-self: start;
-  padding-bottom: clamp(3rem, 12svh, 7rem);
-}
-.ores-film .iz-scrub__ui,
-.ores-film .iz-scrub__title,
-.ores-film .iz-scrub__body,
-.ores-film .iz-scrub__act,
-.ores-film .iz-scrub__hint {
-  color: var(--paper);
-  text-shadow: 0 2px 28px rgba(33, 30, 25, 0.55);
-}
-.ores-film .iz-scrub__title { font-family: 'Syne', sans-serif; font-weight: 700; letter-spacing: -0.03em; }
-@media (max-width: 720px) {
-  .ores-film.iz-scrub { height: 300vh; }
-}
-@media (prefers-reduced-motion: reduce) {
-  .ores-film.iz-scrub { height: auto; min-height: 100svh; }
+    radial-gradient(120% 92% at 50% 50%, rgba(33, 30, 25, 0.28) 0%, rgba(33, 30, 25, 0.08) 42%, rgba(33, 30, 25, 0) 66%),
+    linear-gradient(to bottom, rgba(33, 30, 25, 0.14) 0%, rgba(33, 30, 25, 0) 22%),
+    linear-gradient(to top, rgba(33, 30, 25, 0.34) 0%, rgba(33, 30, 25, 0) 44%);
 }
 
 .hero__inner { position: relative; z-index: 2; max-width: 1100px; }
@@ -488,9 +485,37 @@ section[id], footer[id] { scroll-margin-top: 68px; }
   text-shadow: 0 2px 22px rgba(33, 30, 25, 0.4);
 }
 .hero__cta { margin-top: 2.6rem; }
-.hero__cta .btn { background: var(--paper); color: var(--ink); border-color: var(--paper); min-height: 48px; }
+.hero__cta .btn { background: var(--paper); color: var(--ink); border-color: var(--paper); }
 .hero__cta .btn:hover { color: var(--ink); border-color: var(--accent); }
 .hero__cta .btn__icon { background: var(--ink); color: var(--paper); }
+
+.hero__scroll {
+  position: absolute;
+  bottom: clamp(1.6rem, 4vh, 2.6rem);
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.64rem;
+  font-weight: 600;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--paper);
+}
+.hero__scroll-line { width: 1px; height: 46px; background: rgba(247, 244, 239, 0.5); position: relative; overflow: hidden; }
+.hero__scroll-line::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: var(--paper);
+  animation: scrollLine 2.2s var(--ease) infinite;
+}
+@keyframes scrollLine {
+  0% { transform: translateY(-100%); }
+  60%, 100% { transform: translateY(100%); }
+}
 
 /* =====================================================================
    SERVICES
@@ -894,7 +919,8 @@ section[id], footer[id] { scroll-margin-top: 68px; }
    ===================================================================== */
 @media (prefers-reduced-motion: reduce) {
   html.js [data-reveal] { opacity: 1 !important; transform: none !important; }
-  [data-clip] { clip-path: none !important; transform: none !important; }
+  .hero__video, [data-clip] { clip-path: none !important; transform: none !important; }
+  .hero__scroll-line::after,
   .nav__phone-dot { animation: none; }
   .service__media img, .panel__img img { transition: none; }
   *,

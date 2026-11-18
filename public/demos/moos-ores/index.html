@@ -33,7 +33,7 @@
   html:not(.js) #loader { display: none; }
 </style>
 
-<link rel="stylesheet" href="css/styles.css?v=6" />
+<link rel="stylesheet" href="css/styles.css?v=7" />
 
 <!-- Mark JS available immediately (controls reveal + loader gating) -->
 <script>
@@ -93,49 +93,43 @@
 
 <main>
 
-<!-- ============================== HERO = LIVE FILM SCRUB ==============================
-     First scroll is the continuous film (film-pc 16:9 / film-mob 9:16), seeked by scroll
-     position through izden-film-scrub.js. Brand copy fades out with --iz-p, chapters follow. -->
-  <section id="home" class="iz-scrub iz-scrub--film iz-scrub--kie iz-scrub--has-hero iz-scrub--drift ores-film" data-iz-film-scrub
-    data-film-pc="assets/kie-scrub/film-pc.mp4"
-    data-film-mob="assets/kie-scrub/film-mob.mp4"
-    data-poster="assets/kie-scrub/pc/01.jpg"
-    data-poster-mob="assets/kie-scrub/mob/01.jpg"
-    aria-label="Ores Interiors — film walk-through of the studio's rooms">
-    <div class="iz-scrub__pin">
-      <div class="iz-scrub__stage">
-        <video class="iz-film" muted playsinline preload="auto" poster="assets/kie-scrub/pc/01.jpg" disablePictureInPicture
-          aria-label="A slow cinematic walk through a sunlit living room, a materials table, a stone bathroom and a cedar sauna"></video>
-      </div>
-      <div class="iz-scrub__veil" aria-hidden="true"></div>
-
-      <div class="iz-scrub__hero">
-       <div class="hero__inner">
-        <p class="hero__eyebrow" data-reveal>Interior Design &amp; Turnkey Renovation</p>
-        <h1 class="hero__title">
-          <span class="hero__line" data-reveal>Ores</span>
-          <span class="hero__line hero__line--wide" data-reveal>Interiors</span>
-        </h1>
-        <p class="hero__subtitle" data-reveal>Creating interiors that inspire.</p>
-        <div class="hero__cta" data-reveal>
-          <a href="#contact" class="btn btn--primary">
-            Calculate the Estimate
-            <span class="btn__icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </span>
-          </a>
-        </div>
-       </div>
-      </div>
-
-      <div class="iz-scrub__ui">
-        <p class="iz-scrub__act" data-iz-act></p>
-        <h2 class="iz-scrub__title" data-iz-title></h2>
-        <p class="iz-scrub__body" data-iz-body></p>
-      </div>
-      <p class="iz-scrub__hint">Scroll</p>
+  <!-- ============================== HERO ============================== -->
+  <!-- First scroll = original live hero.mp4 scrub (GSAP). Ken-Burns kie film removed. -->
+  <section id="home" class="hero">
+    <div class="hero__media">
+      <video
+        class="hero__video"
+        muted
+        playsinline
+        preload="auto"
+        poster="assets/opt/01-hero-living-room.jpg"
+        data-src="assets/hero.mp4"
+        aria-label="A slow cinematic walk through a sunlit modern living room with a low linen sofa and floor-to-ceiling glass"
+      ></video>
+      <div class="hero__scrim"></div>
     </div>
-    <script type="application/json" data-iz-chapters>[{"act":"01 Living","title":"Light on stone.","body":"Space planned around how you actually live."},{"act":"02 Materials","title":"Samples in hand.","body":"Stone, timber and textile chosen in person."},{"act":"03 Bath","title":"Quiet surfaces.","body":"Natural stone, warm light, nothing extra."},{"act":"04 Sauna","title":"Warm timber.","body":"Finished to the last joint, handed over on time."}]</script>
+
+    <div class="hero__inner">
+      <p class="hero__eyebrow" data-reveal>Interior Design &amp; Turnkey Renovation</p>
+      <h1 class="hero__title">
+        <span class="hero__line" data-reveal>Ores</span>
+        <span class="hero__line hero__line--wide" data-reveal>Interiors</span>
+      </h1>
+      <p class="hero__subtitle" data-reveal>Creating interiors that inspire.</p>
+      <div class="hero__cta" data-reveal>
+        <a href="#contact" class="btn btn--primary">
+          Calculate the Estimate
+          <span class="btn__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+        </a>
+      </div>
+    </div>
+
+    <a href="#services" class="hero__scroll" aria-label="Scroll to services">
+      <span>Scroll</span>
+      <span class="hero__scroll-line" aria-hidden="true"></span>
+    </a>
   </section>
 
   <!-- ============================== SERVICES ============================== -->
@@ -400,15 +394,14 @@
 </footer>
 
 <!-- GSAP + ScrollTrigger -->
-<script src="js/vendor/gsap.min.js"></script>
-<script src="js/vendor/ScrollTrigger.min.js"></script>
-<script src="js/main.js?v=6"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="js/main.js?v=7"></script>
   <link rel="stylesheet" href="../_shared/izden-mark.css" />
   <script src="../_shared/izden-mark.js" defer></script>
 <script src="/demos/_shared/izden-agency.js" defer></script>
 
 <script src="/demos/_shared/izden-afterglow.js" defer></script>
 <script src="/demos/_shared/izden-contact-rewrite.js" defer></script>
-<script src="/demos/_shared/izden-film-scrub.js" defer></script>
 </body>
 </html>

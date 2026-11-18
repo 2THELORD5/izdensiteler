@@ -215,9 +215,111 @@
       li.replaceChildren(a);
     });
   }
+  function ensureMobileNavLabel() {
+    document
+      .querySelectorAll(
+        'button.menu-btn, button.menu-button, button[class*="Menu"], .menu-btn, .menu-button'
+      )
+      .forEach((btn) => {
+        if (!btn.getAttribute("aria-label")) btn.setAttribute("aria-label", "Menu");
+      });
+  }
+
+  function unlockShell() {
+    ensureMobileNavLabel();
+    // Niche (and similar) leave a full-screen loader + overflow:hidden after hydration fails.
+    document.querySelectorAll(
+      '#loader, .loader, [id*="loader" i], [class*="Loader"], [class*="preloader" i], [class*="hero-loading" i]'
+    ).forEach((el) => {
+      const r = el.getBoundingClientRect();
+      const cs = getComputedStyle(el);
+      if (cs.position === "fixed" || r.height > innerHeight * 0.35 || /loader/i.test(el.className + el.id)) {
+        el.style.setProperty("display", "none", "important");
+        el.style.setProperty("opacity", "0", "important");
+        el.style.setProperty("pointer-events", "none", "important");
+        el.setAttribute("aria-hidden", "true");
+      }
+    });
+    document.documentElement.style.setProperty("overflow", "auto", "important");
+    document.documentElement.style.setProperty("overflow-y", "auto", "important");
+    document.body.style.setProperty("overflow", "auto", "important");
+    document.body.style.setProperty("overflow-y", "auto", "important");
+    document.body.style.setProperty("height", "auto", "important");
+    document.body.classList.remove("is-locked", "loading", "overflow-hidden");
+    document.documentElement.classList.remove("is-locked", "loading");
+  }
+
+  function fixMedia(root = document) {
+    root.querySelectorAll("img[src], source[src], source[srcset], video[poster], video[src]").forEach((el) => {
+      ["src", "poster"].forEach((attr) => {
+        const v = el.getAttribute(attr);
+        if (!v) return;
+        let next = v;
+        if (SLUG === "moos-niche" && /^\/(studio|projects|slider)\//.test(v)) {
+          next = `/demos/moos-niche${v}`;
+        }
+        // Retro hashed heroes live under _next/static/media, not site root
+        if (SLUG === "moos-retro" && /^\/hero\.[a-z0-9]+\.webp$/i.test(v)) {
+          next = `${BASE}_next/static/media${v}`;
+        }
+        if (SLUG === "moos-peak" && /^\/peak-home-hero\.webp$/i.test(v)) {
+          next = `${BASE}images/peak-home-hero.webp`;
+        }
+        if (SLUG === "moos-peak" && /^\/images\//.test(v)) {
+          next = `${BASE}${v.replace(/^\//, "")}`;
+        }
+        if (SLUG === "moos-peak" && /^\/hero-frames\//.test(v)) {
+          next = `${BASE}${v.replace(/^\//, "")}`;
+        }
+        if (SLUG === "moos-blok" && /^\/images\//.test(v)) {
+          next = `${BASE}${v.replace(/^\//, "")}`;
+        }
+        if (next !== v) el.setAttribute(attr, next);
+      });
+      const ss = el.getAttribute("srcset");
+      if (!ss) return;
+      let nextSs = ss;
+      if (SLUG === "moos-niche") {
+        nextSs = nextSs.replace(/(^|,\s*)\/(studio|projects|slider)\//g, "$1/demos/moos-niche/$2/");
+      }
+      if (SLUG === "moos-retro") {
+        nextSs = nextSs.replace(/(^|,\s*)\/(hero\.[a-z0-9]+\.webp)/gi, `$1${BASE}_next/static/media/$2`);
+      }
+      if (nextSs !== ss) el.setAttribute("srcset", nextSs);
+    });
+    if (SLUG === "moos-blok") {
+      root.querySelectorAll("img").forEach((img) => {
+        if (!img.getAttribute("width") && img.naturalWidth) {
+          img.setAttribute("width", String(img.naturalWidth));
+          img.setAttribute("height", String(img.naturalHeight));
+        }
+        const cs = getComputedStyle(img);
+        if (cs.maxHeight === "0px" || cs.height === "0px") {
+          img.style.maxHeight = "none";
+          img.style.height = "auto";
+        }
+        // Next fill images in collapsed parents → force a readable box
+        const r = img.getBoundingClientRect();
+        if (img.naturalWidth > 0 && (r.width < 2 || r.height < 2) && cs.display !== "none") {
+          const parent = img.closest("[class*='media'],[class*='Media'],[class*='frame'],[class*='Frame'],figure") || img.parentElement;
+          if (parent && parent !== document.body) {
+            parent.style.minHeight = parent.style.minHeight || "220px";
+            parent.style.position = parent.style.position || "relative";
+          }
+          img.style.width = "100%";
+          img.style.height = "100%";
+          img.style.objectFit = "cover";
+          img.style.minHeight = "180px";
+        }
+      });
+    }
+  }
+
   const fixAll = (root = document) => {
     root.querySelectorAll("a[href]").forEach(fixAnchor);
     patchPlaceholders();
+    unlockShell();
+    fixMedia(root);
   };
 
   // capture on window → runs before React's root listeners
@@ -399,6 +501,15 @@
 
   const start = () => {
     fixAll();
+    // Niche/Peak keep re-locking scroll during hydration — beat them for a few seconds.
+    let unlockTicks = 0;
+    const unlockIv = setInterval(() => {
+      unlockShell();
+      fixMedia();
+      document.querySelectorAll("a[href]").forEach(fixAnchor);
+      unlockTicks += 1;
+      if (unlockTicks > 48) clearInterval(unlockIv);
+    }, 250);
     const mo = new MutationObserver((muts) => {
       let anchors = false;
       for (const mu of muts) {
@@ -410,6 +521,7 @@
         }
       }
       if (anchors) schedule(450);
+      unlockShell();
     });
     mo.observe(document.documentElement, { childList: true, subtree: true });
     // first pass after load + hydration; safety passes later

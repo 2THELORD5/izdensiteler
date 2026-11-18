@@ -3,184 +3,145 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <title>ATLAS FIELD — Atlas Field</title>
-  <meta name="description" content="Outdoor systems for routes that never repeat." />
-  <meta name="theme-color" content="#14532d" />
+  <title>ATLAS — Field systems for routes that never repeat</title>
+  <meta name="description" content="Atlas builds layering systems, packs and route kit for people who climb past the treeline. Four stops, one ascent." />
+  <meta name="theme-color" content="#0b1d17" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Source+Sans+3:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;800;900&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/demos/_shared/izden-atelier-core.css" />
   <link rel="stylesheet" href="styles.css" />
-  <link rel="stylesheet" href="/demos/_shared/izden-afterglow.css" />
   <link rel="stylesheet" href="/demos/_shared/izden-agency.css" />
-  <link rel="stylesheet" href="/demos/_shared/izden-atelier-mobile.css" />
-  <link rel="stylesheet" href="/demos/_shared/izden-atelier-motion.css" />
-  <link rel="stylesheet" href="/demos/_shared/izden-atelier-enrich.css" />
+  <link rel="preload" as="image" href="media/hero.jpg" media="(min-width:901px)" />
+  <link rel="preload" as="image" href="media/hero-mob.jpg" media="(max-width:900px)" />
 </head>
-<body class="motion-atlas" data-enrich="rail">
+<body data-site="atlas">
+  <a class="skip" href="#route">Skip to content</a>
 
   <header class="site-nav" id="nav" data-open="false">
-    <button type="button" class="site-nav__burger" id="navBurger" aria-label="Open menu" aria-expanded="false" aria-controls="navDrawer">
-      <span></span><span></span><span></span>
-    </button>
-    <a class="site-nav__brand" href="#top">ATLAS</a>
+    <a class="site-nav__brand" href="#top" aria-label="Atlas — top"><svg class="peak" viewBox="0 0 32 24" aria-hidden="true"><path d="M1 22 12 4l6 9 4-5 9 14Z"/></svg><span class="word">ATLAS</span></a>
+    <p class="altnav" aria-hidden="true"><span>ALT</span><b id="altNav">1,240</b><span>m</span></p>
     <nav class="site-nav__links" aria-label="Primary">
-      <a href="#route">Signature</a>
-      <a href="#story">Story</a>
-      <a href="#craft">Craft</a>
-      <a href="#gallery">Gallery</a>
-      <a href="#journal">Journal</a>
-      <a href="#contact" class="site-nav__cta">Plan expedition</a>
+      <a href="#route">The ascent</a>
+      <a href="#kit">Pack list</a>
+      <a href="#plan">Plan a route</a>
     </nav>
+    <button type="button" class="site-nav__burger" id="navBurger" aria-label="Open menu" aria-expanded="false" aria-controls="navDrawer"><span></span><span></span></button>
   </header>
   <div class="nav-drawer-backdrop" id="navBackdrop" hidden></div>
-  <aside class="nav-drawer" id="navDrawer" aria-hidden="true" data-open="false">
-    <div class="nav-drawer__head">
-      <strong>ATLAS</strong>
-      <button type="button" class="nav-drawer__close" id="navClose" aria-label="Close menu">×</button>
-    </div>
+  <aside class="nav-drawer" id="navDrawer" aria-hidden="true" data-open="false" aria-label="Menu">
+    <div class="nav-drawer__head"><strong class="word">ATLAS</strong><button type="button" class="nav-drawer__close" id="navClose" aria-label="Close menu">×</button></div>
     <nav class="nav-drawer__links" aria-label="Mobile">
-      <a href="#catalogue">Catalogue</a>
-      <a href="#route">Signature</a>
-      <a href="#story">Story</a>
-      <a href="#craft">Craft</a>
-      <a href="#process">Process</a>
-      <a href="#gallery">Gallery</a>
-      <a href="#journal">Journal</a>
-      <a href="#faq">FAQ</a>
-      <a href="#contact">Plan expedition</a>
+      <a href="#route"><i>1,240 m</i>The ascent</a>
+      <a href="#kit"><i>2,380 m</i>Pack list</a>
+      <a href="#plan"><i>4,310 m</i>Plan a route</a>
     </nav>
+    <p class="nav-drawer__foot">Base camp — Kaçkar range, Türkiye<br />Open Mon – Fri, 09:00 – 18:00</p>
   </aside>
+
   <main id="top">
-
-    <section class="hero hero--stack" aria-labelledby="hero-title">
-      <div class="hero__stack-band">
-        <p class="hero__eyebrow iz-reveal">Field systems</p>
-        <h1 class="hero__wordmark iz-reveal" id="hero-title">ATLAS FIELD</h1>
-        <p class="hero__tag iz-reveal" data-d="1">Outdoor systems for routes that never repeat.</p>
-        <a class="hero__btn iz-reveal" data-d="2" href="#route">Plan expedition</a>
-      </div>
-      <div class="hero__stack-media">
-        <picture>
-          <source media="(max-width:900px)" srcset="media/hero-mob.jpg" />
-          <img src="media/hero.jpg" alt="" width="1920" height="1280" fetchpriority="high" />
-        </picture>
-      </div>
-    </section>
-
-    <section class="sig sig--atlas" id="route" aria-label="Route pin">
-      <div class="atlas-pin-wrap" id="atlasPinWrap">
-        <img class="atlas-map" src="media/trail.jpg" alt="Trail map terrain" loading="lazy" />
-        <div class="atlas-pin" id="atlasPin" style="--pin-p:0"></div>
-        <ul class="atlas-gear" id="atlasGear">
-          <li data-i="0">Shell</li>
-          <li data-i="1">Bivy</li>
-          <li data-i="2">Stove</li>
-          <li data-i="3">Filter</li>
-        </ul>
-        <p class="atlas-hint iz-reveal">A short scrub advances the map pin; gear icons stagger in as altitude rises.</p>
-      </div>
-    </section>
-    <div class="marquee" aria-hidden="true"><div class="marquee__track"><span>Atlas Field · ATLAS FIELD · Route pin · </span><span>Atlas Field · ATLAS FIELD · Route pin · </span></div></div>
-    <section class="chapter" id="story">
-      <div class="chapter__grid">
-        <div class="chapter__copy">
-          <p class="chapter__kicker iz-reveal">01 — Story</p>
-          <h2 class="chapter__title iz-reveal" data-d="1">Route before gear</h2>
-          <p class="chapter__lede iz-reveal" data-d="2">Pin the altitude; pack only what the ridge demands.</p>
-          <a class="chapter__link iz-reveal" href="#craft">See craft</a>
-        </div>
-        <figure class="chapter__frame iz-reveal"><img src="media/trail.jpg" alt="Brand story visual" loading="lazy" /></figure>
-      </div>
-    </section>
-    <section class="chapter chapter--flip" id="craft">
-      <div class="chapter__grid">
-        <figure class="chapter__frame iz-reveal"><img src="media/gear.jpg" alt="Craft detail" loading="lazy" /></figure>
-        <div class="chapter__copy">
-          <p class="chapter__kicker iz-reveal">02 — Craft</p>
-          <h2 class="chapter__title iz-reveal">Route pin</h2>
-          <p class="chapter__lede iz-reveal">A short scrub advances the map pin; gear icons stagger in as altitude rises.</p>
+    <!-- HERO -->
+    <section class="hero" data-hero aria-labelledby="hero-title">
+      <picture class="hero__pic">
+        <source media="(max-width:900px)" srcset="media/hero-mob.jpg" />
+        <img src="media/hero.jpg" alt="Hikers with packs crossing a bare ridge below a mountain skyline" width="1920" height="1280" fetchpriority="high" />
+      </picture>
+      <div class="hero__shade" aria-hidden="true"></div>
+      <svg class="contours" viewBox="0 0 1200 800" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+        <g>
+          <path pathLength="1" d="M-40 640C160 600 260 640 420 590S690 470 820 500 1060 560 1260 470"/>
+          <path pathLength="1" d="M-40 600C170 556 270 598 430 548S700 428 826 458 1066 520 1260 428"/>
+          <path pathLength="1" d="M-40 560C180 512 280 556 440 506S710 386 832 416 1072 480 1260 386"/>
+          <path pathLength="1" d="M-40 520C190 468 290 514 450 464S720 344 838 374 1078 440 1260 344"/>
+          <path pathLength="1" d="M-40 480C200 424 300 472 460 422S730 302 844 332 1084 400 1260 302"/>
+        </g>
+      </svg>
+      <div class="hero__body">
+        <p class="eyebrow">Field systems · Kaçkar range</p>
+        <h1 class="hero__word" id="hero-title">ATLAS</h1>
+        <p class="hero__tag">Layers, packs and route kit for people who keep climbing after the trees stop.</p>
+        <div class="hero__cta">
+          <a class="btn btn--lime" href="#route">Begin the ascent</a>
+          <a class="btn btn--ghost" href="#plan">Plan a route</a>
         </div>
       </div>
-    </section>
-    <section class="process" id="process">
-      <header class="section-head"><p class="section-head__kicker iz-reveal">03 — Process</p><h2 class="section-head__title iz-reveal">How we ship</h2></header>
-      <ol class="process__list">
-        <li class="iz-reveal"><strong>Listen</strong><span>Stakeholder interviews, site walk, constraint map.</span></li>
-        <li class="iz-reveal" data-d="1"><strong>Compose</strong><span>One viewport, one idea — type and photo in tension.</span></li>
-        <li class="iz-reveal" data-d="2"><strong>Motion</strong><span>Single signature interaction, reduced-motion safe.</span></li>
-        <li class="iz-reveal" data-d="3"><strong>Handoff</strong><span>Static HTML demo + media kit for your engineers.</span></li>
-      </ol>
-    </section>
-    <section class="gallery" id="gallery">
-      <header class="section-head"><p class="section-head__kicker iz-reveal">04 — Gallery</p><h2 class="section-head__title iz-reveal">Field notes</h2></header>
-      <div class="gallery__grid">
-        <figure class="iz-reveal"><img src="media/peak.jpg" alt="Gallery 1" loading="lazy" /></figure>
-        <figure class="iz-reveal" data-d="1"><img src="media/camp.jpg" alt="Gallery 2" loading="lazy" /></figure>
-        <figure class="iz-reveal" data-d="2"><img src="media/field.jpg" alt="Gallery 3" loading="lazy" /></figure>
-      </div>
-    </section>
-    <section class="journal" id="journal">
-      <header class="section-head"><p class="section-head__kicker iz-reveal">05 — Journal</p><h2 class="section-head__title iz-reveal">Release notes</h2></header>
-      <article class="journal__card iz-reveal">
-        <time datetime="2026-03-01">Mar 2026</time>
-        <h3>Motion pass</h3>
-        <p>Signature interaction tuned for thumb scroll on mobile — hamburger nav, 44px targets, prefers-reduced-motion fallbacks.</p>
-      </article>
-      <article class="journal__card iz-reveal" data-d="1">
-        <time datetime="2026-02-10">Feb 2026</time>
-        <h3>Photography</h3>
-        <p>Licensed Pexels stills, cropped per viewport — no remote hotlinking in production build.</p>
-      </article>
+      <dl class="hero__scale" aria-hidden="true"><div><dt>Base</dt><dd>1,240 m</dd></div><div><dt>Summit ridge</dt><dd>4,310 m</dd></div></dl>
     </section>
 
-    <section class="enrich-rail" id="catalogue" aria-label="Route catalogue">
-      <div class="enrich-rail__head">
-        <p class="section-kicker eyebrow" style="margin:0 0 0.4rem">Field kit</p>
-        <h2 class="section-title" style="margin:0">Route catalogue</h2>
-      </div>
-      <div class="enrich-rail__track">
-        <figure class="enrich-rail__card">
-          <img src="media/catalog-01.jpg" alt="" width="800" height="1100" loading="lazy" />
-          <figcaption>01 · Ridge kit</figcaption>
-        </figure>
-        <figure class="enrich-rail__card">
-          <img src="media/catalog-02.jpg" alt="" width="800" height="1100" loading="lazy" />
-          <figcaption>02 · Dawn camp</figcaption>
-        </figure>
-        <figure class="enrich-rail__card">
-          <img src="media/trail.jpg" alt="" width="800" height="1100" loading="lazy" />
-          <figcaption>03 · Trail</figcaption>
-        </figure>
+    <!-- SIGNATURE — the ascent -->
+    <section class="scrub route" id="route" aria-label="The ascent — four stops from trailhead to summit ridge" data-rest="0">
+      <div class="scrub__pin route__pin">
+        <div class="route__track" id="track">
+          <article class="stop" data-i="0">
+            <picture><source media="(max-width:900px)" srcset="media/hero-mob.jpg" /><img src="media/hero.jpg" alt="" width="1920" height="1280" loading="eager" /></picture>
+            <div class="stop__copy"><p class="stop__no">Stop 01</p><h2>Trailhead</h2><p>Pack checks happen here, in the dark, before the first switchback. If a strap is wrong at 1,240 m it is wrong at 4,000.</p></div>
+          </article>
+          <article class="stop" data-i="1">
+            <picture><source media="(max-width:900px)" srcset="media/trail-mob.jpg" /><img src="media/trail.jpg" alt="" width="1920" height="1281" loading="lazy" /></picture>
+            <div class="stop__copy"><p class="stop__no">Stop 02</p><h2>First camp</h2><p>Sunrise on the tent line. Layers come off, the stove comes out, and the route is read again in daylight.</p></div>
+          </article>
+          <article class="stop" data-i="2">
+            <picture><source media="(max-width:900px)" srcset="media/camp-mob.jpg" /><img src="media/camp.jpg" alt="" width="1920" height="1293" loading="lazy" /></picture>
+            <div class="stop__copy"><p class="stop__no">Stop 03</p><h2>Lake basin</h2><p>Glacial water, cold wind off the ridge. This is where a shell proves itself — or does not.</p></div>
+          </article>
+          <article class="stop stop--summit" data-i="3">
+            <div class="stop__frame"><img src="media/catalog-02.jpg" alt="" width="1050" height="1400" loading="lazy" /></div>
+            <div class="stop__copy"><p class="stop__no">Stop 04</p><h2>Summit ridge</h2><p>First light on the last pitch. Nothing in the pack is there for comfort — everything is there because it worked on the way up.</p></div>
+          </article>
+        </div>
+
+        <div class="route__hud">
+          <div class="alt"><span>Altitude</span><b id="altBig">1,240</b><em>m</em></div>
+          <div class="profile">
+            <svg viewBox="0 0 1000 120" preserveAspectRatio="none" aria-hidden="true">
+              <path id="profBg" d="M0 108C90 104 150 90 230 84S330 66 400 56 520 74 580 60 700 36 780 28 900 12 1000 8" />
+              <path id="profLine" d="M0 108C90 104 150 90 230 84S330 66 400 56 520 74 580 60 700 36 780 28 900 12 1000 8" />
+            </svg>
+            <i class="profile__dot" id="profDot"></i>
+            <ol class="profile__stops"><li data-s="0">Trailhead</li><li data-s="1">Camp</li><li data-s="2">Lake</li><li data-s="3">Ridge</li></ol>
+          </div>
+        </div>
+        <p class="route__hint" aria-hidden="true">Scroll to climb →</p>
       </div>
     </section>
-<section class="faq" id="faq">
-      <header class="section-head"><p class="section-head__kicker iz-reveal">06 — FAQ</p><h2 class="section-head__title iz-reveal">Before you write</h2></header>
-      <article class="faq__item iz-reveal">
-        <button type="button" class="faq__q" aria-expanded="false">How do I book the signature experience?<span class="faq__icon" aria-hidden="true"></span></button>
-        <div class="faq__a" hidden><p>Email or call — we confirm studio slots within one business day.</p></div>
-      </article>
-      <article class="faq__item iz-reveal" data-d="1">
-        <button type="button" class="faq__q" aria-expanded="false">Is this a live product?<span class="faq__icon" aria-hidden="true"></span></button>
-        <div class="faq__a" hidden><p>No — this is a fictional brand demo by İzden Creative.</p></div>
-      </article>
+
+    <!-- PACK LIST -->
+    <section class="kit" id="kit" aria-labelledby="kit-title">
+      <div class="kit__fig"><img src="media/catalog-01.jpg" alt="A paper map and a canvas pack resting on a rock at the start of a route" loading="lazy" width="1050" height="1400" /><p>Route card + pack, Stop 01</p></div>
+      <div class="kit__txt">
+        <p class="eyebrow">Pack list · what goes in, in order</p>
+        <h2 id="kit-title">Packed for<br />the next stop.</h2>
+        <table class="ledger">
+          <caption class="sr-only">Pack list by altitude band</caption>
+          <thead><tr><th scope="col">Band</th><th scope="col">Item</th><th scope="col">Reason</th></tr></thead>
+          <tbody>
+            <tr><td>1,240 m</td><th scope="row">Trail pack, 38 L</th><td>Hip belt carries the load; shoulders steer it.</td></tr>
+            <tr><td>2,380 m</td><th scope="row">Mid layer, grid fleece</th><td>Vents under the shell while you climb.</td></tr>
+            <tr><td>3,150 m</td><th scope="row">Three-layer shell</th><td>Taped seams, hood that clears a helmet.</td></tr>
+            <tr><td>4,310 m</td><th scope="row">Route card, paper</th><td>Batteries fail first. Paper does not.</td></tr>
+          </tbody>
+        </table>
+      </div>
     </section>
-    <section class="contact" id="contact">
-      <div class="contact__inner iz-reveal">
-        <h2>Studio</h2>
-        <p class="contact__brand">Atlas Field — demo by İzden Creative.</p>
-        <ul class="contact__list">
-          <li><a href="mailto:info@izdencreative.com">info@izdencreative.com</a></li>
-          <li><a href="tel:+902120000000">+90 212 000 00 00</a></li>
-          <li><a href="https://www.izdencreative.com" target="_blank" rel="noopener noreferrer">izdencreative.com</a></li>
-        </ul>
-        <img class="contact__logo" src="/demos/_shared/izden-creative.jpg" alt="İzden Creative" width="180" height="61" loading="lazy" />
+
+    <!-- PLAN -->
+    <section class="plan" id="plan" aria-labelledby="plan-title">
+      <div class="plan__in">
+        <p class="eyebrow">Plan a route</p>
+        <h2 id="plan-title">Tell us your<br />next summit.</h2>
+        <form class="form" action="mailto:info@izdencreative.com" method="post" enctype="text/plain">
+          <label><span>Email</span><input type="email" name="email" autocomplete="email" required placeholder="you@trail.com" /></label>
+          <label><span>Target peak or range</span><input type="text" name="target" placeholder="Kaçkar, Erciyes, Ala Dağlar…" /></label>
+          <label><span>Season</span><select name="season"><option>Summer</option><option>Autumn shoulder</option><option>Winter</option></select></label>
+          <button class="btn btn--lime" type="submit">Send the route</button>
+        </form>
+        <p class="plan__fine">Atlas is a fictional outfitter created as a design demonstration by İzden Creative · <a href="mailto:info@izdencreative.com">info@izdencreative.com</a></p>
       </div>
     </section>
   </main>
-  <script src="/demos/_shared/izden-afterglow.js"></script>
-  <script src="/demos/_shared/izden-agency.js"></script>
-  <script src="main.js"></script>
-  <script src="/demos/_shared/izden-contact-rewrite.js" defer></script>
-  <script src="/demos/_shared/izden-atelier-enrich.js" defer></script>
+
+  <script src="/demos/_shared/izden-atelier-core.js" defer></script>
+  <script src="main.js" defer></script>
+  <script src="/demos/_shared/izden-agency.js" defer></script>
 </body>
 </html>

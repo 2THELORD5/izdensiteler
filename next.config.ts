@@ -27,14 +27,14 @@ const DemoContentSecurityPolicy = [
   "base-uri 'self'",
   "object-src 'none'",
   "frame-ancestors 'self'",
-  "script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com",
+  "script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://player.vimeo.com",
   "style-src 'self' 'unsafe-inline' https://api.fontshare.com https://fonts.googleapis.com",
   "img-src 'self' data: blob: https:",
   "font-src 'self' data: https://api.fontshare.com https://cdn.fontshare.com https://fonts.gstatic.com",
-  // Pexels stock clips used by SIGNAL cinematic sections
-  "media-src 'self' blob: https://videos.pexels.com",
-  "frame-src 'self' https://www.youtube.com https://youtube.com https://www.youtube-nocookie.com",
-  "connect-src 'self' https://cdnjs.cloudflare.com",
+  // Pexels (SIGNAL) + Vimeo (Niche)
+  "media-src 'self' blob: https://videos.pexels.com https://player.vimeo.com https://*.vimeocdn.com",
+  "frame-src 'self' https://www.youtube.com https://youtube.com https://www.youtube-nocookie.com https://player.vimeo.com",
+  "connect-src 'self' https://cdnjs.cloudflare.com https://player.vimeo.com https://*.vimeocdn.com",
   "worker-src 'self' blob:",
 ].join("; ");
 

@@ -485,7 +485,7 @@ body.menu-open .side-menu-list a {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  filter: invert(1) grayscale(1);   /* white-line drawing on black */
+  filter: none; /* restored color photography — B&W invert removed */
 }
 .mv-grid {
   position: relative;

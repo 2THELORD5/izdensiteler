@@ -125,11 +125,23 @@ html.pk-home.pk-on-film .site-header {
   -webkit-backdrop-filter: none !important;
   backdrop-filter: none !important;
 }
+html.pk-home.pk-on-film .site-header,
 html.pk-home.pk-on-film .site-header .wordmark,
 html.pk-home.pk-on-film .site-header .wordmark svg,
 html.pk-home.pk-on-film .site-header .nav-link,
-html.pk-home.pk-on-film .site-header .menu-button {
+html.pk-home.pk-on-film .site-header .menu-button,
+html.pk-home.pk-on-film .site-header a,
+html.pk-home.pk-on-film .site-header button {
   color: #fbfaf7 !important;
+  fill: currentColor !important;
+  text-shadow: 0 1px 12px rgba(0, 0, 0, 0.55);
+}
+html.pk-home.pk-on-film .site-header .menu-button {
+  border-color: rgba(251, 250, 247, 0.4) !important;
+}
+html.pk-home.pk-on-film .site-header .wordmark svg path,
+html.pk-home.pk-on-film .site-header svg path {
+  fill: #fbfaf7 !important;
 }
 html.pk-home:not(.pk-on-film) .site-header {
   background: rgba(242, 240, 235, 0.94) !important;

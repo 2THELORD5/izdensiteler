@@ -1,41 +1,23 @@
 (() => {
-  const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
-  const burger = document.getElementById("navBurger");
-  const drawer = document.getElementById("navDrawer");
-  const backdrop = document.getElementById("navBackdrop");
-  const closeBtn = document.getElementById("navClose");
-  const nav = document.getElementById("nav");
-  const setOpen = (open) => {
-    if (!drawer || !nav) return;
-    nav.dataset.open = open ? "true" : "false";
-    drawer.dataset.open = open ? "true" : "false";
-    drawer.setAttribute("aria-hidden", open ? "false" : "true");
-    burger?.setAttribute("aria-expanded", open ? "true" : "false");
-    if (backdrop) backdrop.hidden = !open;
-    document.body.style.overflow = open ? "hidden" : "";
-  };
-  burger?.addEventListener("click", () => setOpen(true));
-  closeBtn?.addEventListener("click", () => setOpen(false));
-  backdrop?.addEventListener("click", () => setOpen(false));
-  drawer?.querySelectorAll("a").forEach((a) => a.addEventListener("click", () => setOpen(false)));
-  document.addEventListener("keydown", (e) => { if (e.key === "Escape") setOpen(false); });
-  document.querySelectorAll(".faq__q").forEach((btn) => {
-    btn.addEventListener("click", () => {
-      const expanded = btn.getAttribute("aria-expanded") === "true";
-      const panel = btn.parentElement?.querySelector(".faq__a");
-      btn.setAttribute("aria-expanded", expanded ? "false" : "true");
-      if (panel) panel.hidden = expanded;
-    });
-  });
-  
-  const slider = document.getElementById("glossSlider");
-  const afterWrap = document.querySelector(".gloss-after-wrap");
-  const handle = document.getElementById("glossHandle");
-  const setGloss = (v) => {
-    const p = v + "%";
-    if (afterWrap) afterWrap.style.width = p;
-    if (handle) handle.style.left = p;
-  };
-  slider?.addEventListener("input", () => setGloss(slider.value));
-  setGloss(slider?.value || 42);
+  "use strict";
+  const IZ = window.IZ;
+  const $ = (s, r = document) => r.querySelector(s);
+  const section = $("#polish");
+  const stage = $("#pStage");
+  if (!section || !stage) return;
+  const gloss = $("#gloss"), swirl = $("#swirl"), pass = $("#pass");
+  let last = "";
+
+  /* scroll position sets the line; everything else is derived from it */
+  IZ.scrub(section, (p) => {
+    const x = (1 - 0) * (p * 100);
+    stage.style.setProperty("--x", x.toFixed(2) + "%");
+    gloss.textContent = Math.round(IZ.lerp(58, 94, p));
+    pass.textContent = Math.round(p * 100);
+    const s = p < 0.12 ? "High" : p < 0.45 ? "Medium" : p < 0.9 ? "Low" : "Clear";
+    if (s !== last) {
+      last = s;
+      swirl.textContent = s;
+    }
+  }, { rest: 0.55 });
 })();

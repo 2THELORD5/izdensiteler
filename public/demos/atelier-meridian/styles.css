@@ -134,7 +134,7 @@ body{font-size:1.0625rem;line-height:1.6}
   .gauge__scale::before{display:none}
   .gauge__scale i{right:auto;top:0;bottom:0;width:calc(var(--f,0) * 100%);height:auto}
   .tide__hint{display:none}
-  .tide__title{font-size:clamp(3.2rem,19vw,6rem)}
+  .tide__title{font-size:clamp(2.4rem,14vw,6rem)}
 }
 
 /* ───── shared section head ───── */

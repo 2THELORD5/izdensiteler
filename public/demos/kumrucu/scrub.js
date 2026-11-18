@@ -1,18 +1,18 @@
 /**
- * Kumrucu Kale — continuous film scrub.
- * Primary: HQ variety film (1080p / 9:16). House film only as short warm-in on desktop.
- * No still opacity crossfade.
+ * Kumrucu Kale — continuous film scrub from real 1080p Kie clips.
+ * PC: variety-scrub-pc.mp4 (16:9). Mobile: variety-scrub-mobile.mp4 (9:16).
+ * House film removed from the primary path (was 720p + desynced chapters).
  */
-const HOUSE_END = 0.1; /* desktop only micro-intro; mobile skips to variety */
 const ACTS = [
-  { at: 0.0, act: "Fiş 01", title: "Un henüz soğuk", body: "Sabahın ilk tezgâhı. Alaçatı uyanmadan hamur yoğrulur.", idx: "01 / 08", rail: "Tezgâh" },
-  { at: 0.1, act: "Fiş 02", title: "Köz tutar", body: "Taş fırın ısınır. Susam kabuğu kızarır.", idx: "02 / 08", rail: "Köz" },
-  { at: 0.2, act: "Fiş 03", title: "Somun kabarır", body: "Kumrunun sırrı ekmekte — oval, susamlı, çıtır.", idx: "03 / 08", rail: "Somun" },
-  { at: 0.3, act: "Fiş 04", title: "Meşhur Çeşme", body: "Kaşar, biber, domates — susamlı ekmekte klasik kumru.", idx: "04 / 08", rail: "Klasik" },
-  { at: 0.42, act: "Fiş 05", title: "Sucuklu Domatesli", body: "Izgara sucuk, domates, eriyen kaşar — tok tezgâh hali.", idx: "05 / 08", rail: "Sucuklu" },
-  { at: 0.54, act: "Fiş 06", title: "Yengen Kumru", body: "İzmir’in kurusu — Kale tezgâhında tanıdık lezzet.", idx: "06 / 08", rail: "Yengen" },
-  { at: 0.66, act: "Fiş 07", title: "Sıcak Kumru", body: "Izgara sıcaklığıyla; peynir erir, ekmek çıtır kalır.", idx: "07 / 08", rail: "Sıcak" },
-  { at: 0.8, act: "Fiş 08", title: "Sakızlı Kurabiye", body: "%100 doğal damla sakız — Alaçatı’nın meşhuru.", idx: "08 / 08", rail: "Kurabiye" },
+  { at: 0.0, act: "Fiş 01", title: "Un henüz soğuk", body: "Sabahın ilk tezgâhı. Alaçatı uyanmadan hamur yoğrulur.", idx: "01 / 09", rail: "Tezgâh" },
+  { at: 0.112, act: "Fiş 02", title: "Köz tutar", body: "Taş fırın ısınır. Susam kabuğu kızarır.", idx: "02 / 09", rail: "Köz" },
+  { at: 0.225, act: "Fiş 03", title: "Somun kabarır", body: "Kumrunun sırrı ekmekte — oval, susamlı, çıtır.", idx: "03 / 09", rail: "Somun" },
+  { at: 0.337, act: "Fiş 04", title: "Meşhur Çeşme", body: "Kaşar, biber, domates — susamlı ekmekte klasik kumru.", idx: "04 / 09", rail: "Klasik" },
+  { at: 0.45, act: "Fiş 05", title: "Klasik tezgâh", body: "Aynı masa, aynı ışık — klasik kumru bekler.", idx: "05 / 09", rail: "Klasik" },
+  { at: 0.561, act: "Fiş 06", title: "Sucuklu Domatesli", body: "Izgara sucuk, domates, eriyen kaşar — tok tezgâh hali.", idx: "06 / 09", rail: "Sucuklu" },
+  { at: 0.674, act: "Fiş 07", title: "Sucuklu bekler", body: "Buhar dağılır; tezgâh sucukluya döner.", idx: "07 / 09", rail: "Sucuklu" },
+  { at: 0.785, act: "Fiş 08", title: "Yengen Kumru", body: "İzmir’in kurusu — Kale tezgâhında tanıdık lezzet.", idx: "08 / 09", rail: "Yengen" },
+  { at: 0.897, act: "Fiş 09", title: "Sakızlı Alaçatı", body: "%100 doğal damla sakız — Alaçatı’nın meşhuru.", idx: "09 / 09", rail: "Kurabiye" },
 ];
 
 const BOOT_STILLS = [
@@ -45,11 +45,6 @@ const chapterIdx = document.getElementById("chapterIdx");
 const railLabel = document.getElementById("railLabel");
 const stageUi = document.querySelector(".stage-ui");
 
-let duration = 0;
-let ready = false;
-let seeking = false;
-let pending = null;
-let lastApplied = -1;
 let varietyDuration = 0;
 let varietyReady = false;
 let varietySeeking = false;
@@ -58,25 +53,19 @@ let targetP = 0;
 let currentP = 0;
 let velocity = 0;
 let activeAct = -1;
-const SEEK_EPS = isMobile ? 0.028 : 0.016;
-const SEEK_EPS_VAR = isMobile ? 0.032 : 0.018;
-/** Mobile: variety-only. Desktop: tiny house warm-in then variety. */
-const useHouse = !isMobile && !reduced;
+const SEEK_EPS_VAR = isMobile ? 0.022 : 0.012;
 
 if (video) {
-  video.preload = useHouse ? "auto" : "none";
-  video.muted = true;
-  video.playsInline = true;
-  if (useHouse) {
-    video.src = "./public/film-house-v2.mp4";
-    try { video.load(); } catch {}
-  }
+  video.removeAttribute("src");
+  try { video.load(); } catch {}
 }
 
 if (variety) {
   variety.preload = "auto";
   variety.muted = true;
   variety.playsInline = true;
+  variety.setAttribute("playsinline", "");
+  variety.setAttribute("webkit-playsinline", "");
   variety.src = isMobile
     ? "./public/kie/scroll-v2/variety-scrub-mobile.mp4"
     : "./public/kie/scroll-v2/variety-scrub-pc.mp4";
@@ -121,20 +110,10 @@ function paintBoot(p) {
   coverDraw(im.naturalWidth, im.naturalHeight, (x, y, w, h) => ctx.drawImage(im, x, y, w, h));
 }
 
-function inHouse(p) {
-  return useHouse && p < HOUSE_END;
-}
-
 function paint() {
   resize();
   if (reduced) {
     paintBoot(0);
-    return;
-  }
-  if (inHouse(currentP)) {
-    if (ready && video.readyState >= 1 && video.videoWidth) {
-      coverDraw(video.videoWidth, video.videoHeight, (x, y, w, h) => ctx.drawImage(video, x, y, w, h));
-    } else paintBoot(currentP);
     return;
   }
   if (variety && varietyReady && variety.readyState >= 1 && variety.videoWidth) {
@@ -175,36 +154,6 @@ function readProgress() {
   return clamp(-track.getBoundingClientRect().top / total);
 }
 
-function flushPending() {
-  if (pending == null) return;
-  const p = pending;
-  pending = null;
-  seekFilm(p);
-}
-
-function seekFilm(t) {
-  if (!useHouse || !ready || !Number.isFinite(t) || duration <= 0) return;
-  const next = clamp(t, 0, Math.max(0, duration - 0.04));
-  if (Math.abs(next - lastApplied) < SEEK_EPS && Math.abs(next - video.currentTime) < SEEK_EPS * 1.5) {
-    paint();
-    return;
-  }
-  if (seeking) {
-    pending = next;
-    return;
-  }
-  seeking = true;
-  lastApplied = next;
-  try { video.currentTime = next; } catch { seeking = false; return; }
-  clearTimeout(seekFilm.timer);
-  seekFilm.timer = setTimeout(() => {
-    if (!seeking) return;
-    seeking = false;
-    paint();
-    flushPending();
-  }, 100);
-}
-
 function flushVariety() {
   if (varietyPending == null) return;
   const t = varietyPending;
@@ -224,21 +173,20 @@ function seekVariety(t) {
     return;
   }
   varietySeeking = true;
-  try { variety.currentTime = next; } catch { varietySeeking = false; return; }
+  try {
+    if (typeof variety.fastSeek === "function") variety.fastSeek(next);
+    else variety.currentTime = next;
+  } catch {
+    varietySeeking = false;
+    return;
+  }
   clearTimeout(seekVariety.timer);
   seekVariety.timer = setTimeout(() => {
     if (!varietySeeking) return;
     varietySeeking = false;
     flushVariety();
-  }, isMobile ? 110 : 75);
+  }, isMobile ? 70 : 45);
 }
-
-video?.addEventListener("seeked", () => {
-  seeking = false;
-  clearTimeout(seekFilm.timer);
-  paint();
-  flushPending();
-});
 
 variety?.addEventListener("seeked", () => {
   varietySeeking = false;
@@ -257,12 +205,13 @@ function syncUI(p) {
 }
 
 function smoothFollow(cur, target, vel, dt) {
-  const stiffness = isMobile ? 13 : 16;
+  // Tight follow — previous soft spring lagged the film by 1–2s.
+  const stiffness = isMobile ? 48 : 56;
   const damping = 2 * Math.sqrt(stiffness);
   const accel = (target - cur) * stiffness - vel * damping;
   vel += accel * dt;
   cur += vel * dt;
-  if (Math.abs(target - cur) < 0.00012 && Math.abs(vel) < 0.00012) return [target, 0];
+  if (Math.abs(target - cur) < 0.00005 && Math.abs(vel) < 0.00005) return [target, 0];
   return [cur, vel];
 }
 
@@ -289,35 +238,6 @@ document.getElementById("chapterNav")?.addEventListener("click", (e) => {
 async function boot() {
   resize();
   try {
-    if (useHouse && video) {
-      await new Promise((resolve) => {
-        let settled = false;
-        const done = () => {
-          if (settled) return;
-          settled = true;
-          duration = Number.isFinite(video?.duration) && video.duration > 0 ? video.duration : 0;
-          resolve();
-        };
-        if (video.readyState >= 1 && Number.isFinite(video.duration) && video.duration > 0) done();
-        else {
-          video.addEventListener("loadedmetadata", done, { once: true });
-          video.addEventListener("error", () => done(), { once: true });
-          setTimeout(done, 4000);
-        }
-        try { video.load(); } catch { done(); }
-      });
-      kickDecode(video);
-      try {
-        await new Promise((resolve) => {
-          const finish = () => resolve();
-          video.addEventListener("seeked", finish, { once: true });
-          try { video.currentTime = 0.001; } catch { finish(); }
-          setTimeout(finish, 500);
-        });
-      } catch {}
-      ready = duration > 0;
-    }
-
     if (variety) {
       await new Promise((resolve) => {
         const done = () => {
@@ -352,18 +272,6 @@ async function boot() {
     });
 
     paint();
-    if (useHouse && !ready) {
-      document.body.classList.add("no-film");
-      const late = () => {
-        if (!(video.duration > 0)) return;
-        duration = video.duration;
-        ready = true;
-        document.body.classList.remove("no-film");
-        paint();
-      };
-      video.addEventListener("loadedmetadata", late);
-      video.addEventListener("canplay", late);
-    }
   } catch (err) {
     console.warn("Kumru boot:", err);
   } finally {
@@ -371,13 +279,7 @@ async function boot() {
   }
 
   const unlock = () => {
-    kickDecode(video);
     kickDecode(variety);
-    if (useHouse && !ready && video?.duration > 0) {
-      duration = video.duration;
-      ready = true;
-      document.body.classList.remove("no-film");
-    }
     if (variety && !varietyReady && variety.duration > 0) {
       varietyDuration = variety.duration;
       varietyReady = true;
@@ -402,13 +304,8 @@ async function boot() {
       return;
     }
 
-    if (inHouse(currentP) && ready && duration > 0) {
-      /* Map micro-intro across first ~35% of house film for sharpness */
-      seekFilm((currentP / HOUSE_END) * 0.35 * duration);
-    } else if (varietyReady && varietyDuration > 0) {
-      const start = useHouse ? HOUSE_END : 0;
-      const local = (currentP - start) / Math.max(0.001, 1 - start);
-      seekVariety(clamp(local) * Math.max(0.05, varietyDuration - 0.06));
+    if (varietyReady && varietyDuration > 0) {
+      seekVariety(clamp(currentP) * Math.max(0.05, varietyDuration - 0.06));
     }
     paint();
     syncUI(currentP);

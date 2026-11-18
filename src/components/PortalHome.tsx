@@ -72,8 +72,16 @@ function scrollToHashTarget() {
   });
 }
 
+const PORTAL_NAV = [
+  { href: "#siteler", label: "Scroll film" },
+  { href: "#animasyon", label: "Şık motion" },
+  { href: "#nasil", label: "Süreç" },
+  { href: "#teklif", label: "Teklif al" },
+] as const;
+
 export function PortalHome() {
   const [scrollLength, setScrollLength] = useState(2.6);
+  const [navOpen, setNavOpen] = useState(false);
 
   useEffect(() => {
     // Kill orphaned preview chrome from prior incele visits
@@ -135,8 +143,11 @@ export function PortalHome() {
             style={{
               position: "absolute",
               inset: 0,
-              background:
-                "radial-gradient(ellipse at 28% 18%, #2a2a2a 0%, #111 55%, #0a0a0a 100%)",
+              backgroundSize: "cover",
+              backgroundPosition: "58% 22%",
+              backgroundRepeat: "no-repeat",
+              transform: "scale(var(--gp-field-scale, 1))",
+              transformOrigin: "center center",
             }}
           />
         }
@@ -159,13 +170,43 @@ export function PortalHome() {
             <Link href="/" className="portal-brand" aria-label="İzden Siteler">
               <Logo variant="light" className="portal-brand-img" />
             </Link>
-            <nav>
-              <a href="#siteler">Scroll film</a>
-              <a href="#animasyon">Şık motion</a>
-              <a href="#nasil">Süreç</a>
-              <a href="#teklif">Teklif al</a>
+            <nav className="portal-nav-desktop" aria-label="Ana">
+              {PORTAL_NAV.map((item) => (
+                <a key={item.href} href={item.href}>
+                  {item.label}
+                </a>
+              ))}
             </nav>
+            <button
+              type="button"
+              className="portal-nav-toggle"
+              aria-expanded={navOpen}
+              aria-controls="portal-nav-drawer"
+              aria-label={navOpen ? "Menüyü kapat" : "Menüyü aç"}
+              onClick={() => setNavOpen((v) => !v)}
+            >
+              <span />
+              <span />
+              <span />
+            </button>
           </header>
+          <div
+            id="portal-nav-drawer"
+            className={`portal-nav-drawer${navOpen ? " is-open" : ""}`}
+            hidden={!navOpen}
+          >
+            <nav aria-label="Mobil">
+              {PORTAL_NAV.map((item) => (
+                <a
+                  key={item.href}
+                  href={item.href}
+                  onClick={() => setNavOpen(false)}
+                >
+                  {item.label}
+                </a>
+              ))}
+            </nav>
+          </div>
 
           <section id="siteler" className="portal-sites">
             <div className="portal-sites-head">
