@@ -1,6 +1,7 @@
 /** Known AI / training crawler user-agents (politeness filter + robots sync). */
+/** Self-declared AI / training crawlers only — do not match generic curl/wget. */
 export const AI_BOT_UA =
-  /GPTBot|ChatGPT-User|OAI-SearchBot|ClaudeBot|anthropic-ai|Applebot-Extended|Bytespider|CCBot|Diffbot|FacebookBot|Google-Extended|GoogleOther|ImagesiftBot|meta-externalagent|Meta-ExternalAgent|omgili|Omit|PerplexityBot|YouBot|cohere-ai|DataForSeoBot|Amazonbot|PetalBot|Timpibot|Webzio-Extended|AI2Bot|FriendlyCrawler|img2dataset|Scrapy|python-requests|curl\/|wget\//i;
+  /GPTBot|ChatGPT-User|OAI-SearchBot|ClaudeBot|anthropic-ai|Applebot-Extended|Bytespider|CCBot|Diffbot|FacebookBot|Google-Extended|GoogleOther|ImagesiftBot|meta-externalagent|Meta-ExternalAgent|omgili|PerplexityBot|YouBot|cohere-ai|DataForSeoBot|Amazonbot|PetalBot|Timpibot|Webzio-Extended|AI2Bot|FriendlyCrawler|img2dataset|Scrapy/i;
 
 export const AI_BOT_NAMES = [
   "GPTBot",
