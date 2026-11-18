@@ -42,17 +42,9 @@
         "projects/desert-retreat",
         "projects/downtown-vertical-district",
       ],
-      // Single hero: replace React VideoHero with the Kie live film scrub
-      // so mobile + desktop share one pin (no early exit into page content).
+      // Keep native VideoHero scrub (.vhero), then continue into the Kie film.
       film: {
-        mount: { replace: ".vhero" },
-        hero: [
-          '<div class="bb-film-hero">',
-          '<p class="bb-film-hero__eyebrow">Black Block &middot; Architecture</p>',
-          '<h1 class="bb-film-hero__title">City models.<br>Lived form.</h1>',
-          '<p class="bb-film-hero__lede">Scroll from the studio model into the creek, arts centre and coastal massing — one continuous film.</p>',
-          '</div>',
-        ].join(""),
+        mount: { after: ".vhero" },
         chapters: [
           { act: "01 Model", title: "City in hand.", body: "The studio model — massing before the build." },
           { act: "02 Creek", title: "Water route.", body: "Approach along the creek edge." },
@@ -60,20 +52,14 @@
           { act: "04 Coast", title: "Shore light.", body: "Coastal residences in late light." },
         ],
       },
-      gallery: false,
+      gallery: true,
     },
     "moos-niche": {
       routes: [],
-      film: {
-        mount: { prepend: "body" },
-        chapters: [
-          { act: "01 Brief", title: "Ask first.", body: "Brief başlar." },
-          { act: "02 Form", title: "Massing.", body: "Kütle arayışı." },
-          { act: "03 Craft", title: "Detail hold.", body: "Detay." },
-          { act: "04 Handover", title: "Lived in.", body: "Teslim." },
-        ],
-      },
-      gallery: true,
+      // Niche owns a fixed horizontal .track story — no vertical film, no iz-sg hijack.
+      film: null,
+      gallery: false,
+      horizontalStory: true,
     },
     "moos-retro": {
       routes: [
@@ -247,6 +233,35 @@
         el.setAttribute("aria-hidden", "true");
       }
     });
+
+    // Horizontal story sites (Niche): keep body locked — only .track scrolls (x).
+    // Forcing overflow:auto + height:auto here made vertical page scroll fight the fixed track,
+    // so mobile felt stuck on both axes.
+    if (cfg.horizontalStory) {
+      document.documentElement.style.setProperty("overflow", "hidden", "important");
+      document.documentElement.style.setProperty("height", "100%", "important");
+      document.body.style.setProperty("overflow", "hidden", "important");
+      document.body.style.setProperty("height", "100dvh", "important");
+      document.body.classList.remove("is-locked", "loading");
+      document.documentElement.classList.remove("is-locked", "loading");
+      document.querySelectorAll(".track[inert], .rail[inert], [data-story][inert]").forEach((el) => {
+        el.removeAttribute("inert");
+      });
+      // Strip any leftover vertical film / scroll-gallery hijack from older heals.
+      document.querySelectorAll("[data-iz-film-scrub]").forEach((el) => el.remove());
+      document.querySelectorAll(".track .iz-sg").forEach((wrap) => {
+        wrap.classList.remove("iz-sg");
+        wrap.style.minHeight = "";
+        wrap.querySelectorAll(".iz-sg__pin").forEach((pin) => {
+          pin.classList.remove("iz-sg__pin");
+          pin.style.position = "";
+          pin.style.top = "";
+          pin.style.minHeight = "";
+        });
+      });
+      return;
+    }
+
     document.documentElement.style.setProperty("overflow", "auto", "important");
     document.documentElement.style.setProperty("overflow-y", "auto", "important");
     // body must NOT be a scroll container (overflow:auto here silently breaks every position:sticky film pin);
@@ -410,13 +425,11 @@
       const s = document.createElement("style");
       s.id = "iz-scrub-tall";
       s.textContent =
-        ".iz-scrub--film{height:420vh!important}" +
+        /* Film continues after native .vhero — same black plane, slightly shorter pin */
+        ".vhero+.iz-scrub--film{margin-top:0;border-top:1px solid rgba(255,255,255,.06)}" +
+        ".iz-scrub--film{height:380vh!important}" +
         ".iz-scrub__ui,.iz-scrub__title,.iz-scrub__body,.iz-scrub__act{color:#f4f0ea!important;text-shadow:0 2px 24px rgba(0,0,0,.6)!important}" +
-        ".bb-film-hero{max-width:min(920px,calc(100% - 2.5rem));color:#f4f0ea;padding:0 4vw clamp(2rem,8svh,5rem)}" +
-        ".bb-film-hero__eyebrow{margin:0 0 14px;font-size:.75rem;letter-spacing:.18em;text-transform:uppercase;opacity:.8}" +
-        ".bb-film-hero__title{margin:0;font-size:clamp(2.4rem,7vw,5.2rem);line-height:.95;letter-spacing:-.03em}" +
-        ".bb-film-hero__lede{margin:18px 0 0;max-width:42ch;font-size:clamp(1rem,1.4vw,1.15rem);line-height:1.5;opacity:.88}" +
-        "@media(max-width:720px){.iz-scrub--film{height:340vh!important}}";
+        "@media(max-width:720px){.iz-scrub--film{height:300vh!important}}";
       document.head.appendChild(s);
     }
   }

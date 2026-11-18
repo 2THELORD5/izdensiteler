@@ -113,6 +113,8 @@
 
   /* ——— NICHE .i-slider ——— */
   document.querySelectorAll(".i-slider").forEach((slider) => {
+    // Inside Niche's fixed horizontal .track, vertical pin scrub fights pan-x — leave native slider.
+    if (slider.closest(".track")) return;
     const slides = [...slider.querySelectorAll(".i-slide")];
     if (slides.length < 2) return;
     const wrap =
