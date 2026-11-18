@@ -226,7 +226,8 @@ export default function GlyphPortal({
       // Round caption opacity — avoids subpixel opacity thrash on first mobile scrolls.
       const caption = Math.round((1 - smooth(0.01, 0.18, p)) * 100) / 100;
       const reveal = Math.round((isStatic ? 1 : smooth(0.78, 0.9, p)) * 100) / 100;
-      const fieldScale = Math.round((1 + 0.16 * smooth(0, 0.82, p)) * 1000) / 1000;
+      // Soft field enlarge only — letter camera does the main zoom; keep subject readable.
+      const fieldScale = Math.round((1 + 0.08 * smooth(0, 0.82, p)) * 1000) / 1000;
       section.style.setProperty("--gp-caption", String(caption));
       section.style.setProperty("--gp-reveal", String(reveal));
       section.style.setProperty("--gp-field-scale", String(fieldScale));
@@ -250,17 +251,26 @@ export default function GlyphPortal({
       if (!ready) return;
       // Narrow / embedded browsers (Cursor Simple Browser) need tighter fit so the word never overflows.
       const narrow = W < 520;
-      // Keep full word readable on white paper before the zoom (esp. 5-letter marks).
-      const wordPad = narrow ? 0.86 : Array.from(text).length >= 5 ? 0.78 : 0.84;
+      const chars = Array.from(text).length;
+      // Fit the FULL mark in-frame on every device — oversized letters make the
+      // field photo read as a macro crop inside each glyph.
+      const wordPad = narrow ? (chars >= 5 ? 0.78 : 0.86) : chars >= 5 ? 0.7 : 0.82;
       const wordHeight = hasFront
-        ? Math.min(H * (narrow ? 0.26 : 0.34), Math.max(22, H - (narrow ? 220 : 264)))
-        : H * (narrow ? 0.3 : 0.38);
+        ? Math.min(H * (narrow ? 0.22 : 0.28), Math.max(22, H - (narrow ? 240 : 280)))
+        : H * (narrow ? 0.26 : 0.34);
       startScale = Math.min(
         (W * wordPad) / Math.max(1, bounds.width),
         wordHeight / Math.max(1, bounds.height)
       );
-      // Hard clamp: glyph must never exceed the pin box.
-      startScale = Math.max(0.04, Math.min(startScale, W * 0.92 / Math.max(1, bounds.width), H * 0.42 / Math.max(1, bounds.height)));
+      // Hard clamp: entire word must clear the pin with margin.
+      startScale = Math.max(
+        0.04,
+        Math.min(
+          startScale,
+          (W * (narrow ? 0.88 : 0.82)) / Math.max(1, bounds.width),
+          (H * (narrow ? 0.3 : 0.34)) / Math.max(1, bounds.height)
+        )
+      );
       // The whole viewport fits inside measured ink, even with the small camera bank.
       select(target);
       for (const button of buttons) {

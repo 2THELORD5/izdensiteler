@@ -146,7 +146,21 @@ export function PortalHome() {
               transform: "scale(var(--gp-field-scale, 1))",
               transformOrigin: "center center",
             }}
-          />
+          >
+            <picture>
+              <source
+                media="(max-width: 900px), (orientation: portrait)"
+                srcSet="/brand/izden-crew-card-mob.jpg"
+              />
+              <img
+                src="/brand/izden-crew-card.jpg"
+                alt=""
+                draggable={false}
+                decoding="async"
+                fetchPriority="high"
+              />
+            </picture>
+          </div>
         }
         front={
           <>

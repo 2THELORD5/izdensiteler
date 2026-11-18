@@ -113,34 +113,83 @@ body {
   background-color: transparent !important;
   background-image: none !important;
 }
+/*
+  Crew photo in letter windows — responsive cover, zoomed OUT so the girl
+  reads as a figure through İZDEN (negative inset was wrongly zooming IN).
+*/
 .portal-light .gp-field-photo {
-  background-color: #111;
-  background-image:
-    linear-gradient(
-      165deg,
-      rgba(8, 8, 8, 0.08) 0%,
-      rgba(8, 8, 8, 0.02) 45%,
-      rgba(8, 8, 8, 0.14) 100%
-    ),
-    url("/brand/izden-crew-card.jpg");
-  /* Zoom the subject so letter windows fill with the girl, not empty sea. */
-  background-size: 155% auto;
-  background-position: 72% 42%;
-  background-repeat: no-repeat;
+  --gp-photo-scale: 0.7;
+  --gp-photo-x: 66%;
+  --gp-photo-y: 30%;
+  /* Solid only — a full-bleed photo backdrop would re-introduce the macro crop. */
+  background-color: #141414;
+  background-image: none;
+  overflow: hidden;
   will-change: transform;
+}
+.portal-light .gp-field-photo::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  background: linear-gradient(
+    165deg,
+    rgba(8, 8, 8, 0.14) 0%,
+    rgba(8, 8, 8, 0.04) 45%,
+    rgba(8, 8, 8, 0.18) 100%
+  );
+}
+.portal-light .gp-field-photo picture {
+  position: absolute;
+  inset: 0;
+  display: block;
+  z-index: 1;
+}
+.portal-light .gp-field-photo img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  object-position: var(--gp-photo-x) var(--gp-photo-y);
+  /* Start pulled-back; ease to full cover as the portal camera reveals the site. */
+  transform: scale(
+    calc(
+      var(--gp-photo-scale) + (1 - var(--gp-photo-scale)) * var(--gp-reveal, 0)
+    )
+  );
+  /* Keep the scaled frame centered under the whole word (not pinned to subject %). */
+  transform-origin: center center;
+}
+@media (max-width: 1100px) {
+  .portal-light .gp-field-photo {
+    --gp-photo-scale: 0.72;
+    --gp-photo-x: 64%;
+    --gp-photo-y: 28%;
+  }
 }
 @media (max-width: 900px), (orientation: portrait) {
   .portal-light .gp-field-photo {
-    background-image:
-      linear-gradient(
-        180deg,
-        rgba(8, 8, 8, 0.1) 0%,
-        rgba(8, 8, 8, 0.02) 45%,
-        rgba(8, 8, 8, 0.16) 100%
-      ),
-      url("/brand/izden-crew-card-mob.jpg");
-    background-size: cover;
-    background-position: 55% 26%;
+    --gp-photo-scale: 0.76;
+    --gp-photo-x: 50%;
+    --gp-photo-y: 24%;
+  }
+  .portal-light .gp-field-photo::after {
+    background: linear-gradient(
+      180deg,
+      rgba(8, 8, 8, 0.14) 0%,
+      rgba(8, 8, 8, 0.04) 45%,
+      rgba(8, 8, 8, 0.2) 100%
+    );
+  }
+}
+@media (max-width: 560px) {
+  .portal-light .gp-field-photo {
+    --gp-photo-scale: 0.8;
+    --gp-photo-x: 48%;
+    --gp-photo-y: 22%;
   }
 }
 .portal-light [data-gp-front] {
