@@ -507,6 +507,11 @@
   }
 
   function ensureAgency() {
+    // Niche is a fixed, locked horizontal story: a static footer block would float over the hero.
+    if (cfg.horizontalStory) {
+      document.querySelectorAll(".izden-agency").forEach((el) => el.remove());
+      return;
+    }
     if (document.querySelector(".izden-agency")) return;
     loadScript("izden-agency.js");
   }
@@ -534,8 +539,10 @@
     t = setTimeout(() => {
       const missing =
         (cfg.film && isHome && !document.querySelector("[data-iz-film-scrub]")) ||
-        !document.querySelector(".izden-agency") ||
-        !document.querySelector('link[data-iz-heal="izden-agency.css"]');
+        (!cfg.horizontalStory &&
+          (!document.querySelector(".izden-agency") ||
+            !document.querySelector('link[data-iz-heal="izden-agency.css"]'))) ||
+        (cfg.horizontalStory && document.querySelector(".izden-agency"));
       if (missing && healed < 4) {
         healed += 1;
         heal();

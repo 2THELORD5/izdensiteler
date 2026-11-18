@@ -1,6 +1,6 @@
 (() => {
   const path = location.pathname || "";
-  if (/\/demos\/(kumrucu|junesun)(\/|$)/i.test(path)) return;
+  if (/\/demos\/(kumrucu|junesun|moos-niche)(\/|$)/i.test(path)) return;
 
   const EMAIL = "info@izdencreative.com";
   const PHONE = "+90 212 000 00 00";

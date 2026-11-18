@@ -4,7 +4,7 @@
  * House film removed from the primary path (was 720p + desynced chapters).
  */
 /* Fiş 02 (köz) çıkarıldı — un → somun bağlandı; sakızlı kurabiye en sonda. */
-const ACTS = [
+const ACTS_PC = [
   { at: 0.0, act: "Fiş 01", title: "Un henüz soğuk", body: "Sabahın ilk tezgâhı. Alaçatı uyanmadan hamur yoğrulur.", idx: "01 / 08", rail: "Tezgâh" },
   { at: 0.112, act: "Fiş 02", title: "Somun kabarır", body: "Kumrunun sırrı ekmekte — oval, susamlı, çıtır.", idx: "02 / 08", rail: "Somun" },
   { at: 0.223, act: "Fiş 03", title: "Meşhur Çeşme", body: "Kaşar, biber, domates — susamlı ekmekte klasik kumru.", idx: "03 / 08", rail: "Klasik" },
@@ -15,9 +15,24 @@ const ACTS = [
   { at: 0.888, act: "Fiş 08", title: "Sakızlı Alaçatı", body: "%100 doğal damla sakız — kurabiye fişi, en son tezgâh.", idx: "08 / 08", rail: "Kurabiye" },
 ];
 
-const BOOT_STILLS = [
+/* Mobil: aynı çeşitler, 9:16 çekimlerle (7 kesit). Metinler PC ile aynı. */
+const ACTS_MOB = [
+  { at: 0.0, act: "Fiş 01", title: "Un henüz soğuk", body: "Sabahın ilk tezgâhı. Alaçatı uyanmadan hamur yoğrulur.", idx: "01 / 07", rail: "Tezgâh" },
+  { at: 0.148, act: "Fiş 02", title: "Somun kabarır", body: "Kumrunun sırrı ekmekte — oval, susamlı, çıtır.", idx: "02 / 07", rail: "Somun" },
+  { at: 0.289, act: "Fiş 03", title: "Meşhur Çeşme", body: "Kaşar, biber, domates — susamlı ekmekte klasik kumru.", idx: "03 / 07", rail: "Klasik" },
+  { at: 0.430, act: "Fiş 04", title: "Klasik tezgâh", body: "Aynı masa, aynı ışık — klasik kumru bekler.", idx: "04 / 07", rail: "Klasik" },
+  { at: 0.570, act: "Fiş 05", title: "Sucuklu Domatesli", body: "Izgara sucuk, domates, eriyen kaşar — tok tezgâh hali.", idx: "05 / 07", rail: "Sucuklu" },
+  { at: 0.711, act: "Fiş 06", title: "Yengen Kumru", body: "İzmir’in kurusu — Kale tezgâhında tanıdık lezzet.", idx: "06 / 07", rail: "Yengen" },
+  { at: 0.852, act: "Fiş 07", title: "Sakızlı Alaçatı", body: "%100 doğal damla sakız — kurabiye fişi, en son tezgâh.", idx: "07 / 07", rail: "Kurabiye" },
+];
+
+const BOOT_STILLS_PC = [
   "./public/kie/scroll-v2/boot/01-flour.jpg",
   "./public/kie/scroll-v2/boot/03-somun.jpg",
+];
+const BOOT_STILLS_MOB = [
+  "./public/kie/scroll-v2/boot/m-01-flour.jpg",
+  "./public/kie/scroll-v2/boot/m-02-oven.jpg",
 ];
 
 const clamp = (v, a = 0, b = 1) => Math.min(b, Math.max(a, v));
@@ -26,6 +41,8 @@ const isMobile =
   matchMedia("(max-width: 820px), (hover: none) and (pointer: coarse)").matches;
 const reduced =
   typeof matchMedia === "function" && matchMedia("(prefers-reduced-motion: reduce)").matches;
+const ACTS = isMobile ? ACTS_MOB : ACTS_PC;
+const BOOT_STILLS = isMobile ? BOOT_STILLS_MOB : BOOT_STILLS_PC;
 
 const video = document.getElementById("v");
 const variety = document.getElementById("vVariety");
@@ -66,7 +83,7 @@ if (variety) {
   variety.setAttribute("playsinline", "");
   variety.setAttribute("webkit-playsinline", "");
   variety.src = isMobile
-    ? "./public/kie/scroll-v2/variety-scrub-mobile.mp4?v=k10"
+    ? "./public/kie/scroll-v2/variety-scrub-mobile-v2.mp4?v=k11"
     : "./public/kie/scroll-v2/variety-scrub-pc.mp4?v=k10";
   try { variety.load(); } catch {}
 }
@@ -89,13 +106,52 @@ function resize() {
   }
 }
 
-function coverDraw(srcW, srcH, draw) {
+/* Mobil: 9:16 kaynak, uzun telefon ekranında yanlardan fazla kırpılmasın diye
+   cover ile fit-width arası bir ölçek; kalan ince şerit aynı karenin bulanık
+   arka planıyla dolar (siyah bant yok). */
+const MOB_FIT = 0.55;
+const bgCanvas = document.createElement("canvas");
+bgCanvas.width = 40;
+bgCanvas.height = 72;
+const bgCtx = bgCanvas.getContext("2d", { alpha: false });
+
+function coverDraw(srcW, srcH, draw, srcEl) {
   const cw = canvas.width;
   const ch = canvas.height;
-  const s = Math.max(cw / srcW, ch / srcH);
+  const cover = Math.max(cw / srcW, ch / srcH);
+  const fit = cw / srcW;
+  const s = isMobile && srcEl ? cover + MOB_FIT * (fit - cover) * (cover > fit ? 1 : 0) : cover;
+  const dw = srcW * s;
+  const dh = srcH * s;
+  const dx = (cw - dw) / 2;
+  const dy = (ch - dh) / 2;
   ctx.fillStyle = "#1a100c";
   ctx.fillRect(0, 0, cw, ch);
-  draw((cw - srcW * s) / 2, (ch - srcH * s) / 2, srcW * s, srcH * s);
+  if (isMobile && srcEl && (dh < ch - 1 || dw < cw - 1)) {
+    try {
+      bgCtx.drawImage(srcEl, 0, 0, bgCanvas.width, bgCanvas.height);
+      ctx.imageSmoothingEnabled = true;
+      ctx.drawImage(bgCanvas, 0, 0, cw, ch);
+      ctx.fillStyle = "rgba(26,16,12,.38)";
+      ctx.fillRect(0, 0, cw, ch);
+    } catch {}
+  }
+  draw(dx, dy, dw, dh);
+  if (isMobile && srcEl && dh < ch - 1) {
+    const f = Math.max(2, Math.round(Math.min(48, (ch - dh) * 0.9)));
+    const top = Math.max(0, dy);
+    const bot = Math.min(ch, dy + dh);
+    let g = ctx.createLinearGradient(0, top, 0, top + f);
+    g.addColorStop(0, "rgba(26,16,12,.55)");
+    g.addColorStop(1, "rgba(26,16,12,0)");
+    ctx.fillStyle = g;
+    ctx.fillRect(0, top, cw, f);
+    g = ctx.createLinearGradient(0, bot - f, 0, bot);
+    g.addColorStop(0, "rgba(26,16,12,0)");
+    g.addColorStop(1, "rgba(26,16,12,.55)");
+    ctx.fillStyle = g;
+    ctx.fillRect(0, bot - f, cw, f);
+  }
 }
 
 function paintBoot(p) {
@@ -116,8 +172,11 @@ function paint() {
     return;
   }
   if (variety && varietyReady && variety.readyState >= 1 && variety.videoWidth) {
-    coverDraw(variety.videoWidth, variety.videoHeight, (x, y, w, h) =>
-      ctx.drawImage(variety, x, y, w, h)
+    coverDraw(
+      variety.videoWidth,
+      variety.videoHeight,
+      (x, y, w, h) => ctx.drawImage(variety, x, y, w, h),
+      variety
     );
     return;
   }
@@ -142,8 +201,8 @@ function setAct(i) {
   if (bodyEl) bodyEl.textContent = a.body;
   if (chapterIdx) chapterIdx.textContent = a.idx;
   if (railLabel) railLabel.textContent = a.rail || a.title;
-  document.querySelectorAll("#chapterNav [data-seek]").forEach((btn, n) => {
-    btn.classList.toggle("is-on", n === i);
+  document.querySelectorAll("#chapterNav [data-seek]").forEach((btn) => {
+    btn.classList.toggle("is-on", btn.textContent.trim() === a.rail);
   });
 }
 
@@ -227,7 +286,8 @@ function kickDecode(el) {
 document.getElementById("chapterNav")?.addEventListener("click", (e) => {
   const btn = e.target.closest("[data-seek]");
   if (!btn || !track) return;
-  const p = Number(btn.dataset.seek);
+  const hit = isMobile ? ACTS.find((x) => x.rail === btn.textContent.trim()) : null;
+  const p = hit ? hit.at : Number(btn.dataset.seek);
   const vh = innerHeight || 1;
   const total = Math.max(1, track.offsetHeight - vh);
   const y = track.getBoundingClientRect().top + scrollY + p * total;
