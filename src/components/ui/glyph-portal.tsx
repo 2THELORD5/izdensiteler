@@ -221,9 +221,8 @@ export default function GlyphPortal({
       // Drop the clip only after the camera has already filled the viewport with ink.
       // Re-clip on scroll-back so the field never remains as a full-bleed leftover.
       field.style.clipPath = t >= 1 ? "none" : `url(#${clipId})`;
-      // Never paint solid paper on the pin — photo lives on ::before / CSS.
-      // (Setting --gp-paper white here caused the “all white” portal break.)
-      pin.style.backgroundColor = "transparent";
+      // Paper stays white around the letter windows; photo lives only inside [data-gp-field].
+      pin.style.backgroundColor = "var(--gp-paper, #fff)";
       // Round caption opacity — avoids subpixel opacity thrash on first mobile scrolls.
       const caption = Math.round((1 - smooth(0.01, 0.18, p)) * 100) / 100;
       const reveal = Math.round((isStatic ? 1 : smooth(0.78, 0.9, p)) * 100) / 100;
@@ -251,16 +250,17 @@ export default function GlyphPortal({
       if (!ready) return;
       // Narrow / embedded browsers (Cursor Simple Browser) need tighter fit so the word never overflows.
       const narrow = W < 520;
-      const wordPad = narrow ? 0.9 : 0.84;
+      // Keep full word readable on white paper before the zoom (esp. 5-letter marks).
+      const wordPad = narrow ? 0.86 : Array.from(text).length >= 5 ? 0.78 : 0.84;
       const wordHeight = hasFront
-        ? Math.min(H * (narrow ? 0.28 : 0.38), Math.max(22, H - (narrow ? 220 : 264)))
+        ? Math.min(H * (narrow ? 0.26 : 0.34), Math.max(22, H - (narrow ? 220 : 264)))
         : H * (narrow ? 0.3 : 0.38);
       startScale = Math.min(
         (W * wordPad) / Math.max(1, bounds.width),
         wordHeight / Math.max(1, bounds.height)
       );
       // Hard clamp: glyph must never exceed the pin box.
-      startScale = Math.max(0.04, Math.min(startScale, W / Math.max(1, bounds.width), H * 0.45 / Math.max(1, bounds.height)));
+      startScale = Math.max(0.04, Math.min(startScale, W * 0.92 / Math.max(1, bounds.width), H * 0.42 / Math.max(1, bounds.height)));
       // The whole viewport fits inside measured ink, even with the small camera bank.
       select(target);
       for (const button of buttons) {

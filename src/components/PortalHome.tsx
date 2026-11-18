@@ -131,10 +131,10 @@ export function PortalHome() {
         annotations={false}
         enterLabel="Örneklere geç"
         style={{
-          "--gp-paper": "#0b0b0b",
-          "--gp-ink": "#f7f5f1",
-          "--gp-field": "#0c0c0c",
-          "--gp-foreground": "#f7f5f1",
+          "--gp-paper": "#ffffff",
+          "--gp-ink": "#111111",
+          "--gp-field": "#111111",
+          "--gp-foreground": "#141414",
         }}
         background={
           <div
@@ -143,9 +143,6 @@ export function PortalHome() {
             style={{
               position: "absolute",
               inset: 0,
-              backgroundSize: "cover",
-              backgroundPosition: "58% 22%",
-              backgroundRepeat: "no-repeat",
               transform: "scale(var(--gp-field-scale, 1))",
               transformOrigin: "center center",
             }}
@@ -154,7 +151,7 @@ export function PortalHome() {
         front={
           <>
             <div className="gp-top">
-              <Logo variant="white" className="gp-brand-logo" priority />
+              <Logo variant="light" className="gp-brand-logo" priority />
               <span className="gp-cat">İzden Creative</span>
             </div>
             <p className="gp-eye gp-fade">Örnek site portföyü</p>

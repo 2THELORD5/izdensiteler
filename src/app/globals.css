@@ -94,9 +94,13 @@ body {
   color: #141414;
 }
 
-/* Glyph scroll: dark pin around letters; crew photo lives INSIDE letter windows (field). */
+/*
+  Glyph scroll (Varaya grammar):
+  white paper around İZDEN → crew photo INSIDE letter windows →
+  scroll zooms type until the photo fills the viewport → site.
+*/
 .portal-light [data-gp-pin] {
-  background-color: #0b0b0b !important;
+  background-color: #fff !important;
   background-image: none !important;
   isolation: isolate;
 }
@@ -104,47 +108,39 @@ body {
 .portal-light [data-gp-pin] > * {
   z-index: 1;
 }
-.portal-light .gp-cat,
-.portal-light .gp-eye,
-.portal-light .gp-support,
-.portal-light .gp-scroll,
-.portal-light .gp-top .gp-cat {
-  color: rgba(247, 245, 241, 0.96) !important;
-  text-shadow:
-    0 1px 2px rgba(0, 0, 0, 0.85),
-    0 8px 28px rgba(0, 0, 0, 0.55);
+/* Letter windows only — photo never sits on the white paper. */
+.portal-light [data-gp-field] {
+  background-color: transparent !important;
+  background-image: none !important;
 }
-.portal-light .gp-support {
-  color: rgba(247, 245, 241, 0.9) !important;
-}
-/* Letter windows = crew photo (scroll zooms through type into the field). */
-.portal-light [data-gp-field],
 .portal-light .gp-field-photo {
-  background-color: #0b0b0b !important;
+  background-color: #111;
   background-image:
     linear-gradient(
       165deg,
-      rgba(8, 8, 8, 0.22) 0%,
-      rgba(8, 8, 8, 0.06) 42%,
-      rgba(8, 8, 8, 0.34) 100%
+      rgba(8, 8, 8, 0.08) 0%,
+      rgba(8, 8, 8, 0.02) 45%,
+      rgba(8, 8, 8, 0.14) 100%
     ),
-    url("/brand/izden-crew-card.jpg") !important;
-  background-size: cover !important;
-  background-position: 58% 22% !important;
-  background-repeat: no-repeat !important;
+    url("/brand/izden-crew-card.jpg");
+  /* Zoom the subject so letter windows fill with the girl, not empty sea. */
+  background-size: 155% auto;
+  background-position: 72% 42%;
+  background-repeat: no-repeat;
+  will-change: transform;
 }
 @media (max-width: 900px), (orientation: portrait) {
-  .portal-light [data-gp-field],
   .portal-light .gp-field-photo {
     background-image:
       linear-gradient(
         180deg,
-        rgba(8, 8, 8, 0.28) 0%,
-        rgba(8, 8, 8, 0.1) 42%,
-        rgba(8, 8, 8, 0.42) 100%
+        rgba(8, 8, 8, 0.1) 0%,
+        rgba(8, 8, 8, 0.02) 45%,
+        rgba(8, 8, 8, 0.16) 100%
       ),
-      url("/brand/izden-crew-card-mob.jpg") !important;
-    background-position: 48% 18% !important;
+      url("/brand/izden-crew-card-mob.jpg");
+    background-size: cover;
+    background-position: 55% 26%;
   }
 }
 .portal-light [data-gp-front] {
@@ -154,8 +150,8 @@ body {
   z-index: 3;
 }
 .portal-light [data-gp-fallback] {
-  color: #f7f5f1 !important;
-  text-shadow: 0 2px 24px rgba(0, 0, 0, 0.65);
+  color: #111 !important;
+  text-shadow: none;
 }
 .portal-light [data-gp-caption] {
   z-index: 8 !important;
@@ -163,16 +159,11 @@ body {
 .portal-light .gp-brand-logo {
   width: clamp(96px, 16vw, 148px) !important;
   height: auto !important;
-  filter: drop-shadow(0 2px 14px rgba(0, 0, 0, 0.75));
+  filter: none;
 }
-.portal-light [data-gp-enter] {
-  color: #f7f5f1 !important;
-  text-shadow: 0 1px 14px rgba(0, 0, 0, 0.55);
-}
-/* Letter windows stay cinematic dark; ink marks light for contrast on photo */
 .portal-light {
-  --gp-ink: #f7f5f1;
-  --gp-field: #0c0c0c;
+  --gp-ink: #111111;
+  --gp-field: #111111;
 }
 
 .gp-top {
@@ -190,20 +181,19 @@ body {
 .gp-cat {
   font-family: var(--font-body), "Outfit", system-ui, sans-serif;
   font-size: 11px;
-  color: rgba(247, 245, 241, 0.92);
+  color: #6a6a64;
   padding-top: 0.65rem;
   font-weight: 600;
   letter-spacing: 0.16em;
   text-transform: uppercase;
   white-space: nowrap;
-  text-shadow: 0 1px 12px rgba(0, 0, 0, 0.65);
 }
 .gp-eye {
   position: absolute;
   left: 16px;
   right: 16px;
-  top: 22%;
-  bottom: auto;
+  top: auto;
+  bottom: calc(100% - var(--gp-word-top, 35%) + 20px);
   margin: 0;
   text-align: center;
   font-family: var(--font-body), "Outfit", system-ui, sans-serif;
@@ -211,16 +201,15 @@ body {
   font-weight: 600;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: rgba(247, 245, 241, 0.92);
+  color: #6a6a64;
   pointer-events: none;
   z-index: 6;
-  text-shadow: 0 1px 14px rgba(0, 0, 0, 0.7);
 }
 .gp-support {
   position: absolute;
   left: 16px;
   right: 16px;
-  top: 52%;
+  top: calc(var(--gp-word-bottom, 50%) + 22px);
   margin: 0 auto;
   max-width: min(34rem, 100%);
   padding: 0 4px;
@@ -229,18 +218,17 @@ body {
   font-size: clamp(14px, 3.4vw, 16px);
   font-weight: 500;
   line-height: 1.45;
-  color: rgba(247, 245, 241, 0.9);
+  color: #55554f;
   pointer-events: none;
   z-index: 6;
-  text-shadow: 0 1px 16px rgba(0, 0, 0, 0.7);
 }
 .gp-scroll {
   position: absolute;
   left: 16px;
   right: 16px;
-  bottom: max(11%, env(safe-area-inset-bottom, 0px) + 72px);
+  bottom: max(8%, env(safe-area-inset-bottom, 0px) + 64px);
   text-align: center;
-  color: rgba(247, 245, 241, 0.82);
+  color: #7a7a74;
   font-family: var(--font-body), "Outfit", system-ui, sans-serif;
   font-size: clamp(10px, 2.6vw, 11px);
   letter-spacing: 0.14em;
@@ -248,7 +236,6 @@ body {
   font-weight: 600;
   pointer-events: none;
   z-index: 6;
-  text-shadow: 0 1px 12px rgba(0, 0, 0, 0.65);
 }
 
 /* Logo stays put; only copy fades with the portal camera */
@@ -787,14 +774,6 @@ body {
     flex: 1;
     min-height: 44px;
     font-size: 0.8rem;
-  }
-}
-@media (max-width: 900px), (orientation: portrait) {
-  .portal-light .gp-field-photo {
-    background-image:
-      linear-gradient(180deg, rgba(8, 8, 8, 0.42) 0%, rgba(8, 8, 8, 0.12) 40%, rgba(8, 8, 8, 0.5) 100%),
-      url("/brand/izden-crew-card-mob.jpg") !important;
-    background-position: 48% 18% !important;
   }
 }
 
