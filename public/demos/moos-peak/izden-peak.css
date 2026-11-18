@@ -1,0 +1,191 @@
+/* Peak — site layer on the Next export.
+   Film scrub (assets/kie-scrub) is the home hero; the still hero is retired. */
+
+#hero-sequence {
+  display: none !important;
+}
+
+.iz-scrub--film {
+  background: #12110f;
+}
+.iz-scrub--film .iz-scrub__veil {
+  background: linear-gradient(
+    180deg,
+    rgba(14, 13, 11, 0.55) 0,
+    rgba(14, 13, 11, 0.14) 28%,
+    rgba(14, 13, 11, 0.5) 58%,
+    rgba(14, 13, 11, 0.9) 100%
+  ) !important;
+}
+
+/* hero lockup */
+.iz-scrub--film .iz-scrub__hero {
+  padding-bottom: clamp(3rem, 10svh, 6.5rem);
+}
+.pk-hero {
+  color: #fbfaf7;
+}
+.pk-hero__eyebrow {
+  margin: 0 0 clamp(14px, 2vw, 22px);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #ece6dc;
+  text-shadow: 0 1px 14px rgba(0, 0, 0, 0.6);
+}
+.pk-hero__title {
+  margin: 0;
+  max-width: 17ch;
+  font-size: clamp(2.7rem, 6.4vw, 6rem);
+  font-weight: 450;
+  line-height: 1;
+  letter-spacing: -0.026em;
+  color: #fbfaf7;
+  text-shadow: 0 2px 36px rgba(0, 0, 0, 0.5);
+}
+.pk-hero__lede {
+  margin: clamp(16px, 2.2vw, 26px) 0 0;
+  max-width: 44ch;
+  font-size: clamp(1.05rem, 1.35vw, 1.25rem);
+  line-height: 1.5;
+  color: #f2f0eb;
+  text-shadow: 0 1px 18px rgba(0, 0, 0, 0.7);
+}
+.pk-hero__cta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px 14px;
+  margin-top: clamp(22px, 3vw, 34px);
+}
+.pk-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.7em;
+  min-height: 48px;
+  padding: 0.75em 1.6em;
+  border: 1px solid #fbfaf7;
+  border-radius: 999px;
+  font-weight: 500;
+  font-size: 1rem;
+  text-decoration: none;
+  transition: background-color 0.25s var(--ease-out, ease), color 0.25s var(--ease-out, ease);
+}
+.pk-btn--solid {
+  background: #fbfaf7;
+  color: #171717;
+}
+.pk-btn--solid:hover,
+.pk-btn--solid:focus-visible {
+  background: #d9d1c4;
+  border-color: #d9d1c4;
+}
+.pk-btn--line {
+  background: rgba(18, 17, 15, 0.35);
+  color: #fbfaf7;
+}
+.pk-btn--line:hover,
+.pk-btn--line:focus-visible {
+  background: #fbfaf7;
+  color: #171717;
+}
+.pk-btn:focus-visible {
+  outline: 3px solid #fbfaf7;
+  outline-offset: 3px;
+}
+
+/* chapter copy */
+.iz-scrub--film .iz-scrub__ui {
+  width: min(900px, calc(100% - 2 * var(--page-padding, 18px)));
+  margin-left: max(var(--page-padding, 18px), calc((100vw - var(--content-max, 1320px)) / 2 + var(--page-padding, 18px)));
+}
+.iz-scrub--film .iz-scrub__act {
+  opacity: 1;
+  font-weight: 500;
+  color: #ece6dc !important;
+}
+.iz-scrub--film .iz-scrub__title {
+  font-weight: 450;
+  font-size: clamp(2.4rem, 6vw, 5rem);
+  letter-spacing: -0.026em;
+  line-height: 1;
+  max-width: 14ch;
+}
+.iz-scrub--film .iz-scrub__body {
+  opacity: 1;
+  max-width: 34rem;
+}
+
+/* header rides the film on the home page (white), then returns to paper */
+html.pk-home.pk-on-film .site-header {
+  background: transparent !important;
+  border-color: transparent !important;
+  -webkit-backdrop-filter: none !important;
+  backdrop-filter: none !important;
+}
+html.pk-home.pk-on-film .site-header .wordmark,
+html.pk-home.pk-on-film .site-header .wordmark svg,
+html.pk-home.pk-on-film .site-header .nav-link,
+html.pk-home.pk-on-film .site-header .menu-button {
+  color: #fbfaf7 !important;
+}
+html.pk-home:not(.pk-on-film) .site-header {
+  background: rgba(242, 240, 235, 0.94) !important;
+  border-color: #17171724 !important;
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+}
+html.pk-home:not(.pk-on-film) .site-header .wordmark,
+html.pk-home:not(.pk-on-film) .site-header .wordmark svg,
+html.pk-home:not(.pk-on-film) .site-header .nav-link,
+html.pk-home:not(.pk-on-film) .site-header .menu-button {
+  color: #171717 !important;
+}
+
+/* locations strip under the film */
+.pk-strip {
+  background: #171717;
+  color: #f2f0eb;
+}
+.pk-strip__in {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 10px clamp(24px, 4vw, 56px);
+  padding-block: clamp(20px, 2.6vw, 30px);
+}
+.pk-strip__lead {
+  margin: 0;
+  font-size: 0.8125rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #b9b2a8;
+}
+.pk-strip__list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px clamp(20px, 3vw, 40px);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: clamp(1.05rem, 1.6vw, 1.4rem);
+  font-weight: 450;
+  letter-spacing: -0.01em;
+}
+
+@media (max-width: 720px) {
+  .iz-scrub--film .iz-scrub__hero {
+    padding-bottom: clamp(4.5rem, 14svh, 7rem);
+  }
+  .pk-hero__title {
+    font-size: clamp(2.4rem, 11vw, 3.4rem);
+  }
+  .pk-btn {
+    flex: 1 1 100%;
+  }
+  .iz-scrub--film .iz-scrub__title {
+    font-size: clamp(2.1rem, 10.5vw, 3.2rem);
+  }
+}

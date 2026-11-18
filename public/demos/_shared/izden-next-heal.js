@@ -82,6 +82,12 @@
       ],
       // site-owned layer: header offset, hero lockup, era strip, motion
       css: ["/demos/moos-retro/izden-retro.css"],
+      // footer "— coming soon" placeholders become real links after hydration
+      placeholders: {
+        Instagram: { href: "https://www.instagram.com/", label: "Instagram" },
+        Pinterest: { href: "https://www.pinterest.com/", label: "Pinterest" },
+        Email: { href: "/demos/moos-retro/contact/index.html#enquiry", label: "Email us" },
+      },
       film: {
         mount: { prepend: "#main" },
         hero: [
@@ -188,7 +194,31 @@
     const next = fix(raw);
     if (next && next !== raw) a.setAttribute("href", next);
   }
-  const fixAll = (root = document) => root.querySelectorAll("a[href]").forEach(fixAnchor);
+  function patchPlaceholders() {
+    const map = cfg.placeholders;
+    if (!map) return;
+    document.querySelectorAll('li[class*="placeholder"]').forEach((li) => {
+      const first = li.firstChild;
+      const key = ((first && first.textContent) || "").trim();
+      const hit = map[key];
+      if (!hit) return;
+      const a = document.createElement("a");
+      const sib = document.querySelector('a[class*="SiteFooter_link"]');
+      a.className = sib ? sib.className : "";
+      a.href = hit.href;
+      a.textContent = hit.label;
+      if (/^https?:/i.test(hit.href)) {
+        a.target = "_blank";
+        a.rel = "noopener noreferrer";
+      }
+      li.className = "";
+      li.replaceChildren(a);
+    });
+  }
+  const fixAll = (root = document) => {
+    root.querySelectorAll("a[href]").forEach(fixAnchor);
+    patchPlaceholders();
+  };
 
   // capture on window → runs before React's root listeners
   window.addEventListener(

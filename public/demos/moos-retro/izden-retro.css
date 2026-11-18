@@ -1,0 +1,197 @@
+/* Retro Interior Co. — site layer on top of the Next export.
+   The original frame-sequence hero never resolved (loader stuck, canvas empty),
+   so the continuous film scrub (assets/kie-scrub) is the hero now. */
+
+/* original hero + loader are replaced by the film */
+.HeroSequence_overlay__LDLaV,
+.HeroSequence_hero__aODwa {
+  display: none !important;
+}
+
+/* film pin sits under the sticky paper header (76px), never behind it */
+.iz-scrub--film {
+  background: #171914;
+}
+.iz-scrub--film .iz-scrub__pin {
+  top: var(--header-h, 76px) !important;
+  height: calc(100vh - var(--header-h, 76px)) !important;
+  height: calc(100svh - var(--header-h, 76px)) !important;
+}
+.iz-scrub--film .iz-scrub__veil {
+  background: linear-gradient(
+    180deg,
+    rgba(23, 14, 6, 0.42) 0,
+    rgba(23, 14, 6, 0.3) 26%,
+    rgba(23, 14, 6, 0.58) 58%,
+    rgba(23, 14, 6, 0.93) 100%
+  ) !important;
+}
+
+/* hero lockup */
+.iz-scrub--film .iz-scrub__hero {
+  padding-inline: var(--gutter, clamp(18px, 4vw, 72px));
+  padding-bottom: calc(clamp(2.5rem, 9svh, 6rem) + 44px);
+}
+.rt-hero {
+  max-width: 1440px;
+  width: 100%;
+  margin-inline: auto;
+  color: #f8f1e3;
+}
+.rt-hero__eyebrow {
+  margin: 0 0 clamp(12px, 2vw, 20px);
+  font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+  font-weight: 650;
+  font-size: 0.75rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #f6d98a;
+  text-shadow: 0 1px 14px rgba(0, 0, 0, 0.75);
+}
+.rt-hero__title {
+  margin: 0;
+  font-family: var(--font-display), Georgia, serif;
+  font-optical-sizing: auto;
+  font-weight: 850;
+  font-size: clamp(3.4rem, 11.5vw, 9.6rem);
+  line-height: 0.86;
+  letter-spacing: -0.02em;
+  color: #f8f1e3;
+  text-shadow: 0 3px 40px rgba(10, 6, 2, 0.55);
+}
+.rt-hero__lede {
+  margin: clamp(16px, 2.4vw, 28px) 0 0;
+  max-width: 46ch;
+  font-size: clamp(1rem, 1.5vw, 1.2rem);
+  line-height: 1.5;
+  color: #f2e7cf;
+  text-shadow: 0 1px 18px rgba(10, 6, 2, 0.7);
+}
+.rt-hero__cta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 14px;
+  margin-top: clamp(20px, 3vw, 32px);
+}
+.rt-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6em;
+  min-height: 48px;
+  padding: 0.8em 1.55em;
+  border: 1.5px solid #171914;
+  font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+  font-weight: 700;
+  font-size: 0.875rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: background-color 0.22s var(--ease-out, ease), color 0.22s var(--ease-out, ease),
+    border-color 0.22s var(--ease-out, ease);
+}
+.rt-btn--solid {
+  background: #f0522d;
+  color: #171914;
+  text-shadow: none;
+}
+.rt-btn--solid:hover,
+.rt-btn--solid:focus-visible {
+  background: #f8f1e3;
+}
+.rt-btn--line {
+  background: rgba(23, 20, 14, 0.35);
+  border-color: #f8f1e3;
+  color: #f8f1e3;
+  text-shadow: none;
+}
+.rt-btn--line:hover,
+.rt-btn--line:focus-visible {
+  background: #f8f1e3;
+  color: #171914;
+}
+.rt-btn:focus-visible {
+  outline: 3px solid #e9b94a;
+  outline-offset: 3px;
+}
+
+/* chapter copy over the film */
+.iz-scrub--film .iz-scrub__ui {
+  width: min(960px, calc(100% - 2 * var(--gutter, 18px)));
+  margin-left: max(var(--gutter, 18px), calc((100vw - 1440px) / 2 + var(--gutter, 18px)));
+}
+.iz-scrub--film .iz-scrub__act {
+  font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+  font-weight: 650;
+  opacity: 1;
+  color: #e9b94a !important;
+}
+.iz-scrub--film .iz-scrub__title {
+  font-family: var(--font-display), Georgia, serif;
+  font-weight: 850;
+  font-size: clamp(2.4rem, 7vw, 5.4rem);
+  line-height: 0.92;
+  max-width: 14ch;
+}
+.iz-scrub--film .iz-scrub__body {
+  opacity: 1;
+  max-width: 36rem;
+}
+
+/* materials ticker — the slow, deliberate motion between film and studio copy */
+.rt-ticker {
+  background: #0c3b2e;
+  color: #f2e7cf;
+  overflow: hidden;
+  border-block: 1.5px solid #171914;
+  padding-block: clamp(12px, 1.6vw, 18px);
+  white-space: nowrap;
+}
+.rt-ticker__track {
+  display: inline-flex;
+  width: max-content;
+  animation: rt-tick 46s linear infinite;
+}
+.rt-ticker__set {
+  display: inline-flex;
+  align-items: center;
+  flex: none;
+  gap: clamp(20px, 2.6vw, 36px);
+  padding-right: clamp(20px, 2.6vw, 36px);
+  font-family: var(--font-display), Georgia, serif;
+  font-weight: 780;
+  font-size: clamp(1.25rem, 2.4vw, 2rem);
+  letter-spacing: -0.005em;
+}
+.rt-ticker__set i {
+  font-style: normal;
+  color: #e9b94a;
+}
+@keyframes rt-tick {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (max-width: 720px) {
+  .iz-scrub--film .iz-scrub__hero {
+    padding-bottom: calc(clamp(4.5rem, 14svh, 7rem) + 8px);
+  }
+  .rt-hero__title {
+    font-size: clamp(3.2rem, 17vw, 5.2rem);
+  }
+  .rt-btn {
+    flex: 1 1 100%;
+  }
+  .iz-scrub--film .iz-scrub__title {
+    font-size: clamp(2.2rem, 11vw, 3.4rem);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .rt-ticker__track {
+    animation: none;
+  }
+  .rt-ticker {
+    overflow-x: auto;
+  }
+}
