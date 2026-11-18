@@ -252,23 +252,24 @@ export default function GlyphPortal({
       // Narrow / embedded browsers (Cursor Simple Browser) need tighter fit so the word never overflows.
       const narrow = W < 520;
       const chars = Array.from(text).length;
-      // Fit the FULL mark in-frame on every device — oversized letters make the
-      // field photo read as a macro crop inside each glyph.
-      const wordPad = narrow ? (chars >= 5 ? 0.78 : 0.86) : chars >= 5 ? 0.7 : 0.82;
+      // Phone: chunkier letter mass — thin hairline İZDEN reads broken on retina.
+      // Desktop: keep full word in-frame without macro letter windows.
+      // Phone: wide letter mass (not thin), but leave vertical room for eye + support copy.
+      const wordPad = narrow ? (chars >= 5 ? 0.97 : 0.98) : chars >= 5 ? 0.7 : 0.82;
       const wordHeight = hasFront
-        ? Math.min(H * (narrow ? 0.22 : 0.28), Math.max(22, H - (narrow ? 240 : 280)))
-        : H * (narrow ? 0.26 : 0.34);
+        ? Math.min(H * (narrow ? 0.3 : 0.28), Math.max(22, H - (narrow ? 210 : 280)))
+        : H * (narrow ? 0.32 : 0.34);
       startScale = Math.min(
         (W * wordPad) / Math.max(1, bounds.width),
         wordHeight / Math.max(1, bounds.height)
       );
-      // Hard clamp: entire word must clear the pin with margin.
+      // Hard clamp: entire word must clear the pin with margin; phone prefers width over height.
       startScale = Math.max(
         0.04,
         Math.min(
           startScale,
-          (W * (narrow ? 0.88 : 0.82)) / Math.max(1, bounds.width),
-          (H * (narrow ? 0.3 : 0.34)) / Math.max(1, bounds.height)
+          (W * (narrow ? 0.99 : 0.82)) / Math.max(1, bounds.width),
+          (H * (narrow ? 0.34 : 0.34)) / Math.max(1, bounds.height)
         )
       );
       // The whole viewport fits inside measured ink, even with the small camera bank.

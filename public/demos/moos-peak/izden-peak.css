@@ -11,10 +11,10 @@
 .iz-scrub--film .iz-scrub__veil {
   background: linear-gradient(
     180deg,
-    rgba(14, 13, 11, 0.55) 0,
-    rgba(14, 13, 11, 0.14) 28%,
-    rgba(14, 13, 11, 0.5) 58%,
-    rgba(14, 13, 11, 0.9) 100%
+    rgba(14, 13, 11, 0.38) 0,
+    rgba(14, 13, 11, 0.08) 28%,
+    rgba(14, 13, 11, 0.32) 58%,
+    rgba(14, 13, 11, 0.66) 100%
   ) !important;
 }
 
@@ -156,7 +156,7 @@ html.pk-home:not(.pk-on-film) .site-header .menu-button {
   color: #171717 !important;
 }
 
-/* locations strip under the film */
+/* locations strip under the film — keep light ink on charcoal */
 .pk-strip {
   background: #171717;
   color: #f2f0eb;

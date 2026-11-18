@@ -42,15 +42,22 @@
         "projects/desert-retreat",
         "projects/downtown-vertical-district",
       ],
-      // Hero scrub (hero-scrub.mp4) is owned by React <VideoHero>; the Kie film
-      // chapter follows it instead of competing with it as a second hero.
+      // Single hero: replace React VideoHero with the Kie live film scrub
+      // so mobile + desktop share one pin (no early exit into page content).
       film: {
-        mount: { after: ".vhero" },
+        mount: { replace: ".vhero" },
+        hero: [
+          '<div class="bb-film-hero">',
+          '<p class="bb-film-hero__eyebrow">Black Block &middot; Architecture</p>',
+          '<h1 class="bb-film-hero__title">City models.<br>Lived form.</h1>',
+          '<p class="bb-film-hero__lede">Scroll from the studio model into the creek, arts centre and coastal massing — one continuous film.</p>',
+          '</div>',
+        ].join(""),
         chapters: [
-          { act: "01 Model", title: "City in hand.", body: "Maket sahnesi." },
-          { act: "02 Creek", title: "Water route.", body: "Su hattı." },
-          { act: "03 Arts", title: "Public form.", body: "Kamusal form." },
-          { act: "04 Coast", title: "Shore light.", body: "Kıyı." },
+          { act: "01 Model", title: "City in hand.", body: "The studio model — massing before the build." },
+          { act: "02 Creek", title: "Water route.", body: "Approach along the creek edge." },
+          { act: "03 Arts", title: "Public form.", body: "A civic volume at urban scale." },
+          { act: "04 Coast", title: "Shore light.", body: "Coastal residences in late light." },
         ],
       },
       gallery: false,
@@ -228,9 +235,11 @@
   function unlockShell() {
     ensureMobileNavLabel();
     // Niche (and similar) leave a full-screen loader + overflow:hidden after hydration fails.
+    // Never kill our intentional [data-iz-boot] gate.
     document.querySelectorAll(
       '#loader, .loader, [id*="loader" i], [class*="Loader"], [class*="preloader" i], [class*="hero-loading" i]'
     ).forEach((el) => {
+      if (el.hasAttribute("data-iz-boot") || el.id === "iz-boot" || el.closest("[data-iz-boot]")) return;
       const r = el.getBoundingClientRect();
       const cs = getComputedStyle(el);
       if (cs.position === "fixed" || r.height > innerHeight * 0.35 || /loader/i.test(el.className + el.id)) {
@@ -401,9 +410,13 @@
       const s = document.createElement("style");
       s.id = "iz-scrub-tall";
       s.textContent =
-        ".iz-scrub--film{height:380vh!important}" +
+        ".iz-scrub--film{height:420vh!important}" +
         ".iz-scrub__ui,.iz-scrub__title,.iz-scrub__body,.iz-scrub__act{color:#f4f0ea!important;text-shadow:0 2px 24px rgba(0,0,0,.6)!important}" +
-        "@media(max-width:720px){.iz-scrub--film{height:300vh!important}}";
+        ".bb-film-hero{max-width:min(920px,calc(100% - 2.5rem));color:#f4f0ea;padding:0 4vw clamp(2rem,8svh,5rem)}" +
+        ".bb-film-hero__eyebrow{margin:0 0 14px;font-size:.75rem;letter-spacing:.18em;text-transform:uppercase;opacity:.8}" +
+        ".bb-film-hero__title{margin:0;font-size:clamp(2.4rem,7vw,5.2rem);line-height:.95;letter-spacing:-.03em}" +
+        ".bb-film-hero__lede{margin:18px 0 0;max-width:42ch;font-size:clamp(1rem,1.4vw,1.15rem);line-height:1.5;opacity:.88}" +
+        "@media(max-width:720px){.iz-scrub--film{height:340vh!important}}";
       document.head.appendChild(s);
     }
   }
@@ -448,7 +461,11 @@
     const { mount } = cfg.film;
     let host = null;
     const sec = buildFilm();
-    if (mount.after) {
+    if (mount.replace) {
+      host = document.querySelector(mount.replace);
+      if (!host) return false;
+      host.replaceWith(sec);
+    } else if (mount.after) {
       host = document.querySelector(mount.after);
       if (!host) return false;
       host.after(sec);
@@ -461,6 +478,21 @@
     return true;
   }
 
+  function ensureBoot() {
+    if (document.querySelector('link[data-iz-heal="boot.css"]')) return;
+    const l = document.createElement("link");
+    l.rel = "stylesheet";
+    l.href = SHARED + "boot.css";
+    l.dataset.izHeal = "boot.css";
+    document.head.appendChild(l);
+    if (!document.querySelector('script[data-iz-heal="boot-loader.js"]')) {
+      const s = document.createElement("script");
+      s.src = SHARED + "boot-loader.js";
+      s.dataset.izHeal = "boot-loader.js";
+      document.head.appendChild(s);
+    }
+  }
+
   function ensureAgency() {
     if (document.querySelector(".izden-agency")) return;
     loadScript("izden-agency.js");
@@ -469,6 +501,7 @@
   function heal() {
     if (!document.body || !document.head) return;
     healCount += 1;
+    ensureBoot();
     ensureCss();
     fixAll();
     const filmAdded = mountFilm();

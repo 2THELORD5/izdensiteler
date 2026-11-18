@@ -1,8 +1,76 @@
+/* İZDEN site boot — hold the page until critical media is ready */
 html, body { max-width: 100%; }
-body.is-loading { overflow: hidden; touch-action: none; }
-.loader {
-  position: fixed; inset: 0; z-index: 100;
-  display: grid; place-content: center; gap: 0.85rem;
-  transition: opacity .5s ease, visibility .5s;
+body.is-loading {
+  overflow: hidden !important;
+  touch-action: none;
+  height: 100%;
 }
-.loader.is-done { opacity: 0; visibility: hidden; pointer-events: none; }
+.iz-boot,
+.loader[data-iz-boot] {
+  position: fixed;
+  inset: 0;
+  z-index: 2147483000;
+  display: grid;
+  place-content: center;
+  place-items: center;
+  gap: 1rem;
+  padding: 24px;
+  background: #0c0c0b;
+  color: #f4f0ea;
+  font-family: "Söhne", "Helvetica Neue", Arial, sans-serif;
+  transition: opacity 0.55s ease, visibility 0.55s ease;
+}
+.iz-boot.is-done,
+.loader[data-iz-boot].is-done {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+.iz-boot__mark,
+.loader[data-iz-boot] .loader__mark {
+  margin: 0;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: rgba(244, 240, 234, 0.72);
+}
+.iz-boot__bar,
+.loader[data-iz-boot] .loader__bar {
+  width: min(220px, 56vw);
+  height: 2px;
+  background: rgba(244, 240, 234, 0.16);
+  overflow: hidden;
+  border-radius: 999px;
+}
+.iz-boot__fill,
+.loader[data-iz-boot] .loader__fill,
+.loader[data-iz-boot] #loaderBar,
+.loader[data-iz-boot] .loader__bar > i {
+  display: block;
+  height: 100%;
+  width: 0%;
+  background: #f4f0ea;
+  transform-origin: left center;
+  transition: width 0.28s ease;
+}
+.iz-boot__pct,
+.loader[data-iz-boot] .loader__pct {
+  margin: 0;
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  font-variant-numeric: tabular-nums;
+  color: rgba(244, 240, 234, 0.55);
+}
+@media (prefers-reduced-motion: reduce) {
+  .iz-boot,
+  .loader[data-iz-boot] {
+    transition: none;
+  }
+  .iz-boot__fill,
+  .loader[data-iz-boot] .loader__fill,
+  .loader[data-iz-boot] #loaderBar,
+  .loader[data-iz-boot] .loader__bar > i {
+    transition: none;
+  }
+}

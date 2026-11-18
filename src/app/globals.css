@@ -88,6 +88,48 @@ body {
   height: auto;
   background: transparent !important;
 }
+html.is-loading,
+body.is-loading {
+  overflow: hidden;
+}
+.portal-loader {
+  position: fixed;
+  inset: 0;
+  z-index: 2147483000;
+  display: grid;
+  place-content: center;
+  place-items: center;
+  gap: 1rem;
+  background: #fff;
+  color: #111;
+}
+.portal-loader__mark {
+  margin: 0;
+  font-family: "Arial Black", Arial, sans-serif;
+  font-size: 0.78rem;
+  letter-spacing: 0.32em;
+  font-weight: 900;
+}
+.portal-loader__bar {
+  width: min(220px, 56vw);
+  height: 2px;
+  background: rgba(17, 17, 17, 0.12);
+  overflow: hidden;
+  border-radius: 999px;
+}
+.portal-loader__fill {
+  display: block;
+  height: 100%;
+  background: #111;
+  transition: width 0.25s ease;
+}
+.portal-loader__pct {
+  margin: 0;
+  font-size: 0.7rem;
+  letter-spacing: 0.14em;
+  color: rgba(17, 17, 17, 0.45);
+  font-variant-numeric: tabular-nums;
+}
 
 .portal-light {
   background: #fff;
@@ -118,7 +160,7 @@ body {
   reads as a figure through İZDEN (negative inset was wrongly zooming IN).
 */
 .portal-light .gp-field-photo {
-  --gp-photo-scale: 0.7;
+  --gp-photo-scale: 0.44;
   --gp-photo-x: 66%;
   --gp-photo-y: 30%;
   /* Solid only — a full-bleed photo backdrop would re-introduce the macro crop. */
@@ -165,14 +207,14 @@ body {
 }
 @media (max-width: 1100px) {
   .portal-light .gp-field-photo {
-    --gp-photo-scale: 0.72;
+    --gp-photo-scale: 0.46;
     --gp-photo-x: 64%;
     --gp-photo-y: 28%;
   }
 }
 @media (max-width: 900px), (orientation: portrait) {
   .portal-light .gp-field-photo {
-    --gp-photo-scale: 0.76;
+    --gp-photo-scale: 0.48;
     --gp-photo-x: 50%;
     --gp-photo-y: 24%;
   }
@@ -187,7 +229,7 @@ body {
 }
 @media (max-width: 560px) {
   .portal-light .gp-field-photo {
-    --gp-photo-scale: 0.8;
+    --gp-photo-scale: 0.5;
     --gp-photo-x: 48%;
     --gp-photo-y: 22%;
   }
@@ -270,6 +312,9 @@ body {
   color: #55554f;
   pointer-events: none;
   z-index: 6;
+  /* Avoid colliding with the glyph mass if metrics lag one frame */
+  max-height: 4.2em;
+  overflow: hidden;
 }
 .gp-scroll {
   position: absolute;
@@ -1184,9 +1229,29 @@ html.preview-immersive body {
   .survey-card { width: min(100%, calc(100% - 1.25rem)); padding: 1rem; }
   .gp-top { gap: 8px; }
   .gp-cat { max-width: 42%; overflow: hidden; text-overflow: ellipsis; }
-  .gp-eye { top: 20%; }
-  .gp-support { top: 50%; }
-  .gp-scroll { bottom: max(14%, env(safe-area-inset-bottom, 0px) + 88px); }
+  /* Keep copy clear of the chunkier mobile İZDEN mass — never hardcode 50%. */
+  .gp-eye {
+    top: auto;
+    bottom: calc(100% - var(--gp-word-top, 32%) + 10px);
+    left: 12px;
+    right: 12px;
+    font-size: 10px;
+    letter-spacing: 0.12em;
+  }
+  .gp-support {
+    top: calc(var(--gp-word-bottom, 62%) + 16px);
+    left: 14px;
+    right: 14px;
+    max-width: min(26rem, calc(100% - 28px));
+    font-size: clamp(13px, 3.5vw, 15px);
+    line-height: 1.4;
+  }
+  .gp-scroll {
+    bottom: max(11%, env(safe-area-inset-bottom, 0px) + 78px);
+  }
+  .portal-light [data-gp-caption] {
+    inset: auto 12px max(12px, env(safe-area-inset-bottom, 0px) + 8px);
+  }
   .preview-actions .btn-ghost.compact:first-child { display: none; }
   .preview-meta { flex-wrap: wrap; }
   .ai-assist {

@@ -867,11 +867,11 @@ svg{ display:block }
 
 
 /* ── hero = film scrub ───────────────────────────────────── */
-.leaft-film.iz-scrub{ height:360vh; background:var(--canvas-deep) }
+.leaft-film.iz-scrub{ height:400vh; background:var(--canvas-deep) }
 .leaft-film .iz-scrub__veil{
   background:
-    linear-gradient(180deg, rgba(23,27,16,.82) 0%, rgba(23,27,16,.22) 30%, rgba(23,27,16,.5) 64%, rgba(23,27,16,.9) 100%),
-    linear-gradient(90deg, rgba(23,27,16,.6) 0%, rgba(23,27,16,.06) 60%) !important;
+    linear-gradient(180deg, rgba(23,27,16,.42) 0%, rgba(23,27,16,.08) 32%, rgba(23,27,16,.28) 64%, rgba(23,27,16,.62) 100%),
+    linear-gradient(90deg, rgba(23,27,16,.28) 0%, rgba(23,27,16,.02) 62%) !important;
 }
 .leaft-film .iz-scrub__hero{ padding-bottom:clamp(2.5rem,8svh,5rem) }
 .leaft-film .hero__eyebrow,
@@ -889,7 +889,7 @@ svg{ display:block }
 .leaft-film .iz-scrub__title{ font-family:var(--f-display); font-weight:400; font-variation-settings:"wdth" 106; letter-spacing:-.03em }
 .leaft-film .iz-scrub__ui{ padding-bottom:clamp(2.5rem,10svh,6rem); max-width:min(920px,calc(100% - 2.5rem)) }
 @media (max-width:720px){
-  .leaft-film.iz-scrub{ height:300vh }
+  .leaft-film.iz-scrub{ height:320vh }
   .leaft-film .hero__title{ font-size:clamp(2.2rem,11vw,3.2rem) }
 }
 

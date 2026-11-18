@@ -134,24 +134,84 @@
     }
   }
 
-  /* Generic gallery / lookbook reveal */
+  /* Gallery / lookbook → scroll pin scrub + prev/next buttons */
   document.querySelectorAll(".gallery__grid, .lookbook__grid").forEach((grid) => {
     const figs = [...grid.querySelectorAll("figure, .lookbook__cell")];
-    if (!figs.length) return;
-    if (reduced || !("IntersectionObserver" in window)) {
+    if (figs.length < 2) {
       figs.forEach((f) => f.classList.add("is-in"));
       return;
     }
-    const io = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (!entry.isIntersecting) return;
-          figs.forEach((fig, i) => window.setTimeout(() => fig.classList.add("is-in"), i * 110));
-          io.disconnect();
-        });
-      },
-      { threshold: 0.15 }
-    );
-    io.observe(grid);
+
+    const section =
+      grid.closest("section, .lookbook, .gallery, [data-enrich]") || grid.parentElement;
+    if (!section) return;
+
+    section.classList.add("iz-photo-scrub");
+    let pin = section.querySelector(".iz-photo-scrub__pin");
+    if (!pin) {
+      pin = document.createElement("div");
+      pin.className = "iz-photo-scrub__pin";
+      const stage = document.createElement("div");
+      stage.className = "iz-photo-scrub__stage";
+      const caps = document.createElement("div");
+      caps.className = "iz-photo-scrub__caps";
+      figs.forEach((fig, i) => {
+        const img = fig.querySelector("img");
+        if (!img) return;
+        const clone = img.cloneNode(true);
+        clone.classList.toggle("is-on", i === 0);
+        clone.setAttribute("loading", i === 0 ? "eager" : "lazy");
+        stage.appendChild(clone);
+        const cap = document.createElement("p");
+        cap.className = "iz-photo-scrub__cap" + (i === 0 ? " is-on" : "");
+        const fc = fig.querySelector("figcaption");
+        cap.textContent = fc ? fc.textContent.trim() : String(i + 1).padStart(2, "0");
+        caps.appendChild(cap);
+      });
+      const nav = document.createElement("div");
+      nav.className = "iz-photo-scrub__nav";
+      nav.innerHTML =
+        '<button type="button" class="iz-photo-scrub__btn" data-dir="-1" aria-label="Previous">←</button>' +
+        '<span class="iz-photo-scrub__count" aria-live="polite"><b data-now>1</b> / <span data-total></span></span>' +
+        '<button type="button" class="iz-photo-scrub__btn" data-dir="1" aria-label="Next">→</button>';
+      pin.appendChild(stage);
+      pin.appendChild(caps);
+      pin.appendChild(nav);
+      grid.hidden = true;
+      grid.after(pin);
+      section.style.minHeight = `${Math.max(2, figs.length) * 70}vh`;
+    }
+
+    const imgs = [...pin.querySelectorAll(".iz-photo-scrub__stage img")];
+    const caps = [...pin.querySelectorAll(".iz-photo-scrub__cap")];
+    const nowEl = pin.querySelector("[data-now]");
+    const totalEl = pin.querySelector("[data-total]");
+    if (totalEl) totalEl.textContent = String(imgs.length);
+    let idx = 0;
+    const set = (i) => {
+      idx = Math.max(0, Math.min(imgs.length - 1, i));
+      imgs.forEach((el, n) => el.classList.toggle("is-on", n === idx));
+      caps.forEach((el, n) => el.classList.toggle("is-on", n === idx));
+      if (nowEl) nowEl.textContent = String(idx + 1);
+    };
+    pin.querySelectorAll(".iz-photo-scrub__btn").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const dir = Number(btn.getAttribute("data-dir") || 0);
+        set(idx + dir);
+        const total = Math.max(1, section.offsetHeight - window.innerHeight);
+        const top = window.scrollY + section.getBoundingClientRect().top;
+        const p = imgs.length <= 1 ? 0 : idx / (imgs.length - 1);
+        window.scrollTo({ top: top + p * total, behavior: "smooth" });
+      });
+    });
+    if (reduced) {
+      set(0);
+      imgs.forEach((el) => el.classList.add("is-on"));
+      return;
+    }
+    onScroll(() => {
+      const p = progressOf(section);
+      set(Math.min(imgs.length - 1, Math.floor(p * imgs.length)));
+    });
   });
 })();

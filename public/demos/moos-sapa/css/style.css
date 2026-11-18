@@ -183,7 +183,7 @@ section{position:relative}
 /* ============================================================
    1 · HERO — live film scrub (izden-film-scrub.js)
    ============================================================ */
-.sapa-film.iz-scrub{height:360vh;background:#1c150c}
+.sapa-film.iz-scrub{height:400vh;background:#1c150c}
 .sapa-film .iz-scrub__veil{
   background:linear-gradient(180deg,rgba(20,15,8,.34) 0%,rgba(20,15,8,.02) 34%,rgba(20,15,8,.18) 60%,rgba(20,15,8,.72) 100%)!important;
 }
@@ -199,7 +199,7 @@ section{position:relative}
   .sapa-film .iz-scrub__ui{margin-left:20px}
 }
 @media (max-width:720px){
-  .sapa-film.iz-scrub{height:300vh}
+  .sapa-film.iz-scrub{height:320vh}
   .sapa-film .hero-card{padding:1.3rem 1.4rem}
   .sapa-film .hero-card h1{font-size:clamp(2rem,9vw,2.6rem)}
   .sapa-film .hero-card p{font-size:.88rem}

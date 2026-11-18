@@ -163,9 +163,14 @@
     seeking = true;
     lastApplied = next;
     try {
-      video.currentTime = next;
+      if (typeof video.fastSeek === "function") video.fastSeek(next);
+      else video.currentTime = next;
     } catch {
-      seeking = false;
+      try {
+        video.currentTime = next;
+      } catch {
+        seeking = false;
+      }
     }
   };
 
@@ -186,7 +191,11 @@
   });
 
   const readP = () => {
-    const total = Math.max(1, root.offsetHeight - window.innerHeight);
+    /* Match sticky pin offset (e.g. retro header) so progress hits 1 before page continues */
+    const pin = root.querySelector(".iz-scrub__pin");
+    const pinTop = pin ? parseFloat(getComputedStyle(pin).top) || 0 : 0;
+    const travelH = Math.max(1, window.innerHeight - pinTop);
+    const total = Math.max(1, root.offsetHeight - travelH);
     const top = root.getBoundingClientRect().top;
     return clamp(-top / total);
   };

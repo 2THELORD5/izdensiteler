@@ -902,11 +902,27 @@ body.menu-open .side-menu-list a {
 
 
 /* ============ hero = film scrub (full colour, never filtered) ============ */
-.bold-film.iz-scrub { height: 360vh; background: var(--ink); }
+.bold-film.iz-scrub { height: 400vh; background: var(--ink); }
 .bold-film, .bold-film video { filter: none; }
 .bold-film .iz-scrub__veil {
   background:
-    linear-gradient(180deg, rgba(6, 6, 6, 0.42) 0%, rgba(6, 6, 6, 0.04) 36%, rgba(6, 6, 6, 0.7) 100%) !important;
+    linear-gradient(180deg, rgba(6, 6, 6, 0.34) 0%, rgba(6, 6, 6, 0.02) 36%, rgba(6, 6, 6, 0.52) 100%) !important;
+}
+/* Below-fold motion — intentional, not hover-scale noise */
+.section--paper .reveal,
+.awards .reveal,
+.team .reveal,
+.contact .reveal {
+  transition: opacity 0.85s var(--ease), transform 0.85s var(--ease);
+}
+.glass-panel.reveal.in {
+  transition-delay: var(--d, 0s);
+}
+.award.reveal.in {
+  transform: translateY(0);
+}
+.case-study .reveal.in {
+  transition-duration: 1s;
 }
 .bold-film .iz-scrub__hero { align-items: flex-start; }
 .bold-film .hero-content { padding-bottom: 0; }
@@ -920,7 +936,7 @@ body.menu-open .side-menu-list a {
 .bold-film .iz-scrub__hero .hero-content { padding-left: var(--pad-x); padding-right: var(--pad-x); }
 .bold-film .btn, .bold-film .link-plain { min-height: 48px; display: inline-flex; align-items: center; }
 @media (max-width: 720px) {
-  .bold-film.iz-scrub { height: 300vh; }
+  .bold-film.iz-scrub { height: 320vh; }
 }
 @media (prefers-reduced-motion: reduce) {
   .bold-film.iz-scrub { height: auto; min-height: 100svh; }

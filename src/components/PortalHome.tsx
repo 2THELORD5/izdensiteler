@@ -82,6 +82,8 @@ const PORTAL_NAV = [
 export function PortalHome() {
   const [scrollLength, setScrollLength] = useState(2.6);
   const [navOpen, setNavOpen] = useState(false);
+  const [booting, setBooting] = useState(true);
+  const [bootPct, setBootPct] = useState(8);
 
   useEffect(() => {
     // Kill orphaned preview chrome from prior incele visits
@@ -89,6 +91,73 @@ export function PortalHome() {
     document.querySelectorAll(".preview-bar").forEach((el) => el.remove());
     document.documentElement.classList.remove("is-preview", "preview-immersive");
     document.body.style.overflow = "";
+  }, []);
+
+  useEffect(() => {
+    let done = false;
+    let cancelled = false;
+    const start = performance.now();
+    document.documentElement.classList.add("is-loading");
+    document.body.classList.add("is-loading");
+
+    const finish = () => {
+      if (done || cancelled) return;
+      done = true;
+      setBootPct(100);
+      const wait = Math.max(0, 650 - (performance.now() - start));
+      window.setTimeout(() => {
+        if (cancelled) return;
+        document.documentElement.classList.remove("is-loading");
+        document.body.classList.remove("is-loading");
+        setBooting(false);
+      }, wait + 140);
+    };
+
+    const hard = window.setTimeout(finish, 4500);
+    const loadImg = (src: string) =>
+      new Promise<void>((resolve) => {
+        const img = new window.Image();
+        const end = () => resolve();
+        img.onload = end;
+        img.onerror = end;
+        img.src = src;
+        window.setTimeout(end, 2500);
+      });
+
+    const tick = window.setInterval(() => {
+      setBootPct((p) => Math.min(92, p + 9));
+    }, 160);
+
+    const narrow =
+      typeof window.matchMedia === "function" &&
+      window.matchMedia("(max-width: 900px), (orientation: portrait)").matches;
+    const hero = narrow
+      ? "/brand/izden-crew-card-mob.jpg"
+      : "/brand/izden-crew-card.jpg";
+
+    Promise.all([
+      document.fonts?.ready?.catch?.(() => undefined) ?? Promise.resolve(),
+      loadImg(hero),
+      new Promise<void>((resolve) => {
+        if (document.readyState === "complete") resolve();
+        else {
+          window.addEventListener("load", () => resolve(), { once: true });
+          window.setTimeout(resolve, 3000);
+        }
+      }),
+    ]).finally(() => {
+      window.clearInterval(tick);
+      window.clearTimeout(hard);
+      finish();
+    });
+
+    return () => {
+      cancelled = true;
+      window.clearInterval(tick);
+      window.clearTimeout(hard);
+      document.documentElement.classList.remove("is-loading");
+      document.body.classList.remove("is-loading");
+    };
   }, []);
 
   useEffect(() => {
@@ -121,6 +190,15 @@ export function PortalHome() {
 
   return (
     <div className="portal-light">
+      {booting ? (
+        <div className="portal-loader" data-iz-boot role="status" aria-live="polite" aria-label="Yükleniyor">
+          <p className="portal-loader__mark">İZDEN</p>
+          <div className="portal-loader__bar" aria-hidden="true">
+            <span className="portal-loader__fill" style={{ width: `${bootPct}%` }} />
+          </div>
+          <p className="portal-loader__pct">{Math.round(bootPct)}%</p>
+        </div>
+      ) : null}
       <GlyphPortal
         word="İZDEN"
         focusChar="D"

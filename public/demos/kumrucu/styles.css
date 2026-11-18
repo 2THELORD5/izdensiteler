@@ -377,6 +377,16 @@ main, .nav, .loader, .progress, .foot, .ticker { position: relative; z-index: 1;
   font-style: normal; color: var(--ink-soft); line-height: 1.45; margin-bottom: 1rem; font-size: .95rem;
 }
 .branch__meta { list-style: none; margin: 0 0 1.1rem; padding: 0; }
+.branch__meta a {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 0.18em;
+}
+.branch__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+}
 .branch__meta li {
   display: flex; gap: .55rem; padding: .35rem 0;
   font-size: .9rem; border-bottom: 1px solid var(--line);
@@ -455,6 +465,15 @@ main, .nav, .loader, .progress, .foot, .ticker { position: relative; z-index: 1;
   display: grid; grid-template-columns: 1fr 1fr; gap: clamp(1.2rem, 4vw, 2.4rem);
 }
 .atelier__list { list-style: none; margin: 1.2rem 0 0; padding: 0; }
+.atelier__list a {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 0.18em;
+}
+.atelier__list a:hover,
+.atelier__list a:focus-visible {
+  color: var(--crust, #5c3d2e);
+}
 .atelier__list li {
   padding: .55rem 0; border-bottom: 1px solid var(--line);
   font-family: var(--mono); font-size: .82rem; letter-spacing: .02em;

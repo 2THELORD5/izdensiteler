@@ -16,7 +16,7 @@ const MENU = [
     tag: "Sıcak",
     title: "Sıcak Kumru",
     blurb: "Izgara sıcaklığıyla; peynir erir, ekmek çıtır kalır.",
-    img: "./public/kie/03c-klasik-dolu.jpg",
+    img: "./public/menu/orig/kumrucukale-kumru.jpg",
   },
   {
     cat: "kumru",
@@ -30,7 +30,7 @@ const MENU = [
     tag: "Yengen",
     title: "Yengen Kumru",
     blurb: "İzmir’in kurusu — Kale tezgâhında tanıdık lezzet.",
-    img: "./public/menu/orig/yengen-kumru.jpg",
+    img: "./public/menu/orig/kumrucukale-yengen-kumru.jpg",
   },
   {
     cat: "kumru",
@@ -44,7 +44,7 @@ const MENU = [
     tag: "Fırın",
     title: "Pizza",
     blurb: "Fırın pizza — kumru hamurundan gelen çıtır kenar.",
-    img: "./public/menu/orig/pizza.jpg",
+    img: "./public/menu/orig/kumrucukale-pizza.jpg",
   },
 
   /* —— Kurabiye —— */
@@ -220,7 +220,7 @@ const MENU = [
     tag: "Ekmek",
     title: "Kumru Ekmeği",
     blurb: "Toptan ve şube — Ege’ye düzenli sevkiyat.",
-    img: "./public/kie/07-ekmek-stack.jpg",
+    img: "./public/menu/orig/ekmek.jpg",
   },
   {
     cat: "ekmek",
@@ -260,10 +260,10 @@ const BRANCHES = [
 ];
 
 const FALLBACK = {
-  kumru: "./public/menu/kumru-klasik-real.jpg",
+  kumru: "./public/menu/orig/kumru.jpg",
   kurabiye: "./public/menu/orig/kavala.jpg",
   sabah: "./public/menu/orig/gevrek.jpg",
-  ekmek: "./public/kie/07-ekmek-stack.jpg",
+  ekmek: "./public/menu/orig/ekmek.jpg",
 };
 
 const io = new IntersectionObserver(
@@ -315,20 +315,26 @@ renderMenu("all");
 
 const visitGrid = document.getElementById("visitGrid");
 if (visitGrid) {
-  visitGrid.innerHTML = BRANCHES.map(
-    (b) => `
+  visitGrid.innerHTML = BRANCHES.map((b) => {
+    const gsmDigits = String(b.gsm || "").replace(/\D/g, "");
+    const gsmTel = gsmDigits ? `+90${gsmDigits.replace(/^0/, "")}` : b.tel;
+    const mapsQ = encodeURIComponent(b.address.replace(/\n/g, ", "));
+    return `
     <article class="branch reveal">
       <p class="branch__tag">${b.tag}</p>
       <h3>${b.title}</h3>
       <address>${b.address.replace(/\n/g, "<br />")}</address>
       <ul class="branch__meta">
-        <li><b>Tel</b> ${b.phone}</li>
-        <li><b>GSM</b> ${b.gsm}</li>
+        <li><b>Tel</b> <a href="tel:${b.tel}">${b.phone}</a></li>
+        <li><b>GSM</b> <a href="tel:${gsmTel}">${b.gsm}</a></li>
         <li><b>Saat</b> ${b.hours}</li>
       </ul>
-      <a class="btn" href="tel:${b.tel}">Ara</a>
-    </article>`
-  ).join("");
+      <div class="branch__actions">
+        <a class="btn" href="tel:${b.tel}">Ara</a>
+        <a class="btn btn--ghost" href="https://www.google.com/maps/search/?api=1&query=${mapsQ}" target="_blank" rel="noopener">Harita</a>
+      </div>
+    </article>`;
+  }).join("");
 }
 
 document.getElementById("contactForm")?.addEventListener("submit", (e) => {

@@ -20,10 +20,10 @@
 .iz-scrub--film .iz-scrub__veil {
   background: linear-gradient(
     180deg,
-    rgba(23, 14, 6, 0.42) 0,
-    rgba(23, 14, 6, 0.3) 26%,
-    rgba(23, 14, 6, 0.58) 58%,
-    rgba(23, 14, 6, 0.93) 100%
+    rgba(23, 14, 6, 0.34) 0,
+    rgba(23, 14, 6, 0.12) 28%,
+    rgba(23, 14, 6, 0.36) 58%,
+    rgba(23, 14, 6, 0.68) 100%
   ) !important;
 }
 
