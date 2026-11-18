@@ -1285,3 +1285,112 @@ html, body {
 .preview--immersive .preview-frame {
   overscroll-behavior: contain;
 }
+
+/* ───────── Preview gate — demo stays behind this until everything is loaded ───────── */
+.preview-frame-wrap { position: relative; }
+.preview-gate {
+  position: absolute;
+  inset: 0;
+  z-index: 40;
+  display: grid;
+  place-items: center;
+  padding: max(1.5rem, env(safe-area-inset-top)) 1.5rem max(1.5rem, env(safe-area-inset-bottom));
+  background:
+    radial-gradient(60rem 36rem at 50% 38%, color-mix(in srgb, var(--gate-accent, #fff) 14%, transparent), transparent 70%),
+    #060607;
+  color: #f4f1ea;
+  opacity: 1;
+  transition: opacity .7s cubic-bezier(.4, 0, .2, 1), visibility 0s linear 0s;
+  touch-action: none;
+}
+.preview-gate.is-open {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity .7s cubic-bezier(.4, 0, .2, 1), visibility 0s linear .7s;
+}
+.preview-gate__inner {
+  display: grid;
+  justify-items: center;
+  gap: .55rem;
+  width: min(26rem, 100%);
+  text-align: center;
+}
+.preview-gate__logo {
+  height: 30px !important;
+  width: auto !important;
+  max-width: 120px !important;
+  opacity: .85;
+  margin-bottom: 1.6rem;
+  background: transparent !important;
+}
+.preview-gate__name {
+  margin: 0;
+  font-family: "Syne", "Outfit", system-ui, sans-serif;
+  font-weight: 800;
+  font-size: clamp(1.7rem, 6.2vw, 2.7rem);
+  line-height: 1.04;
+  letter-spacing: -.01em;
+}
+.preview-gate__cat {
+  margin: 0 0 1.5rem;
+  font-size: .72rem;
+  letter-spacing: .24em;
+  text-transform: uppercase;
+  color: #8f8a80;
+}
+.preview-gate__bar {
+  position: relative;
+  width: min(22rem, 78vw);
+  height: 2px;
+  background: rgba(255, 255, 255, .12);
+  overflow: hidden;
+  border-radius: 2px;
+}
+.preview-gate__bar > span {
+  position: absolute;
+  inset: 0 auto 0 0;
+  background: var(--gate-accent, #fff);
+  box-shadow: 0 0 14px var(--gate-accent, #fff);
+  transition: width .45s cubic-bezier(.22, .8, .3, 1);
+}
+.preview-gate__pct {
+  margin: .9rem 0 0;
+  font-family: "Syne", "Outfit", system-ui, sans-serif;
+  font-weight: 700;
+  font-size: 1.15rem;
+  letter-spacing: .04em;
+  font-variant-numeric: tabular-nums;
+}
+.preview-gate__pct > span { display: inline-block; min-width: 2ch; text-align: right; }
+.preview-gate__label {
+  margin: 0;
+  min-height: 1.3em;
+  font-size: .86rem;
+  color: #cfc9be;
+}
+.preview-gate__note {
+  margin: 1.4rem 0 0;
+  font-size: .74rem;
+  line-height: 1.5;
+  color: #77736a;
+  max-width: 22rem;
+}
+.preview-gate__slow {
+  display: grid;
+  justify-items: center;
+  gap: .7rem;
+  margin-top: 1.1rem;
+  padding: .9rem 1rem;
+  border: 1px solid rgba(255, 255, 255, .12);
+  border-radius: 1rem;
+  background: rgba(255, 255, 255, .03);
+  animation: gate-in .4s ease both;
+}
+.preview-gate__slow p { margin: 0; font-size: .8rem; line-height: 1.5; color: #cfc9be; }
+@keyframes gate-in { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: reduce) {
+  .preview-gate, .preview-gate.is-open { transition-duration: .01s; }
+  .preview-gate__bar > span { transition: none; }
+  .preview-gate__slow { animation: none; }
+}
