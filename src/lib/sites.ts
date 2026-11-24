@@ -1,6 +1,7 @@
 export type SiteSlug =
   | "kumrucu"
   | "junesun"
+  | "cafe"
   | "burger"
   | "insaat"
   | "galeri"
@@ -77,6 +78,19 @@ export const SITES: Site[] = [
     externalUrl: "https://www.junesun.com.tr/?intro=1",
     order: 2,
     metric: "Runway",
+    lane: "film",
+  },
+  {
+    slug: "cafe",
+    name: "IZDEN Night Roast",
+    tagline: "Çuvaldan şeffaf bardağa specialty film scrub.",
+    category: "Yeme · İçme",
+    accent: "#C4A484",
+    preview: "/previews/cafe.jpg?v=20261124",
+    externalUrl: "http://127.0.0.1:5209",
+    localPath: "/demos/cafe/index.html",
+    order: 3,
+    metric: "Film scrub",
     lane: "film",
   },
   {

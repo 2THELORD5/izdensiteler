@@ -28,6 +28,7 @@ export const ACTION_CATALOG: Record<string, AssistantAction> = {
   anket: { label: "Teklif al", href: "#teklif", primary: true },
   kumrucu: { label: "Kumrucu Kale’yi incele", href: "/incele/kumrucu", primary: true },
   junesun: { label: "Junesun’u incele", href: "/incele/junesun", primary: true },
+  cafe: { label: "IZDEN Night Roast’ı incele", href: "/incele/cafe", primary: true },
   burger: { label: "Burger · Anvil’i incele", href: "/incele/burger", primary: true },
   insaat: { label: "İnşaat · Forma’yı incele", href: "/incele/insaat", primary: true },
   galeri: { label: "Galeri · Strada’yı incele", href: "/incele/galeri", primary: true },
@@ -53,7 +54,8 @@ PORTAL GERÇEĞİ
 DEMOLAR
 1) Kumrucu Kale → /incele/kumrucu — yeme-içme, scroll film
 2) Junesun → /incele/junesun — lifestyle
-3) Burger · Anvil → /incele/burger — smash burger
+3) IZDEN Night Roast → /incele/cafe — specialty kahve film scrub
+4) Burger · Anvil → /incele/burger — smash burger
 4) İnşaat · Forma → /incele/insaat — villa / mimari film scrub
 5) Galeri · Strada → /incele/galeri — otomotiv vault
 6) SIGNAL → /incele/signal — VR frame-scrub
@@ -68,7 +70,7 @@ GÖREVİN
 ÇIKTI FORMATI (zorunlu, sadece JSON)
 {"answer":"...","suggestions":["...","...","..."],"actions":[{"label":"...","href":"...","primary":true}]}
 
-actions: 1–3 adet. Sadece: #siteler, #nasil, #teklif, /incele/kumrucu, /incele/junesun, /incele/burger, /incele/insaat, /incele/galeri, /incele/signal, mailto:info@izdencreative.com
+actions: 1–3 adet. Sadece: #siteler, #nasil, #teklif, /incele/kumrucu, /incele/junesun, /incele/cafe, /incele/burger, /incele/insaat, /incele/galeri, /incele/signal, mailto:info@izdencreative.com
 label kısa ve eylem odaklı. En önemli primary:true.`
 
 function A(...keys: (keyof typeof ACTION_CATALOG)[]): AssistantAction[] {
@@ -129,6 +131,12 @@ const FAQ: {
       "Burger · Anvil smash burger film, menü ve sipariş demosudur. Canlı çalışır; üretimde markanıza özel kurulur.",
     suggestions: ["Kumrucu?", "Siteler listesi", "Teklif al"],
     actions: A("burger", "siteler"),
+  },
+  {
+    match: /(cafe|kahve|night\s*roast|izden\s*night)/i,
+    answer:
+      "IZDEN Night Roast specialty kahve demosudur: çuvaldan bardağa scroll film scrub, menü ve boy seçimi.",
+    actions: A("cafe", "siteler"),
   },
   {
     match: /(junesun)/i,

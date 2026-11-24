@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=5" />
+  <title>IZDEN — Night Roast Atelier</title>
+  <meta name="description" content="IZDEN Cihangir — çuvaldan şeffaf bardağa specialty film, menü, boy seçimi ve bar teslimi." />
+  <meta name="theme-color" content="#0b0908" />
+  <link rel="preconnect" href="https://api.fontshare.com" crossorigin />
+  <link href="https://api.fontshare.com/v2/css?f[]=zodiak@500,600,700&f[]=switzer@400,500,600,700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./styles.css?v=cold3" />
+</head>
+<body class="brand-izden">
+  <div class="loader" id="loader">
+    <div class="loader__steam" aria-hidden="true"></div>
+    <div class="loader__mark">IZDEN</div>
+    <div class="loader__bar"><i id="loaderBar"></i></div>
+    <p>Kavrum uyanıyor…</p>
+  </div>
+
+  <div class="progress" id="progress"></div>
+
+  <header class="nav" id="nav">
+    <a class="nav__brand" href="#top">IZDEN</a>
+    <nav class="nav__links" id="navLinks" aria-label="Ana menü">
+      <a href="#ritual">Ritual</a>
+      <a href="#origin">Kavrum</a>
+      <a href="#board">Menü</a>
+      <a href="#cups">Boylar</a>
+      <a href="#bar">Bar</a>
+    </nav>
+    <div class="nav__end">
+      <button type="button" class="nav__auth" id="authBtn">Üye girişi</button>
+      <a class="nav__cta" href="#board">Sipariş aç</a>
+      <button type="button" class="nav__burger" id="navBurger" aria-label="Menüyü aç" aria-expanded="false" aria-controls="navDrawer">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+  <div class="nav-drawer" id="navDrawer" hidden>
+    <div class="nav-drawer__panel" role="dialog" aria-label="Menü">
+      <a href="#ritual">Ritual</a>
+      <a href="#origin">Kavrum</a>
+      <a href="#board">Menü</a>
+      <a href="#cups">Boylar</a>
+      <a href="#bar">Bar</a>
+      <a class="nav-drawer__cta" href="#board">Sipariş aç</a>
+    </div>
+  </div>
+
+  <main id="top">
+    <!-- FILM SCRUB -->
+    <section class="stage-wrap">
+      <div class="stage-track" id="track">
+        <div class="stage-pin">
+          <canvas id="c" aria-hidden="true"></canvas>
+          <video id="v" muted playsinline preload="auto" disablepictureinpicture src="./public/film-full-720.mp4"></video>
+          <div class="vignette" aria-hidden="true"></div>
+          <div class="stage-ui">
+            <p class="act" id="act">01 — Çuval</p>
+            <h1 id="title">Çekirdek bekliyor</h1>
+            <p id="body">Aşağı kaydır — demlemeyi izle. Yukarı — geri sar.</p>
+          </div>
+          <ol class="chapters" id="chapters" aria-label="Film bölümleri"></ol>
+          <p class="hint" id="hint">Kaydır <i></i></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- MANIFESTO -->
+    <section class="manifesto" id="manifesto">
+      <p class="eyebrow">Cihangir · gece kavrum atölyesi</p>
+      <h2>
+        Soğuk hat,<br />
+        şeffaf servis.
+      </h2>
+      <p class="manifesto__lede">
+        IZDEN’de soğuklar logosuz, ridge’li clear cup’ta; sıcaklar kalın porselende.
+        Film bitince menü — boyu gör, sütü seç, fişe yaz, ismini söyle.
+      </p>
+      <div class="manifesto__stats">
+        <div><strong>18h</strong><span>cold brew demleme</span></div>
+        <div><strong>92°C</strong><span>shot sıcaklığı</span></div>
+        <div><strong>12–20oz</strong><span>şeffaf soğuk boylar</span></div>
+        <div><strong>4dk</strong><span>ortalama hazırlık</span></div>
+      </div>
+    </section>
+
+    <!-- RITUAL -->
+    <section class="ritual" id="ritual">
+      <header class="sec">
+        <p class="eyebrow">A’dan Z’ye</p>
+        <h2>Sipariş ritüeli</h2>
+        <p>Dört adım. Gürültü yok, kart oyunu yok — sadece bar disiplini.</p>
+      </header>
+      <ol class="ritual__grid">
+        <li>
+          <span>01</span>
+          <h3>Fincanı seç</h3>
+          <p>Espresso, sütlü, soğuk hat veya yanında. Kartlar gerçek ürün fotoğraflarıyla.</p>
+        </li>
+        <li>
+          <span>02</span>
+          <h3>Boyu gör</h3>
+          <p>12 / 16 / 20 oz logosuz clear cup — seçince morph ile büyür küçülür.</p>
+        </li>
+        <li>
+          <span>03</span>
+          <h3>Süt & ekstra</h3>
+          <p>Yulaf, badem, ekstra shot, vanilya. Fiyat anlık güncellenir.</p>
+        </li>
+        <li>
+          <span>04</span>
+          <h3>İsmini söyle</h3>
+          <p>Öde → kod al → tezgâhta ismini söyle. Fincan seni bekler.</p>
+        </li>
+      </ol>
+    </section>
+
+    <!-- ORIGIN -->
+    <section class="origin" id="origin">
+      <header class="sec">
+        <p class="eyebrow">Bugünün kavrumu</p>
+        <h2>Tek köken · net profil</h2>
+      </header>
+      <div class="origin__stage">
+        <article class="origin__card origin__card--hero">
+          <p class="eyebrow">Filter · V60</p>
+          <h3>Yirgacheffe · Aricha</h3>
+          <p>Jasmine, bergamot, şeftali. Hafif gövde, uzun bitiş. Saat 11’den sonra ikinci batch.</p>
+          <ul>
+            <li><b>Rakım</b> 1950–2100m</li>
+            <li><b>İşlem</b> Washed</li>
+            <li><b>Kavrum</b> Light-med</li>
+          </ul>
+        </article>
+        <article class="origin__card">
+          <p class="eyebrow">Espresso blend</p>
+          <h3>House Night</h3>
+          <p>Brezilya + Etiyopya. Kalın crema, kakao, karamel. Sütlü hatların omurgası.</p>
+        </article>
+        <article class="origin__card">
+          <p class="eyebrow">Cold brew</p>
+          <h3>18 saat karanlık</h3>
+          <p>Düşük asit, yüksek gövde. Buzlu şeffaf bardakta katman katman servis.</p>
+        </article>
+      </div>
+      <div class="taste">
+        <div class="taste__row" style="--v:78"><span>Tatlılık</span><i></i></div>
+        <div class="taste__row" style="--v:42"><span>Asit</span><i></i></div>
+        <div class="taste__row" style="--v:55"><span>Gövde</span><i></i></div>
+        <div class="taste__row" style="--v:70"><span>Bitiş</span><i></i></div>
+      </div>
+    </section>
+
+    <!-- MENU -->
+    <section class="board" id="board">
+      <header class="sec sec--row">
+        <div>
+          <p class="eyebrow">Menü tahtası</p>
+          <h2>Fincanı seç</h2>
+        </div>
+        <p class="sec__lede">Soğuklar şeffaf ölçülü bardakta. Sıcaklar porselen. Her kart tıklanınca boy morph açılır.</p>
+      </header>
+
+      <div class="board__rail" id="boardRail" role="tablist">
+        <button type="button" class="is-on" data-tab="all">Tümü</button>
+        <button type="button" data-tab="espresso">Espresso</button>
+        <button type="button" data-tab="milk">Sütlü</button>
+        <button type="button" data-tab="cold">Soğuk</button>
+        <button type="button" data-tab="bites">Yanında</button>
+      </div>
+
+      <article class="hero-drink" id="feature">
+        <div class="hero-drink__visual">
+          <img src="./public/menu/iced-latte.jpg?v=cold1" alt="Iced Latte şeffaf bardak" width="1400" height="1400" />
+          <div class="hero-drink__glow" aria-hidden="true"></div>
+        </div>
+        <div class="hero-drink__copy">
+          <p class="eyebrow">Bugünün soğuk hattı</p>
+          <h3>Iced Latte</h3>
+          <p>Espresso, soğuk süt, buz — şeffaf 12–20 oz bardakta katman katman. Büğu, crema halkası, temiz bitiş.</p>
+          <ul class="hero-drink__tags">
+            <li>Clear cup</li>
+            <li>Oat / Almond</li>
+            <li>from ₺160</li>
+          </ul>
+          <button type="button" class="btn" data-open="iced-latte">Boy seç & sipariş</button>
+        </div>
+      </article>
+
+      <div id="menuGrid" class="menu-grid"></div>
+    </section>
+
+    <!-- CUP SIZES -->
+    <section class="cups" id="cups">
+      <header class="sec">
+        <p class="eyebrow">Cold cup system</p>
+        <h2>Küçük → orta → büyük</h2>
+        <p>Ridge’li specialty cam. Plastik yok. Boy büyüdükçe aynı bardak ölçeklenir.</p>
+      </header>
+      <div class="cups__row" id="cupShowcase">
+        <button type="button" class="cup-shot" data-cup="s">
+          <img src="./public/menu/iced-latte.jpg?v=cold1" alt="12oz şeffaf bardak" />
+          <strong>12 oz</strong>
+          <span>12 oz glass</span>
+        </button>
+        <button type="button" class="cup-shot is-on" data-cup="m">
+          <img src="./public/menu/iced-latte.jpg?v=cold1" alt="16oz şeffaf bardak" />
+          <strong>16 oz</strong>
+          <span>16 oz glass</span>
+        </button>
+        <button type="button" class="cup-shot" data-cup="l">
+          <img src="./public/menu/iced-latte.jpg?v=cold1" alt="20oz şeffaf bardak" />
+          <strong>20 oz</strong>
+          <span>20 oz glass</span>
+        </button>
+      </div>
+      <p class="cups__note" id="cupNote">16 oz — barın varsayılan soğuk boyu. Katmanlar en net burada okunur.</p>
+    </section>
+
+    <!-- BAR -->
+    <section class="bar" id="bar">
+      <div class="bar__copy">
+        <p class="eyebrow">Bar · Cihangir</p>
+        <h2>08:00 — 23:00</h2>
+        <p>Takeaway ve bar oturum. Alerjen / kavrum notları tezgâhta. İsmini söylemen yeterli.</p>
+        <ul>
+          <li>Single origin filter · günlük</li>
+          <li>Oat · Almond · Soya</li>
+          <li>hello@izden.coffee</li>
+          <li>0212 000 22 22</li>
+        </ul>
+        <a class="btn btn--ghost" href="#board">Menüye dön</a>
+      </div>
+      <div class="bar__panel" aria-hidden="true">
+        <div class="bar__ticket">
+          <p>IZDEN · FİŞ</p>
+          <h3>#IZD-2041</h3>
+          <div>
+            <span>Iced Latte · 16oz · Oat</span>
+            <strong>₺180</strong>
+          </div>
+          <div>
+            <span>Cookie</span>
+            <strong>₺75</strong>
+          </div>
+          <hr />
+          <div>
+            <span>Toplam</span>
+            <strong>₺255</strong>
+          </div>
+          <em>İsim: Ayşe · ~4 dk</em>
+        </div>
+      </div>
+    </section>
+
+    <!-- MEMBER -->
+    <section class="member" id="member">
+      <p class="eyebrow">Night Circle</p>
+      <h2>Haftalık kavrum notu + öncelikli bar.</h2>
+      <p>Üyelik yok, spam yok. Sadece Cihangir’e yakın olanlara kısa not.</p>
+      <form class="member__form" id="memberForm">
+        <input type="email" name="email" required placeholder="eposta@mail.com" autocomplete="email" />
+        <button type="submit" class="btn">Listeye gir</button>
+      </form>
+      <p class="member__ok" id="memberOk" hidden>Tamam — bir sonraki kavrumda yazacağız.</p>
+    </section>
+
+    <footer class="foot">
+      <div>
+        <strong>IZDEN</strong>
+        <span>Night roast atelier · İstanbul</span>
+      </div>
+      <div class="foot__links">
+        <a href="#ritual">Ritual</a>
+        <a href="#board">Menü</a>
+        <a href="#cups">Boylar</a>
+        <a href="mailto:hello@izden.coffee">hello@izden.coffee</a>
+      </div>
+      <p>© 2026 IZDEN Coffee. Demo ödeme — gerçek POS bağlanmaz.</p>
+    </footer>
+  </main>
+
+  <div class="backdrop" id="backdrop"></div>
+
+  <div class="compose" id="sheet" aria-hidden="true" role="dialog" aria-modal="true">
+    <div class="compose__panel" id="sheetBody"></div>
+  </div>
+
+  <aside class="ticket-cart" id="cartPanel" aria-label="Sipariş fişi">
+    <header>
+      <div>
+        <p class="eyebrow">Fiş</p>
+        <h3>IZDEN</h3>
+      </div>
+      <button type="button" id="cartClose">Kapat</button>
+    </header>
+    <div class="ticket-cart__list" id="cartList"></div>
+    <footer>
+      <div class="ticket-cart__tot">
+        <span>Toplam</span>
+        <strong id="cartPanelTotal">₺0</strong>
+      </div>
+      <button type="button" class="btn" id="checkoutBtn">Öde</button>
+    </footer>
+  </aside>
+
+  <div class="checkout" id="pay" hidden>
+    <div class="checkout__panel">
+      <header>
+        <button type="button" id="payBack">Geri</button>
+        <p class="eyebrow" id="payTitle">Ödeme</p>
+        <button type="button" id="payClose">×</button>
+      </header>
+      <div id="payBody"></div>
+    </div>
+  </div>
+
+  <div class="success" id="success" hidden>
+    <div class="success__card">
+      <p class="eyebrow">Bar’a düştü</p>
+      <h2 id="successTitle">Afiyet</h2>
+      <p id="successBody">İsmini söyle.</p>
+      <div class="success__meta">
+        <div><small>Kod</small><strong id="successCode">IZD-0000</strong></div>
+        <div><small>Hazırlık</small><strong id="successEta">~4 dk</strong></div>
+      </div>
+      <button type="button" class="btn" id="successDone">Menüye dön</button>
+    </div>
+  </div>
+
+  <div class="auth" id="auth" aria-hidden="true" role="dialog" aria-modal="true">
+    <div class="auth__panel">
+      <button type="button" class="auth__close" id="authClose" aria-label="Kapat">×</button>
+      <p class="eyebrow">IZDEN üye</p>
+      <h3 id="authHeading" style="margin:0.35rem 0 1rem;font-size:1.6rem;">Giriş yap</h3>
+      <div class="auth__tabs" role="tablist">
+        <button type="button" class="is-on" data-auth-tab="login">Giriş</button>
+        <button type="button" data-auth-tab="register">Üye ol</button>
+      </div>
+      <form id="authForm" autocomplete="on">
+        <label id="authNameWrap" hidden>İsim<input type="text" name="name" placeholder="Bar’da söylenecek isim" /></label>
+        <label>E-posta<input type="email" name="email" required placeholder="sen@ornek.com" autocomplete="email" /></label>
+        <label>Şifre<input type="password" name="password" required minlength="4" placeholder="En az 4 karakter" autocomplete="current-password" /></label>
+        <p class="auth__err" id="authErr" aria-live="polite"></p>
+        <button type="submit" class="btn btn--block" id="authSubmit">Giriş yap</button>
+      </form>
+      <p class="pay-note" style="margin-top:0.85rem">Demo üyelik — tarayıcıda saklanır, sunucu yok.</p>
+    </div>
+  </div>
+
+  <canvas id="confetti" class="confetti" aria-hidden="true"></canvas>
+
+  <button type="button" class="dock" id="cartBar" hidden>
+    <span id="cartCount">0</span>
+    <em>Fişi gör</em>
+    <strong id="cartTotal">₺0</strong>
+  </button>
+
+  <script src="./icons.js" defer></script>
+  <script src="./scrub.js?v=cold3" defer></script>
+  <script src="./menu.js?v=cold2" defer></script>
+</body>
+</html>
