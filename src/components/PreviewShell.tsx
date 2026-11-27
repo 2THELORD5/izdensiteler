@@ -394,7 +394,7 @@ export function PreviewShell({ site }: Props) {
               key={`${site.slug}-${visit}`}
               title={site.name}
               src={src}
-              className="preview-frame"
+              className={`preview-frame${gate.open ? " is-ready" : ""}`}
               allow="autoplay; fullscreen; encrypted-media"
               referrerPolicy="strict-origin-when-cross-origin"
               sandbox={
@@ -403,6 +403,7 @@ export function PreviewShell({ site }: Props) {
                   : "allow-scripts allow-same-origin allow-forms allow-popups allow-presentation"
               }
               loading="eager"
+              aria-hidden={!gate.open}
             />
             <PreviewGate site={site} gate={gate} />
           </>

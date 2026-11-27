@@ -1297,6 +1297,16 @@ html, body {
 
 /* ───────── Preview gate — demo stays behind this until everything is loaded ───────── */
 .preview-frame-wrap { position: relative; }
+/* Hide interaction with the iframe until the gate opens — prevents early scroll/peek. */
+.preview-frame {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .35s ease;
+}
+.preview-frame.is-ready {
+  opacity: 1;
+  pointer-events: auto;
+}
 .preview-gate {
   position: absolute;
   inset: 0;
@@ -1309,6 +1319,7 @@ html, body {
     #060607;
   color: #f4f1ea;
   opacity: 1;
+  pointer-events: auto;
   transition: opacity .7s cubic-bezier(.4, 0, .2, 1), visibility 0s linear 0s;
   touch-action: none;
 }

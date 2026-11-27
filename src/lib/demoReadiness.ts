@@ -43,16 +43,34 @@ const SCRUB_VIDEO_SELECTOR = [
   "video.iz-film",
   "video[data-scrub]",
   "video[data-iz-scrub]",
+  "#v",
   "#vVariety",
   ".vhero__video",
+  ".stage-pin video",
+  ".iz-scrub--film video",
+].join(",");
+
+/** Markers that mean a scroll-film experience is expected even before <video src> lands */
+const FILM_STAGE_SELECTOR = [
+  "[data-iz-film-scrub]",
+  ".iz-scrub--film",
+  ".stage-pin",
+  "#track.stage-track",
+  ".stage-track",
+  "video#v",
+  "#vVariety",
+  ".vhero__video",
+  "script[data-iz-chapters]",
 ].join(",");
 
 /** Stall window: browser stopped buffering a huge file but playback is possible */
-const STALL_ACCEPT_MS = 5000;
+const STALL_ACCEPT_MS = 8000;
+/** Minimum buffered fraction before a stall can count as ready */
+const STALL_MIN_FRAC = 0.72;
 /** DOM must stay unchanged this long before we call it ready */
-const SETTLE_MS = 900;
+const SETTLE_MS = 1100;
 /** Never settle earlier than this after the iframe `load` event */
-const MIN_AFTER_LOAD_MS = 1200;
+const MIN_AFTER_LOAD_MS = 1600;
 
 function bufferedFraction(v: HTMLVideoElement): number {
   const d = v.duration;
@@ -160,9 +178,13 @@ export function createSameOriginProbe(frame: HTMLIFrameElement): SameOriginProbe
         if (imgDone < imgs.length) pending.push(`img ${imgDone}/${imgs.length}`);
       }
 
-      // 4. Videos
-      const videos = Array.from(doc.querySelectorAll("video")).filter((v) => videoSrc(v));
-      for (const v of videos) {
+      // 4. Videos — include scrub targets even before src is assigned (blob boot)
+      const videoEls = Array.from(doc.querySelectorAll("video"));
+      const scrubEls = videoEls.filter((v) => v.matches(SCRUB_VIDEO_SELECTOR) || !v.loop);
+      const expectsFilm = Boolean(doc.querySelector(FILM_STAGE_SELECTOR)) || scrubEls.length > 0;
+      let scrubReadyCount = 0;
+
+      for (const v of videoEls) {
         const url = videoSrc(v);
         const scrub = v.matches(SCRUB_VIDEO_SELECTOR) || !v.loop;
         if (!primed.has(v)) {
@@ -170,27 +192,42 @@ export function createSameOriginProbe(frame: HTMLIFrameElement): SameOriginProbe
           try {
             if (v.preload !== "auto") {
               v.preload = "auto";
-              if (v.readyState === 0) v.load();
+              if (url && v.readyState === 0) v.load();
             }
           } catch { /* noop */ }
         }
         if (v.error) continue; // never block on a broken file
+
+        if (!url) {
+          if (scrub) {
+            units.push({
+              key: `vid:pending:${scrubReadyCount}`,
+              weight: 18,
+              frac: 0.08,
+              label: "Sahneler yükleniyor",
+            });
+            pending.push("scrub pending");
+          }
+          continue;
+        }
+
         const frac = bufferedFraction(v);
         if (scrub) {
           askSize(url);
           const size = sizes.get(url) || 0;
           // Weight ≈ megabytes, so the bar tracks what the visitor actually waits for
           const weight = size ? Math.min(80, Math.max(2, size / 1e6)) : 15;
-          let done = frac >= 0.98;
+          let done = frac >= 0.98 || (v.readyState >= 3 && frac >= 0.9);
           if (!done && v.readyState >= 1) {
             const st = stalls.get(v);
             if (!st || frac > st.frac + 0.004) {
               stalls.set(v, { frac, since: now });
-            } else if (now - st.since > STALL_ACCEPT_MS && frac >= 0.4) {
+            } else if (now - st.since > STALL_ACCEPT_MS && frac >= STALL_MIN_FRAC) {
               done = true; // browser stopped buffering a very large file; seeks stream the rest
             }
           }
-          const f = done ? 1 : Math.min(0.99, frac);
+          if (done) scrubReadyCount += 1;
+          const f = done ? 1 : Math.min(0.99, Math.max(0.05, frac));
           units.push({
             key: `vid:${url}`,
             weight,
@@ -205,10 +242,26 @@ export function createSameOriginProbe(frame: HTMLIFrameElement): SameOriginProbe
         }
       }
 
+      // Film stage present but scrub not ready yet (src arrives after hydration / blob fetch)
+      if (expectsFilm && scrubReadyCount === 0) {
+        const alreadyPendingScrub = pending.some((p) => p.startsWith("scrub"));
+        if (!alreadyPendingScrub) {
+          units.push({
+            key: "film-stage",
+            weight: 20,
+            frac: 0.12,
+            label: "Sahneler yükleniyor",
+          });
+          pending.push("film stage");
+        }
+      }
+
       // 5. The demo's own loading screen / loading classes
       let loaderUp = false;
       for (const sel of LOADER_SELECTORS) {
         const el = doc.querySelector(sel);
+        if (!el) continue;
+        if (el.classList.contains("is-done") || el.getAttribute("aria-hidden") === "true") continue;
         if (el && visibleOverlay(win, el)) {
           loaderUp = true;
           break;
@@ -222,8 +275,8 @@ export function createSameOriginProbe(frame: HTMLIFrameElement): SameOriginProbe
       }
       units.push({
         key: "loader",
-        weight: 0.6,
-        frac: loaderUp || rootLoading ? 0.4 : 1,
+        weight: 1.2,
+        frac: loaderUp || rootLoading ? 0.25 : 1,
         label: "Deneyim hazırlanıyor",
       });
 
