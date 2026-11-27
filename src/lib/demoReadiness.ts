@@ -293,7 +293,9 @@ export function createSameOriginProbe(frame: HTMLIFrameElement): SameOriginProbe
       // DOM stability — catches content injected after hydration (film mounts etc.)
       const nextSig = [
         imgs.length,
-        videos.length,
+        videoEls.length,
+        scrubReadyCount,
+        videoEls.filter((v) => Boolean(videoSrc(v))).length,
         doc.querySelectorAll("canvas").length,
         doc.body ? doc.body.childElementCount : 0,
       ].join("|");
