@@ -29,7 +29,7 @@ export const ACTION_CATALOG: Record<string, AssistantAction> = {
   kumrucu: { label: "Kumrucu Kale’yi incele", href: "/incele/kumrucu", primary: true },
   junesun: { label: "Junesun’u incele", href: "/incele/junesun", primary: true },
   cafe: { label: "IZDEN Night Roast’ı incele", href: "/incele/cafe", primary: true },
-  burger: { label: "Burger · Anvil’i incele", href: "/incele/burger", primary: true },
+  burger: { label: "Anvil Burger’i incele", href: "/incele/burger", primary: true },
   insaat: { label: "İnşaat · Forma’yı incele", href: "/incele/insaat", primary: true },
   galeri: { label: "Galeri · Strada’yı incele", href: "/incele/galeri", primary: true },
   signal: { label: "SIGNAL’i incele", href: "/incele/signal", primary: true },

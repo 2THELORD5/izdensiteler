@@ -191,11 +191,13 @@ function PreviewGate({
         </p>
         <p className="preview-gate__label">{gate.label}</p>
         <p className="preview-gate__note">
-          Tüm sahneler yüklenmeden açılmaz — kaydırırken takılma olmasın diye.
+          Kesintisiz bir dijital deneyim için tüm sahneler önceden yüklenmektedir.
+          <br />
+          Yükleme süresi, internet bağlantınızın hızına bağlı olarak değişiklik gösterebilir.
         </p>
         {gate.slow && !gate.open && (
           <div className="preview-gate__slow">
-            <p>Bağlantın yavaş görünüyor. Yükleme sürüyor; beklemek en iyi sonucu verir.</p>
+            <p>Bağlantınız yavaş görünüyor. Yükleme devam ediyor; tamamlanması en iyi sonucu verir.</p>
             <button type="button" className="btn-ghost compact" onClick={gate.forceOpen}>
               Yine de aç
             </button>

@@ -3,12 +3,12 @@
  */
 /* Grill ticket voice — deliberately NOT cafe poetry */
 const ACTS = [
-  { at: 0.0, act: "STEP 01 / GRILL", title: "SOĞUK PATTİ", body: "Tezgâh temiz. Ateş açık. Smash sırada." },
-  { at: 0.14, act: "STEP 02 / PRESS", title: "DANTELLİ KENAR", body: "Spatula bastırır. Yağ cızırdar. Maillard." },
-  { at: 0.30, act: "STEP 03 / BUILD", title: "KATMAN SIRASI", body: "Ekmek · turşu · cheddar · et. Hızlı montaj." },
-  { at: 0.52, act: "STEP 04 / MELT", title: "CHEDDAR KAPLAR", body: "Kapak kapanır. 12 saniye buhar. Eriyen sarı." },
-  { at: 0.74, act: "STEP 05 / PLATE", title: "TEZGÂHA DÜŞER", body: "Sıcak. Ağır. İsmini söyleyen alır." },
-  { at: 0.90, act: "STEP 06 / ORDER", title: "SENİN SIRAN", body: "Boy seç. Sos ekle. Sepete at." },
+  { at: 0.0, act: "01 / Izgara", title: "Et hazır", body: "Taze köfte tezgâhta. Izgara ısınmış, sıra smash’te." },
+  { at: 0.14, act: "02 / Baskı", title: "İnce kabuk", body: "Spatula bastırır; kenar çıtırlaşır, Maillard oluşur." },
+  { at: 0.30, act: "03 / Kurulum", title: "Katmanlar", body: "Ekmek, turşu, cheddar ve et — hızlı montaj." },
+  { at: 0.52, act: "04 / Eriyik", title: "Cheddar erir", body: "Kapak kapanır; kısa buharla peynir kaplar." },
+  { at: 0.74, act: "05 / Servis", title: "Tezgâha", body: "Sıcak smash tabağa iner; isim çağrılır." },
+  { at: 0.90, act: "06 / Sipariş", title: "Sipariş sırası", body: "Boy seçin, sos ekleyin, sepete alın." },
 ];
 
 const clamp = (v, a = 0, b = 1) => Math.min(b, Math.max(a, v));

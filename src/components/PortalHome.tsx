@@ -197,6 +197,11 @@ export function PortalHome() {
             <span className="portal-loader__fill" style={{ width: `${bootPct}%` }} />
           </div>
           <p className="portal-loader__pct">{Math.round(bootPct)}%</p>
+          <p className="portal-loader__note">
+            Kesintisiz bir dijital deneyim için tüm sahneler önceden yüklenmektedir.
+            <br />
+            Yükleme süresi, internet bağlantınızın hızına bağlı olarak değişiklik gösterebilir.
+          </p>
         </div>
       ) : null}
       <GlyphPortal

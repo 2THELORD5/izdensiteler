@@ -14,14 +14,15 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,560;9..144,600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="./styles.css?v=k11" />
+  <link rel="stylesheet" href="./styles.css?v=k12" />
   <link rel="stylesheet" href="../_shared/mobile-nav.css" />
 </head>
 <body class="brand-kumru">
   <div class="loader" id="loader" data-iz-boot>
     <img class="loader__logo" src="./public/brand/logo.png" alt="Kumrucu Kale" width="72" height="72" />
     <div class="loader__bar"><i id="loaderBar"></i></div>
-    <p>Susam kızarıyor <span id="loaderPct"></span></p>
+    <p class="loader__note">Kesintisiz bir dijital deneyim için tüm sahneler önceden yüklenmektedir.<br />Yükleme süresi, internet bağlantınızın hızına bağlı olarak değişiklik gösterebilir.</p>
+    <p class="loader__pct"><span id="loaderPct"></span></p>
   </div>
 
   <div class="progress" id="progress"></div>
@@ -55,8 +56,8 @@
           <div class="vignette" aria-hidden="true"></div>
           <div class="stage-ui">
             <p class="act" id="act">Fiş 01</p>
-            <h1 id="title">Un henüz soğuk</h1>
-            <p id="body">Sabahın ilk tezgâhı. Alaçatı uyanmadan hamur yoğrulur.</p>
+            <h1 id="title">Sabah unu</h1>
+            <p id="body">İlk tezgâh açılır. Hamur yoğrulur, fırın ısınır.</p>
           </div>
           <div class="stage-rail" aria-hidden="true"><span id="railLabel">Tezgâh</span></div>
           <div class="stage-meta">
@@ -78,7 +79,7 @@
     <section class="manifesto reveal" id="manifesto">
       <div class="manifesto__copy">
         <p class="eyebrow">Fırın notu</p>
-        <h2>Susam kabuğundan<br /><em>tezgâh düzeni.</em></h2>
+        <h2>Alaçatı’da<br /><em>aynı fırın dili.</em></h2>
         <p>
           1949’da Saim Menteş’in İzmir fırını. 1993’te Alaçatı Çarşı.
           Meşhur Çeşme kumrusu, damla sakızlı kurabiye, sabah unluları —
@@ -274,7 +275,7 @@
   <script src="../_shared/vendor/gsap.min.js" defer></script>
   <script src="../_shared/vendor/ScrollTrigger.min.js" defer></script>
   <script src="../_shared/mobile-nav.js" defer></script>
-  <script src="./scrub.js?v=k13" defer></script>
+  <script src="./scrub.js?v=k14" defer></script>
   <script src="./orbit.js?v=k11" defer></script>
   <script src="./site.js?v=k6" defer></script>
   <script>

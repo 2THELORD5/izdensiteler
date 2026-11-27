@@ -5,8 +5,8 @@
  */
 /* Fiş 02 (köz) çıkarıldı — un → somun bağlandı; sakızlı kurabiye en sonda. */
 const ACTS_PC = [
-  { at: 0.0, act: "Fiş 01", title: "Un henüz soğuk", body: "Sabahın ilk tezgâhı. Alaçatı uyanmadan hamur yoğrulur.", idx: "01 / 08", rail: "Tezgâh" },
-  { at: 0.112, act: "Fiş 02", title: "Somun kabarır", body: "Kumrunun sırrı ekmekte — oval, susamlı, çıtır.", idx: "02 / 08", rail: "Somun" },
+  { at: 0.0, act: "Fiş 01", title: "Sabah unu", body: "İlk tezgâh açılır. Hamur yoğrulur, fırın ısınır.", idx: "01 / 08", rail: "Tezgâh" },
+  { at: 0.112, act: "Fiş 02", title: "Susamlı somun", body: "Oval, susamlı kumru ekmeği — çıtır kabuk, yumuşak iç.", idx: "02 / 08", rail: "Somun" },
   { at: 0.223, act: "Fiş 03", title: "Meşhur Çeşme", body: "Kaşar, biber, domates — susamlı ekmekte klasik kumru.", idx: "03 / 08", rail: "Klasik" },
   { at: 0.334, act: "Fiş 04", title: "Klasik tezgâh", body: "Aynı masa, aynı ışık — klasik kumru bekler.", idx: "04 / 08", rail: "Klasik" },
   { at: 0.445, act: "Fiş 05", title: "Sucuklu Domatesli", body: "Izgara sucuk, domates, eriyen kaşar — tok tezgâh hali.", idx: "05 / 08", rail: "Sucuklu" },
@@ -17,8 +17,8 @@ const ACTS_PC = [
 
 /* Mobil: aynı çeşitler, 9:16 çekimlerle (7 kesit). Metinler PC ile aynı. */
 const ACTS_MOB = [
-  { at: 0.0, act: "Fiş 01", title: "Un henüz soğuk", body: "Sabahın ilk tezgâhı. Alaçatı uyanmadan hamur yoğrulur.", idx: "01 / 07", rail: "Tezgâh" },
-  { at: 0.148, act: "Fiş 02", title: "Somun kabarır", body: "Kumrunun sırrı ekmekte — oval, susamlı, çıtır.", idx: "02 / 07", rail: "Somun" },
+  { at: 0.0, act: "Fiş 01", title: "Sabah unu", body: "İlk tezgâh açılır. Hamur yoğrulur, fırın ısınır.", idx: "01 / 07", rail: "Tezgâh" },
+  { at: 0.148, act: "Fiş 02", title: "Susamlı somun", body: "Oval, susamlı kumru ekmeği — çıtır kabuk, yumuşak iç.", idx: "02 / 07", rail: "Somun" },
   { at: 0.289, act: "Fiş 03", title: "Meşhur Çeşme", body: "Kaşar, biber, domates — susamlı ekmekte klasik kumru.", idx: "03 / 07", rail: "Klasik" },
   { at: 0.430, act: "Fiş 04", title: "Klasik tezgâh", body: "Aynı masa, aynı ışık — klasik kumru bekler.", idx: "04 / 07", rail: "Klasik" },
   { at: 0.570, act: "Fiş 05", title: "Sucuklu Domatesli", body: "Izgara sucuk, domates, eriyen kaşar — tok tezgâh hali.", idx: "05 / 07", rail: "Sucuklu" },

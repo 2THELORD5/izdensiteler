@@ -109,7 +109,16 @@ p { margin: 0; }
   background: rgba(255,255,255,.08); overflow: hidden; border-radius: 99px;
 }
 .loader__bar i { display: block; height: 100%; width: 0; background: linear-gradient(90deg, var(--copper), var(--ice)); }
-.loader p { color: var(--mute2); font-size: 0.85rem; letter-spacing: 0.08em; }
+.loader p,
+.loader__note {
+  color: var(--mute2);
+  font-size: 0.72rem;
+  letter-spacing: 0.01em;
+  line-height: 1.55;
+  max-width: 22rem;
+  margin: 0 auto;
+  text-align: center;
+}
 .loader__steam {
   width: 4rem; height: 4rem; margin: 0 auto 0.5rem;
   border-radius: 50%;

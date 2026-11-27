@@ -962,10 +962,11 @@ body { overscroll-behavior-y: none; }
 
 .loader__hint {
   margin: 0.75rem 0 0;
-  font-size: 0.75rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  opacity: 0.65;
+  font-size: 0.72rem;
+  letter-spacing: 0.01em;
+  text-transform: none;
+  line-height: 1.55;
+  opacity: 0.78;
   text-align: center;
-  max-width: 16rem;
+  max-width: 22rem;
 }

@@ -31,7 +31,8 @@
       loader.innerHTML =
         `<p class="iz-boot__mark">${brand}</p>` +
         `<div class="iz-boot__bar" aria-hidden="true"><span class="iz-boot__fill" id="loaderBar"></span></div>` +
-        `<p class="iz-boot__pct"><span id="loaderPct">0</span>%</p>`;
+        `<p class="iz-boot__pct"><span id="loaderPct">0</span>%</p>` +
+        `<p class="iz-boot__note">Kesintisiz bir dijital deneyim için tüm sahneler önceden yüklenmektedir.<br />Yükleme süresi, internet bağlantınızın hızına bağlı olarak değişiklik gösterebilir.</p>`;
       (document.body || document.documentElement).appendChild(loader);
     } else {
       loader.setAttribute("data-iz-boot", "");
@@ -46,6 +47,13 @@
         pct.className = "iz-boot__pct";
         pct.innerHTML = '<span id="loaderPct">0</span>%';
         loader.appendChild(pct);
+      }
+      if (!loader.querySelector(".iz-boot__note, .loader__note, .loader__hint")) {
+        const note = document.createElement("p");
+        note.className = "iz-boot__note";
+        note.innerHTML =
+          "Kesintisiz bir dijital deneyim için tüm sahneler önceden yüklenmektedir.<br />Yükleme süresi, internet bağlantınızın hızına bağlı olarak değişiklik gösterebilir.";
+        loader.appendChild(note);
       }
     }
     return loader;

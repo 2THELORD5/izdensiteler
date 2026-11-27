@@ -155,7 +155,7 @@ export function createSameOriginProbe(frame: HTMLIFrameElement): SameOriginProbe
           key: "img",
           weight: Math.min(20, Math.max(0.5, imgs.length * 0.25)),
           frac: imgDone / imgs.length,
-          label: `Görseller yükleniyor ${imgDone}/${imgs.length}`,
+          label: "Görseller hazırlanıyor",
         });
         if (imgDone < imgs.length) pending.push(`img ${imgDone}/${imgs.length}`);
       }
@@ -195,12 +195,12 @@ export function createSameOriginProbe(frame: HTMLIFrameElement): SameOriginProbe
             key: `vid:${url}`,
             weight,
             frac: f,
-            label: `Sahne filmi yükleniyor %${Math.round(f * 100)}`,
+            label: "Sahneler yükleniyor",
           });
           if (!done) pending.push(`scrub ${url.split("/").pop()} ${Math.round(frac * 100)}%`);
         } else {
           const done = v.readyState >= 2;
-          units.push({ key: `vid:${url}`, weight: 1.5, frac: done ? 1 : 0, label: "Videolar hazırlanıyor" });
+          units.push({ key: `vid:${url}`, weight: 1.5, frac: done ? 1 : 0, label: "Medya hazırlanıyor" });
           if (!done) pending.push(`loop ${url.split("/").pop()}`);
         }
       }
@@ -224,7 +224,7 @@ export function createSameOriginProbe(frame: HTMLIFrameElement): SameOriginProbe
         key: "loader",
         weight: 0.6,
         frac: loaderUp || rootLoading ? 0.4 : 1,
-        label: "Son dokunuşlar",
+        label: "Deneyim hazırlanıyor",
       });
 
       // Weighted progress
