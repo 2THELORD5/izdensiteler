@@ -36,7 +36,7 @@ const MENU = [
     cat: "kumru",
     tag: "Soğuk",
     title: "Soğuk Kumru",
-    blurb: "Taze sebze, kaşar, susamlı somun — yazlık Alaçatı.",
+    blurb: "Taze sebze, kaşar, susamlı kumru ekmeği — yazlık Alaçatı.",
     img: "./public/menu/orbit/soguk.jpg",
   },
   {
