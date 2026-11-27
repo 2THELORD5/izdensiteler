@@ -5,13 +5,14 @@
 (function () {
   "use strict";
 
+  /* Distinct real plates — not the lookalike kie scroll-v2 set */
   const DISHES = [
     {
       title: "Klasik",
       subtitle: "Çeşme",
       eyebrow: "İç malzeme 01",
       body: "Susamlı ekmek, kaşar, biber — meşhur Çeşme hali.",
-      img: "./public/kie/scroll-v2/04-klasik.jpg",
+      img: "./public/menu/orbit/klasik.jpg",
       accent: "#c1946a",
     },
     {
@@ -19,7 +20,7 @@
       subtitle: "Domates",
       eyebrow: "İç malzeme 02",
       body: "Sucuk, domates, kaşar — tok tezgâh hali.",
-      img: "./public/kie/scroll-v2/05-sucuklu.jpg",
+      img: "./public/menu/orbit/sucuklu.jpg",
       accent: "#a8784f",
     },
     {
@@ -27,7 +28,7 @@
       subtitle: "Kuru",
       eyebrow: "İç malzeme 03",
       body: "İzmir’in kurusu — Kale tezgâhında.",
-      img: "./public/kie/scroll-v2/06-yengen.jpg",
+      img: "./public/menu/orbit/yengen.jpg",
       accent: "#8f5f3f",
     },
     {
@@ -35,7 +36,7 @@
       subtitle: "Izgara",
       eyebrow: "İç malzeme 04",
       body: "Izgara ısısıyla peynir erir; ekmek çıtır kalır.",
-      img: "./public/kie/scroll-v2/07-sicak.jpg",
+      img: "./public/menu/orbit/sicak.jpg",
       accent: "#744c35",
     },
     {
@@ -43,7 +44,7 @@
       subtitle: "Sebze",
       eyebrow: "İç malzeme 05",
       body: "Taze sebze, kaşar — yazlık servis.",
-      img: "./public/kie/scroll-v2/08-soguk.jpg",
+      img: "./public/menu/orbit/soguk.jpg",
       accent: "#9cb88a",
     },
   ];
