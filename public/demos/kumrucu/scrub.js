@@ -3,27 +3,27 @@
  * PC: variety-scrub-pc.mp4 (16:9). Mobile: variety-scrub-mobile.mp4 (9:16).
  * House film removed from the primary path (was 720p + desynced chapters).
  */
-/* Fiş 02 (köz) çıkarıldı — un → somun bağlandı; sakızlı kurabiye en sonda. */
+/* Orta köz bölümü çıkarıldı; un → somun bağlandı; sakızlı kurabiye sonda. */
 const ACTS_PC = [
-  { at: 0.0, act: "Fiş 01", title: "Sabah unu", body: "İlk tezgâh açılır. Hamur yoğrulur, fırın ısınır.", idx: "01 / 08", rail: "Tezgâh" },
-  { at: 0.112, act: "Fiş 02", title: "Susamlı somun", body: "Oval, susamlı kumru ekmeği — çıtır kabuk, yumuşak iç.", idx: "02 / 08", rail: "Somun" },
-  { at: 0.223, act: "Fiş 03", title: "Meşhur Çeşme", body: "Kaşar, biber, domates — susamlı ekmekte klasik kumru.", idx: "03 / 08", rail: "Klasik" },
-  { at: 0.334, act: "Fiş 04", title: "Klasik tezgâh", body: "Aynı masa, aynı ışık — klasik kumru bekler.", idx: "04 / 08", rail: "Klasik" },
-  { at: 0.445, act: "Fiş 05", title: "Sucuklu Domatesli", body: "Izgara sucuk, domates, eriyen kaşar — tok tezgâh hali.", idx: "05 / 08", rail: "Sucuklu" },
-  { at: 0.556, act: "Fiş 06", title: "Sucuklu bekler", body: "Buhar dağılır; tezgâh sucukluya döner.", idx: "06 / 08", rail: "Sucuklu" },
-  { at: 0.667, act: "Fiş 07", title: "Yengen Kumru", body: "İzmir’in kurusu — Kale tezgâhında tanıdık lezzet.", idx: "07 / 08", rail: "Yengen" },
-  { at: 0.888, act: "Fiş 08", title: "Sakızlı Alaçatı", body: "%100 doğal damla sakız — kurabiye fişi, en son tezgâh.", idx: "08 / 08", rail: "Kurabiye" },
+  { at: 0.0, act: "01", title: "Sabah unu", body: "İlk tezgâh açılır. Hamur yoğrulur, fırın ısınır.", idx: "01 / 08", rail: "Tezgâh" },
+  { at: 0.112, act: "02", title: "Susamlı somun", body: "Oval, susamlı kumru ekmeği — çıtır kabuk, yumuşak iç.", idx: "02 / 08", rail: "Somun" },
+  { at: 0.223, act: "03", title: "Meşhur Çeşme", body: "Kaşar, biber, domates — susamlı ekmekte klasik kumru.", idx: "03 / 08", rail: "Klasik" },
+  { at: 0.334, act: "04", title: "Klasik servis", body: "Aynı masa, aynı ışık — klasik kumru servise hazır.", idx: "04 / 08", rail: "Klasik" },
+  { at: 0.445, act: "05", title: "Sucuklu Domatesli", body: "Izgara sucuk, domates ve eriyen kaşar ile doyurucu servis.", idx: "05 / 08", rail: "Sucuklu" },
+  { at: 0.556, act: "06", title: "Sucuklu servis", body: "Buhar dağılır; sucuklu kumru tezgâhta tamamlanır.", idx: "06 / 08", rail: "Sucuklu" },
+  { at: 0.667, act: "07", title: "Yengen Kumru", body: "İzmir usulü kuru yengen — Kale tezgâhında.", idx: "07 / 08", rail: "Yengen" },
+  { at: 0.888, act: "08", title: "Sakızlı Alaçatı", body: "Doğal damla sakızlı kurabiye — günün tatlı seçkisi.", idx: "08 / 08", rail: "Kurabiye" },
 ];
 
 /* Mobil: aynı çeşitler, 9:16 çekimlerle (7 kesit). Metinler PC ile aynı. */
 const ACTS_MOB = [
-  { at: 0.0, act: "Fiş 01", title: "Sabah unu", body: "İlk tezgâh açılır. Hamur yoğrulur, fırın ısınır.", idx: "01 / 07", rail: "Tezgâh" },
-  { at: 0.148, act: "Fiş 02", title: "Susamlı somun", body: "Oval, susamlı kumru ekmeği — çıtır kabuk, yumuşak iç.", idx: "02 / 07", rail: "Somun" },
-  { at: 0.289, act: "Fiş 03", title: "Meşhur Çeşme", body: "Kaşar, biber, domates — susamlı ekmekte klasik kumru.", idx: "03 / 07", rail: "Klasik" },
-  { at: 0.430, act: "Fiş 04", title: "Klasik tezgâh", body: "Aynı masa, aynı ışık — klasik kumru bekler.", idx: "04 / 07", rail: "Klasik" },
-  { at: 0.570, act: "Fiş 05", title: "Sucuklu Domatesli", body: "Izgara sucuk, domates, eriyen kaşar — tok tezgâh hali.", idx: "05 / 07", rail: "Sucuklu" },
-  { at: 0.711, act: "Fiş 06", title: "Yengen Kumru", body: "İzmir’in kurusu — Kale tezgâhında tanıdık lezzet.", idx: "06 / 07", rail: "Yengen" },
-  { at: 0.852, act: "Fiş 07", title: "Sakızlı Alaçatı", body: "%100 doğal damla sakız — kurabiye fişi, en son tezgâh.", idx: "07 / 07", rail: "Kurabiye" },
+  { at: 0.0, act: "01", title: "Sabah unu", body: "İlk tezgâh açılır. Hamur yoğrulur, fırın ısınır.", idx: "01 / 07", rail: "Tezgâh" },
+  { at: 0.148, act: "02", title: "Susamlı somun", body: "Oval, susamlı kumru ekmeği — çıtır kabuk, yumuşak iç.", idx: "02 / 07", rail: "Somun" },
+  { at: 0.289, act: "03", title: "Meşhur Çeşme", body: "Kaşar, biber, domates — susamlı ekmekte klasik kumru.", idx: "03 / 07", rail: "Klasik" },
+  { at: 0.430, act: "04", title: "Klasik servis", body: "Aynı masa, aynı ışık — klasik kumru servise hazır.", idx: "04 / 07", rail: "Klasik" },
+  { at: 0.570, act: "05", title: "Sucuklu Domatesli", body: "Izgara sucuk, domates ve eriyen kaşar ile doyurucu servis.", idx: "05 / 07", rail: "Sucuklu" },
+  { at: 0.711, act: "06", title: "Yengen Kumru", body: "İzmir usulü kuru yengen — Kale tezgâhında.", idx: "06 / 07", rail: "Yengen" },
+  { at: 0.852, act: "07", title: "Sakızlı Alaçatı", body: "Doğal damla sakızlı kurabiye — günün tatlı seçkisi.", idx: "07 / 07", rail: "Kurabiye" },
 ];
 
 const BOOT_STILLS_PC = [

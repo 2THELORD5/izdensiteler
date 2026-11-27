@@ -312,7 +312,7 @@ function openCompose(id) {
     <button type="button" class="compose__x" data-close aria-label="Kapat">×</button>
     <div class="compose__media">${cupMorphHTML(item, draft.size)}</div>
     <div class="compose__scroll" id="composeScroll">
-      <p class="eyebrow">Kurulum</p>
+      <p class="eyebrow">Sipariş özeti</p>
       <h3>${item.name}</h3>
       <p class="compose__desc">${item.desc}${CLEAR_CUPS.has(item.id) ? " · Şeffaf soğuk bardak." : ""}</p>
 
@@ -358,7 +358,7 @@ function openCompose(id) {
     </div>
     <div class="compose__foot">
       <strong id="sheetTotal">${MONEY(linePrice(draft))}</strong>
-      <button type="button" class="btn" id="addBtn">Fişe yaz</button>
+      <button type="button" class="btn" id="addBtn">Siparişe ekle</button>
     </div>`;
 
   sheet.classList.add("is-open");
@@ -440,7 +440,7 @@ function renderCart() {
   cartPanelTotal.textContent = MONEY(sum);
 
   if (!cart.length) {
-    cartList.innerHTML = `<p class="ticket-cart__empty">Fiş boş.</p>`;
+    cartList.innerHTML = `<p class="ticket-cart__empty">Sepet boş.</p>`;
     return;
   }
   cartList.innerHTML = cart.map((line) => {
@@ -533,7 +533,7 @@ function renderPay1() {
       </div>
       <label class="field">
         <span>Çağrı adı</span>
-        <input id="payPickup" type="text" maxlength="32" placeholder="Barista seni nasıl çağırsın" />
+        <input id="payPickup" type="text" maxlength="32" placeholder="Teslim için isim" />
       </label>
       <p class="seg-label">Bahşiş</p>
       <div class="seg tip-seg">
@@ -621,7 +621,7 @@ function finishOrder({ pickup, tip, method }) {
   closeCart();
   document.getElementById("successTitle").textContent = `${pickup.split(" ")[0]}, yolda`;
   document.getElementById("successBody").textContent =
-    method === "counter" ? `${MONEY(total)} kasada. İsmini söyle.` : `${MONEY(total)} alındı. İsmini söyle.`;
+    method === "counter" ? `${MONEY(total)} kasada ödenecek. Siparişiniz isimle teslim edilir.` : `${MONEY(total)} alındı. Siparişiniz isimle teslim edilir.`;
   document.getElementById("successCode").textContent = code;
   document.getElementById("successEta").textContent = `~${eta} dk`;
   success.hidden = false;
@@ -724,7 +724,7 @@ document.getElementById("authForm")?.addEventListener("submit", (e) => {
       return;
     }
     if (!name) {
-      if (err) err.textContent = "Bar için bir isim yaz.";
+      if (err) err.textContent = "Teslim için bir isim yazın.";
       return;
     }
     const user = { email, password, name, stamps: 0, createdAt: Date.now() };

@@ -7,13 +7,13 @@ import { RGBELoader } from "three/addons/loaders/RGBELoader.js";
 import { RoomEnvironment } from "three/addons/environments/RoomEnvironment.js";
 
 const ACTS = [
-  { at: 0.0, act: "01 — Rest", title: "The beef waits", body: "On the wood. Cold. Ready for the steel." },
-  { at: 0.12, act: "02 — Lift", title: "Off the table", body: "The smash rises into the air." },
-  { at: 0.28, act: "03 — Split", title: "It opens", body: "Layers begin to breathe apart." },
-  { at: 0.48, act: "04 — Explode", title: "Every layer", body: "Bun, pickle, cheddar, beef — alone." },
-  { at: 0.66, act: "05 — Gather", title: "Pulling back", body: "The build remembers itself." },
-  { at: 0.82, act: "06 — Land", title: "Back on wood", body: "Rebuilt. Still hot." },
-  { at: 0.93, act: "07 — Menu", title: "The line-up", body: "Bright table. Quiet type." },
+  { at: 0.0, act: "01 — Hazırlık", title: "Et hazır", body: "Tezgâhta bekleyen taze köfte, ızgaraya hazır." },
+  { at: 0.12, act: "02 — Yükseliş", title: "Katmanlar açılır", body: "Burger yükselir; yapı netleşmeye başlar." },
+  { at: 0.28, act: "03 — Ayrışma", title: "Katmanlar ayrılır", body: "Ekmek, turşu, cheddar ve et ayrı okunur." },
+  { at: 0.48, act: "04 — Detay", title: "Her katman", body: "Malzemeler tek tek görünür hale gelir." },
+  { at: 0.66, act: "05 — Birleşim", title: "Yeniden kurulur", body: "Katmanlar düzenli biçimde bir araya gelir." },
+  { at: 0.82, act: "06 — Servis", title: "Tezgâha döner", body: "Tamamlanan burger servise hazırdır." },
+  { at: 0.93, act: "07 — Menü", title: "Menü açılır", body: "Sipariş tahtası ve ürün seçimi başlar." },
 ];
 
 const clamp = (v, a = 0, b = 1) => Math.min(b, Math.max(a, v));

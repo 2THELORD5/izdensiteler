@@ -5,7 +5,7 @@ const ACTS = [
   { at: 0.0, act: "01 — Çuval", title: "Çekirdek hazır", body: "Taze kavrulmuş çekirdekler tezgâhta bekler." },
   { at: 0.12, act: "02 — Öğütme", title: "Öğütücü", body: "Taneler öğütücüye düşer; öğütüm ayarı sabit." },
   { at: 0.32, act: "03 — Shot", title: "Espresso akar", body: "Crema yükselir; shot kalın ve dengeli çıkar." },
-  { at: 0.55, act: "04 — Döküm", title: "Bardağa döküm", body: "Shot, buzlu soğuk sütle buluşur." },
+  { at: 0.55, act: "04 — Döküm", title: "Bardağa döküm", body: "Espresso shot soğuk süt ve buz ile birleşir." },
   { at: 0.78, act: "05 — Bardak", title: "Servise hazır", body: "Şeffaf bardakta katmanlar netleşir." },
   { at: 0.92, act: "06 — Kart", title: "Fincanı seç", body: "Aynı kavrum, farklı boy ve süt seçenekleri." },
 ];

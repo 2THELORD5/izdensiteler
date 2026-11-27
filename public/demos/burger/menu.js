@@ -700,7 +700,7 @@ payForm?.addEventListener("submit", async (e) => {
 
   document.getElementById("successTitle").textContent = `Teşekkürler, ${name.split(" ")[0]}`;
   document.getElementById("successBody").textContent =
-    `${MONEY(total)} alındı. Tezgâha gelince adını söyle — hazır olunca çağırırız.`;
+    `${MONEY(total)} alındı. Siparişiniz tezgâhta isimle teslim edilir.`;
   document.getElementById("successCode").textContent = code;
 
   success.hidden = false;

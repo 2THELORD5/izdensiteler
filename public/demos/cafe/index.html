@@ -8,7 +8,7 @@
   <meta name="theme-color" content="#0b0908" />
   <link rel="preconnect" href="https://api.fontshare.com" crossorigin />
   <link href="https://api.fontshare.com/v2/css?f[]=zodiak@500,600,700&f[]=switzer@400,500,600,700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="./styles.css?v=copy1" />
+  <link rel="stylesheet" href="./styles.css?v=copy2" />
 </head>
 <body class="brand-izden">
   <div class="loader" id="loader">
@@ -76,7 +76,7 @@
       </h2>
       <p class="manifesto__lede">
         IZDEN’de soğuklar logosuz, ridge’li clear cup’ta; sıcaklar kalın porselende.
-        Film bitince menü — boyu gör, sütü seç, fişe yaz, ismini söyle.
+        Film bitince menü — boy seçin, sütü ayarlayın, siparişi tamamlayın.
       </p>
       <div class="manifesto__stats">
         <div><strong>18h</strong><span>cold brew demleme</span></div>
@@ -111,8 +111,8 @@
         </li>
         <li>
           <span>04</span>
-          <h3>İsmini söyle</h3>
-          <p>Öde → kod al → tezgâhta ismini söyle. Fincan seni bekler.</p>
+          <h3>Sipariş teslimi</h3>
+          <p>Ödeme sonrası kod alınır; sipariş tezgâhta isimle teslim edilir.</p>
         </li>
       </ol>
     </section>
@@ -179,7 +179,7 @@
         <div class="hero-drink__copy">
           <p class="eyebrow">Bugünün soğuk hattı</p>
           <h3>Iced Latte</h3>
-          <p>Espresso, soğuk süt, buz — şeffaf 12–20 oz bardakta katman katman. Büğu, crema halkası, temiz bitiş.</p>
+          <p>Espresso, soğuk süt ve buz — şeffaf 12–20 oz bardakta katmanlı servis.</p>
           <ul class="hero-drink__tags">
             <li>Clear cup</li>
             <li>Oat / Almond</li>
@@ -224,7 +224,7 @@
       <div class="bar__copy">
         <p class="eyebrow">Bar · Cihangir</p>
         <h2>08:00 — 23:00</h2>
-        <p>Takeaway ve bar oturum. Alerjen / kavrum notları tezgâhta. İsmini söylemen yeterli.</p>
+        <p>Takeaway ve bar oturumu. Alerjen ve kavrum notları tezgâhta paylaşılır. Siparişiniz isimle teslim edilir.</p>
         <ul>
           <li>Single origin filter · günlük</li>
           <li>Oat · Almond · Soya</li>
@@ -288,10 +288,10 @@
     <div class="compose__panel" id="sheetBody"></div>
   </div>
 
-  <aside class="ticket-cart" id="cartPanel" aria-label="Sipariş fişi">
+  <aside class="ticket-cart" id="cartPanel" aria-label="Sipariş sepeti">
     <header>
       <div>
-        <p class="eyebrow">Fiş</p>
+        <p class="eyebrow">Sepet</p>
         <h3>IZDEN</h3>
       </div>
       <button type="button" id="cartClose">Kapat</button>
@@ -319,9 +319,9 @@
 
   <div class="success" id="success" hidden>
     <div class="success__card">
-      <p class="eyebrow">Bar’a düştü</p>
-      <h2 id="successTitle">Afiyet</h2>
-      <p id="successBody">İsmini söyle.</p>
+      <p class="eyebrow">Sipariş alındı</p>
+      <h2 id="successTitle">Teşekkürler</h2>
+      <p id="successBody">Siparişiniz hazırlanıyor.</p>
       <div class="success__meta">
         <div><small>Kod</small><strong id="successCode">IZD-0000</strong></div>
         <div><small>Hazırlık</small><strong id="successEta">~4 dk</strong></div>
@@ -340,7 +340,7 @@
         <button type="button" data-auth-tab="register">Üye ol</button>
       </div>
       <form id="authForm" autocomplete="on">
-        <label id="authNameWrap" hidden>İsim<input type="text" name="name" placeholder="Bar’da söylenecek isim" /></label>
+        <label id="authNameWrap" hidden>İsim<input type="text" name="name" placeholder="Teslim için isim" /></label>
         <label>E-posta<input type="email" name="email" required placeholder="sen@ornek.com" autocomplete="email" /></label>
         <label>Şifre<input type="password" name="password" required minlength="4" placeholder="En az 4 karakter" autocomplete="current-password" /></label>
         <p class="auth__err" id="authErr" aria-live="polite"></p>
@@ -354,12 +354,12 @@
 
   <button type="button" class="dock" id="cartBar" hidden>
     <span id="cartCount">0</span>
-    <em>Fişi gör</em>
+    <em>Sepeti gör</em>
     <strong id="cartTotal">₺0</strong>
   </button>
 
   <script src="./icons.js" defer></script>
-  <script src="./scrub.js?v=copy1" defer></script>
-  <script src="./menu.js?v=cold2" defer></script>
+  <script src="./scrub.js?v=copy3" defer></script>
+  <script src="./menu.js?v=copy3" defer></script>
 </body>
 </html>

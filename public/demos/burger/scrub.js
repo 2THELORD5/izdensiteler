@@ -3,12 +3,12 @@
  */
 /* Grill ticket voice — deliberately NOT cafe poetry */
 const ACTS = [
-  { at: 0.0, act: "01 / Izgara", title: "Et hazır", body: "Taze köfte tezgâhta. Izgara ısınmış, sıra smash’te." },
-  { at: 0.14, act: "02 / Baskı", title: "İnce kabuk", body: "Spatula bastırır; kenar çıtırlaşır, Maillard oluşur." },
-  { at: 0.30, act: "03 / Kurulum", title: "Katmanlar", body: "Ekmek, turşu, cheddar ve et — hızlı montaj." },
-  { at: 0.52, act: "04 / Eriyik", title: "Cheddar erir", body: "Kapak kapanır; kısa buharla peynir kaplar." },
-  { at: 0.74, act: "05 / Servis", title: "Tezgâha", body: "Sıcak smash tabağa iner; isim çağrılır." },
-  { at: 0.90, act: "06 / Sipariş", title: "Sipariş sırası", body: "Boy seçin, sos ekleyin, sepete alın." },
+  { at: 0.0, act: "01 / Izgara", title: "Et hazır", body: "Taze köfte tezgâhta. Izgara ısınmış, hazırlık başlar." },
+  { at: 0.14, act: "02 / Baskı", title: "İnce kabuk", body: "Spatula bastırır; kenar çıtırlaşır, pişme dengelenir." },
+  { at: 0.30, act: "03 / Katman", title: "Katmanlar", body: "Ekmek, turşu, cheddar ve et düzenli şekilde birleştirilir." },
+  { at: 0.52, act: "04 / Peynir", title: "Cheddar erir", body: "Kapak kapanır; kısa buharla peynir kaplar." },
+  { at: 0.74, act: "05 / Servis", title: "Servis", body: "Sıcak burger tabağa iner; sipariş teslime hazırdır." },
+  { at: 0.90, act: "06 / Sipariş", title: "Sipariş", body: "Boy seçin, sos ekleyin, sepete alın." },
 ];
 
 const clamp = (v, a = 0, b = 1) => Math.min(b, Math.max(a, v));

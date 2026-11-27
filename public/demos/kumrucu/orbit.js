@@ -19,7 +19,7 @@
       title: "Sucuklu",
       subtitle: "Domates",
       eyebrow: "İç malzeme 02",
-      body: "Sucuk, domates, kaşar — tok tezgâh hali.",
+      body: "Sucuk, domates ve kaşar — doyurucu servis.",
       img: "./public/menu/orbit/sucuklu.jpg",
       accent: "#a8784f",
     },
