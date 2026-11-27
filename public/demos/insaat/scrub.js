@@ -17,11 +17,11 @@ const MAX_DPR = IS_MOBILE ? 1.15 : 2;
 /* Seconds: build → entry perde → living perde → kitchen → bedroom → dusk
  * Morph bleed (living→kitchen) removed; all-intra for scrub seeks. */
 const ACTS = [
-  { t: 0.0, act: "01 — Arrival", title: "The Site", body: "Boş arazi. İlk beton. Işık henüz yok.", idx: "01 / 05", rail: "Arrival" },
-  { t: 2.1, act: "02 — Frame", title: "The Skeleton", body: "Çelik yükselir. Oranlar kilitlenir.", idx: "02 / 05", rail: "Frame" },
-  { t: 6.8, act: "03 — Skin", title: "The Shell", body: "Taş, cam, yürüyüş. Cephe giyinir.", idx: "03 / 05", rail: "Skin" },
-  { t: 9.43, act: "04 — Rooms", title: "Inside", body: "Perde, mutfak, yatak odası.", idx: "04 / 05", rail: "Rooms" },
-  { t: 22.23, act: "05 — Dusk", title: "Blue Hour", body: "Bitmiş villa. Su aynası. Mavi saat.", idx: "05 / 05", rail: "Dusk" },
+  { t: 0.0, act: "01 — Geliş", title: "Arazi", body: "Boş arazi. İlk beton. Işık henüz yok.", idx: "01 / 05", rail: "Geliş" },
+  { t: 2.1, act: "02 — İskelet", title: "Karkas", body: "Çelik yükselir. Oranlar kilitlenir.", idx: "02 / 05", rail: "İskelet" },
+  { t: 6.8, act: "03 — Cephe", title: "Kabuk", body: "Taş, cam, yürüyüş. Cephe tamamlanır.", idx: "03 / 05", rail: "Cephe" },
+  { t: 9.43, act: "04 — Odalar", title: "İç mekân", body: "Perde, mutfak, yatak odası.", idx: "04 / 05", rail: "Odalar" },
+  { t: 22.23, act: "05 — Alacakaranlık", title: "Mavi saat", body: "Bitmiş villa. Su aynası. Mavi saat.", idx: "05 / 05", rail: "Akşam" },
 ];
 const NOMINAL_DURATION = 25.23;
 ACTS.forEach((a) => (a.at = a.t / NOMINAL_DURATION));

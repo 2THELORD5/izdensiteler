@@ -26,10 +26,10 @@
   line.style.strokeDasharray = len;
 
   const stages = [
-    { at: 0, m: 0, title: "Charge", note: "Green beans drop into a drum already at 200 °C. The temperature falls fast — that is the beans taking the heat.", level: "Green" },
-    { at: 0.27, m: 3, title: "Drying & browning", note: "Moisture leaves, sugars start to brown. We keep the climb steady so the inside cooks as evenly as the outside.", level: "Yellow" },
-    { at: 0.62, m: 7.6, title: "First crack", note: "A dry pop from the drum: the bean has opened. This is the moment each lot gets its own decision.", level: "Medium" },
-    { at: 0.9, m: 10.5, title: "Drop", note: "Out of the drum and into the cooling tray inside a minute. Then it rests, then it goes in a bag.", level: "Roasted" },
+    { at: 0, m: 0, title: "Yükleme", note: "Yeşil çekirdekler 200 °C’deki tambura düşer. Sıcaklık hızla düşer — çekirdek ısıyı alır.", level: "Yeşil" },
+    { at: 0.27, m: 3, title: "Kurutma ve kavurma", note: "Nem çıkar, şekerler karamelize olmaya başlar. İç ve dış eşit pişsin diye ısı yükselişi sabit tutulur.", level: "Sarı" },
+    { at: 0.62, m: 7.6, title: "İlk çatlama", note: "Tamburdan kuru bir patlama: çekirdek açılmıştır. Her parti için karar anı buradadır.", level: "Orta" },
+    { at: 0.9, m: 10.5, title: "Boşaltma", note: "Bir dakika içinde tamburdan soğutma tepsisine. Dinlenme, ardından paketleme.", level: "Kavrulmuş" },
   ];
   /* bean colour by progress */
   const stopsC = [[0, [125, 139, 60]], [0.3, [196, 168, 70]], [0.55, [150, 96, 44]], [0.8, [92, 52, 26]], [1, [44, 24, 14]]];

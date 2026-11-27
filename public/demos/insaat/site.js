@@ -1,27 +1,27 @@
 const ROOMS = [
   {
-    tag: "01 Living",
-    title: "The Living",
+    tag: "01 Salon",
+    title: "Salon",
     blurb: "Perde aralanır — camdan orman ve teras.",
     img: "./public/rooms/living.jpg",
     curtain: true,
   },
   {
-    tag: "02 Kitchen",
-    title: "The Kitchen",
+    tag: "02 Mutfak",
+    title: "Mutfak",
     blurb: "Kireç taşı ada, meşe, avlu. Sessiz bir işlik.",
     img: "./public/rooms/kitchen.jpg",
   },
   {
-    tag: "03 Bedroom",
-    title: "The Bedroom",
+    tag: "03 Yatak",
+    title: "Yatak odası",
     blurb: "Tül perdeler rüzgârda — balkon ve sabah ışığı.",
     img: "./public/rooms/bedroom.jpg",
     curtain: true,
   },
   {
-    tag: "04 Terrace",
-    title: "The Terrace",
+    tag: "04 Teras",
+    title: "Teras",
     blurb: "Sonsuzluk havuz, taş deck, mavi saat. Dışarıda bitiş.",
     img: "./public/rooms/terrace.jpg",
   },
@@ -30,7 +30,7 @@ const ROOMS = [
 const HOMES = [
   {
     id: "blue-hour",
-    title: "House Blue Hour",
+    title: "Mavi Saat Villası",
     place: "Bodrum · Yalıkavak",
     sqm: 420,
     rooms: "5+1",
@@ -41,7 +41,7 @@ const HOMES = [
   },
   {
     id: "stone-walk",
-    title: "Stone Walk Villa",
+    title: "Taş Yürüyüş Villası",
     place: "Çeşme · Alaçatı",
     sqm: 310,
     rooms: "4+1",
@@ -52,7 +52,7 @@ const HOMES = [
   },
   {
     id: "limestone-pool",
-    title: "Limestone Edge",
+    title: "Kireç Taşı Cephe",
     place: "Bodrum · Türkbükü",
     sqm: 360,
     rooms: "4+1",
@@ -63,7 +63,7 @@ const HOMES = [
   },
   {
     id: "forest-glow",
-    title: "Forest Glow",
+    title: "Orman Işığı",
     place: "İstanbul · Beykoz",
     sqm: 280,
     rooms: "3+1",
@@ -75,11 +75,11 @@ const HOMES = [
 ];
 
 const PROJECTS = [
-  { hero: true, img: "./public/homes/villa-dusk.jpg", tag: "Villa · Bodrum", title: "House Blue Hour", blurb: "Cam, taş ve su aynası. Alacakaranlıkta yanar." },
-  { img: "./public/rooms/terrace.jpg", tag: "Teras", title: "Blue Hour Deck", blurb: "Havuz kenarı, mavi saat." },
-  { img: "./public/rooms/living.jpg", tag: "İç", title: "The Living", blurb: "Çift yükseklik, orman camı." },
-  { img: "./public/kie/02-frame.jpg", tag: "Şantiye", title: "Skeleton Rise", blurb: "İskelet yükselirken oranlar kilitlenir." },
-  { img: "./public/kie/01-site.jpg", tag: "Temel", title: "First Pour", blurb: "Boş arazi. İlk beton. İlk ışık." },
+  { hero: true, img: "./public/homes/villa-dusk.jpg", tag: "Villa · Bodrum", title: "Mavi Saat Villası", blurb: "Cam, taş ve su aynası. Alacakaranlıkta yanar." },
+  { img: "./public/rooms/terrace.jpg", tag: "Teras", title: "Mavi Saat Terası", blurb: "Havuz kenarı, mavi saat." },
+  { img: "./public/rooms/living.jpg", tag: "İç", title: "Salon", blurb: "Çift yükseklik, orman camı." },
+  { img: "./public/kie/02-frame.jpg", tag: "Şantiye", title: "Karkas yükselişi", blurb: "İskelet yükselirken oranlar kilitlenir." },
+  { img: "./public/kie/01-site.jpg", tag: "Temel", title: "İlk beton", blurb: "Boş arazi. İlk beton. İlk ışık." },
 ];
 
 const MATS = [
